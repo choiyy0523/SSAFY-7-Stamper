@@ -1,6 +1,6 @@
 ### Commit 컨벤션
 
-1. [BE] [FE] [ML] [ETC] feat fix docs test : 상세내용
+1. [BE] [FE] [ML] [ETC] feat fix docs test: 상세내용
 
 ***(예시)***
 
@@ -8,7 +8,9 @@
 
 `[ML] feat: 학습된 모델 코드 작성`
 
+<br>
 
+<br>
 
 #### GitBranch 전략
 
@@ -22,9 +24,9 @@
 > - merge 시 만들었던 branch는 삭제하기!!
 > - 다른 사람이 짠 코드를 수정할 시, 간단하게 주석을 남기거나 직접 말로 알려주기
 
+<br>
 
-
-
+<br>
 
 **#Git 관련 컨벤션은 필요에 따라 수정/추가 해주세요!**
 
