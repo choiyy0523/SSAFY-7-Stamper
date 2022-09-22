@@ -2,8 +2,6 @@ package com.ssafy.api.controller;
 
 import com.ssafy.api.request.*;
 import com.ssafy.api.response.*;
-import com.ssafy.api.request.*;
-import com.ssafy.api.response.*;
 import com.ssafy.common.auth.SsafyUserDetailService;
 import com.ssafy.db.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import com.ssafy.api.service.UserService;
 import com.ssafy.common.auth.SsafyUserDetails;
 import com.ssafy.common.model.response.BaseResponseBody;
-//import com.ssafy.Stamper.db.repository.UserRepositorySupport;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -122,7 +119,6 @@ public class UserController {
         String userId = userInfo.getUserId();  // 내가 입력한 아이디
         String userName = userInfo.getUserName();  // 내가 입력한 이름
         String userPhone = userInfo.getUserPhone();  // 내가 입력한 전화번호
-        String newPassword = userInfo.getNewPassword(); // 내가 입력한 새 비밀번호
         User user = userService.getUserByUserId(userId);  // 유저 객체를 찾음(없다면 null 값 가능)
 
         // user 가 빈 값이 아니면서(입력한 아이디로 가입된 user 객체가 있으면서),
@@ -167,14 +163,14 @@ public class UserController {
             @ApiResponse(code = 401, message = "권한 없음"),
             @ApiResponse(code = 500, message = "서버 오류")
     })
-    public ResponseEntity<? extends BaseResponseBody> update(@ApiIgnore Authentication authentication,
-                                                             @RequestBody @ApiParam(value = "회원프로필 정보", required = true) UserUpdatePatchReq updateInfo) {
+    public ResponseEntity<? extends BaseResponseBody> updateUser(@ApiIgnore Authentication authentication,
+                                                             @RequestBody @ApiParam(value = "회원프로필 정보", required = true) UserUpdatePatchReq updateUserInfo) {
         if (authentication == null){
             return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
         }
         SsafyUserDetails userDetails = (SsafyUserDetails) authentication.getDetails();
         String userId = userDetails.getUserId();
-        User user = userService.updateUser(userId, updateInfo);
+        User user = userService.updateUser(userId, updateUserInfo);
 
         return ResponseEntity.status(200).body(UserMeGetRes.of(200, "Success", UserRes.of(user)));
     }
@@ -201,7 +197,6 @@ public class UserController {
 
         // 이번에 입력한 현재 비밀번호와 현재 비밀번호가 다르다면
         if (!passwordEncoder.matches(passwordInfo.getCurrentPassword(), userPassword)) {
-//        if (passwordEncoder.encode(userPassword) != passwordInfo.getCurrentPassword()) {
             return ResponseEntity.status(403).body(BaseResponseBody.of(403, "현재 비밀번호가 틀립니다"));
         }
 

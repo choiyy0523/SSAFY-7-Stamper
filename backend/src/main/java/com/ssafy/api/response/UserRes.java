@@ -17,24 +17,25 @@ public class UserRes{
 //	String userId;
 //	@ApiModelProperty(name="User Password")
 //	String userPassword;
+	Long userSeq;
 	@ApiModelProperty(name="User Name")
 	String userName;
-	@ApiModelProperty(name="User Nickname")
-	String userNick;
+	@ApiModelProperty(name="User Email")
+	String userEmail;
 	@ApiModelProperty(name="User Phone")
 	String userPhone;
-	Long userSeq;
+	@ApiModelProperty(name="User Nickname")
+	String userNickname;
 	
 	public static UserRes of(User user) {
 		UserRes res = new UserRes();
 //		res.setUserId(user.getUserId());
 //		res.setUserPassword(user.getUserPassword());
-		res.setUserName(user.getUserName());
-		res.setUserNick(user.getUserNickname());
-		res.setUserPhone(user.getUserPhone());
 		res.setUserSeq(user.getUserSeq());
-
-
+		res.setUserName(user.getUserName());
+		res.setUserEmail(user.getUserEmail());
+		res.setUserPhone(user.getUserPhone());
+		res.setUserNickname(user.getUserNickname());
 		return res;
 	}
 }
