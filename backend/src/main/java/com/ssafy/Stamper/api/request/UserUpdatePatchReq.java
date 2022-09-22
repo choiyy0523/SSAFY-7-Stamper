@@ -11,8 +11,8 @@ import lombok.Setter;
 public class UserUpdatePatchReq {
     @ApiModelProperty(name="User Name")
     String userName;
-    @ApiModelProperty(name="User Nickname")
-    String userNick;
     @ApiModelProperty(name="User Phone")
     String userPhone;
+    @ApiModelProperty(name="User Nickname")
+    String userNickname;
 }

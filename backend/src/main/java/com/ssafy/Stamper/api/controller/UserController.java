@@ -32,7 +32,7 @@ import java.util.Base64;
  */
 @Api(value = "유저 API", tags = {"User"})
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/user")
 public class UserController {
 
     @Autowired
@@ -44,7 +44,7 @@ public class UserController {
     @Autowired
     SsafyUserDetailService detailService;
 
-    @PostMapping()
+    @PostMapping("/signup")
     @ApiOperation(value = "회원 가입", notes = "<strong>아이디와 패스워드</strong>를 통해 회원가입 한다.")
     @ApiResponses({
             @ApiResponse(code = 201, message = "성공"),
@@ -112,7 +112,7 @@ public class UserController {
     }
 
 
-    @PostMapping("/find/password")
+    @PostMapping("/find/userpassword")
     @ApiOperation(value = "비밀번호 찾기(변경)", notes = "비로그인 상태에서 회원의 비밀번호를 변경한다")
     @ApiResponses({
             @ApiResponse(code = 200, message = "성공"),
@@ -243,6 +243,7 @@ public class UserController {
     }
 
     @GetMapping("/getNickname/{userSeq}")
+    @ApiOperation(value = "회원 닉네임 조회", notes = "회원 닉네임을 조회한다")
     public ResponseEntity<? extends BaseResponseBody> getNick(@PathVariable Long userSeq){
         User user = userService.findUserBySeq(userSeq);
         return ResponseEntity.status(200).body(GetUserNickRes.of(200, "success", user.getUserName(), user.getUserNickname()));

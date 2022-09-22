@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
 		// 보안을 위해서 유저 패스워드 암호화 하여 디비에 저장.
 		user.setUserPassword(passwordEncoder.encode(userRegisterInfo.getUserPassword()));
 		user.setUserName(userRegisterInfo.getUserName());
-		user.setUserNickname(userRegisterInfo.getUserNick());
+		user.setUserNickname(userRegisterInfo.getUserNickname());
 		user.setUserPhone(userRegisterInfo.getUserPhone());
 		return userRepository.save(user);
 	}
@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
 	public User updateUser(String userId, UserUpdatePatchReq userUpdateInfo){
 		User user = getUserByUserId(userId);
 		user.setUserName(userUpdateInfo.getUserName());
-		user.setUserNickname(userUpdateInfo.getUserNick());
+		user.setUserNickname(userUpdateInfo.getUserNickname());
 		user.setUserPhone(userUpdateInfo.getUserPhone());
 		return userRepository.save(user);
 	}
