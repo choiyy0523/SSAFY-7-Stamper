@@ -64,7 +64,6 @@ Windows 기준 개발 환경 구성 설명
 ```
 .
 └── main
-    ├── generated
     ├── java
     │   └── com
     │       └── ssafy
@@ -109,11 +108,10 @@ Windows 기준 개발 환경 구성 설명
     │                   ├── UserRepository.java
     │                   └── UserRepositorySupport.java
     └── resources
-        ├── README.md
         ├── application.properties /* 웹 리소스(서버 host/port, 디비 host/port/계정/패스워드) 관련 설정 정의 */
-        ├── babel.config.js
-        ├── dist
-        ├── package-lock.json
-        ├── package.json
-        ├── public
+        ├── README.md
+        ├── build.gradle
+        ├── gradlew
+        ├── gradlew.bat
+        └── setting.gradle
 ```
