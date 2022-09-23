@@ -30,7 +30,10 @@ const login = () => {
         <p>곳곳에 있는 AI 친구들을 통해 기념도장을 모아보세요!</p>
       
       {/* 출처 표시 Footer */}
-        <a href="https://www.flaticon.com/authors/freepik" title="LOGO and Components icons">Logo and Components icons created by Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/authors/freepik" title="LOGO and Components icons">
+          <span>Logo and Components icons</span>
+          <span>created by Freepik - Flaticon</span>
+        </a>
       </div>
 
     );
