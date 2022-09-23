@@ -7,7 +7,7 @@ const login = () => {
         <div>             
           <img class="logo" src="/LOGO.png" alt="" />
           <h2>Stamper</h2>
-          <h1>스탬퍼</h1>
+          <h1 class="gradtext">스탬퍼</h1>
         </div>
 
       {/* 로그인 관련  */}

@@ -5,26 +5,12 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
 
 .logo:hover {
   /* filter: drop-shadow(0 0 2em #bf60ff); */
   animation: cute 1s ;
 }
 
-.h1:hover {
-  /* filter: drop-shadow(0 0 2em #bf60ff); */
-  animation: cute 1s ;
-}
-
-.h2:hover {
-  /* filter: drop-shadow(0 0 2em #bf60ff); */
-  animation: cute 1s ;
-}
 
 @keyframes cute {
   0% {
@@ -41,19 +27,6 @@
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: cute infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
 
 @font-face {
   font-family: KCCMurukmuruk;
