@@ -1,16 +1,20 @@
+div {
+  font-family: "KCCMurukmuruk";
+}
+
 .logo {
-  height: 10em;
-  margin-top: -8em;
+  height: 18vh;
+  margin-top: 0vh;
 }
 
 h2 {
-  font-size: 60px;
-  margin-top: -0.1em;
+  font-size: 6vh;
+  margin-top: -1vh;
 }
 
 h1 {
-  font-size: 90px;
-  margin-top: -0.6em;
+  font-size: 9vh;
+  margin-top: -7vh;
 }
 
 .gradtext {
@@ -28,9 +32,6 @@ h2:hover {
   animation: cute 0.8s ;
 }
 
-div {
-  font-family: "KCCMurukmuruk";
-}
 
 p {
   width: 100%;
@@ -45,7 +46,117 @@ a {
   font-family: "BMJua";
 }
 
+.login_button {
+  color: #BF60FF;
+  width: 320px;
+}
+
 .between {
   display: flex;
   justify-content: space-between;
+  margin-top: 2vh;
+  position: relative;
+}
+
+.footer_blank {
+  margin-top: 18vh;
+  margin-bottom: -2vh;
+}
+
+.footer_blank2 {
+  margin-top: 5vh;
+}
+
+.sticker1 {
+  height: 10vh;
+  margin-left: -25vh;
+  margin-top: -21vh;
+  position: absolute;
+}
+
+.sticker2 {
+  height: 10vh;
+  margin-left: -23vh;
+  margin-top: -35vh;
+  position: absolute;
+}
+
+.sticker3 {
+  height: 10vh;
+  margin-left: -26vh;
+  margin-top: -8vh;
+  position: absolute;
+}
+
+.sticker4 {
+  height: 10vh;
+  margin-left: 16vh;
+  margin-top: -18vh;
+  position: absolute;
+  z-index: 3;
+}
+
+.sticker5 {
+  height: 10vh;
+  margin-left: 15vh;
+  margin-top: 2vh;
+  position: absolute;
+}
+
+.sticker6 {
+  height: 10vh;
+  margin-left: 11vh;
+  margin-top: -26vh;
+  position: absolute;
+  z-index: 2;
+}
+
+.sticker7 {
+  height: 10vh;
+  margin-left: 14vh;
+  margin-top: -21vh;
+  position: absolute;
+  z-index: 1;
+}
+
+.sticker8 {
+  height: 10vh;
+  margin-left: 14vh;
+  margin-top: 41vh;
+  position: absolute;
+}
+
+.sticker9 {
+  height: 10vh;
+  margin-left: -28vh;
+  margin-top: -1vh;
+  position: absolute;
+}
+
+.sticker10 {
+  height: 10vh;
+  margin-left: 16vh;
+  margin-top: -33vh;
+  position: absolute;
+}
+
+.sticker11 {
+  height: 10vh;
+  margin-left: -23vh;
+  margin-top: 42vh;
+  position: absolute;
+}
+
+.sticker12 {
+  height: 30vh;
+  margin-left: -70vh;
+  margin-top: -20vh;
+  position: absolute;
+}
+
+.sticker13 {
+  height: 30vh;
+  margin-left: 40vh;
+  margin-top: -20vh;
+  position: absolute;
 }
