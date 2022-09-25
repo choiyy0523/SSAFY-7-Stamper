@@ -1,7 +1,6 @@
 FROM azul/zulu-openjdk:8
 
-WORKDIR /var/jenkins_home/workspace/stamper/stamper_spring
-
+WORKDIR /var/jenkins_home/workspace/stamper/backend
 # build가 되는 시점에 JAR_FILE 이라는 변수명에 build/libs/*.jar 표현식을 선언했다는 의미
 ARG JAR_FILE=build/libs/*.jar
 
