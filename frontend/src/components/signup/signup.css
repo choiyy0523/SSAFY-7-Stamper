@@ -1,0 +1,17 @@
+span {
+  width: 345px;
+  height: 106px;
+  margin: 35px 22px 24px 23px;
+  background-image: linear-gradient(to bottom, #bf60ff 0%, #3c3b63 80%);
+  font-family: KCC-Murukmuruk;
+  font-size: 45px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
