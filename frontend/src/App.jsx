@@ -35,7 +35,7 @@ function App() {
   return (
     <div className="App">
       <div>
-        {/* <Header></Header> */}
+        <Header></Header>
       </div>
       <Router>
         <Routes>

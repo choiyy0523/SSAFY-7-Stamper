@@ -9,7 +9,7 @@ const login = () => {
       <div>
       {/* 스탬퍼 로고와 이름 */}
         <div>             
-          <img className="logo" src="/LOGO.png" alt="" />
+          <img className="logo" src="/src/assets/LOGO.png" alt="" />
           <h2 className="muruk english_title">Stamper</h2>
             <img className="sticker1" src="/src/assets/login/apartment.png" alt="" />
             <img className="sticker2" src="/src/assets/login/bridge.png" alt="" />
