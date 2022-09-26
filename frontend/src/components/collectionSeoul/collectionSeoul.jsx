@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> f3de0877af76522e1a53938d4424a2f08e309c0a
 import "./collectionSeoul.css"
 import * as React from 'react';
 import { Fragment, useState } from "react";
