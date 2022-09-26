@@ -18,16 +18,22 @@ public class BookServiceImpl implements BookService{
 
     @Override
     public UserbookCollection registerUserbookCollection(BookRegisterPostReq bookInfo) {
+        UserbookCollection userbookCollection = new UserbookCollection();
+
+        userbookCollection.setUserbookCollectionGugun(bookInfo.getGugun());
+
+        userbookCollection.setUserbookCollectionImage(bookInfo.getUserbookCollectionImage());
+
         Date date = new Date();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd a hh:mm:ss zzz");
-        UserbookCollection book = new UserbookCollection();
-        book.setUserbookCollectionGugun(bookInfo.getGugun());
-        book.setUserbookCollectionImage(bookInfo.getUserbookCollectionImage());
-        book.setUserbookCollectionDate(df.format(date));
-        book.setUserbookCollectionCategory(bookInfo.getCategory());
-        Book b = new Book();
-        b.setBookSeq(bookInfo.getBookSeq());
-        book.setBook(b);
-        return userbookCollectionRepository.save(book);
+        userbookCollection.setUserbookCollectionDate(df.format(date));
+
+        userbookCollection.setUserbookCollectionCategory(bookInfo.getCategory());
+
+        Book book = new Book();
+        book.setBookSeq(bookInfo.getBookSeq());
+        userbookCollection.setBook(book);
+
+        return userbookCollectionRepository.save(userbookCollection);
     }
 }
