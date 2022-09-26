@@ -19,13 +19,15 @@ import './App.css';
 
 function App() {
 
-  // const loginCheck = () => {
-  //   // return window.sessionStorage.getItem("") === "true";
-  //   return true;
-  // };
+  const loginCheck = () => {
+    return 1
+    // window.sessionStorage.getItem("loginCheck") === "true";
+  };
+  
   const [memberData, setMemberData] = useState(
     window.sessionStorage.getItem("memberData")
   );
+
   useEffect(() => {
     setMemberData(window.sessionStorage.getItem("memberData"));
   }, [window.sessionStorage.getItem("memberData")]);
