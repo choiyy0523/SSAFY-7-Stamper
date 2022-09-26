@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 // import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  *	업적 관련 비즈니스 로직 처리를 위한 서비스 구현 정의.
  */
@@ -21,6 +23,26 @@ public class AchieveServiceImpl implements AchieveService {
 	AchieveRepository achieveRepository;
 
 //	@Override
+
+	@Override
+	public List<Achieve> getAllAchieve() {
+		return null;
+	}
+
+	@Override
+	public List<Achieve> getAchieveListByTheme(String mainCat) {
+		return null;
+	}
+
+	@Override
+	public List<Achieve> getAchieveListByGugun(String gugun) {
+		return null;
+	}
+
+	@Override
+	public Achieve findByAchieveSeq(Long achieveSeq) {
+		return null;
+	}
 //	public User createUser(UserRegisterPostReq userRegisterInfo) {
 //		User user = new User();
 //		user.setUserId(userRegisterInfo.getUserId());

@@ -6,10 +6,12 @@ package com.ssafy.api.service;
 // import com.ssafy.api.request.UserUpdatePatchReq;
 import com.ssafy.db.entity.Achieve;
 
+import java.util.List;
+
 /**
  *	업적 관련 비즈니스 로직 처리를 위한 서비스 인터페이스 정의.
  */
-public interface UserService {
+public interface AchieveService {
 
     List<Achieve> getAllAchieve();
     List<Achieve> getAchieveListByTheme(String mainCat);
