@@ -27,4 +27,10 @@ public class UserbookCollection {
 
     @Column(name = "userbookCollection_image")
     private String userbookCollectionImage;
+
+    @Column(name = "userbookCollection_ gugun")
+    private String userbookCollectionGugun;
+
+    @Column(name = "userbookCollection_category")
+    private String userbookCollectionCategory;
 }
