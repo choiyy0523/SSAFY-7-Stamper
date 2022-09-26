@@ -7,12 +7,12 @@ div {
   margin-top: 0vh;
 }
 
-h2 {
+.english_title {
   font-size: 6vh;
   margin-top: -1vh;
 }
 
-h1 {
+.korean_title {
   font-size: 9vh;
   margin-top: -7vh;
 }
@@ -24,11 +24,11 @@ h1 {
   -webkit-text-fill-color: transparent;
 }
 
-h1:hover {
+.korean_title:hover {
   animation: cute 0.7s ;
 }
 
-h2:hover {
+.english_title:hover {
   animation: cute 0.8s ;
 }
 
