@@ -10,7 +10,7 @@ const login = () => {
       {/* 스탬퍼 로고와 이름 */}
         <div>             
           <img className="logo" src="/LOGO.png" alt="" />
-          <h2>Stamper</h2>
+          <h2 className="muruk english_title">Stamper</h2>
             <img className="sticker1" src="/src/assets/login/apartment.png" alt="" />
             <img className="sticker2" src="/src/assets/login/bridge.png" alt="" />
             <img className="sticker3" src="/src/assets/login/church.png" alt="" />
@@ -24,7 +24,7 @@ const login = () => {
             <img className="sticker11" src="/src/assets/login/park.png" alt="" />
             <img className="sticker12" src="/src/assets/login/eye1.png" alt="" />
             <img className="sticker13" src="/src/assets/login/eye2.png" alt="" />
-          <h1 className="gradtext">스탬퍼</h1>
+          <h1 className="muruk gradtext korean_title">스탬퍼</h1>
         </div>
 
       {/* 로그인 관련  */}
@@ -54,12 +54,12 @@ const login = () => {
         </div>
  
       {/* 하단 문구 */}
-        <p className="footer_blank">스탬퍼가 되어 서울의 랜드마크를 수집해주세요!</p>
-        <p>곳곳에 있는 AI 친구들을 통해 기념도장을 모아보세요!</p>
+        <p className="footer_blank kkultip">스탬퍼가 되어 서울의 랜드마크를 수집해주세요!</p>
+        <p className="kkultip">곳곳에 있는 AI 친구들을 통해 기념도장을 모아보세요!</p>
       
       {/* 출처 표시 Footer */}
         <footer className="footer_blank2">
-          <a href="https://www.flaticon.com/authors/freepik" title="LOGO and Components icons">
+          <a className="chulcheo" href="https://www.flaticon.com/authors/freepik" title="LOGO and Components icons">
             <span>Logo and Components icons</span>
             <br />
             <span>created by Freepik - Flaticon</span>
