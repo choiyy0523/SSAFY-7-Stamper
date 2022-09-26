@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "tb_achievement")
-public class Achievement {
+public class Achieve {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long achieveSeq = null;
