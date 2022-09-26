@@ -10,7 +10,7 @@ const login = () => {
       {/* 스탬퍼 로고와 이름 */}
         <div>             
           <img className="logo" src="/LOGO.png" alt="" />
-          <h2 className="english_title">Stamper</h2>
+          <h2 className="muruk english_title">Stamper</h2>
             <img className="sticker1" src="/src/assets/login/apartment.png" alt="" />
             <img className="sticker2" src="/src/assets/login/bridge.png" alt="" />
             <img className="sticker3" src="/src/assets/login/church.png" alt="" />
@@ -24,7 +24,7 @@ const login = () => {
             <img className="sticker11" src="/src/assets/login/park.png" alt="" />
             <img className="sticker12" src="/src/assets/login/eye1.png" alt="" />
             <img className="sticker13" src="/src/assets/login/eye2.png" alt="" />
-          <h1 className="gradtext korean_title">스탬퍼</h1>
+          <h1 className="muruk gradtext korean_title">스탬퍼</h1>
         </div>
 
       {/* 로그인 관련  */}

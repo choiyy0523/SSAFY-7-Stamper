@@ -1,4 +1,8 @@
 div {
+  font-family: "BMJua";
+}
+
+.muruk {
   font-family: "KCCMurukmuruk";
 }
 
@@ -33,13 +37,13 @@ div {
 }
 
 
-p {
+.kkultip {
   width: 100%;
   height: 100%;
   font-family: "BMJua";
 }
 
-a {
+.chulcheo {
   color: black;
   width: 100%;
   height: 100%;
