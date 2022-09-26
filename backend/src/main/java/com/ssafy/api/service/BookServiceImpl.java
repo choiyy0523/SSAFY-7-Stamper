@@ -2,6 +2,7 @@ package com.ssafy.api.service;
 
 import com.ssafy.api.request.BookRegisterPostReq;
 import com.ssafy.db.entity.Book;
+import com.ssafy.db.entity.User;
 import com.ssafy.db.entity.UserbookCollection;
 import com.ssafy.db.repository.UserbookCollectionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,10 @@ public class BookServiceImpl implements BookService{
         Book book = new Book();
         book.setBookSeq(bookInfo.getBookSeq());
         userbookCollection.setBook(book);
+
+        User user = new User();
+        user.setUserSeq(bookInfo.getUserSeq());
+        userbookCollection.setUser(user);
 
         return userbookCollectionRepository.save(userbookCollection);
     }
