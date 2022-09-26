@@ -40,13 +40,14 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    max-height: 3rem;
     top: 25px;
     left: 25px;
     z-index: 10;
     -webkit-user-select: none;
     user-select: none;
   }
-  
+
   #menuToggle input
   {
     display: flex;
@@ -64,7 +65,41 @@
     width: 29px;
     height: 2px;
     margin-bottom: 5px;
-    position: relative;
+    position: absolute;
+    background: #000000;
+    border-radius: 3px;
+    z-index: 1;
+    transform-origin: 5px 0px;
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                opacity 0.55s ease;
+  }
+
+  #burgerTwo
+  {
+    display: flex;
+    width: 29px;
+    height: 2px;
+    margin-bottom: 5px;
+    position: absolute;
+    top: 7px;
+    background: #000000;
+    border-radius: 3px;
+    z-index: 1;
+    transform-origin: 5px 0px;
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                opacity 0.55s ease;
+  }
+
+  #burgerThree
+  {
+    display: flex;
+    width: 29px;
+    height: 2px;
+    margin-bottom: 5px;
+    position: absolute;
+    top: 14px;
     background: #000000;
     border-radius: 3px;
     z-index: 1;

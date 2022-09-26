@@ -9,9 +9,9 @@ export default function header() {
     <nav role="navigation">
         <div id="menuToggle">
             <input type="checkbox" />
-            <span></span>
-            <span></span>
-            <span></span>
+            <span id='burgerOne'></span>
+            <span id='burgerTwo'></span>
+            <span id='burgerThree'></span>
             <ul id="menu">
                 <li><a className='menuItem' href="/">Home</a></li>
                 <li><a className='menuItem' href="/login">Login</a></li>
