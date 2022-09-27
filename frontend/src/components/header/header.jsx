@@ -23,8 +23,12 @@ export default function header() {
                 <li><a className='menuItem' href="/signup">회원가입</a></li>
             </ul>
         </div>
-        <img href='/' className='navLogo' src={Logo}></img>
-        <div className='navTitle muruk'>스탬퍼</div>
+        <a href='/'>
+            <img className='navLogo' src={Logo}></img>
+        </a>
+        <a href='/'>
+            <div className='navTitle'>스탬퍼</div>
+        </a>
     </nav>
     )
 }
