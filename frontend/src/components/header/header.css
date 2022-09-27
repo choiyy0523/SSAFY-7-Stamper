@@ -145,6 +145,7 @@
     box-shadow: 0 0 10px #85888C;
     margin: -50px 0 0 -50px;
     padding: 50px;
+    padding-bottom: 100vh;
     padding-top: 80px;
     background-color: #F5F6FA;
     -webkit-font-smoothing: antialiased;
@@ -164,6 +165,7 @@
     transform: none;
   }
   .navTitle{
+    font-family: 'KCCMurukMuruk';
     position: absolute;
     left: 45%;
     top: 18%;
