@@ -1,10 +1,14 @@
+.logo1 {
+  height: 18vh;
+  margin-top: 10vh;
+  opacity: 0;
+}
+
 .logo2 {
-  width: 345px;
-  height: 106px;
-  margin: 35px 22px 24px 23px;
+  height: 2vh;
+  margin-left: 40vh;
   background-image: linear-gradient(to bottom, #bf60ff 0%, #3c3b63 80%);
-  font-family: KCC-Murukmuruk;
-  font-size: 45px;
+  font-size: 6vh;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -14,98 +18,10 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  opacity: 0%;
 }
 
-.sticker1 {
-  height: 10vh;
-  margin-left: -25vh;
-  margin-top: -21vh;
-  position: absolute;
-}
-
-.sticker2 {
-  height: 10vh;
-  margin-left: -23vh;
+.korean_title2 {
+  font-size: 5vh;
   margin-top: -35vh;
-  position: absolute;
-}
-
-.sticker3 {
-  height: 10vh;
-  margin-left: -26vh;
-  margin-top: -8vh;
-  position: absolute;
-}
-
-.sticker4 {
-  height: 10vh;
-  margin-left: 16vh;
-  margin-top: -18vh;
-  position: absolute;
-  z-index: 3;
-}
-
-.sticker5 {
-  height: 10vh;
-  margin-left: 15vh;
-  margin-top: 2vh;
-  position: absolute;
-}
-
-.sticker6 {
-  height: 10vh;
-  margin-left: 11vh;
-  margin-top: -26vh;
-  position: absolute;
-  z-index: 2;
-}
-
-.sticker7 {
-  height: 10vh;
-  margin-left: 14vh;
-  margin-top: -21vh;
-  position: absolute;
-  z-index: 1;
-}
-
-.sticker8 {
-  height: 10vh;
-  margin-left: 14vh;
-  margin-top: 41vh;
-  position: absolute;
-}
-
-.sticker9 {
-  height: 10vh;
-  margin-left: -28vh;
-  margin-top: -1vh;
-  position: absolute;
-}
-
-.sticker10 {
-  height: 10vh;
-  margin-left: 16vh;
-  margin-top: -33vh;
-  position: absolute;
-}
-
-.sticker11 {
-  height: 10vh;
-  margin-left: -23vh;
-  margin-top: 42vh;
-  position: absolute;
-}
-
-.sticker12 {
-  height: 30vh;
-  margin-left: -70vh;
-  margin-top: -20vh;
-  position: absolute;
-}
-
-.sticker13 {
-  height: 30vh;
-  margin-left: 40vh;
-  margin-top: -20vh;
-  position: absolute;
 }

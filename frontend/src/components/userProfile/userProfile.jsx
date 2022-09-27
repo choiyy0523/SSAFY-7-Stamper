@@ -9,9 +9,9 @@ const userprofile = () => {
                 {/* 프로필 사진과 이름 */}
                 <div className="item">
                     
-                        <img className="temp_dummy_profile_photo" src="https://via.placeholder.com/150" alt="" />
+                        <img className="temp_dummy_profile_photo" src="/src/assets/components/temp_user.png" alt="" />
                     
-                    <p>석호필</p>
+                    <p>(닉네임)</p>
                 </div>
                     
                 {/* 프로필의 기념도장과 랜드마크 아이콘 */}
@@ -30,10 +30,15 @@ const userprofile = () => {
                     <p>성북구 랜드마크 뿌셔!</p>
                 </div>
 
+                <a className="item" href="#">
+                    <img className="profile_control_comp" src="/src/assets/components/myintro.png" alt="" />
+                </a>
+
                 <a className="item" href="/profile/:userNo/modify">
-                    <img className="profile_control_comp" src="/src/assets/components/write.png" alt="" />
+                    <img className="profile_control_comp" src="/src/assets/components/account.png" alt="" />
                 </a>
             </div>
+            {/* ~~~ */}
             {/* 프로필 카드 끝 */}
 
 

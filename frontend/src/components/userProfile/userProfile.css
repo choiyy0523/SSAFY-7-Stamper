@@ -5,10 +5,6 @@
    justify-content: flex-start;
 }
 
-.left_photo {
-    float: left;
-}
-
 .profile_background {
     margin-left: 1.2vh;
     width: 42.7vh;
@@ -34,4 +30,5 @@
 
 .profile_control_comp {
     width: 3vh;
+    margin: 0.2vh;
 }

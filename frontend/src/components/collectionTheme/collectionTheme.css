@@ -15,7 +15,7 @@
     border-radius: 15%;
 }
 
-.theme_frame :hover {
+.theme_frame:hover {
     opacity: 50%;
 }
 

@@ -1,0 +1,53 @@
+.container {
+	display: flex;
+	/* display: inline-flex; */
+    flex-wrap: wrap;
+   justify-content: flex-start;
+}
+
+.profile_background2 {
+    margin-top: 5vh;
+    margin-left: 4.5vh;
+    width: 36vh;
+    height: 50vh;
+    background-color: rgb(230, 255, 255); 
+    border-radius: 5%;
+}
+
+.input_comp {
+    margin-top: 5vh;
+    padding: 235px;
+}
+
+.profile_box {
+    opacity: 20%;
+}
+
+.profile_comp {
+    width: 8vh;
+}
+
+.temp_dummy_profile_photo {
+    width: 14vh;
+    margin-top: 1vh;
+    opacity: 30%;
+}
+
+.profile_control_comp {
+    width: 3vh;
+}
+
+.nav_undo {
+    width: 4vh;
+    opacity: 40%;
+}
+
+.nav_undo:hover {
+    opacity: 90%;
+}
+
+.nav_position {
+    position: fixed;
+    top: 10vh;
+    left: 3vh;
+}
