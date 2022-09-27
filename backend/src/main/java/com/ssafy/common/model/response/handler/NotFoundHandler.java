@@ -1,4 +1,4 @@
-package com.ssafy.common.exception.handler;//package com.ssafy.common.exception.handler;
+package com.ssafy.common.model.response.handler;//package com.ssafy.common.exception.handler;
 //
 //import java.io.File;
 //import java.io.FileInputStream;

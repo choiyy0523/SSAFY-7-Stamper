@@ -1,0 +1,93 @@
+package com.ssafy.api.controller;
+
+
+import com.ssafy.api.request.UpdateAchieveReq;
+import com.ssafy.api.response.GetAchieveListRes;
+import com.ssafy.api.response.GetAchieveRes;
+import com.ssafy.api.response.UpdateAchieveRes;
+import com.ssafy.api.service.AchieveService;
+import com.ssafy.common.model.response.BaseResponseBody;
+import com.ssafy.db.entity.UserAchievement;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Api(value = "업적 API", tags = {"Achieve"})
+@RestController
+@RequestMapping("/api/achieve")
+public class AchieveController {
+
+    @Autowired
+    AchieveService achieveService;
+
+    @GetMapping("/{userSeq}")
+    @ApiOperation(value = "업적 전체 조회", notes = "userSeq 이용해서 달성한 업적 전체를 조회한다.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "성공"),
+            @ApiResponse(code = 409, message = "달성한 업적 없음"),
+            @ApiResponse(code = 500, message = "서버 오류")
+    })
+    public ResponseEntity<? extends BaseResponseBody> getAchieveList(@PathVariable Long userSeq){
+        List<UserAchievement> res = new ArrayList<>();
+        res = achieveService.getAllAchieve(userSeq);
+
+        if(res.size() > 0){
+            return ResponseEntity.status(200).body(GetAchieveListRes.of(200, "업적 리스트 불러오기 완료", res));
+        } else{
+            return ResponseEntity.status(409).body(GetAchieveListRes.of(409, "달성한 업적 없음"));
+        }
+
+
+    }
+
+    @GetMapping("/{userSeq}/{achieveSeq}")
+    @ApiOperation(value = "업적 전체 조회", notes = "userSeq 이용해서 달성한 업적 전체를 조회한다.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "성공"),
+            @ApiResponse(code = 409, message = "달성한 업적 없음"),
+            @ApiResponse(code = 500, message = "서버 오류")
+    })
+    public ResponseEntity<? extends BaseResponseBody> getAchieve(@PathVariable Long userSeq, @PathVariable Long achieveSeq){
+        UserAchievement res = achieveService.findByAchieveSeq(userSeq, achieveSeq);
+
+        if(res == null){
+            return ResponseEntity.status(409).body(GetAchieveRes.of(409, "달성하지 못한 업적", res));
+        } else {
+            return ResponseEntity.status(200).body(GetAchieveRes.of(200, "업적 불러오기 완료", res));
+        }
+
+
+    }
+
+
+    @PostMapping("/update")
+    @ApiOperation(value = "업적 등록", notes = "사용자의 업적 상태를 갱신한다.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "성공"),
+            @ApiResponse(code = 409, message = "이미 갱신된 업적"),
+            @ApiResponse(code = 500, message = "서버 오류")
+    })
+    public ResponseEntity<? extends BaseResponseBody> updateAchieve(@RequestBody UpdateAchieveReq info){
+        // 업적 갱신시키고 갱신된 결과 리턴
+
+        Long userSeq = info.getUserSeq();
+        Long achieveSeq = info.getAchieveSeq();
+
+        UserAchievement res = achieveService.findByAchieveSeq(userSeq, achieveSeq);
+
+        if(res == null) {
+            // 업적 갱신처리
+            achieveService.updateAchieve(info);
+            return ResponseEntity.status(200).body(UpdateAchieveRes.of(200, "업적 갱신 성공", achieveSeq));
+        } else {
+            return ResponseEntity.status(409).body(UpdateAchieveRes.of(409, "이미 갱신된 업적"));
+        }
+    }
+}
