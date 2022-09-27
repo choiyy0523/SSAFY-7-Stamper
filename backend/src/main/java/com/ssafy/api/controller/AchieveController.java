@@ -58,7 +58,7 @@ public class AchieveController {
         UserAchievement res = achieveService.findByAchieveSeq(userSeq, achieveSeq);
 
         if(res == null){
-            return ResponseEntity.status(409).body(GetAchieveRes.of(409, "달성하지 못한 업적", res));
+            return ResponseEntity.status(409).body(GetAchieveRes.of(409, "달성하지 못한 업적"));
         } else {
             return ResponseEntity.status(200).body(GetAchieveRes.of(200, "업적 조회 성공", res));
         }

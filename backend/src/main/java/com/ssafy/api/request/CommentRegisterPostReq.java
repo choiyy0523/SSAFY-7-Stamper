@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@ApiModel("BookRegisterPostRequest")
+@ApiModel("CommentRegisterPostReq")
 public class CommentRegisterPostReq {
 
     @ApiModelProperty(name = "User Seq")
