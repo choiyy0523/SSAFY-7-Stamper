@@ -1,13 +1,21 @@
+.container {
+	display: flex;
+	/* display: inline-flex; */
+    flex-wrap: wrap;
+   justify-content: flex-start;
+}
+
 .left_photo {
     float: left;
 }
 
-.profile_photo {
+.profile_background {
     margin-left: 1.2vh;
     width: 42.7vh;
     height: 24vh;
     background-color: rgb(181, 255, 255); 
     border-radius: 5%;
+    float: left;
 }
 
 .profile_box {
