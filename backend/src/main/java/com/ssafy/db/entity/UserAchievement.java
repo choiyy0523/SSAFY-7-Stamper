@@ -1,5 +1,6 @@
 package com.ssafy.db.entity;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -25,4 +26,10 @@ public class UserAchievement {
     @Column(name = "userAchievement_time")
     private String userAchievementTime;
 
+    @Builder
+    public UserAchievement(Achieve achieve, User user, String time){
+        this.achievement = achieve;
+        this.user = user;
+        this.userAchievementTime = time;
+    }
 }
