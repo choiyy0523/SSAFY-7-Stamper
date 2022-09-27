@@ -24,7 +24,7 @@ export default function header() {
             </ul>
         </div>
         <img href='/' className='navLogo' src={Logo}></img>
-        <div className='navTitle'>스탬퍼</div>
+        <div className='navTitle muruk'>스탬퍼</div>
     </nav>
     )
 }
