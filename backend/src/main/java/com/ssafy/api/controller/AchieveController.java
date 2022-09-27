@@ -39,7 +39,7 @@ public class AchieveController {
         res = achieveService.getAllAchieve(userSeq);
 
         if(res.size() > 0){
-            return ResponseEntity.status(200).body(GetAchieveListRes.of(200, "업적 리스트 불러오기 완료", res));
+            return ResponseEntity.status(200).body(GetAchieveListRes.of(200, "업적 리스트 조회 성공", res));
         } else{
             return ResponseEntity.status(409).body(GetAchieveListRes.of(409, "달성한 업적 없음"));
         }
@@ -48,10 +48,10 @@ public class AchieveController {
     }
 
     @GetMapping("/{userSeq}/{achieveSeq}")
-    @ApiOperation(value = "업적 전체 조회", notes = "userSeq 이용해서 달성한 업적 전체를 조회한다.")
+    @ApiOperation(value = "특정 업적 조회", notes = "userSeq, achieveSeq 이용해서 특정 업적을 조회한다.")
     @ApiResponses({
             @ApiResponse(code = 200, message = "성공"),
-            @ApiResponse(code = 409, message = "달성한 업적 없음"),
+            @ApiResponse(code = 409, message = "달성하지 못한 업적"),
             @ApiResponse(code = 500, message = "서버 오류")
     })
     public ResponseEntity<? extends BaseResponseBody> getAchieve(@PathVariable Long userSeq, @PathVariable Long achieveSeq){
@@ -60,7 +60,7 @@ public class AchieveController {
         if(res == null){
             return ResponseEntity.status(409).body(GetAchieveRes.of(409, "달성하지 못한 업적", res));
         } else {
-            return ResponseEntity.status(200).body(GetAchieveRes.of(200, "업적 불러오기 완료", res));
+            return ResponseEntity.status(200).body(GetAchieveRes.of(200, "업적 조회 성공", res));
         }
 
 
