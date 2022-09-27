@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
   } */
+
   .menuItem {
     text-decoration: none;
     color: #1E1E23;
@@ -20,7 +21,7 @@
     list-style-type: none;
   }
   nav {
-    position:sticky;
+    position:fixed;
     top:0;
     display:block;
     width: 100vw;

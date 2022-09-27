@@ -33,7 +33,7 @@ function App() {
 
   return (
     <div className="App">
-      <div>
+      <div className='nav_body'>
         <Header></Header>
       </div>
       <Router>
