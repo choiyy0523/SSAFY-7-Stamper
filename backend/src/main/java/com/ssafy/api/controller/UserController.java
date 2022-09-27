@@ -131,9 +131,6 @@ public class UserController {
         return ResponseEntity.status(409).body(BaseResponseBody.of(409, "일치하는 회원 없음"));
     }
 
-
-
-
     @GetMapping("/profile")
     @ApiOperation(value = "회원 프로필(본인) 조회", notes = "로그인한 회원 본인의 정보를 응답한다.")
     @ApiResponses({
