@@ -19,18 +19,18 @@ const collectionTheme = () => {
         <div>    
             <h2>(nickname)의 테마별 수집 현황</h2>
                 <div id = "wrap" className="grid-image">
-                    <section><img className="theme_icon" src="/src/assets/theme/gongwon.png" alt="" /><br />{ gongwon } ( 3 / 7 )</section>
-                    <section><img className="theme_icon" src="/src/assets/theme/uheung.png" alt="" /><br />{ uheung }</section>
-                    <section><img className="theme_icon" src="/src/assets/theme/myeongso.png" alt="" /><br />{ myeongso }</section>
-                    <section><img className="theme_icon" src="/src/assets/theme/munhwasiseol.png" alt="" /><br />{ munwhasiseol }</section>
-                    <section><img className="theme_icon" src="/src/assets/theme/shopping.png" alt="" /><br />{ shopping }</section>
-                    <section><img className="theme_icon" src="/src/assets/theme/jonggyo.png" alt="" /><br />{ jonggyo }</section>
-                    <section><img className="theme_icon" src="/src/assets/theme/bridge.png" alt="" /><br />{ bridge }</section>
-                    <section><img className="theme_icon" src="/src/assets/theme/jeonsigwan.png" alt="" /><br />{ jeonsigwan }</section>
-                    <section><img className="theme_icon" src="/src/assets/theme/munhwajae.png" alt="" /><br />{ munhwajae }</section>
-                    <section><img className="theme_icon" src="/src/assets/theme/jiyeoksangjing.png" alt="" /><br />{ jiyeoksangjing }</section>
-                    <section><img className="theme_icon" src="/src/assets/theme/gucheong.png" alt="" /><br />{ gucheong }</section>
-                    <section><img className="theme_icon" src="/src/assets/theme/guitar.png" alt="" /><br />{ guitar }</section>
+                    <section><img className="theme_frame theme_icon" src="/src/assets/theme/gongwon.png" alt="" /><br />{ gongwon } ( 3 / 7 )</section>
+                    <section><img className="theme_frame theme_icon" src="/src/assets/theme/uheung.png" alt="" /><br />{ uheung }</section>
+                    <section><img className="theme_frame theme_icon" src="/src/assets/theme/myeongso.png" alt="" /><br />{ myeongso }</section>
+                    <section><img className="theme_frame theme_icon" src="/src/assets/theme/munhwasiseol.png" alt="" /><br />{ munwhasiseol }</section>
+                    <section><img className="theme_frame theme_icon" src="/src/assets/theme/shopping.png" alt="" /><br />{ shopping }</section>
+                    <section><img className="theme_frame theme_icon" src="/src/assets/theme/jonggyo.png" alt="" /><br />{ jonggyo }</section>
+                    <section><img className="theme_frame theme_icon" src="/src/assets/theme/bridge.png" alt="" /><br />{ bridge }</section>
+                    <section><img className="theme_frame theme_icon" src="/src/assets/theme/jeonsigwan.png" alt="" /><br />{ jeonsigwan }</section>
+                    <section><img className="theme_frame theme_icon" src="/src/assets/theme/munhwajae.png" alt="" /><br />{ munhwajae }</section>
+                    <section><img className="theme_frame theme_icon" src="/src/assets/theme/jiyeoksangjing.png" alt="" /><br />{ jiyeoksangjing }</section>
+                    <section><img className="theme_frame theme_icon" src="/src/assets/theme/gucheong.png" alt="" /><br />{ gucheong }</section>
+                    <section><img className="theme_frame theme_icon" src="/src/assets/theme/guitar.png" alt="" /><br />{ guitar }</section>
                 </div>
         </div>
     );

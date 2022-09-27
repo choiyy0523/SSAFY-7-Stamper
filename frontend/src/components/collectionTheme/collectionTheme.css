@@ -6,7 +6,7 @@
     overflow: hidden;
 }
 
-section {
+.theme_frame {
     float: left;
     margin-left: 0.7vh;
     margin-bottom: 2vh;
@@ -15,7 +15,7 @@ section {
     border-radius: 15%;
 }
 
-section :hover {
+.theme_frame :hover {
     opacity: 50%;
 }
 

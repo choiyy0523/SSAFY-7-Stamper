@@ -1,0 +1,29 @@
+.left_photo {
+    float: left;
+}
+
+.profile_photo {
+    margin-left: 1.2vh;
+    width: 42.7vh;
+    height: 24vh;
+    background-color: rgb(181, 255, 255); 
+    border-radius: 5%;
+}
+
+.profile_box {
+    opacity: 20%;
+}
+
+.profile_comp {
+    width: 8vh;
+}
+
+.temp_dummy_profile_photo {
+    width: 14vh;
+    margin-top: 1vh;
+    opacity: 30%;
+}
+
+.profile_control_comp {
+    width: 3vh;
+}
