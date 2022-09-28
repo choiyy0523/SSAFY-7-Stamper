@@ -1,5 +1,4 @@
 import './header.css'
-import Menu from '../../assets/burgermenu.png'
 import { Grid } from '@mui/material'
 import Logo from '../../assets/LOGO.png'
 
