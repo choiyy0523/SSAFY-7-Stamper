@@ -1,5 +1,11 @@
+// 회원가입
+
 import "./signup.css"
-import * as React from 'react';
+// import * as React from 'react';
+
+import React, { useState } from "react";
+
+
 import Box from '@mui/material/Box';
 import TextField from '@material-ui/core/TextField';
 import { Button } from "@mui/material";
@@ -8,7 +14,7 @@ const signup = () => {
     return (
         <div>
             {/* 회원가입 페이지 제목 + 이미지들 */}
-            <span className='logo2'>회원가입</span>
+            <span className='logo2 muruk'>회원가입</span>
           <div>             
             <img className="sticker1" src="/src/assets/login/apartment.png" alt="" />
             <img className="sticker2" src="/src/assets/login/bridge.png" alt="" />
@@ -29,6 +35,7 @@ const signup = () => {
           <Box component="form" sx={{ '& .MuiTextField-root': { m: 1, width: '50ch' },}} noValidate autoComplete="off"/>
 
           <div>
+
           <TextField
           required
           id="outlined-required"
@@ -62,6 +69,9 @@ const signup = () => {
           />
           </div>
 
+          <br />
+          <Button color="secondary" style={{minWidth: '150px'}} variant="contained">회원가입</Button>
+          <br />
 
 
 

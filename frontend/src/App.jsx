@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import Header from './components/header/header';
-import Login from './components/login/login'
+import LoginPage from './components/login/login'
 import Signup from './components/signup/signup'
 import MainPage from './components/mainPage/mainPage'
 import UserProfile from './components/userProfile/userProfile'
@@ -15,6 +15,8 @@ import CollectionSeoul from './components/collectionSeoul/collectionSeoul'
 import CollectionSeoulDetail from './components/collectionSeoul/collectionSeoulDetail'
 import LandingPage from './components/landingPage/landingPage'
 import ImageTest from './components/imageTest/imageTest';
+import { useSelector, useDispatch } from "react-redux";
+import { SET_LOGOUT } from "./redux/UserInfo";
 import './App.css';
 
 function App() {
@@ -24,13 +26,13 @@ function App() {
     // window.sessionStorage.getItem("loginCheck") === "true";
   };
   
-  const [memberData, setMemberData] = useState(
-    window.sessionStorage.getItem("memberData")
+  const [UserData, setUserData] = useState(
+    window.sessionStorage.getItem("userData")
   );
 
   useEffect(() => {
-    setMemberData(window.sessionStorage.getItem("memberData"));
-  }, [window.sessionStorage.getItem("memberData")]);
+    setUserData(window.sessionStorage.getItem("UserData"));
+  }, [window.sessionStorage.getItem("UserData")]);
 
   return (
     <div className="App">
@@ -39,6 +41,13 @@ function App() {
       </div>
       <Router>
         <Routes>
+        <Route
+          exact path="/"
+          element={ loggedIn ? (
+            <Homepage
+              setLogOut={() => {
+              dispatch(SET_LOGOUT());}} /> ) :
+                ( <LoginPage></LoginPage> )} />
           <Route path="/test" element={<ImageTest/>}></Route>
           <Route path="/login" element={<Login/>}></Route>
           <Route path="/signup" element={<Signup/>}></Route>
