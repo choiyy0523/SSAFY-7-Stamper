@@ -10,9 +10,12 @@ import com.ssafy.db.repository.UserbookCollectionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -47,6 +50,17 @@ public class BookServiceImpl implements BookService{
     @Override
     public List<UserbookCollection> getListByGugun(Long userSeq, String gugun) {
 
+//        String newGugun = "";
+//        List<UserbookCollection> res = new ArrayList<>();
+//
+//        try {
+//            newGugun = URLDecoder.decode(gugun, "UTF-8");
+//            System.out.println("newGugun : " + newGugun);
+//            res = userbookCollectionRepository.findUserbookCollectionsByUser_UserSeqAndUserbookCollectionGugun(userSeq, newGugun);
+//        } catch (Exception e){
+//            System.out.println(e);
+//        }
+
         List<UserbookCollection> res = userbookCollectionRepository.findUserbookCollectionsByUser_UserSeqAndUserbookCollectionGugun(userSeq, gugun);
 
         return res;
@@ -55,7 +69,20 @@ public class BookServiceImpl implements BookService{
     @Override
     public List<UserbookCollection> getListByCategory(Long userSeq, String category) {
 
+//        System.out.println("category : " + category);
+//        String newCategory = "";
+//        List<UserbookCollection> res = new ArrayList<>();
+//
+//        try {
+//            newCategory = URLDecoder.decode(category, "UTF-8");
+//            System.out.println("newCategory : " + newCategory);
+//            res = userbookCollectionRepository.findUserbookCollectionsByUser_UserSeqAndUserbookCollectionCategory(userSeq, newCategory);
+//        } catch (Exception e){
+//            System.out.println(e);
+//        }
+
         List<UserbookCollection> res = userbookCollectionRepository.findUserbookCollectionsByUser_UserSeqAndUserbookCollectionCategory(userSeq, category);
+
         return res;
     }
 

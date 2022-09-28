@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.List;
 
@@ -44,7 +43,7 @@ public class BookController {
     }
 
 
-    @GetMapping("/listbygu/{userSeq}/{gugun}")
+    @GetMapping(value = "/listbygu/{userSeq}/{gugun}")
     @ApiOperation(value = "구별 조회", notes = "특정 구의 수집 현황을 조회한다.")
     @ApiResponses({
             @ApiResponse(code = 201, message = "성공"),
@@ -62,7 +61,7 @@ public class BookController {
         }
     }
 
-    @GetMapping("/listbycat/{userSeq}/{category}")
+    @GetMapping(value = "/listbycat/{userSeq}/{category}")
     @ApiOperation(value = "카테고리별 조회", notes = "특정 카테고리의 수집 현황을 조회한다")
     @ApiResponses({
             @ApiResponse(code = 201, message = "성공"),

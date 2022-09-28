@@ -14,7 +14,9 @@ import springfox.documentation.swagger.web.UiConfiguration;
 import springfox.documentation.swagger.web.UiConfigurationBuilder;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static com.google.common.collect.Lists.newArrayList;
 
@@ -65,4 +67,5 @@ public class SwaggerConfig {
 //                .operationsSorter(METHOD)
                 .build();
     }
+
 }
