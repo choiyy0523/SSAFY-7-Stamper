@@ -9,11 +9,11 @@ import java.util.List;
 @Repository
 public interface UserbookCollectionRepository extends JpaRepository<UserbookCollection, Long> {
 
-    public List<UserbookCollection> findUserbookCollectionsByUser_UserSeqAndUserbookCollectionCategory(Long userSeq, String category);
+    public List<UserbookCollection> findUserbookCollectionsByUserSeqAndUserbookCollectionCategory(Long userSeq, String category);
 
-    public List<UserbookCollection> findUserbookCollectionsByUser_UserSeqAndUserbookCollectionGugun(Long userSeq, String gugun);
+    public List<UserbookCollection> findUserbookCollectionsByUserSeqAndUserbookCollectionGugun(Long userSeq, String gugun);
 
-    public UserbookCollection findUserbookCollectionByUser_UserSeqAndBook_BookSeq(Long userSeq, Long bookSeq);
+    public UserbookCollection findUserbookCollectionByUserSeqAndBookSeq(Long userSeq, Long bookSeq);
 
-    public List<UserbookCollection> findUserbookCollectionsByUser_UserSeq(Long userSeq);
+    public List<UserbookCollection> findUserbookCollectionsByUserSeq(Long userSeq);
 }

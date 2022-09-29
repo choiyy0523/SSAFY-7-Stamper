@@ -10,10 +10,10 @@ import java.util.List;
 public interface UserAchievementRepository extends JpaRepository<UserAchievement, Long> {
 
     // 업적 전체 조회
-    public List<UserAchievement> findAchievesByUser_UserSeq(Long userSeq);
+    public List<UserAchievement> findAchievesByUserSeq(Long userSeq);
 
     // 특정 업적 조회
-    public UserAchievement findAchieveByUser_UserSeqAndAchievement_AchieveSeq(Long userSeq, Long achieveSeq);
+    public UserAchievement findAchieveByUserSeqAndAchieveSeq(Long userSeq, Long achieveSeq);
 
     // 업적 등록
 }
