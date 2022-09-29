@@ -19,7 +19,6 @@ export default function header() {
                 <li><a className='menuItem' href="/collection/theme/index">테마별수집현황</a></li>
                 <li><a className='menuItem' href="/collection/seoul/index">구별수집현황</a></li>
                 <li><a className='menuItem' href="/test">이미지테스트</a></li>
-                <li><a className='menuItem' href="/signup">회원가입</a></li>
                 <hr></hr>
             </ul>
         </div>

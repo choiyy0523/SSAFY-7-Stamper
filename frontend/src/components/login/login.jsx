@@ -61,8 +61,9 @@ const LoginPage = () => {
       userId: userId,
       userPassword: userPass,
       userName: userName,
-      userNick: userNick,
+      userNickname: userNick,
     };
+    console.log(userId)
     registerUser(
       data,
       (response) => {
@@ -78,8 +79,12 @@ const LoginPage = () => {
       }
     );
   };
+
   const onSubmitLoginForm = (event) => {
+    alert("asdfsadfas")
     event.preventDefault();
+
+    console.log(userPass + "" + userId + "asdfasdsfadasd")
     doLogin(
       { userId: userId, userPassword: userPass },
       (response) => {
@@ -420,7 +425,8 @@ const LoginPage = () => {
                 비밀번호 찾기
               </div>
             </div>
-            <input type="submit" value="Login"></input>
+            {/* <input type="submit" value="Login"></input> */}
+            <button onClick={onSubmitLoginForm}>Login2</button>
             <div class="signup_link">
               회원이 아니신가요?{" "}
               <span className="LoginOrout" onClick={LoginOrSignUp}>
