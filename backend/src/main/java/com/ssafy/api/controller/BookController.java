@@ -3,11 +3,10 @@ package com.ssafy.api.controller;
 import com.ssafy.api.request.BookGetBookListReq;
 import com.ssafy.api.request.BookRegisterPostReq;
 import com.ssafy.api.request.BookUpdateStatusReq;
-import com.ssafy.api.response.BookGetBookListRes;
-import com.ssafy.api.response.BookGetBookRes;
-import com.ssafy.api.response.GetAchieveRes;
+import com.ssafy.api.response.*;
 import com.ssafy.api.service.BookService;
 import com.ssafy.common.model.response.BaseResponseBody;
+import com.ssafy.db.entity.Comment;
 import com.ssafy.db.entity.UserbookCollection;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -124,27 +123,29 @@ public class BookController {
 
 
     // groupby 어떻게 작성하지,,,
-//    @GetMapping("/countofgu/{userSeq}")
-//    @ApiOperation(value = "구별 Count 조회", notes = "특정 구의 수집 개수를 조회한다.")
-//    @ApiResponses({
-//            @ApiResponse(code = 201, message = "성공"),
-//            @ApiResponse(code = 400, message = "실패"),
-//            @ApiResponse(code = 500, message = "서버 오류")
-//    })
-//    public ResponseEntity<? extends BaseResponseBody> getCountOfGugun(@PathVariable Long userSeq){
-//        return null;
-//    }
-//
-//    @GetMapping("/countofcat/{userSeq}")
-//    @ApiOperation(value = "카테고리별 Count 조회", notes = "특정 카테고리의 수집 개수를 조회한다.")
-//    @ApiResponses({
-//            @ApiResponse(code = 201, message = "성공"),
-//            @ApiResponse(code = 400, message = "실패"),
-//            @ApiResponse(code = 500, message = "서버 오류")
-//    })
-//    public ResponseEntity<? extends BaseResponseBody> getCountOfCategory(@PathVariable Long userSeq){
-//        return null;
-//    }
+    @GetMapping("/countofgu/{userSeq}")
+    @ApiOperation(value = "구별 Count 조회", notes = "특정 구의 수집 개수를 조회한다.")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "성공"),
+            @ApiResponse(code = 400, message = "실패"),
+            @ApiResponse(code = 500, message = "서버 오류")
+    })
+    public ResponseEntity<? extends BaseResponseBody> getCountOfGugun(@PathVariable Long userSeq){
+        List<GugunClass> list = bookService.getbookCountofGugun(userSeq);
+        return ResponseEntity.status(200).body(CountofGugunRes.of(200, "성공", list));
+    }
+
+    @GetMapping("/countofcat/{userSeq}")
+    @ApiOperation(value = "카테고리별 Count 조회", notes = "특정 카테고리의 수집 개수를 조회한다.")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "성공"),
+            @ApiResponse(code = 400, message = "실패"),
+            @ApiResponse(code = 500, message = "서버 오류")
+    })
+    public ResponseEntity<? extends BaseResponseBody> getCountOfCategory(@PathVariable Long userSeq){
+        List<CatClass> list = bookService.getbookCountofCat(userSeq);
+        return ResponseEntity.status(200).body(CountofCatRes.of(200, "성공", list));
+    }
 
     @GetMapping("/{userSeq}")
     @ApiOperation(value = "전체 수집 조회", notes = "사용자가 수집한 랜드마크 전체 리스트를 조회한다.")
