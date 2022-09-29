@@ -17,5 +17,5 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
 
     Comment findByCommentSeq(Long commentSeq);
 
-    List<Comment> findByBookBookSeq(Long bookSeq);
+    List<Comment> findByBookSeq(Long bookSeq);
 }

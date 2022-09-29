@@ -30,7 +30,7 @@ public class AchieveServiceImpl implements AchieveService {
 
 	@Override
 	public List<UserAchievement> getAllAchieve(Long userSeq) {
-		List<UserAchievement> res = userAchievementRepository.findAchievesByUser_UserSeq(userSeq);
+		List<UserAchievement> res = userAchievementRepository.findAchievesByUserSeq(userSeq);
 
 		return res;
 	}
@@ -38,24 +38,22 @@ public class AchieveServiceImpl implements AchieveService {
 	@Override
 	public UserAchievement findByAchieveSeq(Long userSeq, Long achieveSeq) {
 		// 외래키를 이용해 조회할때는 findBy + FK가 속한 엔티티 + _ + FK 식별자 필드명
-		UserAchievement res = userAchievementRepository.findAchieveByUser_UserSeqAndAchievement_AchieveSeq(userSeq, achieveSeq);
+		UserAchievement res = userAchievementRepository.findAchieveByUserSeqAndAchieveSeq(userSeq, achieveSeq);
 
 		return res;
 	}
 
 	@Override
 	public UserAchievement updateAchieve(UpdateAchieveReq info) {
-		Achieve achieve = new Achieve();
-		achieve.setAchieveSeq(info.getAchieveSeq());
+		Long achieveSeq = info.getAchieveSeq();
 
-		User user = new User();
-		user.setUserSeq(info.getUserSeq());
+		Long userSeq = info.getUserSeq();
 
 		LocalDate now = LocalDate.now();
 		DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 		String time = now.format(timeFormatter);
 
-		UserAchievement userAchieve = UserAchievement.builder().achieve(achieve).user(user).time(time).build();
+		UserAchievement userAchieve = UserAchievement.builder().achieveSeq(achieveSeq).userSeq(userSeq).time(time).build();
 
 		return userAchievementRepository.save(userAchieve);
 	}

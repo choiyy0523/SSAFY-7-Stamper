@@ -18,13 +18,13 @@ public class UserbookCollection implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userbookCollectionSeq = null;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Book.class)
     @JoinColumn(name = "book_seq")
-    private Book book;
+    private Long bookSeq;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = User.class)
     @JoinColumn(name = "user_seq")
-    private User user;
+    private Long userSeq;
 
     @Column(name = "userbook_collection_date")
     private String userbookCollectionDate;
@@ -39,9 +39,9 @@ public class UserbookCollection implements Serializable {
     private String userbookCollectionCategory;
 
     @Builder
-    public UserbookCollection(Book book, User user, String userbookCollectionDate, String userbookCollectionImage, String userbookCollectionGugun, String userbookCollectionCategory ){
-        this.book = book;
-        this.user = user;
+    public UserbookCollection(Long bookSeq, Long userSeq, String userbookCollectionDate, String userbookCollectionImage, String userbookCollectionGugun, String userbookCollectionCategory ){
+        this.bookSeq = bookSeq;
+        this.userSeq = userSeq;
         this.userbookCollectionDate = userbookCollectionDate;
         this.userbookCollectionImage = userbookCollectionImage;
         this.userbookCollectionGugun = userbookCollectionGugun;
