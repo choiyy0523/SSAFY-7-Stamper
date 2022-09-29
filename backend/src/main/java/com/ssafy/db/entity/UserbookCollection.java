@@ -20,6 +20,7 @@ public class UserbookCollection implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_seq")
+//    private Long bookSeq;
     private Book book;
 
     @ManyToOne(fetch = FetchType.LAZY)
