@@ -6,10 +6,7 @@ export default function landmark() {
     const landmarkNo = useParams();
     console.log(landmarkNo['landmarkNo'])
 
-<<<<<<< HEAD
-=======
     // const queryClient = useQueryClient()
->>>>>>> 318611988a95c3a556fbb59072d39a731cbb3080
     // const query = useQuery()
     
 
