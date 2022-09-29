@@ -3,12 +3,15 @@ package com.ssafy.db.entity;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @NoArgsConstructor
 @Data
 @Entity
+@DynamicUpdate
 @Table(name = "tb_userAchievement")
 public class UserAchievement {
     @Id
