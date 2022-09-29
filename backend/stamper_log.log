@@ -3536,3 +3536,104 @@ java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check th
 2022-09-29 14:44:39.339  INFO 6852 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2022-09-29 14:44:39.343  INFO 6852 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2022-09-29 14:44:39.348  INFO 6852 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-09-29 14:46:23.618  INFO 2852 --- [restartedMain] com.ssafy.StamperApplication             : Starting StamperApplication using Java 1.8.0_192 on DESKTOP-KVCQHCD with PID 2852 (D:\S07P22A206\backend\build\classes\java\main started by SSAFY in D:\S07P22A206\backend)
+2022-09-29 14:46:23.621  INFO 2852 --- [restartedMain] com.ssafy.StamperApplication             : No active profile set, falling back to default profiles: default
+2022-09-29 14:46:23.659  INFO 2852 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-09-29 14:46:23.660  INFO 2852 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-09-29 14:46:24.620  INFO 2852 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-29 14:46:24.685  INFO 2852 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 59 ms. Found 6 JPA repository interfaces.
+2022-09-29 14:46:24.953  INFO 2852 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@1674553f' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-09-29 14:46:24.955  INFO 2852 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-09-29 14:46:25.180  INFO 2852 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-09-29 14:46:25.187  INFO 2852 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-09-29 14:46:25.188  INFO 2852 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.45]
+2022-09-29 14:46:25.281  INFO 2852 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-09-29 14:46:25.281  INFO 2852 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1620 ms
+2022-09-29 14:46:25.433 DEBUG 2852 --- [restartedMain] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'commonsRequestLoggingFilter' configured for use
+2022-09-29 14:46:25.511  INFO 2852 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-29 14:46:25.543  INFO 2852 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.30.Final
+2022-09-29 14:46:25.629  INFO 2852 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-29 14:46:25.699  INFO 2852 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-09-29 14:46:25.974  INFO 2852 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-09-29 14:46:25.984  INFO 2852 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2022-09-29 14:46:26.688  INFO 2852 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-29 14:46:26.695  INFO 2852 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-29 14:46:26.730  INFO 2852 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-09-29 14:46:27.085  WARN 2852 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-09-29 14:46:27.611 DEBUG 2852 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 33 mappings in 'requestMappingHandlerMapping'
+2022-09-29 14:46:27.710  INFO 2852 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2022-09-29 14:46:27.874  INFO 2852 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@82a6227, org.springframework.security.web.context.SecurityContextPersistenceFilter@329613d1, org.springframework.security.web.header.HeaderWriterFilter@8aefe51, org.springframework.web.filter.CorsFilter@2f1af800, org.springframework.security.web.authentication.logout.LogoutFilter@7230e7bd, com.ssafy.common.auth.JwtAuthenticationFilter@f9192d1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@44e959d0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@66d842bc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@55e82b3f, org.springframework.security.web.session.SessionManagementFilter@111095ba, org.springframework.security.web.access.ExceptionTranslationFilter@12fbc7e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@173ca8dc]
+2022-09-29 14:46:27.945  INFO 2852 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-09-29 14:46:27.955 DEBUG 2852 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-09-29 14:46:27.985 DEBUG 2852 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui/] in 'viewControllerHandlerMapping'
+2022-09-29 14:46:28.003 DEBUG 2852 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/resources/**, /swagger-ui.html, /webjars/**, /css/**, /fonts/**, /icons/**, /img/**, /js/**, /swagger-ui/**, /**] in 'resourceHandlerMapping'
+2022-09-29 14:46:28.010 DEBUG 2852 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-09-29 14:46:28.178  INFO 2852 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-09-29 14:46:28.405  INFO 2852 --- [restartedMain] com.ssafy.StamperApplication             : Started StamperApplication in 5.111 seconds (JVM running for 6.488)
+2022-09-29 14:46:28.621  INFO 2852 --- [RMI TCP Connection(1)-70.12.246.240] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-29 14:46:28.621  INFO 2852 --- [RMI TCP Connection(1)-70.12.246.240] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-09-29 14:46:28.621 DEBUG 2852 --- [RMI TCP Connection(1)-70.12.246.240] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2022-09-29 14:46:28.621 DEBUG 2852 --- [RMI TCP Connection(1)-70.12.246.240] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2022-09-29 14:46:28.621 DEBUG 2852 --- [RMI TCP Connection(1)-70.12.246.240] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2022-09-29 14:46:28.623 DEBUG 2852 --- [RMI TCP Connection(1)-70.12.246.240] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@5b8dc872
+2022-09-29 14:46:28.623 DEBUG 2852 --- [RMI TCP Connection(1)-70.12.246.240] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@6b18510e
+2022-09-29 14:46:28.623 DEBUG 2852 --- [RMI TCP Connection(1)-70.12.246.240] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2022-09-29 14:46:28.623  INFO 2852 --- [RMI TCP Connection(1)-70.12.246.240] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-09-29 14:46:35.085 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/", parameters={}
+2022-09-29 14:46:35.089 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ParameterizableViewController [view="forward:/swagger-ui/index.html"]
+2022-09-29 14:46:35.100 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8]
+2022-09-29 14:46:35.101 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.servlet.view.InternalResourceView  : View name 'forward:', model {}
+2022-09-29 14:46:35.102 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.servlet.view.InternalResourceView  : Forwarding to [/swagger-ui/index.html]
+2022-09-29 14:46:35.103 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : "FORWARD" dispatch for GET "/swagger-ui/index.html", parameters={}
+2022-09-29 14:46:35.105 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/webjars/springfox-swagger-ui/]]
+2022-09-29 14:46:35.117 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Exiting from "FORWARD" dispatch, status 200
+2022-09-29 14:46:35.119 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-29 14:46:35.129 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/springfox.css?v=3.0.0", parameters={masked}
+2022-09-29 14:46:35.131 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/webjars/springfox-swagger-ui/]]
+2022-09-29 14:46:35.131 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui.css?v=3.0.0", parameters={masked}
+2022-09-29 14:46:35.132 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/webjars/springfox-swagger-ui/]]
+2022-09-29 14:46:35.135 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-29 14:46:35.137 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui-bundle.js?v=3.0.0", parameters={masked}
+2022-09-29 14:46:35.137 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/webjars/springfox-swagger-ui/]]
+2022-09-29 14:46:35.139 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-29 14:46:35.141 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui-standalone-preset.js?v=3.0.0", parameters={masked}
+2022-09-29 14:46:35.142 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/webjars/springfox-swagger-ui/]]
+2022-09-29 14:46:35.159 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-29 14:46:35.161 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/springfox.js?v=3.0.0", parameters={masked}
+2022-09-29 14:46:35.162 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/webjars/springfox-swagger-ui/]]
+2022-09-29 14:46:35.169 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-29 14:46:35.187 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-29 14:46:35.380 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/swagger-resources/configuration/ui", parameters={}
+2022-09-29 14:46:35.382 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to springfox.documentation.swagger.web.ApiResourceController#uiConfiguration()
+2022-09-29 14:46:35.382 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/favicon-32x32.png?v=3.0.0", parameters={masked}
+2022-09-29 14:46:35.383 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/webjars/springfox-swagger-ui/]]
+2022-09-29 14:46:35.385 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-29 14:46:35.392 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json] and supported [application/json]
+2022-09-29 14:46:35.398 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [springfox.documentation.swagger.web.UiConfiguration@574fdc54]
+2022-09-29 14:46:35.405 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-29 14:46:35.409 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/swagger-resources/configuration/security", parameters={}
+2022-09-29 14:46:35.410 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to springfox.documentation.swagger.web.ApiResourceController#securityConfiguration()
+2022-09-29 14:46:35.410 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json] and supported [application/json]
+2022-09-29 14:46:35.412 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [springfox.documentation.swagger.web.SecurityConfiguration@d9a629c]
+2022-09-29 14:46:35.413 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-29 14:46:35.416 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/swagger-resources", parameters={}
+2022-09-29 14:46:35.417 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to springfox.documentation.swagger.web.ApiResourceController#swaggerResources()
+2022-09-29 14:46:35.417 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json] and supported [application/json]
+2022-09-29 14:46:35.418 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[springfox.documentation.swagger.web.SwaggerResource@490a11c7]]
+2022-09-29 14:46:35.419 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-29 14:46:35.448 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/v2/api-docs", parameters={}
+2022-09-29 14:46:35.448 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)
+2022-09-29 14:46:35.519 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, */*] and supported [application/json, application/hal+json]
+2022-09-29 14:46:35.520 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [springfox.documentation.spring.web.json.Json@75301267]
+2022-09-29 14:46:35.521 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-29 14:46:44.786 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/book/listbygu/2/%EC%A4%91%EB%9E%91%EA%B5%AC, client=127.0.0.1, headers=[host:"localhost:8080", connection:"keep-alive", sec-ch-ua:""Google Chrome";v="105", "Not)A;Brand";v="8", "Chromium";v="105"", accept:"*/*", sec-ch-ua-mobile:"?0", user-agent:"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36", sec-ch-ua-platform:""Windows"", sec-fetch-site:"same-origin", sec-fetch-mode:"cors", sec-fetch-dest:"empty", referer:"http://localhost:8080/swagger-ui/", accept-encoding:"gzip, deflate, br", accept-language:"ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"]]
+2022-09-29 14:46:44.786 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/book/listbygu/2/%EC%A4%91%EB%9E%91%EA%B5%AC", parameters={}
+2022-09-29 14:46:44.787 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.api.controller.BookController#getListByGugun(Long, String)
+2022-09-29 14:46:44.924 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2022-09-29 14:46:44.925 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.ssafy.api.response.BookGetBookListRes@b38f820]
+2022-09-29 14:46:44.928 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-09-29 14:46:44.928 DEBUG 2852 --- [http-nio-127.0.0.1-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/book/listbygu/2/%EC%A4%91%EB%9E%91%EA%B5%AC, client=127.0.0.1, headers=[host:"localhost:8080", connection:"keep-alive", sec-ch-ua:""Google Chrome";v="105", "Not)A;Brand";v="8", "Chromium";v="105"", accept:"*/*", sec-ch-ua-mobile:"?0", user-agent:"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36", sec-ch-ua-platform:""Windows"", sec-fetch-site:"same-origin", sec-fetch-mode:"cors", sec-fetch-dest:"empty", referer:"http://localhost:8080/swagger-ui/", accept-encoding:"gzip, deflate, br", accept-language:"ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"]]
+2022-09-29 14:48:22.772  INFO 2852 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-09-29 14:48:22.776  INFO 2852 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-09-29 14:48:22.780  INFO 2852 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-09-29 14:48:22.784  INFO 2852 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
