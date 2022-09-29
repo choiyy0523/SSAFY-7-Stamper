@@ -48,7 +48,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-    <div className="App">
+    <div className="App nav_body">
       <Router>
               <Routes>
         <Route
