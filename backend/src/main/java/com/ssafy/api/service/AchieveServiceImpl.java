@@ -16,8 +16,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 // import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,7 +40,7 @@ public class AchieveServiceImpl implements AchieveService {
 	@Override
 	public UserAchievement findByAchieveSeq(Long userSeq, Long achieveSeq) {
 		// 외래키를 이용해 조회할때는 findBy + FK가 속한 엔티티 + _ + FK 식별자 필드명
-		UserAchievement res = userAchievementRepository.findAchieveByUser_UserSeqAndAchievement_AchieveSeq(userSeq, achieveSeq);
+		UserAchievement res = userAchievementRepository.findAchieveByUser_UserSeqAndAchieve_AchieveSeq(userSeq, achieveSeq);
 
 		return res;
 	}
@@ -51,9 +53,9 @@ public class AchieveServiceImpl implements AchieveService {
 		User user = new User();
 		user.setUserSeq(info.getUserSeq());
 
-		LocalDate now = LocalDate.now();
-		DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-		String time = now.format(timeFormatter);
+		Date date = new Date();
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd a hh:mm:ss zzz");
+		String time = df.format(date);
 
 		UserAchievement userAchieve = UserAchievement.builder().achieve(achieve).user(user).time(time).build();
 

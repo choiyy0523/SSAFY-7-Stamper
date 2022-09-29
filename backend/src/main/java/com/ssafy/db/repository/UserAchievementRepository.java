@@ -13,7 +13,7 @@ public interface UserAchievementRepository extends JpaRepository<UserAchievement
     public List<UserAchievement> findAchievesByUser_UserSeq(Long userSeq);
 
     // 특정 업적 조회
-    public UserAchievement findAchieveByUser_UserSeqAndAchievement_AchieveSeq(Long userSeq, Long achieveSeq);
+    public UserAchievement findAchieveByUser_UserSeqAndAchieve_AchieveSeq(Long userSeq, Long achieveSeq);
 
     // 업적 등록
 }

@@ -21,9 +21,7 @@ public class Comment {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_seq")
     private User user;
-
-
-
+    
     @Column(name = "comment_content")
     private String commentContent;
 

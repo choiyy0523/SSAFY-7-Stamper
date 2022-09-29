@@ -1,11 +1,12 @@
 import { useParams } from 'react-router-dom';
 import TextField from "@mui/material/TextField";
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 export default function landmark() {
     const landmarkNo = useParams();
-    console.log(typeof landmarkNo)
     console.log(landmarkNo['landmarkNo'])
 
+    // const queryClient = useQueryClient()
     // const query = useQuery()
     
 

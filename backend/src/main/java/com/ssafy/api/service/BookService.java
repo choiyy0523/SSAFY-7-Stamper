@@ -3,6 +3,9 @@ package com.ssafy.api.service;
 import com.ssafy.api.request.BookGetBookListReq;
 import com.ssafy.api.request.BookRegisterPostReq;
 import com.ssafy.api.request.BookUpdateStatusReq;
+import com.ssafy.db.entity.Book;
+import com.ssafy.api.response.CatClass;
+import com.ssafy.api.response.GugunClass;
 import com.ssafy.db.entity.UserbookCollection;
 
 import java.util.List;
@@ -22,4 +25,17 @@ public interface BookService {
     UserbookCollection updateBookStatus(BookUpdateStatusReq updateInfo);
 
     List<UserbookCollection> getAllBookStatus(Long userSeq);
+
+    Book getBookInfo(Long bookSeq);
+
+    List<Book> getAllBookInfo();
+
+    List<Book> getBookInfoByGugun(String gugun);
+
+    List<Book> getBookInfoByCategory(String category);
+
+
+    List<GugunClass> getbookCountofGugun(Long userSeq);
+
+    List<CatClass> getbookCountofCat(Long userSeq);
 }
