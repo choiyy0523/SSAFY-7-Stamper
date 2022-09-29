@@ -14,16 +14,14 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long commentSeq = null;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Book.class)
     @JoinColumn(name = "book_seq")
-    private Book book;
+    private Long bookSeq;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = User.class)
     @JoinColumn(name = "user_seq")
-    private User user;
-
-
-
+    private Long userSeq;
+    
     @Column(name = "comment_content")
     private String commentContent;
 

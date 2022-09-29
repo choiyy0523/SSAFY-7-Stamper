@@ -3,6 +3,8 @@ package com.ssafy.api.service;
 import com.ssafy.api.request.BookGetBookListReq;
 import com.ssafy.api.request.BookRegisterPostReq;
 import com.ssafy.api.request.BookUpdateStatusReq;
+import com.ssafy.api.response.CatClass;
+import com.ssafy.api.response.GugunClass;
 import com.ssafy.db.entity.Book;
 import com.ssafy.db.entity.User;
 import com.ssafy.db.entity.UserbookCollection;
@@ -40,14 +42,14 @@ public class BookServiceImpl implements BookService{
         userbookCollection.setUserbookCollectionDate(df.format(date));
         userbookCollection.setUserbookCollectionCategory(bookInfo.getCategory());
 
-        Book book = new Book();
-        book.setBookSeq(bookInfo.getBookSeq());
-        userbookCollection.setBook(book);
-
-        User user = new User();
-        user.setUserSeq(bookInfo.getUserSeq());
-        userbookCollection.setUser(user);
-
+//        Book book = new Book();
+//        book.setBookSeq(bookInfo.getBookSeq());
+//        userbookCollection.setBook(book);
+        userbookCollection.setBookSeq(bookInfo.getBookSeq());
+//        User user = new User();
+//        user.setUserSeq(bookInfo.getUserSeq());
+//        userbookCollection.setUser(user);
+        userbookCollection.setUserSeq(bookInfo.getUserSeq());
         return userbookCollectionRepository.save(userbookCollection);
     }
 
@@ -65,7 +67,7 @@ public class BookServiceImpl implements BookService{
 //            System.out.println(e);
 //        }
 
-        List<UserbookCollection> res = userbookCollectionRepository.findUserbookCollectionsByUser_UserSeqAndUserbookCollectionGugun(userSeq, gugun);
+        List<UserbookCollection> res = userbookCollectionRepository.findUserbookCollectionsByUserSeqAndUserbookCollectionGugun(userSeq, gugun);
 
         return res;
     }
@@ -85,7 +87,7 @@ public class BookServiceImpl implements BookService{
 //            System.out.println(e);
 //        }
 
-        List<UserbookCollection> res = userbookCollectionRepository.findUserbookCollectionsByUser_UserSeqAndUserbookCollectionCategory(userSeq, category);
+        List<UserbookCollection> res = userbookCollectionRepository.findUserbookCollectionsByUserSeqAndUserbookCollectionCategory(userSeq, category);
 
         return res;
     }
@@ -93,7 +95,7 @@ public class BookServiceImpl implements BookService{
     @Override
     public UserbookCollection getBookStatus(Long userSeq, Long bookSeq) {
 
-        UserbookCollection res = userbookCollectionRepository.findUserbookCollectionByUser_UserSeqAndBook_BookSeq(userSeq, bookSeq);
+        UserbookCollection res = userbookCollectionRepository.findUserbookCollectionByUserSeqAndBookSeq(userSeq, bookSeq);
 
         return res;
     }
@@ -105,7 +107,7 @@ public class BookServiceImpl implements BookService{
         Long bookSeq = updateInfo.getBookSeq();
         String imageURL = updateInfo.getImageURL();
 
-        UserbookCollection res = userbookCollectionRepository.findUserbookCollectionByUser_UserSeqAndBook_BookSeq(userSeq, bookSeq);
+        UserbookCollection res = userbookCollectionRepository.findUserbookCollectionByUserSeqAndBookSeq(userSeq, bookSeq);
 //        Book book = res.getBook();
 //        book.setBookSeq(updateInfo.getBookSeq());
 //
@@ -130,8 +132,20 @@ public class BookServiceImpl implements BookService{
     @Override
     public List<UserbookCollection> getAllBookStatus(Long userSeq) {
 
-        List<UserbookCollection> res = userbookCollectionRepository.findUserbookCollectionsByUser_UserSeq(userSeq);
+        List<UserbookCollection> res = userbookCollectionRepository.findUserbookCollectionsByUserSeq(userSeq);
 
+        return res;
+    }
+
+    @Override
+    public List<GugunClass> getbookCountofGugun(Long userSeq){
+        List<GugunClass> res = userbookCollectionRepository.getCountGugun(userSeq);
+        return res;
+    }
+
+    @Override
+    public List<CatClass> getbookCountofCat(Long userSeq){
+        List<CatClass> res = userbookCollectionRepository.getCountCat(userSeq);
         return res;
     }
 

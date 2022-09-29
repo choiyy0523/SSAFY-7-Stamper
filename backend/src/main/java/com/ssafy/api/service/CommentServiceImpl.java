@@ -1,7 +1,9 @@
 package com.ssafy.api.service;
 
 import com.ssafy.api.request.BookRegisterPostReq;
+import com.ssafy.api.request.CommentDeletePostReq;
 import com.ssafy.api.request.CommentRegisterPostReq;
+import com.ssafy.api.request.CommentUpdatePostReq;
 import com.ssafy.db.entity.Book;
 import com.ssafy.db.entity.Comment;
 import com.ssafy.db.entity.User;
@@ -30,18 +32,37 @@ public class CommentServiceImpl implements CommentService{
 
         comment.setCommentContent(commentInfo.getCommentContent());
 
-        Book b = new Book();
-        b.setBookSeq(commentInfo.getBookSeq());
-        comment.setBook(b);
+        comment.setBookSeq(commentInfo.getBookSeq());
 
-        User user = new User();
-        user.setUserSeq(commentInfo.getUserSeq());
-        comment.setUser(user);
+        comment.setUserSeq(comment.getUserSeq());
         return commentRepository.save(comment);
     }
 
     @Override
+    public Comment updateComment(CommentUpdatePostReq commentInfo) {
+        Date date = new Date();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd a hh:mm:ss zzz");
+        Comment comment = commentRepository.findByCommentSeq(commentInfo.getCommentSeq());
+
+        comment.setCommentDate(df.format(date));
+        comment.setCommentContent(commentInfo.getCommentContent());
+
+        comment.setUserSeq(commentInfo.getUserSeq());
+
+        return commentRepository.save(comment);
+    }
+
+    @Override
+    public Comment deleteComment(CommentDeletePostReq commentInfo) {
+
+        Comment comment = commentRepository.findByCommentSeq(commentInfo.getCommentSeq());
+
+        commentRepository.delete(comment);
+        return comment;
+    }
+
+    @Override
     public List<Comment> getCommentByBookSeq(Long bookSeq) {
-        return commentRepository.findByBookBookSeq(bookSeq);
+        return commentRepository.findByBookSeq(bookSeq);
     }
 }

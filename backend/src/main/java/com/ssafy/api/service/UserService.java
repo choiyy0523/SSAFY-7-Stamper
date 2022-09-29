@@ -12,6 +12,7 @@ import com.ssafy.db.entity.User;
 public interface UserService {
     User createUser(UserRegisterPostReq userRegisterInfo);
     User getUserByUserId(String userId);
+    User getUserByUserNickname(String UserNickname);
     User updateUser(String userId, UserUpdatePatchReq userUpdateInfo);
     void deleteUser(String userId);
 

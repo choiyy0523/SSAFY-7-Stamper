@@ -18,21 +18,21 @@ public class UserAchievement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userAchievementSeq = null;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Achieve.class)
     @JoinColumn(name = "achieve_seq")
-    private Achieve achievement;
+    private Long achieveSeq;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = User.class)
     @JoinColumn(name = "user_seq")
-    private User user;
+    private Long userSeq;
 
     @Column(name = "userAchievement_time")
     private String userAchievementTime;
 
     @Builder
-    public UserAchievement(Achieve achieve, User user, String time){
-        this.achievement = achieve;
-        this.user = user;
+    public UserAchievement(Long achieveSeq, Long userSeq, String time){
+        this.achieveSeq = achieveSeq;
+        this.userSeq = userSeq;
         this.userAchievementTime = time;
     }
 }
