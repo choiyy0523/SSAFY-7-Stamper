@@ -23,9 +23,9 @@ buildscript{
 }
 
 plugins {
-	id 'org.springframework.boot' version '2.7.3'
-	id 'io.spring.dependency-management' version '1.0.13.RELEASE'
 	id 'java'
+	id 'idea'
+	id 'org.springframework.boot' version "${springBootVer}"
 }
 
 apply plugin: 'io.spring.dependency-management'
@@ -33,35 +33,86 @@ apply plugin: 'eclipse'
 apply plugin: 'com.github.node-gradle.node'
 
 group = 'com.ssafy'
-version = '0.0.1-SNAPSHOT'
+version = '1.0.0-SNAPSHOT'
 sourceCompatibility = '1.8'
 
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-}
+//configurations {
+//	compileOnly {
+//		extendsFrom annotationProcessor
+//	}
+//}
 
 repositories {
 	mavenCentral()
-//	maven { url 'https://repo.spring.io/snapshot' }
-//	maven { url 'https://repo.spring.io/milestone' }
-//	maven { url "https://repo.spring.io/libs-release" }
-//	maven { url "https://repo.maven.apache.org/maven2" }
-//	maven { url "https://build.shibboleth.net/nexus/content/repositories/releases" }
+	maven { url 'https://repo.spring.io/snapshot' }
+	maven { url 'https://repo.spring.io/milestone' }
+	maven { url "https://repo.spring.io/libs-release" }
+	maven { url "https://repo.maven.apache.org/maven2" }
+	maven { url "https://build.shibboleth.net/nexus/content/repositories/releases" }
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'mysql:mysql-connector-java'
-	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.boot:spring-boot-starter-websocket")
+	implementation("org.springframework.boot:spring-boot-starter-security")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.springframework.boot:spring-boot-starter-actuator")
+	implementation("org.springframework.boot:spring-boot-starter-validation")
+	implementation("org.springframework.plugin:spring-plugin-core:2.0.0.RELEASE")
+	testImplementation("org.springframework.security:spring-security-test")
+	annotationProcessor("org.springframework.boot:spring-boot-starter-data-jpa")
+	runtimeOnly("mysql:mysql-connector-java")
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
+	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+
+	implementation('commons-io:commons-io:2.6')
+	implementation("org.apache.commons:commons-collections4:4.4")
+	implementation("org.apache.commons:commons-lang3:3.9")
+
+	implementation("com.querydsl:querydsl-jpa:${querydslVer}")
+	implementation("com.querydsl:querydsl-apt:${querydslVer}")
+
+	//IntelliJ용
+	//IntelliJ에서는 하기 annotationProcessor를 쓰면 별도의 querydsl 플러그인 및 플러그인 설정이 불필요.
+	annotationProcessor("com.querydsl:querydsl-apt:${querydslVer}:jpa")
+
+	implementation("com.squareup.retrofit2:retrofit:2.7.1")
+	implementation("com.squareup.retrofit2:converter-jackson:2.7.1")
+	implementation("com.squareup.okhttp3:logging-interceptor:3.9.0")
+
+	implementation("com.google.guava:guava:29.0-jre")
+	annotationProcessor("com.google.guava:guava:29.0-jre")
+
+	testImplementation("com.jayway.jsonpath:json-path:2.4.0")
+
+	implementation("com.auth0:java-jwt:3.10.3")
+
+	implementation("io.springfox:springfox-swagger2:3.0.0")
+	implementation("io.springfox:springfox-swagger-ui:3.0.0")
+	implementation("io.springfox:springfox-data-rest:3.0.0")
+	implementation("io.springfox:springfox-bean-validators:3.0.0")
+	implementation("io.springfox:springfox-boot-starter:3.0.0")
+
+	implementation("javax.annotation:javax.annotation-api:1.2")
+
+	implementation("org.projectlombok:lombok:1.18.20")
+	annotationProcessor("org.projectlombok:lombok:1.18.20")
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
+//tasks.named('test') {
+//	useJUnitPlatform()
+//}
+
+sourceSets {
+	main {
+		resources {
+			srcDirs = ["$projectDir/src/main/resources"]
+		}
+	}
+}
+
+jar {
+	enabled = false
 }
