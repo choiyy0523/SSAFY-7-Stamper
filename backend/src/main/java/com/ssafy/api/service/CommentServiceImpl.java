@@ -32,13 +32,14 @@ public class CommentServiceImpl implements CommentService{
 
         comment.setCommentContent(commentInfo.getCommentContent());
 
-        Book b = new Book();
-        b.setBookSeq(commentInfo.getBookSeq());
-        comment.setBook(b);
+        Book book = new Book();
+        book.setBookSeq(commentInfo.getBookSeq());
+        comment.setBook(book);
 
         User user = new User();
         user.setUserSeq(commentInfo.getUserSeq());
         comment.setUser(user);
+
         return commentRepository.save(comment);
     }
 
@@ -69,6 +70,6 @@ public class CommentServiceImpl implements CommentService{
 
     @Override
     public List<Comment> getCommentByBookSeq(Long bookSeq) {
-        return commentRepository.findByBookBookSeq(bookSeq);
+        return commentRepository.findByBook_BookSeq(bookSeq);
     }
 }
