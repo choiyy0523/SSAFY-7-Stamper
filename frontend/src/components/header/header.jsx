@@ -14,7 +14,7 @@ export default function header() {
             <span id='burgerThree'></span>
             <ul id="menu">
                 <li><a className='menuItem' href="/">Home</a></li>
-                <li><a className='menuItem' href="/login">Login</a></li>
+                <li><a className='menuItem' href="/loginpage">Login</a></li>
                 <li><a className='menuItem' href="/profile/0">마이페이지</a></li>
                 <li><a className='menuItem' href="/landmark/register">랜드마크등록</a></li>
                 <li><a className='menuItem' href="/collection/theme/index">테마별수집현황</a></li>

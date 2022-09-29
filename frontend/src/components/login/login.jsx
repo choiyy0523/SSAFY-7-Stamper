@@ -11,7 +11,7 @@ import { doLogin } from "../../api/auth";
 import { useDispatch } from "react-redux";
 import { SET_LOGIN, SET_TOKEN, SET_USERINFO } from "../../redux/UserInfo";
 
-// import "./LoginSignup.css";
+import "./login.css";
 
 import {
   Button,
@@ -91,7 +91,6 @@ const LoginPage = () => {
           (response) => {
             dispatch(SET_USERINFO(response.data.userRes));
             console.log("profile get", response.data.userRes);
-            let list = [];
           },
           (error) => {
             console.log(error);
@@ -452,7 +451,6 @@ const LoginPage = () => {
 
       <Dialog
         open={openFindUserId}
-        TransitionComponent={Transition}
         keepMounted
         onClose={handleCloseFindUserId}
         aria-describedby="alert-dialog-slide-description"
@@ -505,7 +503,6 @@ const LoginPage = () => {
         aria-describedby="modal-modal-description"
       >
         <Box
-          sx={style}
           style={{ backgroundColor: "#202225", borderRadius: "10px" }}
         >
           <Typography
@@ -530,7 +527,6 @@ const LoginPage = () => {
       {/* 비밀번호 찾기 */}
       <Dialog
         open={openFindPassword}
-        TransitionComponent={Transition}
         keepMounted //??
         onClose={handleCloseFindPassword}
         aria-describedby="alert-dialog-slide-description"
@@ -604,7 +600,6 @@ const LoginPage = () => {
         aria-describedby="modal-modal-description"
       >
         <Box
-          sx={style}
           style={{ backgroundColor: "#202225", borderRadius: "10px" }}
         >
           <Typography

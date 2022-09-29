@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import Header from './components/header/header';
-import LoginPage from './components/login/login'
+import Loginpage from './components/login/login'
 import Signup from './components/signup/signup'
 import MainPage from './components/mainPage/mainPage'
 import UserProfile from './components/userProfile/userProfile'
@@ -21,35 +21,40 @@ import './App.css';
 
 function App() {
 
-  const loginCheck = () => {
-    return 1
-    // window.sessionStorage.getItem("loginCheck") === "true";
-  };
-  
-  const [UserData, setUserData] = useState(
-    window.sessionStorage.getItem("userData")
-  );
+  const dispatch = useDispatch();
+  const loggedIn = useSelector((state) => state.UserInfo.loggedIn);
 
-  useEffect(() => {
-    setUserData(window.sessionStorage.getItem("UserData"));
-  }, [window.sessionStorage.getItem("UserData")]);
+  // const loggedIn = () => {
+  //   return 1
+  //   // window.sessionStorage.getItem("loginCheck") === "true";
+  // };
+  
+  // const [UserData, setUserData] = useState(
+  //   window.sessionStorage.getItem("userData")
+  // );
+
+  // useEffect(() => {
+  //   setUserData(window.sessionStorage.getItem("UserData"));
+  // }, [window.sessionStorage.getItem("UserData")]);
 
   return (
     <div className="App">
       <div>
         <Header></Header>
       </div>
+
+
       <Router>
-        <Routes>
+      <Routes>
         <Route
           exact path="/"
           element={ loggedIn ? (
-            <Homepage
+            <MainPage
               setLogOut={() => {
               dispatch(SET_LOGOUT());}} /> ) :
-                ( <LoginPage></LoginPage> )} />
+                ( <Loginpage></Loginpage> )} />
           <Route path="/test" element={<ImageTest/>}></Route>
-          <Route path="/login" element={<Login/>}></Route>
+          <Route path="/loginpage" element={<Loginpage/>}></Route>
           <Route path="/signup" element={<Signup/>}></Route>
           <Route path="/profile/:userNo" element={<UserProfile/>}></Route>
           <Route path="/profile/:userNo/modify" element={<UserProfileModify/>}></Route>
@@ -62,6 +67,7 @@ function App() {
           <Route path="/collection/seoul/:themeNo" element={<CollectionThemeDetail/>}></Route>
         </Routes>
       </Router>
+
     </div>
   )
 }
