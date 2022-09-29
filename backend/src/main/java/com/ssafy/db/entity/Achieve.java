@@ -1,6 +1,7 @@
 package com.ssafy.db.entity;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Data
 @Entity
+@Getter
 @Table(name = "tb_achievement")
 public class Achieve {
     @Id
@@ -25,5 +27,6 @@ public class Achieve {
 
     @Column(name = "achieve_desc")
     private String achieveDesc;
+
 
 }

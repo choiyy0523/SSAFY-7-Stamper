@@ -13,7 +13,9 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
     // 아래와 같이, Query Method 인터페이스(반환값, 메소드명, 인자) 정의를 하면 자동으로 Query Method 구현됨.
     // Optional<Achieve> findByUserId(String userId);
 
-    Optional<Comment> findByCommentSeq(Long commentSeq);
+    //Optional<Comment> findByCommentSeq(Long commentSeq);
+
+    Comment findByCommentSeq(Long commentSeq);
 
     List<Comment> findByBookBookSeq(Long bookSeq);
 }

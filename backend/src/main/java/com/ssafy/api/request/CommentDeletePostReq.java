@@ -7,16 +7,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@ApiModel("CommentRegisterPostReq")
-public class CommentRegisterPostReq {
+@ApiModel("CommentDeletePostReq")
+public class CommentDeletePostReq {
 
     @ApiModelProperty(name = "User Seq")
     Long userSeq;
 
-    @ApiModelProperty(name="Book Seq")
-    Long bookSeq;
-
-    @ApiModelProperty(name="Comment Content")
-    String commentContent;
-
+    @ApiModelProperty(name="Comment Seq")
+    Long commentSeq;
 }
