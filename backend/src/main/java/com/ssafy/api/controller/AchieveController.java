@@ -6,7 +6,10 @@ import com.ssafy.api.response.GetAchieveListRes;
 import com.ssafy.api.response.GetAchieveRes;
 import com.ssafy.api.response.UpdateAchieveRes;
 import com.ssafy.api.service.AchieveService;
+import com.ssafy.api.service.BookService;
 import com.ssafy.common.model.response.BaseResponseBody;
+import com.ssafy.db.entity.Achieve;
+import com.ssafy.db.entity.Book;
 import com.ssafy.db.entity.UserAchievement;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -14,7 +17,9 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +32,9 @@ public class AchieveController {
     @Autowired
     AchieveService achieveService;
 
+    @Autowired
+    BookService bookService;
+
     @GetMapping("/{userSeq}")
     @ApiOperation(value = "업적 전체 조회", notes = "userSeq 이용해서 달성한 업적 전체를 조회한다.")
     @ApiResponses({
@@ -34,7 +42,11 @@ public class AchieveController {
             @ApiResponse(code = 409, message = "달성한 업적 없음"),
             @ApiResponse(code = 500, message = "서버 오류")
     })
-    public ResponseEntity<? extends BaseResponseBody> getAchieveList(@PathVariable Long userSeq){
+    public ResponseEntity<? extends BaseResponseBody> getAchieveList(@ApiIgnore Authentication authentication, @PathVariable Long userSeq){
+        if (authentication == null){
+            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
+        }
+
         List<UserAchievement> res = new ArrayList<>();
         res = achieveService.getAllAchieve(userSeq);
 
@@ -54,7 +66,11 @@ public class AchieveController {
             @ApiResponse(code = 409, message = "달성하지 못한 업적"),
             @ApiResponse(code = 500, message = "서버 오류")
     })
-    public ResponseEntity<? extends BaseResponseBody> getAchieve(@PathVariable Long userSeq, @PathVariable Long achieveSeq){
+    public ResponseEntity<? extends BaseResponseBody> getAchieve(@ApiIgnore Authentication authentication, @PathVariable Long userSeq, @PathVariable Long achieveSeq){
+        if (authentication == null){
+            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
+        }
+
         UserAchievement res = achieveService.findByAchieveSeq(userSeq, achieveSeq);
 
         if(res == null){
@@ -74,20 +90,13 @@ public class AchieveController {
             @ApiResponse(code = 409, message = "이미 갱신된 업적"),
             @ApiResponse(code = 500, message = "서버 오류")
     })
-    public ResponseEntity<? extends BaseResponseBody> updateAchieve(@RequestBody UpdateAchieveReq info){
-        // 업적 갱신시키고 갱신된 결과 리턴
-
-        Long userSeq = info.getUserSeq();
-        Long achieveSeq = info.getAchieveSeq();
-
-        UserAchievement res = achieveService.findByAchieveSeq(userSeq, achieveSeq);
-
-        if(res == null) {
-            // 업적 갱신처리
-            achieveService.updateAchieve(info);
-            return ResponseEntity.status(200).body(UpdateAchieveRes.of(200, "업적 갱신 성공", achieveSeq));
-        } else {
-            return ResponseEntity.status(409).body(UpdateAchieveRes.of(409, "이미 갱신된 업적"));
+    public ResponseEntity<? extends BaseResponseBody> updateAchieve(@ApiIgnore Authentication authentication, @RequestBody UpdateAchieveReq info){
+        if (authentication == null){
+            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
         }
+        
+        achieveService.updateAchieve(info);
+
+        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "업적 갱신 성공"));
     }
 }

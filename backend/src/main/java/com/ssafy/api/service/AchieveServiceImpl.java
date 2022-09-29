@@ -30,6 +30,9 @@ public class AchieveServiceImpl implements AchieveService {
 	@Autowired
 	UserAchievementRepository userAchievementRepository;
 
+	@Autowired
+	AchieveRepository achieveRepository;
+
 	@Override
 	public List<UserAchievement> getAllAchieve(Long userSeq) {
 		List<UserAchievement> res = userAchievementRepository.findAchievesByUser_UserSeq(userSeq);
@@ -47,11 +50,11 @@ public class AchieveServiceImpl implements AchieveService {
 
 	@Override
 	public UserAchievement updateAchieve(UpdateAchieveReq info) {
-		Achieve achieve = new Achieve();
-		achieve.setAchieveSeq(info.getAchieveSeq());
-
 		User user = new User();
 		user.setUserSeq(info.getUserSeq());
+
+		Achieve achieve = new Achieve();
+		achieve.setAchieveSeq(getAchieveSeqByAchieveName(info.getAchieveName()));
 
 		Date date = new Date();
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd a hh:mm:ss zzz");
@@ -60,5 +63,12 @@ public class AchieveServiceImpl implements AchieveService {
 		UserAchievement userAchieve = UserAchievement.builder().achieve(achieve).user(user).time(time).build();
 
 		return userAchievementRepository.save(userAchieve);
+	}
+
+	@Override
+	public Long getAchieveSeqByAchieveName(String achieveName) {
+		Achieve achieve = achieveRepository.findAchieveByAchieveName(achieveName);
+
+		return achieve.getAchieveSeq();
 	}
 }
