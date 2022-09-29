@@ -4,8 +4,11 @@ import * as tmImage from '@teachablemachine/image';
 import imageUpload from '../../assets/imageupload.png'
 import { display } from '@mui/system';
 import approved from '../../assets/approved.png'
+import { useParams } from 'react-router-dom';
+import './landmarkRegister.css'
 
 export default function landmarkRegister() {
+    const landmarkNo = useParams();
     const [district, setDistrict] = useState('default');
     const [coordinates, setCoordinates] = useState();
     const [image, setImage] = useState(null);
@@ -86,8 +89,8 @@ export default function landmarkRegister() {
     }
 
     return (
-        <Fragment>
-            <h1>landmarkRegister</h1>
+        <div>
+            <h1>랜드마크 등록</h1>
             <div style={{margin:'10px'}}>
                 <select name='district' id='districtSelection' onChange={changeDistrict}>
                     <option value=''>지역을 선택해주세요.</option>
@@ -130,12 +133,12 @@ export default function landmarkRegister() {
                     <input style={{display:'none'}} type='file' accept="image/*" ref={fileRef} name="profile_img" id="file" onChange={changeImage}></input>
                 </label>
             </div>
-            <button onClick={predict}>예측</button>
+            <button onClick={predict}>검증</button>
             <div>
-                <img style={{height:'100px', width:'100px'}} src={approved}></img>
-                <img style={{height:'100px', width:'100px'}} src={approved}></img>
+                <img className='stamp' style={{height:'100px', width:'100px', margin:'20px'}} src={approved}></img>
+                <img className='stamp' style={{height:'100px', width:'100px', margin:'20px'}} src={approved}></img>
             </div>
-        </Fragment>
+        </div>
 
     )
 }

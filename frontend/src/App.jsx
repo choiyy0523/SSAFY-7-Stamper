@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+import {useQuery, useMutation, useQueryClient, QueryClient, QueryClientProvider,} from '@tanstack/react-query'
 import Header from './components/header/header';
 import Login from './components/login/login'
 import Signup from './components/signup/signup'
@@ -17,6 +18,8 @@ import ImageTest from './components/imageTest/imageTest';
 import './App.css';
 
 function App() {
+
+  const queryClient = new QueryClient()
 
   const loginCheck = () => {
     return 1
@@ -36,22 +39,24 @@ function App() {
       <div className='nav_body'>
         <Header></Header>
       </div>
-      <Router>
-        <Routes>
-          <Route path="/" element={<MainPage/>}></Route>
-          <Route path="/test" element={<ImageTest/>}></Route>
-          <Route path="/login" element={<Login/>}></Route>
-          <Route path="/signup" element={<Signup/>}></Route>
-          <Route path="/profile/:userNo" element={<UserProfile/>}></Route>
-          <Route path="/profile/:userNo/modify" element={<UserProfileModify/>}></Route>
-          <Route path="/landmark/:landmarkNo" element={<Landmark/>}></Route>
-          <Route path="/landmark/register" element={<LandmarkRegister/>}></Route>
-          <Route path="/collection/seoul/index" element={<CollectionSeoul/>}></Route>
-          <Route path="/collection/theme/index" element={<CollectionTheme/>}></Route>
-          <Route path="/collection/seoul/:districtNo" element={<CollectionSeoulDetail/>}></Route>
-          <Route path="/collection/seoul/:themeNo" element={<CollectionThemeDetail/>}></Route>
-        </Routes>
-      </Router>
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <Routes>
+            <Route path="/" element={<MainPage/>}></Route>
+            <Route path="/test" element={<ImageTest/>}></Route>
+            <Route path="/login" element={<Login/>}></Route>
+            <Route path="/signup" element={<Signup/>}></Route>
+            <Route path="/profile/:userNo" element={<UserProfile/>}></Route>
+            <Route path="/profile/:userNo/modify" element={<UserProfileModify/>}></Route>
+            <Route path="/landmark/:landmarkNo" element={<Landmark/>}></Route>
+            <Route path="/landmark/:landmarkNo/register" element={<LandmarkRegister/>}></Route>
+            <Route path="/collection/seoul/index" element={<CollectionSeoul/>}></Route>
+            <Route path="/collection/theme/index" element={<CollectionTheme/>}></Route>
+            <Route path="/collection/seoul/:districtNo" element={<CollectionSeoulDetail/>}></Route>
+            <Route path="/collection/seoul/:themeNo" element={<CollectionThemeDetail/>}></Route>
+          </Routes>
+        </Router>
+      </QueryClientProvider>
     </div>
   )
 }

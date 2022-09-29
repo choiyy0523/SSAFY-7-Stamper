@@ -30,6 +30,7 @@ const collectionSeoul = () => {
     const [jungnanggu, setJungnanggu] = useState('중랑구')
     return (
             <Fragment>
+                <h1>구별 수집 현황</h1>
                 <div>-이 페이지 남은 일: 지도 스마트폰 화면 크기에 맞게 줄이기</div>
                 <div>-리스트 옆에 랜드마크 등록 현황 표시(시각자료면 Good)</div>
                 <div>-그 외 디테일</div>
