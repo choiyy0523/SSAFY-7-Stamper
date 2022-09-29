@@ -377,8 +377,8 @@ const LoginPage = () => {
             <img className="sticker9" src="/src/assets/login/government.png" alt="" />
             <img className="sticker10" src="/src/assets/login/lighthouse.png" alt="" />
             <img className="sticker11" src="/src/assets/login/park.png" alt="" />
-            <img className="sticker12" src="/src/assets/login/eye1.png" alt="" />
-            <img className="sticker13" src="/src/assets/login/eye2.png" alt="" />
+            {/* <img className="sticker12" src="/src/assets/login/eye1.png" alt="" />
+            <img className="sticker13" src="/src/assets/login/eye2.png" alt="" /> */}
           <h1 className="muruk gradtext korean_title">스탬퍼</h1>
           </div>
 

@@ -1,10 +1,14 @@
+.logo1 {
+  height: 18vh;
+  margin-top: 10vh;
+  opacity: 0;
+}
+
 .logo2 {
-  width: 345px;
-  height: 106px;
-  margin: 35px 22px 24px 23px;
+  height: 2vh;
+  margin-left: 40vh;
   background-image: linear-gradient(to bottom, #bf60ff 0%, #3c3b63 80%);
-  font-family: KCC-Murukmuruk;
-  font-size: 45px;
+  font-size: 6vh;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -14,21 +18,14 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  opacity: 0%;
 }
 
-.sticker1 {
-  height: 10vh;
-  margin-left: -25vh;
-  margin-top: -21vh;
-  position: absolute;
-}
-
-.sticker2 {
-  height: 10vh;
-  margin-left: -23vh;
+.korean_title2 {
+  font-size: 5vh;
   margin-top: -35vh;
-  position: absolute;
 }
+
 
 .sticker3 {
   height: 10vh;

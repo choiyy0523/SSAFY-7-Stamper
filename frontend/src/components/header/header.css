@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
   } */
+
   .menuItem {
     text-decoration: none;
     color: #1E1E23;
@@ -20,7 +21,7 @@
     list-style-type: none;
   }
   nav {
-    position:sticky;
+    position:fixed;
     top:0;
     display:block;
     width: 100vw;
@@ -46,6 +47,7 @@
     z-index: 10;
     -webkit-user-select: none;
     user-select: none;
+    width: 70vw;
   }
 
   #menuToggle input
@@ -66,7 +68,7 @@
     height: 2px;
     margin-bottom: 5px;
     position: absolute;
-    background: #000000;
+    background: #5EA7FF;
     border-radius: 3px;
     z-index: 1;
     transform-origin: 5px 0px;
@@ -83,7 +85,7 @@
     margin-bottom: 5px;
     position: absolute;
     top: 7px;
-    background: #000000;
+    background: #5EA7FF;
     border-radius: 3px;
     z-index: 1;
     transform-origin: 5px 0px;
@@ -100,7 +102,7 @@
     margin-bottom: 5px;
     position: absolute;
     top: 14px;
-    background: #000000;
+    background: #5EA7FF;
     border-radius: 3px;
     z-index: 1;
     transform-origin: 5px 0px;
@@ -145,6 +147,8 @@
     box-shadow: 0 0 10px #85888C;
     margin: -50px 0 0 -50px;
     padding: 50px;
+    padding-left: 70px;
+    padding-bottom: 100vh;
     padding-top: 80px;
     background-color: #F5F6FA;
     -webkit-font-smoothing: antialiased;
@@ -164,6 +168,7 @@
     transform: none;
   }
   .navTitle{
+    font-family: 'KCCMurukMuruk';
     position: absolute;
     left: 45%;
     top: 18%;
