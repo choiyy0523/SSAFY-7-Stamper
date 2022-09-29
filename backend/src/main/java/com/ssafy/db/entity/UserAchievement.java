@@ -20,7 +20,7 @@ public class UserAchievement {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "achieve_seq")
-    private Achieve achievement;
+    private Achieve achieve;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_seq")
@@ -31,7 +31,7 @@ public class UserAchievement {
 
     @Builder
     public UserAchievement(Achieve achieve, User user, String time){
-        this.achievement = achieve;
+        this.achieve = achieve;
         this.user = user;
         this.userAchievementTime = time;
     }

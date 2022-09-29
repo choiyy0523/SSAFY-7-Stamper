@@ -103,8 +103,9 @@ const collectionSeoul = () => {
     <text id="LCD11710" className="TEXT" x="624" y="448">{ songpagu }</text>
     <text id="LCD11740" className="TEXT" x="675" y="358">{ gangdonggu}</text>
     </g></svg>
+    
 
-        <ol>전체 리스트
+        {/* <ul>전체 리스트
             <li>{ gangnamgu }</li>
             <li>{ gangdonggu }</li>
             <li>{ gangbukgu }</li>
@@ -130,7 +131,7 @@ const collectionSeoul = () => {
             <li>{ jongnogu }</li>
             <li>{ junggu }</li>
             <li>{ jungnanggu }</li>
-        </ol>
+        </ul> */}
             </Fragment>
             
     );

@@ -3,9 +3,12 @@ package com.ssafy.api.service;
 import com.ssafy.api.request.BookGetBookListReq;
 import com.ssafy.api.request.BookRegisterPostReq;
 import com.ssafy.api.request.BookUpdateStatusReq;
+import com.ssafy.api.response.CatClass;
+import com.ssafy.api.response.GugunClass;
 import com.ssafy.db.entity.Book;
 import com.ssafy.db.entity.User;
 import com.ssafy.db.entity.UserbookCollection;
+import com.ssafy.db.repository.BookRepository;
 import com.ssafy.db.repository.UserbookCollectionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +28,9 @@ public class BookServiceImpl implements BookService{
     @Autowired
     UserbookCollectionRepository userbookCollectionRepository;
 
+    @Autowired
+    BookRepository bookRepository;
+
     @Override
     public UserbookCollection registerUserbookCollection(BookRegisterPostReq bookInfo) {
         UserbookCollection userbookCollection = new UserbookCollection();
@@ -39,11 +45,9 @@ public class BookServiceImpl implements BookService{
         Book book = new Book();
         book.setBookSeq(bookInfo.getBookSeq());
         userbookCollection.setBook(book);
-
         User user = new User();
         user.setUserSeq(bookInfo.getUserSeq());
         userbookCollection.setUser(user);
-
         return userbookCollectionRepository.save(userbookCollection);
     }
 
@@ -127,6 +131,46 @@ public class BookServiceImpl implements BookService{
     public List<UserbookCollection> getAllBookStatus(Long userSeq) {
 
         List<UserbookCollection> res = userbookCollectionRepository.findUserbookCollectionsByUser_UserSeq(userSeq);
+
+        return res;
+    }
+
+    @Override
+    public List<GugunClass> getbookCountofGugun(Long userSeq){
+        List<GugunClass> res = userbookCollectionRepository.getCountGugun(userSeq);
+        return res;
+    }
+
+    @Override
+    public List<CatClass> getbookCountofCat(Long userSeq){
+        List<CatClass> res = userbookCollectionRepository.getCountCat(userSeq);
+        return res;
+    }
+
+    @Override
+    public Book getBookInfo(Long bookSeq) {
+        Book res = bookRepository.findByBookSeq(bookSeq).orElse(null);
+
+        return res;
+    }
+
+    @Override
+    public List<Book> getAllBookInfo() {
+        List<Book> res = bookRepository.findAll();
+
+        return res;
+    }
+
+    @Override
+    public List<Book> getBookInfoByGugun(String gugun) {
+        List<Book> res = bookRepository.findBooksByBookGugun(gugun);
+
+        return res;
+    }
+
+    @Override
+    public List<Book> getBookInfoByCategory(String category) {
+        List<Book> res = bookRepository.findBooksByBookMaincategory(category);
 
         return res;
     }
