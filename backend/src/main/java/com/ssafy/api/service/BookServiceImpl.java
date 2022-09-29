@@ -3,6 +3,8 @@ package com.ssafy.api.service;
 import com.ssafy.api.request.BookGetBookListReq;
 import com.ssafy.api.request.BookRegisterPostReq;
 import com.ssafy.api.request.BookUpdateStatusReq;
+import com.ssafy.api.response.CatClass;
+import com.ssafy.api.response.GugunClass;
 import com.ssafy.db.entity.Book;
 import com.ssafy.db.entity.User;
 import com.ssafy.db.entity.UserbookCollection;
@@ -128,6 +130,18 @@ public class BookServiceImpl implements BookService{
 
         List<UserbookCollection> res = userbookCollectionRepository.findUserbookCollectionsByUserSeq(userSeq);
 
+        return res;
+    }
+
+    @Override
+    public List<GugunClass> getbookCountofGugun(Long userSeq){
+        List<GugunClass> res = userbookCollectionRepository.getCountGugun(userSeq);
+        return res;
+    }
+
+    @Override
+    public List<CatClass> getbookCountofCat(Long userSeq){
+        List<CatClass> res = userbookCollectionRepository.getCountCat(userSeq);
         return res;
     }
 }
