@@ -8,8 +8,18 @@ import {
     Tooltip,
     Legend,
   } from 'chart.js';
+import { borderColor, Container } from "@mui/system";
 
 export default function seoulChart() {
+
+    ChartJS.register(
+        CategoryScale,
+        LinearScale,
+        BarElement,
+        Title,
+        Tooltip,
+        Legend
+      );    
 
     const data = {
         labels: [
@@ -21,14 +31,70 @@ export default function seoulChart() {
         datasets: [
             {
             data:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25],
-            borderColor: "#000000",
-            backgroundColor: '#FFFFFFF'
+            backgroundColor: (context) => {
+                const ctx = context.chart.ctx;
+                const gradient = ctx.createLinearGradient(0, 0, 0, 200);
+                gradient.addColorStop(0, "#060B47");
+                gradient.addColorStop(1, "#BF60FF");
+                return gradient;
+            },
+            borderColor: '#FFFFFFF'
             }
 
         ]
     }
 
-    return (    
-            <Bar data={data}></Bar>
+    const options = {
+        indexAxis: 'y',
+        elements: {
+          bar: {
+            borderWidth: 0,
+            width: 10,
+            borderRadius: 7,
+          },
+        },
+        responsive: true,
+        maintainAspectRatio:false,
+        plugins: {
+          legend: {
+            display: false,
+            labels: {
+                font: {
+                    family: "BMJua"
+                }
+            }
+          },
+          title: {
+            display: false,
+            text: '',
+          },
+        },
+        scales: {
+            x: {
+              grid: {
+                display: false,
+              },
+              max:30,
+              ticks:{
+                font: {
+                    family: "BMJua"
+                }
+              }
+            },
+            y: {
+              grid: {
+                display: false,
+              },
+              ticks: {
+                font: {
+                    family: "BMJua"
+                },
+              }
+            },
+          },
+      };
+
+    return (
+        <Bar data={data} options={options} height={'200%'}></Bar>
     )
 }
