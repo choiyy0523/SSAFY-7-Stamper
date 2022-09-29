@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Navigate } from "react-router-dom";
 import {useQuery, useMutation, useQueryClient, QueryClient, QueryClientProvider,} from '@tanstack/react-query'
+import { Navigate } from "react-router-dom";
 import Header from './components/header/header';
 import Login from './components/login/login'
 import Signup from './components/signup/signup'
