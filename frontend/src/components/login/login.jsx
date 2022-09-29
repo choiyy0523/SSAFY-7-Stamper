@@ -14,6 +14,7 @@ import { SET_LOGIN, SET_TOKEN, SET_USERINFO } from "../../redux/UserInfo";
 import "./login.css";
 
 import {
+  TextField,
   Button,
   Dialog,
   DialogActions,
@@ -26,6 +27,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
+import { typography } from "@mui/system";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -72,7 +74,7 @@ const LoginPage = () => {
         setUserName("");
         setUserNick("");
         setIsSignUp(false);
-        alert("회원가입을 축하합니다.");
+        alert("스탬퍼에 오신 것을 환영합니다!");
       },
       (error) => {
         alert(error.response.data.message);
@@ -232,7 +234,10 @@ const LoginPage = () => {
                 userIdMessage ? "txt_field_message" : ""
               }`}
             >
-              <input
+              <TextField                
+                label = "아이디"
+                variant = "outlined"
+                id = "outlined-basic"
                 type="text"
                 required
                 value={userId}
@@ -262,9 +267,12 @@ const LoginPage = () => {
                     }
                   );
                 }}
-              ></input>
+              ></TextField>
+              <br />
               <span>{userIdMessage}</span>
-              <label>아이디</label>
+              <br />
+              <br />
+
             </div>
             <div
               class={`txt_field ${
@@ -272,7 +280,10 @@ const LoginPage = () => {
               } ${userPassMessage ? "txt_field_message" : ""}`}
             >
 
-              <input
+              <TextField
+                label = "비밀번호"
+                variant = "outlined"
+                id = "outlined-basic"
                 type="password"
                 required
                 value={userPass}
@@ -291,16 +302,22 @@ const LoginPage = () => {
                     setUserPassMessage("");
                   }
                 }}
-              ></input>
+              ></TextField>
+              <br />
               <span>{userPassMessage}</span>
-              <label>비밀번호</label>
+              <br />
+              <br />
+
             </div>
             <div
               class={`txt_field ${
                 isUserName ? "txt_field" : "txt_field_false"
               } ${userNameMessage ? "txt_field_message" : ""}`}
             >
-              <input
+              <TextField
+                label = "이름"
+                variant = "outlined"
+                id = "outlined-basic"
                 type="text"
                 required
                 value={userName}
@@ -315,16 +332,22 @@ const LoginPage = () => {
                     setUserNameMessage("");
                   }
                 }}
-              ></input>
+              ></TextField>
+              <br />
               <span>{userNameMessage}</span>
-              <label>이름</label>
             </div>
+            <br />
+            <br />
+
             <div
               class={`txt_field ${
                 isUserNick ? "txt_field" : "txt_field_false"
               } ${userNickMessage ? "txt_field_message" : ""}`}
             >
-              <input
+              <TextField
+                label = "닉네임"
+                variant = "outlined"
+                id = "outlined-basic"
                 type="text"
                 value={userNick}
                 required
@@ -339,12 +362,15 @@ const LoginPage = () => {
                     setUserNickMessage("");
                   }
                 }}
-              ></input>
+              ></TextField>
+              <br />
               <span>{userNickMessage}</span>
-              <label>닉네임</label>
             </div>
+            <br />
+
             
-            <input
+            <Button
+              color="secondary"
               type="submit"
               value="SignUp"
               disabled={
@@ -355,7 +381,8 @@ const LoginPage = () => {
                   isUserPass
                 )
               }
-            ></input>
+            ></Button>
+            <br />
 
             <div class="signup_link">
               이미 회원이신가요?{" "}
@@ -391,33 +418,35 @@ const LoginPage = () => {
           <div>
           <Box component="form"
           sx={{
-            '& .MuiTextField-root': { m: 1, width: '320px'},
+            '& .MuiTextField-root': { m: 1, width: '200px'},
           }}
           noValidate autoComplete="off"
         > 
           
           <form method="post" onSubmit={onSubmitLoginForm}>
             <div class="txt_field">
-              <input
+              <TextField
+                label = "아이디"
+                variant = "outlined"
+                id = "outlined-basic"
                 type="text"
                 required
                 value={userId}
                 onChange={(e) => setUserId(e.target.value)}
-              ></input>
-              <span></span>
-              <label>아이디</label>
+              ></TextField>
             </div>
             <div class="txt_field">
-              <input
+              <TextField
+                label = "비밀번호"
+                variant = "outlined"
+                id = "outlined-basic"
                 type="password"
                 required
                 value={userPass}
                 onChange={(e) => setUserPass(e.target.value)}
-              ></input>
-              <span></span>
-              <label>비밀번호</label>
+              ></TextField>
             </div>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", width: "200px", marginLeft: "auto", marginRight: "auto"}}>
               <div class="pass" onClick={handleOpenFindUserId}>
                 아이디 찾기
               </div>
@@ -426,7 +455,8 @@ const LoginPage = () => {
               </div>
             </div>
             {/* <input type="submit" value="Login"></input> */}
-            <button onClick={onSubmitLoginForm}>Login2</button>
+            <Button color="secondary" onClick={onSubmitLoginForm}>로그인</Button>
+            <br />
             <div class="signup_link">
               회원이 아니신가요?{" "}
               <span className="LoginOrout" onClick={LoginOrSignUp}>

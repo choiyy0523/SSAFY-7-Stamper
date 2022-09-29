@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Navigate } from "react-router-dom";
+
 import Header from './components/header/header';
 import Loginpage from './components/login/login'
-import Signup from './components/signup/signup'
 import MainPage from './components/mainPage/mainPage'
 import UserProfile from './components/userProfile/userProfile'
 import UserProfileModify from './components/userProfileModify/userProfileModify'
@@ -15,6 +14,14 @@ import CollectionSeoul from './components/collectionSeoul/collectionSeoul'
 import CollectionSeoulDetail from './components/collectionSeoul/collectionSeoulDetail'
 // import LandingPage from './components/landingPage/landingPage'
 import ImageTest from './components/imageTest/imageTest';
+import {createTheme, ThemeProvider} from "@mui/material";
+
+const theme = createTheme({
+  typography: {
+    fontFamily: "BMJua"
+  }
+})
+
 import { useSelector, useDispatch } from "react-redux";
 import { SET_LOGOUT } from "./redux/UserInfo";
 import './App.css';
@@ -38,6 +45,7 @@ function App() {
   // }, [window.sessionStorage.getItem("UserData")]);
 
   return (
+    <ThemeProvider theme={theme}>
     <div className="App">
       <Router>
               <Routes>
@@ -50,7 +58,6 @@ function App() {
                 ( <Loginpage></Loginpage> )} />
           <Route path="/test" element={<ImageTest/>}></Route>
           <Route path="/loginpage" element={<Loginpage/>}></Route>
-          <Route path="/signup" element={<Signup/>}></Route>
           <Route path="/profile/:userNo" element={<UserProfile/>}></Route>
           <Route path="/profile/:userNo/modify" element={<UserProfileModify/>}></Route>
           <Route path="/" element={<MainPage/>}></Route>
@@ -68,6 +75,7 @@ function App() {
       </div>
 
     </div>
+    </ThemeProvider>
   )
 }
 
