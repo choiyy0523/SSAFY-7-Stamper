@@ -6,7 +6,7 @@ export default function landmark() {
     console.log(typeof landmarkNo)
     console.log(landmarkNo['landmarkNo'])
 
-    const query = useQuery()
+    // const query = useQuery()
     
 
     return (
