@@ -32,9 +32,14 @@ public class CommentServiceImpl implements CommentService{
 
         comment.setCommentContent(commentInfo.getCommentContent());
 
-        comment.setBookSeq(commentInfo.getBookSeq());
+        Book book = new Book();
+        book.setBookSeq(commentInfo.getBookSeq());
+        comment.setBook(book);
 
-        comment.setUserSeq(comment.getUserSeq());
+        User user = new User();
+        user.setUserSeq(commentInfo.getUserSeq());
+        comment.setUser(user);
+
         return commentRepository.save(comment);
     }
 
@@ -47,7 +52,9 @@ public class CommentServiceImpl implements CommentService{
         comment.setCommentDate(df.format(date));
         comment.setCommentContent(commentInfo.getCommentContent());
 
-        comment.setUserSeq(commentInfo.getUserSeq());
+        User user = new User();
+        user.setUserSeq(commentInfo.getUserSeq());
+        comment.setUser(user);
 
         return commentRepository.save(comment);
     }
@@ -63,6 +70,6 @@ public class CommentServiceImpl implements CommentService{
 
     @Override
     public List<Comment> getCommentByBookSeq(Long bookSeq) {
-        return commentRepository.findByBookSeq(bookSeq);
+        return commentRepository.findByBook_BookSeq(bookSeq);
     }
 }

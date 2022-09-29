@@ -38,14 +38,12 @@ public class BookServiceImpl implements BookService{
         userbookCollection.setUserbookCollectionDate(df.format(date));
         userbookCollection.setUserbookCollectionCategory(bookInfo.getCategory());
 
-//        Book book = new Book();
-//        book.setBookSeq(bookInfo.getBookSeq());
-//        userbookCollection.setBook(book);
-        userbookCollection.setBookSeq(bookInfo.getBookSeq());
-//        User user = new User();
-//        user.setUserSeq(bookInfo.getUserSeq());
-//        userbookCollection.setUser(user);
-        userbookCollection.setUserSeq(bookInfo.getUserSeq());
+        Book book = new Book();
+        book.setBookSeq(bookInfo.getBookSeq());
+        userbookCollection.setBook(book);
+        User user = new User();
+        user.setUserSeq(bookInfo.getUserSeq());
+        userbookCollection.setUser(user);
         return userbookCollectionRepository.save(userbookCollection);
     }
 
@@ -63,7 +61,7 @@ public class BookServiceImpl implements BookService{
 //            System.out.println(e);
 //        }
 
-        List<UserbookCollection> res = userbookCollectionRepository.findUserbookCollectionsByUserSeqAndUserbookCollectionGugun(userSeq, gugun);
+        List<UserbookCollection> res = userbookCollectionRepository.findUserbookCollectionsByUser_UserSeqAndUserbookCollectionGugun(userSeq, gugun);
 
         return res;
     }
@@ -83,7 +81,7 @@ public class BookServiceImpl implements BookService{
 //            System.out.println(e);
 //        }
 
-        List<UserbookCollection> res = userbookCollectionRepository.findUserbookCollectionsByUserSeqAndUserbookCollectionCategory(userSeq, category);
+        List<UserbookCollection> res = userbookCollectionRepository.findUserbookCollectionsByUser_UserSeqAndUserbookCollectionCategory(userSeq, category);
 
         return res;
     }
@@ -91,7 +89,7 @@ public class BookServiceImpl implements BookService{
     @Override
     public UserbookCollection getBookStatus(Long userSeq, Long bookSeq) {
 
-        UserbookCollection res = userbookCollectionRepository.findUserbookCollectionByUserSeqAndBookSeq(userSeq, bookSeq);
+        UserbookCollection res = userbookCollectionRepository.findUserbookCollectionByUser_UserSeqAndBook_BookSeq(userSeq, bookSeq);
 
         return res;
     }
@@ -103,7 +101,7 @@ public class BookServiceImpl implements BookService{
         Long bookSeq = updateInfo.getBookSeq();
         String imageURL = updateInfo.getImageURL();
 
-        UserbookCollection res = userbookCollectionRepository.findUserbookCollectionByUserSeqAndBookSeq(userSeq, bookSeq);
+        UserbookCollection res = userbookCollectionRepository.findUserbookCollectionByUser_UserSeqAndBook_BookSeq(userSeq, bookSeq);
 //        Book book = res.getBook();
 //        book.setBookSeq(updateInfo.getBookSeq());
 //
@@ -128,7 +126,7 @@ public class BookServiceImpl implements BookService{
     @Override
     public List<UserbookCollection> getAllBookStatus(Long userSeq) {
 
-        List<UserbookCollection> res = userbookCollectionRepository.findUserbookCollectionsByUserSeq(userSeq);
+        List<UserbookCollection> res = userbookCollectionRepository.findUserbookCollectionsByUser_UserSeq(userSeq);
 
         return res;
     }
