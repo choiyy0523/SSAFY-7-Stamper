@@ -14,7 +14,9 @@ import springfox.documentation.swagger.web.UiConfiguration;
 import springfox.documentation.swagger.web.UiConfigurationBuilder;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static com.google.common.collect.Lists.newArrayList;
 
@@ -34,8 +36,16 @@ public class SwaggerConfig {
                 .build()
                 .securityContexts(newArrayList(securityContext()))
                 .securitySchemes(newArrayList(apiKey()))
+                .produces(getProduceContentTypes())
+                //출처: https://hirlawldo.tistory.com/32 [도비의 개발유치원:티스토리]
                 ;
     }
+    private Set<String> getProduceContentTypes(){
+        Set<String> produces = new HashSet<>();
+        produces.add("application/json;charset=UTF-8");
+        return produces;
+    }
+//    출처: https://hirlawldo.tistory.com/32 [도비의 개발유치원:티스토리]
 
     private ApiKey apiKey() {
         return new ApiKey(SECURITY_SCHEMA_NAME, "Authorization", "header");
@@ -65,4 +75,5 @@ public class SwaggerConfig {
 //                .operationsSorter(METHOD)
                 .build();
     }
+
 }
