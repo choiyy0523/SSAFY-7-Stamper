@@ -94,22 +94,24 @@ div {
 
 .sticker4 {
   height: 10vh;
-  margin-left: 16vh;
+  margin-left: 12.5vh;
   margin-top: -18vh;
   position: absolute;
   z-index: 3;
+  object-position: 4vh;
 }
 
 .sticker5 {
   height: 10vh;
-  margin-left: 15vh;
+  margin-left: 12.4vh;
   margin-top: 2vh;
   position: absolute;
+  object-position: 4vh; 
 }
 
 .sticker6 {
   height: 10vh;
-  margin-left: 11vh;
+  margin-left: 7vh;
   margin-top: -26vh;
   position: absolute;
   z-index: 2;
@@ -117,17 +119,19 @@ div {
 
 .sticker7 {
   height: 10vh;
-  margin-left: 14vh;
+  margin-left: 12.4vh;
   margin-top: -21vh;
   position: absolute;
   z-index: 1;
+  object-position: 2vh; 
 }
 
 .sticker8 {
   height: 10vh;
-  margin-left: 14vh;
+  margin-left: 12.5vh;
   margin-top: 41vh;
   position: absolute;
+  object-position: 3vh; 
 }
 
 .sticker9 {
@@ -139,9 +143,10 @@ div {
 
 .sticker10 {
   height: 10vh;
-  margin-left: 16vh;
+  margin-left: 12.5vh;
   margin-top: -33vh;
   position: absolute;
+  object-position: 4vh; 
 }
 
 .sticker11 {
