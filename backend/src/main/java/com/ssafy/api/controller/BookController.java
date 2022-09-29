@@ -3,10 +3,14 @@ package com.ssafy.api.controller;
 import com.ssafy.api.request.BookGetBookListReq;
 import com.ssafy.api.request.BookRegisterPostReq;
 import com.ssafy.api.request.BookUpdateStatusReq;
-import com.ssafy.api.response.*;
+
 import com.ssafy.api.service.BookService;
 import com.ssafy.common.model.response.BaseResponseBody;
+import com.ssafy.db.entity.Book;
+
+import com.ssafy.api.response.*;
 import com.ssafy.db.entity.Comment;
+
 import com.ssafy.db.entity.UserbookCollection;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,13 +55,13 @@ public class BookController {
     })
     public ResponseEntity<? extends BaseResponseBody> getListByGugun(@PathVariable Long userSeq, @PathVariable String gugun){
 
+        // 수집한 리스트
         List<UserbookCollection> res = bookService.getListByGugun(userSeq, gugun);
 
-        if(res.size() > 0){
-            return ResponseEntity.status(200).body(BookGetBookListRes.of(200, "구별 리스트 조회 성공", res));
-        } else{
-            return ResponseEntity.status(409).body(BookGetBookListRes.of(409, "수집한 랜드마크 없음"));
-        }
+        // 전체 리스트
+        List<Book> totalList = bookService.getBookInfoByGugun(gugun);
+
+        return ResponseEntity.status(200).body(BookGetBookListRes.of(200, "구별 리스트 조회 성공", res, totalList));
     }
 
     @GetMapping(value = "/listbycat/{userSeq}/{category}")
@@ -70,13 +74,13 @@ public class BookController {
     public ResponseEntity<? extends BaseResponseBody> getBookListByCategory(@PathVariable Long userSeq, @PathVariable String category){
         System.out.println(category);
 
+        // 수집한 리스트
         List<UserbookCollection> res = bookService.getListByCategory(userSeq, category);
 
-        if(res.size() > 0){
-            return ResponseEntity.status(200).body(BookGetBookListRes.of(200, "카테고리별 리스트 조회 성공", res));
-        } else{
-            return ResponseEntity.status(409).body(BookGetBookListRes.of(409, "수집한 랜드마크 없음"));
-        }
+        // 전체 리스트
+        List<Book> totalList = bookService.getBookInfoByCategory(category);
+
+        return ResponseEntity.status(200).body(BookGetBookListRes.of(200, "카테고리별 리스트 조회 성공", res, totalList));
     }
 
     @GetMapping("/{userSeq}/{bookSeq}")
@@ -90,7 +94,8 @@ public class BookController {
         UserbookCollection res = bookService.getBookStatus(userSeq, bookSeq);
 
         if(res == null){
-            return ResponseEntity.status(409).body(BookGetBookRes.of(409, "수집하지 못한 랜드마크"));
+            Book book = bookService.getBookInfo(bookSeq);
+            return ResponseEntity.status(409).body(BookGetBookInfoRes.of(409, "수집하지 못한 랜드마크", book));
         } else {
             return ResponseEntity.status(200).body(BookGetBookRes.of(200, "랜드마크 조회 성공", res));
         }
@@ -158,7 +163,7 @@ public class BookController {
         List<UserbookCollection> res = bookService.getAllBookStatus(userSeq);
 
         if(res.size() > 0){
-            return ResponseEntity.status(200).body(BookGetBookListRes.of(200, "전체 리스트 조회 성공", res));
+            return ResponseEntity.status(200).body(BookGetBookListRes.of(200, "전체 리스트 조회 성공", res, null));
         } else{
             return ResponseEntity.status(409).body(BookGetBookListRes.of(409, "수집한 랜드마크 없음"));
         }
