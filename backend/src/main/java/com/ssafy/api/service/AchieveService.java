@@ -1,10 +1,8 @@
 package com.ssafy.api.service;
 
-// import com.ssafy.api.request.UserFindUserPasswordPostReq;
-// import com.ssafy.api.request.UserPasswordPatchReq;
-// import com.ssafy.api.request.UserRegisterPostReq;
-// import com.ssafy.api.request.UserUpdatePatchReq;
+import com.ssafy.api.request.UpdateAchieveReq;
 import com.ssafy.db.entity.Achieve;
+import com.ssafy.db.entity.UserAchievement;
 
 import java.util.List;
 
@@ -13,9 +11,12 @@ import java.util.List;
  */
 public interface AchieveService {
 
-    List<Achieve> getAllAchieve();
-    List<Achieve> getAchieveListByTheme(String mainCat);
-    List<Achieve> getAchieveListByGugun(String gugun);
+    List<UserAchievement> getAllAchieve(Long userSeq);
 
-    Achieve findByAchieveSeq(Long achieveSeq);
+    UserAchievement findByAchieveSeq(Long userSeq, Long achieveSeq);
+
+    UserAchievement updateAchieve(UpdateAchieveReq info);
+
+    Long getAchieveSeqByAchieveName(String achieveName);
+
 }

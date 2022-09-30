@@ -76,6 +76,23 @@ public class UserController {
         return ResponseEntity.status(200).body(UserDuplCheckRes.of(200, "사용 가능한 사용자 ID입니다.", Boolean.TRUE));
     }
 
+    @PostMapping("/usernickname")
+    @ApiOperation(value = "사용자 닉네임 중복 체크", notes = "사용자 닉네임의 사용 가능 여부를 응답한다.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "사용 가능"),
+            @ApiResponse(code = 409, message = "닉네임 중복"),
+            @ApiResponse(code = 500, message = "서버 오류")
+    })
+    public ResponseEntity<? extends BaseResponseBody> checkOverlappedUsernickname(
+            @RequestBody @ApiParam(value = "사용자 닉네임 정보", required = true) String userNickname
+    ) {
+        User user = userService.getUserByUserNickname(userNickname);
+        if (user != null){
+            return ResponseEntity.status(409).body(UserDuplCheckRes.of(409, "이미 존재하는 사용자 Nickname입니다.", Boolean.FALSE));
+        }
+        return ResponseEntity.status(200).body(UserDuplCheckRes.of(200, "사용 가능한 사용자 Nickname입니다.", Boolean.TRUE));
+    }
+
 
     @PostMapping("/find/userid")
     @ApiOperation(value = "아이디 찾기", notes = "이미 가입된 회원의 아이디를 검색한다")
