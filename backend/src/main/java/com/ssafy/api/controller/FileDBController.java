@@ -1,7 +1,7 @@
 package com.ssafy.api.controller;
 
-import com.ssafy.api.response.FileRegisterPostRes;
-import com.ssafy.api.response.GetFileRes;
+// import com.ssafy.api.response.FileRegisterPostRes;
+// import com.ssafy.api.response.GetFileRes;
 import com.ssafy.api.service.FileDBServiceImpl;
 import com.ssafy.common.model.response.BaseResponseBody;
 import com.ssafy.db.entity.FileDB;
