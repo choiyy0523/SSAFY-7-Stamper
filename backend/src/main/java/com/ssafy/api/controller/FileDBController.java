@@ -18,23 +18,23 @@ public class FileDBController {
     @Autowired
     private FileDBServiceImpl fileDBService;
 
-    @PostMapping()
-    public ResponseEntity<? extends BaseResponseBody> register(@RequestParam("file") MultipartFile file){
-        String message = "";
-        try {
-            FileDB f = fileDBService.store(file);
-            return ResponseEntity.status(200).body(FileRegisterPostRes.of(200, "success", f.getId()));
-        } catch (Exception e) {
-            message = "Could not upload the file: " + file.getOriginalFilename() + "!";
-            return ResponseEntity.status(415).body(BaseResponseBody.of(415, message));
-        }
-    }
+    // @PostMapping()
+    // public ResponseEntity<? extends BaseResponseBody> register(@RequestParam("file") MultipartFile file){
+    //     String message = "";
+    //     try {
+    //         FileDB f = fileDBService.store(file);
+    //         return ResponseEntity.status(200).body(FileRegisterPostRes.of(200, "success", f.getId()));
+    //     } catch (Exception e) {
+    //         message = "Could not upload the file: " + file.getOriginalFilename() + "!";
+    //         return ResponseEntity.status(415).body(BaseResponseBody.of(415, message));
+    //     }
+    // }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<? extends BaseResponseBody> getFile(@PathVariable String id) {
-        FileDB fileDB = fileDBService.getFile(id);
-        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDB.getName() + "\"").body(GetFileRes.of(200, "success", fileDB.getData()));
-    }
+    // @GetMapping("/{id}")
+    // public ResponseEntity<? extends BaseResponseBody> getFile(@PathVariable String id) {
+    //     FileDB fileDB = fileDBService.getFile(id);
+    //     return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDB.getName() + "\"").body(GetFileRes.of(200, "success", fileDB.getData()));
+    // }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<? extends BaseResponseBody> delete(@PathVariable String id){
