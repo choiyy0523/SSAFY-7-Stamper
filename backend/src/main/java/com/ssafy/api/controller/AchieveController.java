@@ -44,7 +44,7 @@ public class AchieveController {
     })
     public ResponseEntity<? extends BaseResponseBody> getAchieveList(@ApiIgnore Authentication authentication, @PathVariable Long userSeq){
         if (authentication == null){
-            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
+//            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
         }
 
         List<UserAchievement> res = new ArrayList<>();
@@ -68,7 +68,7 @@ public class AchieveController {
     })
     public ResponseEntity<? extends BaseResponseBody> getAchieve(@ApiIgnore Authentication authentication, @PathVariable Long userSeq, @PathVariable Long achieveSeq){
         if (authentication == null){
-            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
+//            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
         }
 
         UserAchievement res = achieveService.findByAchieveSeq(userSeq, achieveSeq);
@@ -92,7 +92,7 @@ public class AchieveController {
     })
     public ResponseEntity<? extends BaseResponseBody> updateAchieve(@ApiIgnore Authentication authentication, @RequestBody UpdateAchieveReq info){
         if (authentication == null){
-            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
+//            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
         }
         
         achieveService.updateAchieve(info);

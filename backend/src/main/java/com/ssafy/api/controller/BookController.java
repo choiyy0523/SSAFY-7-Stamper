@@ -44,7 +44,7 @@ public class BookController {
             @RequestBody @ApiParam(value = "랜드마크 등록", required = true) BookRegisterPostReq bookInfo
     ) {
         if (authentication == null){
-            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
+//            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
         }
 
         bookService.registerUserbookCollection(bookInfo);
@@ -61,7 +61,7 @@ public class BookController {
     })
     public ResponseEntity<? extends BaseResponseBody> getListByGugun(@ApiIgnore Authentication authentication, @PathVariable Long userSeq, @PathVariable String gugun){
         if (authentication == null){
-            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
+//            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
         }
 
         // 수집한 리스트
@@ -82,7 +82,7 @@ public class BookController {
     })
     public ResponseEntity<? extends BaseResponseBody> getBookListByCategory(@ApiIgnore Authentication authentication, @PathVariable Long userSeq, @PathVariable String category){
         if (authentication == null){
-            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
+//            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
         }
 
         // 수집한 리스트
@@ -103,7 +103,7 @@ public class BookController {
     })
     public ResponseEntity<? extends BaseResponseBody> getBookStatus(@ApiIgnore Authentication authentication, @PathVariable Long userSeq, @PathVariable Long bookSeq){
         if (authentication == null){
-            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
+//            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
         }
 
         UserbookCollection res = bookService.getBookStatus(userSeq, bookSeq);
@@ -123,7 +123,7 @@ public class BookController {
     })
     public ResponseEntity<? extends BaseResponseBody> updateBookStatus(@ApiIgnore Authentication authentication, @RequestBody BookUpdateStatusReq req){
         if (authentication == null){
-            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
+//            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
         }
 
         Long userSeq = req.getUserSeq();
@@ -153,7 +153,7 @@ public class BookController {
     })
     public ResponseEntity<? extends BaseResponseBody> getCountOfGugun(@ApiIgnore Authentication authentication, @PathVariable Long userSeq){
         if (authentication == null){
-            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
+//            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
         }
 
         List<GugunClass> list = bookService.getbookCountofGugun(userSeq);
@@ -169,7 +169,7 @@ public class BookController {
     })
     public ResponseEntity<? extends BaseResponseBody> getCountOfCategory(@ApiIgnore Authentication authentication, @PathVariable Long userSeq){
         if (authentication == null){
-            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
+//            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
         }
 
         List<CatClass> list = bookService.getbookCountofCat(userSeq);
@@ -185,7 +185,7 @@ public class BookController {
     })
     public ResponseEntity<? extends BaseResponseBody> getAllBookStatus(@ApiIgnore Authentication authentication, @PathVariable Long userSeq){
         if (authentication == null){
-            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
+//            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
         }
 
         List<UserbookCollection> res = bookService.getAllBookStatus(userSeq);

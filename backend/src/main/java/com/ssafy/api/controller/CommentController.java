@@ -42,7 +42,7 @@ public class CommentController {
             @RequestBody @ApiParam(value = "댓글 등록", required = true) CommentRegisterPostReq commentInfo
     ) {
         if (authentication == null){
-            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
+//            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
         }
 
         commentService.registerComment(commentInfo);
@@ -60,7 +60,7 @@ public class CommentController {
     })
     public ResponseEntity<? extends BaseResponseBody> CommentList(@ApiIgnore Authentication authentication, @PathVariable(required = false) Long bookSeq) {
         if (authentication == null){
-            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
+//            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
         }
 
         System.out.println("=================================================="+bookSeq);
@@ -79,7 +79,7 @@ public class CommentController {
             @RequestBody @ApiParam(value = "댓글 수정", required = true) CommentUpdatePostReq commentInfo
     ) {
         if (authentication == null){
-            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
+//            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
         }
 
         commentService.updateComment(commentInfo);
@@ -99,7 +99,7 @@ public class CommentController {
             @PathVariable @ApiParam(value = "댓글 수정", required = true) Long commentSeq
     ) {
         if (authentication == null){
-            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
+//            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
         }
 
         commentService.deleteComment(commentSeq);
