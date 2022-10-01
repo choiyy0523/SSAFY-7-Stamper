@@ -17,7 +17,7 @@ public interface CommentService {
 
     Comment updateComment(CommentUpdatePostReq commentInfo);
 
-    Comment deleteComment(CommentDeletePostReq commentInfo);
+    Comment deleteComment(Long commentSeq);
 
     List<Comment> getCommentByBookSeq(Long bookSeq);
 }
