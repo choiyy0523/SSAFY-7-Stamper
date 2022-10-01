@@ -32,11 +32,13 @@ function getBookDetail(userSeq, bookSeq, success, error) {
   instance.get(`/book/${userSeq}/${bookSeq}`, userSeq, bookSeq, { headers: createHeaders(token) }).then(success).catch(error);
 }
 
+
+
 /*
   updateBookInfo : {userSeq, bookSeq, imageURL}
   response.data: {statusCode, message, {UserbookCollection}}
 */
-function updateBookDetail(updateBookInfo, success, error) {
+function updateBookDetail(updateBookInfo,success, error) {
   instance.patch(`/book/update`, updateBookInfo, { headers: createHeaders(token) }).then(success).catch(error);
 }
 

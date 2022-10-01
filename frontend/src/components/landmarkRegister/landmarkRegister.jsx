@@ -6,6 +6,7 @@ import { display } from '@mui/system';
 import approved from '../../assets/approved.png'
 import { useParams } from 'react-router-dom';
 import './landmarkRegister.css'
+import { getBookDetail } from '../../api/book';
 
 export default function landmarkRegister() {
     const landmarkNo = useParams();
@@ -18,6 +19,12 @@ export default function landmarkRegister() {
     const [predictionArr,setPredictionArr]=useState([]);
     const [result,setResult]=useState(null);
     const fileRef = useRef();
+
+    // getBookDetail({userSeq:2, bookSeq:5, token:'98696'},  (response)=>{
+    //     console.log(response.data)
+    // }, (error)=>{
+    //     console.log(error)
+    // })
 
     let model
 
@@ -87,6 +94,22 @@ export default function landmarkRegister() {
         console.log('답: ', prediction[1].className + prediction[1].probability.toFixed(2));
         console.log('답: ', prediction[2].className + prediction[2].probability.toFixed(2));
     }
+
+    function getDistanceFromLatLonInKm(latitude1,longitude1,latitude2,longitude2,units) {
+        let p = 0.017453292519943295;    //This is  Math.PI / 180
+        let c = Math.cos;
+        let a = 0.5 - c((latitude2 - latitude1) * p)/2 + 
+                c(latitude1 * p) * c(latitude2 * p) * 
+                (1 - c((longitude2 - longitude1) * p))/2;
+        let R = 6371; //  Earth distance in km so it will return the distance in km
+        let dist = 2 * R * Math.asin(Math.sqrt(a)); 
+        if (dist <= 500) {
+            return "Approved!"
+        }
+        else {
+            return "Too Far!"
+        }; 
+      }
 
     return (
         <div>
