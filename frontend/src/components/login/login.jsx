@@ -36,10 +36,16 @@ const LoginPage = () => {
   const [userPass, setUserPass] = useState("");
   const [userName, setUserName] = useState("");
   const [userNick, setUserNick] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userPhone, setUserPhone] = useState("");
+
   const [isUserId, setIsUserId] = useState(false);
   const [isUserPass, setIsUserPass] = useState(false);
   const [isUserName, setIsUserName] = useState(false);
   const [isUserNick, setIsUserNick] = useState(false);
+  const [isUserEmail, setIsUserEmail] = useState(false);
+  const [isUserPhone, setIsUserPhone] = useState(false);
+
   const [userIdMessage, setUserIdMessage] = useState("");
   const [userPassMessage, setUserPassMessage] = useState("");
   const [userNameMessage, setUserNameMessage] = useState("");
@@ -51,6 +57,8 @@ const LoginPage = () => {
     setUserPass("");
     setUserName("");
     setUserNick("");
+    setUserEmail("");
+    setUserPhone("");
     const newValue = !IsSignUp;
     setIsSignUp(newValue); // true -> false 변경
   };
@@ -64,6 +72,8 @@ const LoginPage = () => {
       userPassword: userPass,
       userName: userName,
       userNickname: userNick,
+      userEmail: userEmail,
+      userPhone: userPhone
     };
     console.log(userId)
     registerUser(
@@ -73,11 +83,14 @@ const LoginPage = () => {
         setUserPass("");
         setUserName("");
         setUserNick("");
+        setUserEmail("");
+        setUserPhone("");
         setIsSignUp(false);
         alert("스탬퍼에 오신 것을 환영합니다!");
       },
       (error) => {
-        alert(error.response.data.message);
+        console.log(error);
+        // alert(error.response.data.message);
       }
     );
   };
@@ -243,6 +256,7 @@ const LoginPage = () => {
                 value={userId}
                 onChange={(e) => {
                   setUserId(e.target.value);
+                  console.log(e.target.value.length)
                   if (e.target.value.length < 5 || e.target.value.length > 10) {
                     setIsUserId(false);
                     setUserIdMessage("5~10자 사이의 ID를 입력하세요");
@@ -250,6 +264,10 @@ const LoginPage = () => {
                       setUserIdMessage("");
                     }
                     return;
+                  }
+                  else{
+                    setIsUserId(true);
+                    setUserIdMessage("");
                   }
                   checkDuplicatedUserId(
                     e.target.value,
@@ -285,8 +303,9 @@ const LoginPage = () => {
                 variant = "outlined"
                 id = "outlined-basic"
                 type="password"
+                className="passwordcolor"
                 required
-                value={userPass}
+                sx={{ input: { color: 'black' }}}
                 onChange={(e) => {
                   setUserPass(e.target.value);
                   if (!passwordRegex.test(e.target.value)) {
@@ -365,8 +384,41 @@ const LoginPage = () => {
               ></TextField>
               <br />
               <span>{userNickMessage}</span>
+              <br />
+              <br />
+
+            </div>
+            <div>
+              <TextField
+                label = "이메일"
+                varient = "outlined"
+                id = "outlined-basic"
+                type = "text"
+                value = {userEmail}
+                onChange={(e) => {
+                  setUserEmail(e.target.value);
+                  setIsUserEmail(true);
+                }}>
+              </TextField>
+              <br />
+              <br />
+            </div>
+            <div>
+              <TextField
+                label = "전화번호"
+                varient = "outlined"
+                id = "outlined-basic"
+                type = "text"
+                value = {userPhone}
+                onChange={(e) => {
+                  setUserPhone(e.target.value);
+                  setIsUserPhone(true);
+                }}>
+              </TextField>
+              <br />
             </div>
             <br />
+
 
             
             <Button
@@ -378,12 +430,11 @@ const LoginPage = () => {
                   isUserId &&
                   isUserName &&
                   isUserNick &&
-                  isUserPass
+                  isUserPass 
                 )
               }
-            ></Button>
-            <br />
-
+            >회원가입</Button>
+            <br /><br />
             <div class="signup_link">
               이미 회원이신가요?{" "}
               <span className="LoginOrout" onClick={LoginOrSignUp}>
@@ -440,7 +491,6 @@ const LoginPage = () => {
                 label = "비밀번호"
                 variant = "outlined"
                 id = "outlined-basic"
-                type="password"
                 required
                 value={userPass}
                 onChange={(e) => setUserPass(e.target.value)}

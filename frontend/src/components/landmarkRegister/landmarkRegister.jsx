@@ -6,6 +6,7 @@ import { display } from '@mui/system';
 import approved from '../../assets/approved.png'
 import { useParams } from 'react-router-dom';
 import './landmarkRegister.css'
+import { Button } from "@mui/material";
 import { getBookDetail } from '../../api/book';
 
 export default function landmarkRegister() {
@@ -156,10 +157,14 @@ export default function landmarkRegister() {
                     <input style={{display:'none'}} type='file' accept="image/*" ref={fileRef} name="profile_img" id="file" onChange={changeImage}></input>
                 </label>
             </div>
-            <button onClick={predict}>검증</button>
+            <Button color="secondary" onClick={predict}>검증</Button>
             <div>
                 <img className='stamp' style={{height:'100px', width:'100px', margin:'20px'}} src={approved}></img>
                 <img className='stamp' style={{height:'100px', width:'100px', margin:'20px'}} src={approved}></img>
+                <br />
+                <span className='grayfont'>
+                ※건물 디자인 변경, 현수막, 디스플레이, 리모델링, 재건축 등으로 인해 인식이 불안정할 수 있습니다※
+                </span>
             </div>
         </div>
 

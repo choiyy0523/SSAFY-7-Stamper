@@ -10,3 +10,8 @@
     95% {transform: scale(5); opacity:0;}
     100% {transform: scale(1); opacity:1;}
 }
+
+.grayfont {
+  color: #474646;
+  font-size: x-small;
+}

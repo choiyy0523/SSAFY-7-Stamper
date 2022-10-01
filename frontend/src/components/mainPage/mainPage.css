@@ -1,0 +1,35 @@
+.widthcenter {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.colorblock {
+  width: 135px;
+  height: 135px;
+  border-radius: 10%;
+  background-color: rgba(191, 96, 255, 0.09);
+  margin: auto;
+}
+
+.colorblock2 {
+  width: 300px;
+  height: 130px;
+  border-radius: 10%;
+  background-color: rgba(191, 96, 255, 0.09);
+  margin-top: 1rem;
+}
+
+
+.bigfont {
+  font-size: 2.5rem;
+}
+
+.outer-div {
+  position: relative
+}
+
+.inner-div {
+  position: relative;
+  top: 40%
+}
