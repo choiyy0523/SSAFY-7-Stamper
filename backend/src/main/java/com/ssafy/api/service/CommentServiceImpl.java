@@ -60,9 +60,9 @@ public class CommentServiceImpl implements CommentService{
     }
 
     @Override
-    public Comment deleteComment(CommentDeletePostReq commentInfo) {
+    public Comment deleteComment(Long commentSeq) {
 
-        Comment comment = commentRepository.findByCommentSeq(commentInfo.getCommentSeq());
+        Comment comment = commentRepository.findByCommentSeq(commentSeq);
 
         commentRepository.delete(comment);
         return comment;

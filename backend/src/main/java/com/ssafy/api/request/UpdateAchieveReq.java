@@ -7,14 +7,14 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@ApiModel("UserDeleteDeleteRequest")
+@ApiModel("UpdateAchieveRequest")
 public class UpdateAchieveReq {
 
     @ApiModelProperty(name = "userSeq")
     Long userSeq;
 
-    @ApiModelProperty(name = "achieveSeq")
-    Long achieveSeq;
+    @ApiModelProperty(name = "achieveName")
+    String achieveName;
 
 
 }
