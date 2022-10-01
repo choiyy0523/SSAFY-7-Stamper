@@ -18,7 +18,7 @@ function findUserId(findUserInfo, success, error) {
 // 비밀번호를 잊은 사람이 변경 가능한 API(비로그인 상태)
 function findUserPassword(findUserPasswordInfo, success, error) {
   instance
-    .post(`/user/find/password`, findUserPasswordInfo, {})
+    .post(`/user/find/userpassword`, findUserPasswordInfo, {})
     .then(success)
     .catch(error);
 }
