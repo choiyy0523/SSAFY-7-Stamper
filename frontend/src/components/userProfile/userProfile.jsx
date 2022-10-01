@@ -3,7 +3,7 @@ import * as React from 'react';
 
 const userprofile = () => {
     return (
-        <div>
+        <div className="aligncenter">
             {/* 프로필 카드 */}
             <div className="container profile_background">
                 {/* 프로필 사진과 이름 */}
@@ -49,7 +49,6 @@ const userprofile = () => {
 <br /><br /><br /><br /><br /><br /><br /><br /><br />
             {/* 기념 도장 목록 (프로필 카드 밖) */}
             <div>
-            <h1>(레이아웃 조정 필요)</h1>
                 <h2>기념도장</h2>
                 <img className="profile_control_comp" src="/src/assets/components/stamp_tooltip.png" alt="" />
                 <li>유저별 모은 기념도장(업적)</li>

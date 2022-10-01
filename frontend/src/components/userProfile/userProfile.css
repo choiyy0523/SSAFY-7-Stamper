@@ -2,16 +2,22 @@
 	display: flex;
 	/* display: inline-flex; */
     flex-wrap: wrap;
-   justify-content: flex-start;
+   justify-content: space-between;
+}
+
+.aligncenter {
+    justify-content: space-between;
+    margin-top: 2vh;
+    position: relative;
 }
 
 .profile_background {
     margin-left: 1.2vh;
     width: 42.7vh;
     height: 24vh;
-    background-color: rgb(181, 255, 255); 
+    background-color: rgba(191, 96, 255, 0.09);
     border-radius: 5%;
-    float: left;
+    display: inline-block;
 }
 
 .profile_box {

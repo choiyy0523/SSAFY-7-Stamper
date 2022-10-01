@@ -1,14 +1,401 @@
-import "./login.css"
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@material-ui/core/TextField';
-import { Button } from "@mui/material";
+import React, { useState } from "react";
+import {
+  registerUser,
+  getUserProfile,
+  findUserPassword,
+  checkDuplicatedUserId,
+} from "../../api/user";
+import { findUserId } from "../../api/user"; 
 
-const login = () => {
-    return (
-      <div>
-      {/* 스탬퍼 로고와 이름 */}
-        <div>             
+import { doLogin } from "../../api/auth";
+import { useDispatch } from "react-redux";
+import { SET_LOGIN, SET_TOKEN, SET_USERINFO } from "../../redux/UserInfo";
+
+import "./login.css";
+
+import {
+  TextField,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Input,
+  Modal,
+  Stack,
+  Typography,
+} from "@mui/material";
+import { Box } from "@mui/system";
+import { typography } from "@mui/system";
+
+const LoginPage = () => {
+  const dispatch = useDispatch();
+  const [IsSignUp, setIsSignUp] = useState(false);
+  const [userId, setUserId] = useState("");
+  const [userPass, setUserPass] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userNick, setUserNick] = useState("");
+  const [isUserId, setIsUserId] = useState(false);
+  const [isUserPass, setIsUserPass] = useState(false);
+  const [isUserName, setIsUserName] = useState(false);
+  const [isUserNick, setIsUserNick] = useState(false);
+  const [userIdMessage, setUserIdMessage] = useState("");
+  const [userPassMessage, setUserPassMessage] = useState("");
+  const [userNameMessage, setUserNameMessage] = useState("");
+  const [userNickMessage, setUserNickMessage] = useState("");
+
+  const LoginOrSignUp = (e) => {
+    e.preventDefault(); // form 제출 막고
+    setUserId(""); // id, password 입력하던거 초기화
+    setUserPass("");
+    setUserName("");
+    setUserNick("");
+    const newValue = !IsSignUp;
+    setIsSignUp(newValue); // true -> false 변경
+  };
+
+
+  // 회원가입
+  const onSubmitRegisterForm = (event) => {
+    event.preventDefault();
+    const data = {
+      userId: userId,
+      userPassword: userPass,
+      userName: userName,
+      userNickname: userNick,
+    };
+    console.log(userId)
+    registerUser(
+      data,
+      (response) => {
+        setUserId(""); // id, password 입력하던거 초기화
+        setUserPass("");
+        setUserName("");
+        setUserNick("");
+        setIsSignUp(false);
+        alert("스탬퍼에 오신 것을 환영합니다!");
+      },
+      (error) => {
+        alert(error.response.data.message);
+      }
+    );
+  };
+
+  const onSubmitLoginForm = (event) => {
+    alert("asdfsadfas")
+    event.preventDefault();
+
+    console.log(userPass + "" + userId + "asdfasdsfadasd")
+    doLogin(
+      { userId: userId, userPassword: userPass },
+      (response) => {
+        console.log(response.data);
+        dispatch(SET_TOKEN(response.data.accessToken));
+        let token = response.data.accessToken;
+        getUserProfile(
+          response.data.accessToken,
+          (response) => {
+            dispatch(SET_USERINFO(response.data.userRes));
+            console.log("profile get", response.data.userRes);
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+        dispatch(SET_LOGIN());
+      },
+      (error) => {
+        console.log(error);
+        alert("로그인에 실패했습니다.");
+      }
+    );
+  };
+  
+
+  // 아이디 찾기
+  const [findUserName, setFindUserName] = useState("");
+  const [foundUserId, setFoundUserId] = useState("");
+  const onFindUserName = (event) => {
+    setFindUserName(event.target.value);
+  };
+
+  const [openFindUserId, setOpenFindUserId] = useState(false);
+  const [openResponseUserId, setOpenResponseUserId] = useState(false);
+
+  const handleOpenFindUserId = () => {
+    setOpenFindUserId(true);
+  };
+  const handleCloseFindUserId = () => {
+    setOpenFindUserId(false);
+    setFindUserName("");
+  };
+  const handleOpenResponseUserId = () => {
+    setOpenResponseUserId(true);
+  };
+  const handleCloseResponseUserId = () => {
+    setOpenResponseUserId(false);
+    handleCloseFindUserId();
+  };
+  const onFindUserId = () => {
+    const findUserIdInfo = {
+      userName: findUserName,
+    };
+    const success = (res) => {
+      handleOpenResponseUserId();
+      setFoundUserId(res.data.userId);
+    };
+    const error = (res) => {
+      console.log(res);
+    };
+    findUserId(findUserIdInfo, success, error);
+  };
+
+
+  // 비밀번호 찾기
+  const [passUserId, setPassUserId] = useState("");
+  const [passUserName, setPassUserName] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+
+  const onPassUserId = (event) => {
+    setPassUserId(event.target.value);
+  };
+  const onPassUserName = (event) => {
+    setPassUserName(event.target.value);
+  };
+  const onNewPassword = (event) => {
+    setNewPassword(event.target.value);
+  };
+
+  const [openFindPassword, setOpenFindPassword] = React.useState(false);
+  const [openResponseFindPassword, setOpenResponseFindPassword] =
+    useState(false);
+
+  const handleOpenFindPassword = () => {
+    setOpenFindPassword(true);
+  };
+  const handleCloseFindPassword = () => {
+    setOpenFindPassword(false);
+    setPassUserId("");
+    setPassUserName("");
+    setNewPassword("");
+  };
+  const handleOpenResponseFindPassword = () => {
+    setOpenResponseFindPassword(true);
+  };
+  const handleCloseResponseFindPassword = () => {
+    setOpenResponseFindPassword(false);
+    handleCloseFindPassword();
+  };
+
+  const onFindPassword = () => {
+    const findUserPasswordInfo = {
+      userId: passUserId,
+      userName: passUserName,
+      newPassword: newPassword,
+    };
+    const success = (res) => {
+      console.log(res);
+      handleOpenResponseFindPassword();
+    };
+    const error = (res) => {
+      console.log(res);
+    };
+    findUserPassword(findUserPasswordInfo, success, error);
+  };
+
+  const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+
+  return (
+    <div className="LoginSignUp">
+      {IsSignUp ? (
+        <div class="center">
+          <span className='logo2 muruk'>회원가입</span>
+          <div>             
+           <img className="sticker1" src="/src/assets/login/apartment.png" alt="" />
+           <img className="sticker2" src="/src/assets/login/bridge.png" alt="" />
+           <img className="sticker3" src="/src/assets/login/church.png" alt="" />
+           <img className="sticker4" src="/src/assets/login/circus.png" alt="" />
+           <img className="sticker5" src="/src/assets/login/tram.png" alt="" />
+           <img className="sticker6" src="/src/assets/login/ferris.png" alt="" />
+           <img className="sticker7" src="/src/assets/login/ferris2.png" alt="" />
+           <img className="sticker8" src="/src/assets/login/forest.png" alt="" />
+           <img className="sticker9" src="/src/assets/login/government.png" alt="" />
+           <img className="sticker10" src="/src/assets/login/lighthouse.png" alt="" />
+           <img className="sticker11" src="/src/assets/login/park.png" alt="" />
+           <img className="sticker12" src="/src/assets/login/eye1.png" alt="" />
+           <img className="sticker13" src="/src/assets/login/eye2.png" alt="" />
+         </div>
+         <br />
+
+          <form method="post" onSubmit={onSubmitRegisterForm}>
+            <div
+              class={`txt_field ${isUserId ? "txt_field" : "txt_field_false"} ${
+                userIdMessage ? "txt_field_message" : ""
+              }`}
+            >
+              <TextField                
+                label = "아이디"
+                variant = "outlined"
+                id = "outlined-basic"
+                type="text"
+                required
+                value={userId}
+                onChange={(e) => {
+                  setUserId(e.target.value);
+                  if (e.target.value.length < 5 || e.target.value.length > 10) {
+                    setIsUserId(false);
+                    setUserIdMessage("5~10자 사이의 ID를 입력하세요");
+                    if (e.target.value.length < 1) {
+                      setUserIdMessage("");
+                    }
+                    return;
+                  }
+                  checkDuplicatedUserId(
+                    e.target.value,
+                    (response) => {
+                      if (response.data.statusCode === 200) {
+                        setIsUserId(true);
+                        setUserIdMessage("사용 가능한 ID 입니다");
+                      }
+                    },
+                    (error) => {
+                      if (error.response.data.statusCode === 409) {
+                        setIsUserId(false);
+                        setUserIdMessage("이미 존재하는 아이디입니다");
+                      }
+                    }
+                  );
+                }}
+              ></TextField>
+              <br />
+              <span>{userIdMessage}</span>
+              <br />
+              <br />
+
+            </div>
+            <div
+              class={`txt_field ${
+                isUserPass ? "txt_field" : "txt_field_false"
+              } ${userPassMessage ? "txt_field_message" : ""}`}
+            >
+
+              <TextField
+                label = "비밀번호"
+                variant = "outlined"
+                id = "outlined-basic"
+                type="password"
+                required
+                value={userPass}
+                onChange={(e) => {
+                  setUserPass(e.target.value);
+                  if (!passwordRegex.test(e.target.value)) {
+                    setIsUserPass(false);
+                    setUserPassMessage(
+                      "8자리 이상의 숫자+영문자+특수문자 조합으로 입력하세요."
+                    );
+                    if (e.target.value.length < 1) {
+                      setUserPassMessage("");
+                    }
+                  } else {
+                    setIsUserPass(true);
+                    setUserPassMessage("");
+                  }
+                }}
+              ></TextField>
+              <br />
+              <span>{userPassMessage}</span>
+              <br />
+              <br />
+
+            </div>
+            <div
+              class={`txt_field ${
+                isUserName ? "txt_field" : "txt_field_false"
+              } ${userNameMessage ? "txt_field_message" : ""}`}
+            >
+              <TextField
+                label = "이름"
+                variant = "outlined"
+                id = "outlined-basic"
+                type="text"
+                required
+                value={userName}
+                onChange={(e) => {
+                  setUserName(e.target.value);
+                  if (e.target.value.length > 20) {
+                    setIsUserName(false);
+                    setUserNameMessage("너무 긴 이름입니다");
+                    return;
+                  } else {
+                    setIsUserName(true);
+                    setUserNameMessage("");
+                  }
+                }}
+              ></TextField>
+              <br />
+              <span>{userNameMessage}</span>
+            </div>
+            <br />
+            <br />
+
+            <div
+              class={`txt_field ${
+                isUserNick ? "txt_field" : "txt_field_false"
+              } ${userNickMessage ? "txt_field_message" : ""}`}
+            >
+              <TextField
+                label = "닉네임"
+                variant = "outlined"
+                id = "outlined-basic"
+                type="text"
+                value={userNick}
+                required
+                onChange={(e) => {
+                  setUserNick(e.target.value);
+                  if (e.target.value.length > 12) {
+                    setIsUserNick(false);
+                    setUserNickMessage("12자 이하의 닉네임을 입력하세요");
+                    return;
+                  } else {
+                    setIsUserNick(true);
+                    setUserNickMessage("");
+                  }
+                }}
+              ></TextField>
+              <br />
+              <span>{userNickMessage}</span>
+            </div>
+            <br />
+
+            
+            <Button
+              color="secondary"
+              type="submit"
+              value="SignUp"
+              disabled={
+                !(
+                  isUserId &&
+                  isUserName &&
+                  isUserNick &&
+                  isUserPass
+                )
+              }
+            ></Button>
+            <br />
+
+            <div class="signup_link">
+              이미 회원이신가요?{" "}
+              <span className="LoginOrout" onClick={LoginOrSignUp}>
+                로그인
+              </span>
+            </div>
+          </form>
+        </div>
+      ) : (
+        <div>
+        {/* 스탬퍼 로고와 이름 */}
+          <div>             
           <img className="logo" src="/src/assets/LOGO.png" alt="" />
           <h2 className="muruk english_title">Stamper</h2>
             <img className="sticker1" src="/src/assets/login/apartment.png" alt="" />
@@ -25,48 +412,252 @@ const login = () => {
             {/* <img className="sticker12" src="/src/assets/login/eye1.png" alt="" />
             <img className="sticker13" src="/src/assets/login/eye2.png" alt="" /> */}
           <h1 className="muruk gradtext korean_title">스탬퍼</h1>
-        </div>
-
-      {/* 로그인 관련  */}
-        <div>
-          <Box component="form"
-            sx={{
-              '& .MuiTextField-root': { m: 1, width: '320px'},
-            }}
-            noValidate autoComplete="off"
-          >
-            <div>
-              <TextField id="outlined-id" label="아이디" variant="outlined" type="id" autoComplete="current-id"/>
-              <TextField id="outlined-password" label="비밀번호" variant="outlined" type="password" autoComplete="current-password"/>
-            </div>
-          </Box>
-            <br />
-          <Button style={{minWidth: '320px'}} variant="contained">로그인</Button>
-            <br />
-          <div className="between">
-            <div>
-              <a href="">회원가입</a>
-            </div>
-            <div>
-              <a href="">아이디/비밀번호 찾기</a>
-            </div>
           </div>
-        </div>
- 
-      {/* 하단 문구 */}
+
+          {/* 로그인 관련  */}
+          <div>
+          <Box component="form"
+          sx={{
+            '& .MuiTextField-root': { m: 1, width: '200px'},
+          }}
+          noValidate autoComplete="off"
+        > 
+          
+          <form method="post" onSubmit={onSubmitLoginForm}>
+            <div class="txt_field">
+              <TextField
+                label = "아이디"
+                variant = "outlined"
+                id = "outlined-basic"
+                type="text"
+                required
+                value={userId}
+                onChange={(e) => setUserId(e.target.value)}
+              ></TextField>
+            </div>
+            <div class="txt_field">
+              <TextField
+                label = "비밀번호"
+                variant = "outlined"
+                id = "outlined-basic"
+                type="password"
+                required
+                value={userPass}
+                onChange={(e) => setUserPass(e.target.value)}
+              ></TextField>
+            </div>
+            <div style={{ display: "flex", justifyContent: "space-between", width: "200px", marginLeft: "auto", marginRight: "auto"}}>
+              <div class="pass" onClick={handleOpenFindUserId}>
+                아이디 찾기
+              </div>
+              <div class="pass password" onClick={handleOpenFindPassword}>
+                비밀번호 찾기
+              </div>
+            </div>
+            {/* <input type="submit" value="Login"></input> */}
+            <Button color="secondary" onClick={onSubmitLoginForm}>로그인</Button>
+            <br />
+            <div class="signup_link">
+              회원이 아니신가요?{" "}
+              <span className="LoginOrout" onClick={LoginOrSignUp}>
+                회원가입
+              </span>
+            </div>
+          </form>
+          </Box>
+          </div>
+        
+          {/* 하단 문구 */}
         <p className="footer_blank kkultip">스탬퍼가 되어 서울의 랜드마크를 수집해주세요!</p>
         <p className="kkultip">곳곳에 있는 AI 친구들을 통해 기념도장을 모아보세요!</p>
-      
-      {/* 출처 표시 Footer */}
-        <footer className="footer_blank2">
+    
+         {/* 출처 표시 Footer */}
+         <footer className="footer_blank2">
           <a className="chulcheo" href="https://www.flaticon.com/authors/freepik" title="LOGO and Components icons">
             <span>Logo and Components icons</span>
+           <br />
+           <span>created by Freepik - Flaticon</span>
+           </a>
+         </footer>
+        </div>
+      )}
+
+
+      {/* 아이디 찾기 */}
+
+      <Dialog
+        open={openFindUserId}
+        keepMounted
+        onClose={handleCloseFindUserId}
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle className="dialog-title">
+          {"아이디를 잊으셨나요?"}
+        </DialogTitle>
+        <DialogContent className="dialog-content">
+          <div>
+            아래의 정보를 입력하세요.
             <br />
-            <span>created by Freepik - Flaticon</span>
-          </a>
-        </footer>
-      </div>
-    );
-  };
-  
-  export default login;
+            <br />
+            <br />
+          </div>
+          <DialogContentText
+            id="alert-dialog-slide-description"
+            className="dialog-content-text"
+          >
+            <label for="userName">이름</label>
+            <div>
+              <Input
+                value={findUserName}
+                id="userName"
+                className="dialog-input"
+                onChange={onFindUserName}
+              ></Input>
+            </div>
+            <br />
+          </DialogContentText>
+        </DialogContent>
+
+        <DialogActions className="option-cell">
+          <div className="cancel-button">
+            <Button onClick={handleCloseFindUserId}>
+              <div className="cancel-button-text">취소</div>
+            </Button>
+          </div>
+          <div className="accept-button">
+            <Button onClick={onFindUserId}>
+              <div className="accept-button-text">확인</div>
+            </Button>
+          </div>
+        </DialogActions>
+      </Dialog>
+
+      <Modal
+        open={openResponseUserId}
+        onClose={handleCloseResponseUserId}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box
+          style={{ backgroundColor: "#202225", borderRadius: "10px" }}
+        >
+          <Typography
+            id="modal-modal-title"
+            variant="h6"
+            component="h2"
+            color="white"
+          >
+            찾으시는 아이디는 {foundUserId} 입니다.
+            <Stack
+              direction="row-reverse"
+              alignItems="center"
+              spacing={2}
+              style={{ marginTop: "2rem" }}
+            >
+              <Button onClick={handleCloseResponseUserId}>확인</Button>
+            </Stack>
+          </Typography>
+        </Box>
+      </Modal>
+
+      {/* 비밀번호 찾기 */}
+      <Dialog
+        open={openFindPassword}
+        keepMounted //??
+        onClose={handleCloseFindPassword}
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle className="dialog-title">
+          {"비밀번호를 잊으셨나요?"}
+        </DialogTitle>
+        <DialogContent className="dialog-content">
+          <div>
+            아래의 정보를 입력하세요.
+            <br />
+            <br />
+            <br />
+          </div>
+          <DialogContentText
+            id="alert-dialog-slide-description"
+            className="dialog-content-text"
+          >
+            <label for="userId">아이디</label>
+            <div>
+              <Input
+                value={passUserId}
+                id="userId"
+                className="dialog-input"
+                onChange={onPassUserId}
+              ></Input>
+            </div>
+            <br />
+
+            <label for="userName">이름</label>
+            <div>
+              <Input
+                value={passUserName}
+                id="userName"
+                className="dialog-input"
+                onChange={onPassUserName}
+              ></Input>
+            </div>
+            <br />
+
+            <label for="newPassword">새 비밀번호</label>
+            <div>
+              <Input
+                value={newPassword}
+                id="newPassword"
+                className="dialog-input"
+                onChange={onNewPassword}
+              ></Input>
+            </div>
+          </DialogContentText>
+        </DialogContent>
+
+        <DialogActions className="option-cell">
+          <div className="cancel-button">
+            <Button onClick={handleCloseFindPassword}>
+              <div className="cancel-button-text">취소</div>
+            </Button>
+          </div>
+          <div className="accept-button">
+            <Button onClick={onFindPassword}>
+              <div className="accept-button-text">확인</div>
+            </Button>
+          </div>
+        </DialogActions>
+      </Dialog>
+
+      <Modal
+        open={openResponseFindPassword}
+        onClose={handleCloseResponseFindPassword}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box
+          style={{ backgroundColor: "#202225", borderRadius: "10px" }}
+        >
+          <Typography
+            id="modal-modal-title"
+            variant="h6"
+            component="h2"
+            color="white"
+          >
+            비밀번호가 변경되었습니다.
+            <Stack
+              direction="row-reverse"
+              alignItems="center"
+              spacing={2}
+              style={{ marginTop: "2rem" }}
+            >
+              <Button onClick={handleCloseResponseFindPassword}>확인</Button>
+            </Stack>
+          </Typography>
+        </Box>
+      </Modal>
+    </div>
+  );
+};
+
+export default LoginPage;
