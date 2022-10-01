@@ -1,6 +1,7 @@
 import "./collectionSeoul.css"
 import * as React from 'react';
 import { Fragment, useState } from "react";
+import SeoulBar from './collectionSeoulChart'
 
 const collectionSeoul = () => {
     const [gangnamgu, setGangnamgu] = useState('강남구')
@@ -31,8 +32,9 @@ const collectionSeoul = () => {
     return (
             <Fragment>
                 <h1>구별 수집 현황</h1>
-                <div>-이 페이지 남은 일: 지도 스마트폰 화면 크기에 맞게 줄이기</div>
+                {/* <div>-이 페이지 남은 일: 지도 스마트폰 화면 크기에 맞게 줄이기</div>
                 <div>-리스트 옆에 랜드마크 등록 현황 표시(시각자료면 Good)</div>
+                <div>-그 외 디테일</div> */}
                 <svg background='#eaeaea;overflow:visible' height="40%" width="100%" viewBox="0 0 800 656" xmlns="http://www.w3.org/2000/svg">
     <defs>
         <filter id="dropshadow">
@@ -103,6 +105,7 @@ const collectionSeoul = () => {
     <text id="LCD11710" className="TEXT" x="624" y="448">{ songpagu }</text>
     <text id="LCD11740" className="TEXT" x="675" y="358">{ gangdonggu}</text>
     </g></svg>
+    <SeoulBar></SeoulBar>
     
 
         {/* <ul>전체 리스트
