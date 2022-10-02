@@ -4,45 +4,61 @@ import { instance, createHeaders } from "./index";
   userbookcollectionInfo : {userSeq, bookSeq, userbookCollectionImage, gugun, category}
   response.data: {statusCode, message} 
  */
-function registerUserbookCollection(userbookCollectionInfo, success, error) {
+function registerUserbookCollection(userbookCollectionInfo, token, success, error) {
   instance.post(`/book/register`, userbookCollectionInfo, { headers: createHeaders(token) }).then(success).catch(error);
 }
 
 /*
-  response.data: {statusCode, message, collectedBookList: {userbookCollection}, totalBookList: {Book}}
+  response.data: {statusCode, message, collectedBookList: {List<userbookCollection>}, totalBookList: {List<Book>}}
  */
-function getListByGugun(userSeq, gugun, success, error) {
+function getListByGugun(userSeq, gugun, token, success, error) {
   instance.get(`/book/listbygu/${userSeq}/${gugun}`, userSeq, gugun, { headers: createHeaders(token) }).then(success).catch(error);
 }
 
 /*
-  response.data: {statusCode, message, collectedBookList: {userbookCollection}, totalBookList: {Book}}
+  response.data: {statusCode, message, collectedBookList: {List<userbookCollection>}, totalBookList: {List<Book>}}
 */
-function getListByCategory(userSeq, category, success, error) {
+function getListByCategory(userSeq, category, token, success, error) {
   instance.get(`/book/listbycat/${userSeq}/${category}`, userSeq, category, { headers: createHeaders(token) }).then(success).catch(error);
 }
 
 /*
-  이미 수집한 랜드마크인 경우
-    response.data: {statusCode: 200, message: "랜드마크 조회 성공", {UserbookCollection}}
-  수집 X
-    response.data: {statusCode: 409, message: "수집하지 못한 랜드마크", {Book}}
+  response.data: {statusCode, message, {userBook}, {book}}
 */
+<<<<<<< HEAD
 function getBookDetail(userSeq, bookSeq, success, error) {
   instance.get(`/book/${userSeq}/${bookSeq}`, userSeq, bookSeq).then(success).catch(error);
+=======
+function getBookDetail(userSeq, bookSeq, token, success, error) {
+  instance.get(`/book/${userSeq}/${bookSeq}`, userSeq, bookSeq, { headers: createHeaders(token) }).then(success).catch(error);
+>>>>>>> 8b296b4bb9960dd9109677c2839d84c007ccb07f
 }
-
-
 
 /*
   updateBookInfo : {userSeq, bookSeq, imageURL}
-  response.data: {statusCode, message, {UserbookCollection}}
+  response.data: {statusCode, message, {userBook}, {book: null}}
 */
-function updateBookDetail(updateBookInfo,success, error) {
+function updateBookDetail(updateBookInfo, token, success, error) {
   instance.patch(`/book/update`, updateBookInfo, { headers: createHeaders(token) }).then(success).catch(error);
 }
 
-function getAllBookDetail(userSeq, success, error) {
+/*
+  response.data: {statusCode, message, GC:{List<GugunClass>}}
+*/
+function getCountOfGugun(userSeq, token, success, error) {
+  instance.patch(`/book/countofgu/${userSeq}`, userSeq, { headers: createHeaders(token) }).then(success).catch(error);
+}
+
+/*
+  response.data: {statusCode, message, CC:{List<CatClass>}}
+*/
+function getCountOfCategory(userSeq, token, success, error) {
+  instance.patch(`/book/countofcat/${userSeq}`, userSeq, { headers: createHeaders(token) }).then(success).catch(error);
+}
+/*
+  response.data: {statusCode, message, collectedBookList: {List<userbookCollection>}, totalBookList: {List<Book>}}
+*/
+function getAllBookDetail(userSeq, token, success, error) {
   instance.get(`/book/${userSeq}`, userSeq, { headers: createHeaders(token) }).then(success).catch(error);
 }
 
@@ -52,5 +68,7 @@ export {
   getListByCategory,
   getBookDetail,
   updateBookDetail,
+  getCountOfGugun,
+  getCountOfCategory,
   getAllBookDetail
 };

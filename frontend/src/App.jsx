@@ -21,6 +21,9 @@ import {createTheme, ThemeProvider} from "@mui/material";
 const theme = createTheme({
   typography: {
     fontFamily: "BMJua"
+  },
+  multilineColor:{
+    color:'#1C1C1C'
   }
 })
 

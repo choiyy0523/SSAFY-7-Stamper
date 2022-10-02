@@ -4,16 +4,23 @@ import * as React from 'react';
 const mainpage = () => {
     return (
         <div>
-            <h1>도감 보기</h1>
             <br />
-            <div className="between">
-                <a href="/collection/seoul/index">구별</a>
-                <a href="/collection/theme/index">테마별</a>
+            <div className="between widthcenter" >
+                <div className="colorblock outer-div">
+                <a href="/collection/seoul/index" className="bigfont inner-div">구별</a>
+                </div>
+                <div className="colorblock outer-div">
+                <a href="/collection/theme/index" className="bigfont inner-div">테마별</a>
+                </div>
             </div>
 
             <br />
 
-            <a href="/landmark/register">랜드마크등록</a>
+            <div className=" widthcenter colorblock2">
+            <a href="/landmark/register" className="bigfont inner-div">랜드마크등록</a>
+            </div>
+
+
         </div> 
     );
   };
