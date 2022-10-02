@@ -38,4 +38,6 @@ public interface BookService {
     List<GugunClass> getbookCountofGugun(Long userSeq);
 
     List<CatClass> getbookCountofCat(Long userSeq);
+
+    boolean updateUserImgUrl(String url, Long userSeq, Long bookSeq);
 }

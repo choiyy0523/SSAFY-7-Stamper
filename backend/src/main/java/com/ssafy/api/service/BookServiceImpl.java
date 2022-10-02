@@ -21,6 +21,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service("bookService")
@@ -173,5 +174,20 @@ public class BookServiceImpl implements BookService{
         List<Book> res = bookRepository.findBooksByBookMaincategory(category);
 
         return res;
+    }
+
+    @Override
+    public boolean updateUserImgUrl(String url, Long userSeq, Long bookSeq) {
+        UserbookCollection userbook = userbookCollectionRepository.findUserbookCollectionByUser_UserSeqAndBook_BookSeq(userSeq, bookSeq);
+
+        if(userbook != null){
+            if(url != "") userbook.setUserbookCollectionImage(url);
+            else userbook.setUserbookCollectionImage(null);
+
+            userbookCollectionRepository.save(userbook);
+            return true;
+        } else {
+            return false;
+        }
     }
 }
