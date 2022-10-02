@@ -33,6 +33,8 @@ function App() {
   const dispatch = useDispatch();
   const loggedIn = useSelector((state) => state.UserInfo.loggedIn);
 
+  const queryClient = new QueryClient()
+
   // const loggedIn = () => {
   //   return 1
   //   // window.sessionStorage.getItem("loginCheck") === "true";
@@ -47,37 +49,39 @@ function App() {
   // }, [window.sessionStorage.getItem("UserData")]);
 
   return (
-    <ThemeProvider theme={theme}>
-    <div className="App nav_body">
-      <Router>
-              <Routes>
-        <Route
-          exact path="/"
-          element={ loggedIn ? (
-            <MainPage
-              setLogOut={() => {
-              dispatch(SET_LOGOUT());}} /> ) :
-                ( <Loginpage></Loginpage> )} />
-          <Route path="/test" element={<ImageTest/>}></Route>
-          <Route path="/loginpage" element={<Loginpage/>}></Route>
-          <Route path="/profile/:userNo" element={<UserProfile/>}></Route>
-          <Route path="/profile/:userNo/modify" element={<UserProfileModify/>}></Route>
-          <Route path="/" element={<MainPage/>}></Route>
-          <Route path="/landmark/:landmarkNo" element={<Landmark/>}></Route>
-          <Route path="/landmark/:landmarkNo/register" element={<LandmarkRegister/>}></Route>
-          <Route path="/collection/seoul/index" element={<CollectionSeoul/>}></Route>
-          <Route path="/collection/theme/index" element={<CollectionTheme/>}></Route>
-          <Route path="/collection/seoul/:districtNo" element={<CollectionSeoulDetail/>}></Route>
-          <Route path="/collection/seoul/:themeNo" element={<CollectionThemeDetail/>}></Route>
-        </Routes>
-      
-      </Router>
-      <div>
-        <Header></Header>
-      </div>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+      <div className="App nav_body">
+        <Router>
+                <Routes>
+          <Route
+            exact path="/"
+            element={ loggedIn ? (
+              <MainPage
+                setLogOut={() => {
+                dispatch(SET_LOGOUT());}} /> ) :
+                  ( <Loginpage></Loginpage> )} />
+            <Route path="/test" element={<ImageTest/>}></Route>
+            <Route path="/loginpage" element={<Loginpage/>}></Route>
+            <Route path="/profile/:userNo" element={<UserProfile/>}></Route>
+            <Route path="/profile/:userNo/modify" element={<UserProfileModify/>}></Route>
+            <Route path="/" element={<MainPage/>}></Route>
+            <Route path="/landmark/:landmarkNo" element={<Landmark/>}></Route>
+            <Route path="/landmark/:landmarkNo/register" element={<LandmarkRegister/>}></Route>
+            <Route path="/collection/seoul/index" element={<CollectionSeoul/>}></Route>
+            <Route path="/collection/theme/index" element={<CollectionTheme/>}></Route>
+            <Route path="/collection/seoul/:districtNo" element={<CollectionSeoulDetail/>}></Route>
+            <Route path="/collection/seoul/:themeNo" element={<CollectionThemeDetail/>}></Route>
+          </Routes>
+        
+        </Router>
+        <div>
+          <Header></Header>
+        </div>
 
-    </div>
-    </ThemeProvider>
+      </div>
+      </ThemeProvider>
+    </QueryClientProvider>
   )
 }
 

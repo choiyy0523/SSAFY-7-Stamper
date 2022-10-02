@@ -29,7 +29,7 @@ function getListByCategory(userSeq, category, success, error) {
     response.data: {statusCode: 409, message: "수집하지 못한 랜드마크", {Book}}
 */
 function getBookDetail(userSeq, bookSeq, success, error) {
-  instance.get(`/book/${userSeq}/${bookSeq}`, userSeq, bookSeq, { headers: createHeaders(token) }).then(success).catch(error);
+  instance.get(`/book/${userSeq}/${bookSeq}`, userSeq, bookSeq).then(success).catch(error);
 }
 
 

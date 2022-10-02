@@ -7,9 +7,13 @@ import approved from '../../assets/approved.png'
 import { useParams } from 'react-router-dom';
 import './landmarkRegister.css'
 import { getBookDetail } from '../../api/book';
+import processing from '../../assets/processing.gif'
+import { useQuery } from '@tanstack/react-query';
+import landmark from '../landmark/landmark';
 
 export default function landmarkRegister() {
     const landmarkNo = useParams();
+    const [landmarkInfo, setLandmarkInfo] = useState({});
     const [district, setDistrict] = useState('default');
     const [coordinates, setCoordinates] = useState();
     const [image, setImage] = useState(null);
@@ -20,11 +24,12 @@ export default function landmarkRegister() {
     const [result,setResult]=useState(null);
     const fileRef = useRef();
 
-    // getBookDetail({userSeq:2, bookSeq:5, token:'98696'},  (response)=>{
-    //     console.log(response.data)
-    // }, (error)=>{
-    //     console.log(error)
-    // })
+    getBookDetail(2, 30, (response)=>{
+        // console.log(response.data.book)
+        setLandmarkInfo(response.data.book)
+    }, (error)=>{
+        console.log(error)
+    })
 
     let model
 
@@ -90,12 +95,18 @@ export default function landmarkRegister() {
         setShowResult(true)
         setLoading(false)
         setResult(prediction[0].className)
+        // if () {
+
+        // }
+        // else {
+        //     return false
+        // }
         console.log('답: ', prediction[0].className + prediction[0].probability.toFixed(2));
         console.log('답: ', prediction[1].className + prediction[1].probability.toFixed(2));
         console.log('답: ', prediction[2].className + prediction[2].probability.toFixed(2));
     }
 
-    function getDistanceFromLatLonInKm(latitude1,longitude1,latitude2,longitude2,units) {
+    function getDistance(latitude1,longitude1,latitude2,longitude2,units) {
         let p = 0.017453292519943295;    //This is  Math.PI / 180
         let c = Math.cos;
         let a = 0.5 - c((latitude2 - latitude1) * p)/2 + 
@@ -158,8 +169,9 @@ export default function landmarkRegister() {
             </div>
             <button onClick={predict}>검증</button>
             <div>
+                {landmarkInfo.bookName === result ? <img className='stamp' style={{height:'100px', width:'100px', margin:'20px'}} src={approved}></img> : <img className='processing' style={{ margin:'20px', height:'100px', width:'100px'}} src={processing}></img>}
                 <img className='stamp' style={{height:'100px', width:'100px', margin:'20px'}} src={approved}></img>
-                <img className='stamp' style={{height:'100px', width:'100px', margin:'20px'}} src={approved}></img>
+                <img className='processing' style={{ margin:'20px', height:'100px', width:'100px'}} src={processing}></img>
             </div>
         </div>
 
