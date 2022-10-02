@@ -102,9 +102,9 @@ public class BookController {
             @ApiResponse(code = 500, message = "서버 오류")
     })
     public ResponseEntity<? extends BaseResponseBody> getBookStatus(@ApiIgnore Authentication authentication, @PathVariable Long userSeq, @PathVariable Long bookSeq){
-//        if (authentication == null){
-//            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
-//        }
+        if (authentication == null){
+            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
+        }
 
         UserbookCollection res = bookService.getBookStatus(userSeq, bookSeq);
 
