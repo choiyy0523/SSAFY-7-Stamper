@@ -11,12 +11,14 @@ import { getBookDetail } from '../../api/book';
 import processing from '../../assets/processing.gif'
 import { useQuery } from '@tanstack/react-query';
 import landmark from '../landmark/landmark';
+import EXIF from 'exif-js'
 
 export default function landmarkRegister() {
     const landmarkNo = useParams();
     const [landmarkInfo, setLandmarkInfo] = useState({});
     const [district, setDistrict] = useState('default');
-    const [coordinates, setCoordinates] = useState();
+    const [longitude, setLongitude] = useState(0);
+    const [latitude, setLatitude] = useState(0);
     const [image, setImage] = useState(null);
     const [url, setURL] = useState('');
     const [loading,setLoading]=useState(false);
@@ -31,6 +33,16 @@ export default function landmarkRegister() {
     }, (error)=>{
         console.log(error)
     })
+
+    useEffect(() => {
+        getBookDetail(2, 30, (response)=>{
+            // console.log(response.data.book)
+            setLandmarkInfo(response.data.book)
+        }, (error)=>{
+            console.log(error)
+        })
+    }, [landmarkInfo])
+
 
     let model
 
@@ -51,6 +63,17 @@ export default function landmarkRegister() {
         setDistrict(event.target.value)
         console.log(district)
     }
+
+    useEffect(() => {
+        EXIF.getData(url, function() {
+            setLongitude(EXIF.getTag(url, 'GPSLongitude'))
+            setLatitude(EXIF.getTag(url, "GPSLatitude"))
+            console.log(longitude)
+            console.log(latitude)        
+        })
+    }, [url, image])
+
+
 
     const districtList = {'default':'Xv6R4lzoj',
                         '강남구':'Xv6R4lzoj', 
@@ -172,15 +195,11 @@ export default function landmarkRegister() {
             <div>
                 {landmarkInfo.bookName === result ? <img className='stamp' style={{height:'100px', width:'100px', margin:'20px'}} src={approved}></img> : <img className='processing' style={{ margin:'20px', height:'100px', width:'100px'}} src={processing}></img>}
                 <img className='stamp' style={{height:'100px', width:'100px', margin:'20px'}} src={approved}></img>
-<<<<<<< HEAD
                 <img className='processing' style={{ margin:'20px', height:'100px', width:'100px'}} src={processing}></img>
-=======
-                <img className='stamp' style={{height:'100px', width:'100px', margin:'20px'}} src={approved}></img>
                 <br />
                 <span className='grayfont'>
                 ※건물 디자인 변경, 현수막, 디스플레이, 리모델링, 재건축 등으로 인해 인식이 불안정할 수 있습니다※
                 </span>
->>>>>>> 8b296b4bb9960dd9109677c2839d84c007ccb07f
             </div>
         </div>
 
