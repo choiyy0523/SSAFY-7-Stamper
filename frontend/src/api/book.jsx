@@ -25,9 +25,12 @@ function getListByCategory(userSeq, category, token, success, error) {
 /*
   response.data: {statusCode, message, {userBook}, {book}}
 */
-function getBookDetail(userSeq, bookSeq, token, success, error) {
-  instance.get(`/book/${userSeq}/${bookSeq}`, userSeq, bookSeq, { headers: createHeaders(token) }).then(success).catch(error);
-}
+function getBookDetail(userSeq, bookSeq, success, error) {
+  instance.get(`/book/${userSeq}/${bookSeq}`, userSeq, bookSeq).then(success).catch(error)};
+
+// function getBookDetail(userSeq, bookSeq, token, success, error) {
+//   instance.get(`/book/${userSeq}/${bookSeq}`, userSeq, bookSeq, { headers: createHeaders(token) }).then(success).catch(error);
+
 
 /*
   updateBookInfo : {userSeq, bookSeq, imageURL}

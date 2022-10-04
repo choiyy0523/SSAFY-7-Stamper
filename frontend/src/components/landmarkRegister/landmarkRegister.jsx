@@ -8,11 +8,17 @@ import { useParams } from 'react-router-dom';
 import './landmarkRegister.css'
 import { Button } from "@mui/material";
 import { getBookDetail } from '../../api/book';
+import processing from '../../assets/processing.gif'
+import { useQuery } from '@tanstack/react-query';
+import landmark from '../landmark/landmark';
+import EXIF from 'exif-js'
 
 export default function landmarkRegister() {
     const landmarkNo = useParams();
+    const [landmarkInfo, setLandmarkInfo] = useState({});
     const [district, setDistrict] = useState('default');
-    const [coordinates, setCoordinates] = useState();
+    const [longitude, setLongitude] = useState(0);
+    const [latitude, setLatitude] = useState(0);
     const [image, setImage] = useState(null);
     const [url, setURL] = useState('');
     const [loading,setLoading]=useState(false);
@@ -21,11 +27,22 @@ export default function landmarkRegister() {
     const [result,setResult]=useState(null);
     const fileRef = useRef();
 
-    // getBookDetail({userSeq:2, bookSeq:5, token:'98696'},  (response)=>{
-    //     console.log(response.data)
-    // }, (error)=>{
-    //     console.log(error)
-    // })
+    getBookDetail(2, 30, (response)=>{
+        // console.log(response.data.book)
+        setLandmarkInfo(response.data.book)
+    }, (error)=>{
+        console.log(error)
+    })
+
+    useEffect(() => {
+        getBookDetail(2, 30, (response)=>{
+            // console.log(response.data.book)
+            setLandmarkInfo(response.data.book)
+        }, (error)=>{
+            console.log(error)
+        })
+    }, [landmarkInfo])
+
 
     let model
 
@@ -46,6 +63,17 @@ export default function landmarkRegister() {
         setDistrict(event.target.value)
         console.log(district)
     }
+
+    useEffect(() => {
+        EXIF.getData(url, function() {
+            setLongitude(EXIF.getTag(url, 'GPSLongitude'))
+            setLatitude(EXIF.getTag(url, "GPSLatitude"))
+            console.log(longitude)
+            console.log(latitude)        
+        })
+    }, [url, image])
+
+
 
     const districtList = {'default':'Xv6R4lzoj',
                         '강남구':'Xv6R4lzoj', 
@@ -91,12 +119,18 @@ export default function landmarkRegister() {
         setShowResult(true)
         setLoading(false)
         setResult(prediction[0].className)
+        // if () {
+
+        // }
+        // else {
+        //     return false
+        // }
         console.log('답: ', prediction[0].className + prediction[0].probability.toFixed(2));
         console.log('답: ', prediction[1].className + prediction[1].probability.toFixed(2));
         console.log('답: ', prediction[2].className + prediction[2].probability.toFixed(2));
     }
 
-    function getDistanceFromLatLonInKm(latitude1,longitude1,latitude2,longitude2,units) {
+    function getDistance(latitude1,longitude1,latitude2,longitude2,units) {
         let p = 0.017453292519943295;    //This is  Math.PI / 180
         let c = Math.cos;
         let a = 0.5 - c((latitude2 - latitude1) * p)/2 + 
@@ -159,8 +193,9 @@ export default function landmarkRegister() {
             </div>
             <Button color="secondary" onClick={predict}>검증</Button>
             <div>
+                {landmarkInfo.bookName === result ? <img className='stamp' style={{height:'100px', width:'100px', margin:'20px'}} src={approved}></img> : <img className='processing' style={{ margin:'20px', height:'100px', width:'100px'}} src={processing}></img>}
                 <img className='stamp' style={{height:'100px', width:'100px', margin:'20px'}} src={approved}></img>
-                <img className='stamp' style={{height:'100px', width:'100px', margin:'20px'}} src={approved}></img>
+                <img className='processing' style={{ margin:'20px', height:'100px', width:'100px'}} src={processing}></img>
                 <br />
                 <span className='grayfont'>
                 ※건물 디자인 변경, 현수막, 디스플레이, 리모델링, 재건축 등으로 인해 인식이 불안정할 수 있습니다※
