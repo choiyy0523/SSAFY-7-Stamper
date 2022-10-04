@@ -275,13 +275,17 @@ const LoginPage = () => {
                       if (response.data.statusCode === 200) {
                         setIsUserId(true);
                         setUserIdMessage("사용 가능한 ID 입니다");
+                      } else if (response.data.statusCode === 409) {
+                        setIsUserId(false);
+                        setUserIdMessage("이미 존재하는 아이디입니다")
                       }
                     },
                     (error) => {
-                      if (error.response.data.statusCode === 409) {
-                        setIsUserId(false);
-                        setUserIdMessage("이미 존재하는 아이디입니다");
-                      }
+                      // if (error.response.data.statusCode === 409) {
+                      //   setIsUserId(false);
+                      //   setUserIdMessage("이미 존재하는 아이디입니다");
+                      // }
+                      console.log(error);
                     }
                   );
                 }}
