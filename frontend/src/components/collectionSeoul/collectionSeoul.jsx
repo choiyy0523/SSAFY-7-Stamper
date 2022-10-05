@@ -79,31 +79,31 @@ const collectionSeoul = () => {
     <path id="CD11680" className="OUTLINE" d="M 503 387 l 10 3 4 4 5 3 7 4 7 4 12 5 0 10 0 4 1 13 1 6 1 10 6 2 7 1 6 2 3 2 12 4 5 2 5 3 6 3 5 4 5 5 3 6 3 5 3 5 4 7 2 2 5 10 3 4 4 5 -10 11 -2 6 -4 0 -3 -4 -9 -2 -4 0 0 2 -1 1 -3 3 -11 3 -1 -7 -4 -4 -2 -7 -5 -6 -2 -3 -4 -8 -11 0 -2 2 -5 3 -8 4 -9 2 -6 1 -4 0 -6 2 -3 -5 -7 -13 -4 -9 -1 -3 -5 -5 -6 1 -7 -10 -6 -17 -5 -13 -5 -15 -3 -9 0 -1 -1 -6 -6 -9 -2 3 -1 0 -7 -6 5 -6 4 -5 4 -5 8 -4 12 0 7 0 z " />
     <path id="CD11710" className="OUTLINE" d="M 621 374 l 6 2 4 2 4 4 0 8 -2 5 -1 3 0 7 5 2 8 5 5 3 8 4 3 2 5 3 5 2 -4 3 0 6 -3 10 4 5 5 3 10 0 9 3 5 5 -1 4 -2 7 -3 9 -4 3 -5 4 -5 5 -2 6 -3 7 -5 5 -10 0 -6 0 0 8 -4 5 -6 -2 -2 -1 -1 4 -4 -5 -3 -4 -5 -10 -2 -2 -4 -7 -3 -5 -3 -5 -3 -6 -5 -5 -5 -4 -6 -3 -5 -3 -5 -2 -12 -4 -3 -2 -6 -2 -7 -1 -6 -2 -1 -10 -1 -6 -1 -13 0 -4 0 -10 6 2 5 1 5 1 5 -1 6 -3 8 -5 3 -2 3 -3 11 -12 5 -4 5 -5 4 -5 z " />
     <path id="CD11740" className="OUTLINE" d="M 726 320 l 1 7 3 9 0 9 1 9 1 10 1 5 -1 -1 -5 -1 -3 0 -4 2 -11 0 -8 1 -5 6 -4 5 -4 6 -2 4 -1 8 -4 7 -3 2 1 1 -1 2 -6 7 -1 8 -5 -2 -5 -3 -3 -2 -8 -4 -5 -3 -8 -5 -5 -2 0 -7 1 -3 2 -5 0 -8 -4 -4 -4 -2 -6 -2 -7 0 2 -4 2 -5 2 -10 4 -10 1 -1 4 -6 7 -6 5 -3 6 -3 8 -3 4 -1 5 0 11 0 9 -4 7 -5 8 -6 11 -6 11 0 0 7 3 6 z " />
-    </g><g filter="url(#dropshadow2)"></g><g filter="url(#dropshadow2)"><text id="LCD11110" className="TEXT" x="399" y="277">{ jongnogu }</text>
-    <text id="LCD11140" className="TEXT" x="433" y="338">{ junggu }</text>
-    <text id="LCD11170" className="TEXT" x="407" y="395">{ yongsangu }</text>
-    <text id="LCD11200" className="TEXT" x="505" y="356">{ seongdonggu }</text>
-    <text id="LCD11215" className="TEXT" x="577" y="365">{ gwangjingu }</text>
-    <text id="LCD11230" className="TEXT" x="528" y="294">{ dongdaemungu }</text>
-    <text id="LCD11260" className="TEXT" x="589" y="270">{ jungnanggu }</text>
-    <text id="LCD11290" className="TEXT" x="466" y="258">{ seongbukgu }</text>
-    <text id="LCD11305" className="TEXT" x="459" y="181">{ gangbukgu}</text>
-    <text id="LCD11320" className="TEXT" x="494" y="125">{ dobonggu }</text>
-    <text id="LCD11350" className="TEXT" x="560" y="153">{ nowongu }</text>
-    <text id="LCD11380" className="TEXT" x="323" y="218">{ eunpyeonggu }</text>
-    <text id="LCD11410" className="TEXT" x="342" y="302">{ seodaemungu }</text>
-    <text id="LCD11440" className="TEXT" x="293" y="339">{ mapogu }</text>
-    <text id="LCD11470" className="TEXT" x="209" y="421">{ yangcheongu }</text>
-    <text id="LCD11500" className="TEXT" x="156" y="334">{ gangseogu}</text>
-    <text id="LCD11530" className="TEXT" x="199" y="470">{ gurogu }</text>
-    <text id="LCD11545" className="TEXT" x="279" y="537">{ geumcheongu }</text>
-    <text id="LCD11560" className="TEXT" x="295" y="413">{ yeongdeungpogu }</text>
-    <text id="LCD11590" className="TEXT" x="361" y="461">{ dongjakgu }</text>
-    <text id="LCD11620" className="TEXT" x="353" y="529">{ gwanakgu}</text>
-    <text id="LCD11650" className="TEXT" x="481" y="515">{ seochogu }</text>
-    <text id="LCD11680" className="TEXT" x="533" y="464">{ gangnamgu }</text>
-    <text id="LCD11710" className="TEXT" x="624" y="448">{ songpagu }</text>
-    <text id="LCD11740" className="TEXT" x="675" y="358">{ gangdonggu}</text>
+    </g><g filter="url(#dropshadow2)"></g><g filter="url(#dropshadow2)"><text id="LCD11110" className="TEXT" x="399" y="277"><a href="/collection/seoul/종로구">{ jongnogu }</a></text>
+    <text id="LCD11140" className="TEXT" x="433" y="338"><a href="/collection/seoul/중구">{ junggu }</a></text>
+    <text id="LCD11170" className="TEXT" x="407" y="395"><a href="/collection/seoul/용산구">{ yongsangu }</a></text>
+    <text id="LCD11200" className="TEXT" x="505" y="356"><a href="/collection/seoul/성동구">{ seongdonggu }</a></text>
+    <text id="LCD11215" className="TEXT" x="577" y="365"><a href="/collection/seoul/광진구">{ gwangjingu }</a></text>
+    <text id="LCD11230" className="TEXT" x="528" y="294"><a href="/collection/seoul/동대문구">{ dongdaemungu }</a></text>
+    <text id="LCD11260" className="TEXT" x="589" y="270"><a href="/collection/seoul/중랑구">{ jungnanggu }</a></text>
+    <text id="LCD11290" className="TEXT" x="466" y="258"><a href="/collection/seoul/성북구">{ seongbukgu }</a></text>
+    <text id="LCD11305" className="TEXT" x="459" y="181"><a href="/collection/seoul/강북구">{ gangbukgu}</a></text>
+    <text id="LCD11320" className="TEXT" x="494" y="125"><a href="/collection/seoul/도봉구">{ dobonggu }</a></text>
+    <text id="LCD11350" className="TEXT" x="560" y="153"><a href="/collection/seoul/노원구">{ nowongu }</a></text>
+    <text id="LCD11380" className="TEXT" x="323" y="218"><a href="/collection/seoul/은평구">{ eunpyeonggu }</a></text>
+    <text id="LCD11410" className="TEXT" x="342" y="302"><a href="/collection/seoul/서대문구">{ seodaemungu }</a></text>
+    <text id="LCD11440" className="TEXT" x="293" y="339"><a href="/collection/seoul/마포구">{ mapogu }</a></text>
+    <text id="LCD11470" className="TEXT" x="209" y="421"><a href="/collection/seoul/양천구">{ yangcheongu }</a></text>
+    <text id="LCD11500" className="TEXT" x="156" y="334"><a href="/collection/seoul/강서구">{ gangseogu}</a></text>
+    <text id="LCD11530" className="TEXT" x="199" y="470"><a href="/collection/seoul/구로구">{ gurogu }</a></text>
+    <text id="LCD11545" className="TEXT" x="279" y="537"><a href="/collection/seoul/금천구">{ geumcheongu }</a></text>
+    <text id="LCD11560" className="TEXT" x="295" y="413"><a href="/collection/seoul/영등포구">{ yeongdeungpogu }</a></text>
+    <text id="LCD11590" className="TEXT" x="361" y="461"><a href="/collection/seoul/동작구">{ dongjakgu }</a></text>
+    <text id="LCD11620" className="TEXT" x="353" y="529"><a href="/collection/seoul/관악구">{ gwanakgu}</a></text>
+    <text id="LCD11650" className="TEXT" x="481" y="515"><a href="/collection/seoul/서초구">{ seochogu }</a></text>
+    <text id="LCD11680" className="TEXT" x="533" y="464"><a href="/collection/seoul/강남구">{ gangnamgu }</a></text>
+    <text id="LCD11710" className="TEXT" x="624" y="448"><a href="/collection/seoul/송파구">{ songpagu }</a></text>
+    <text id="LCD11740" className="TEXT" x="675" y="358"><a href="/collection/seoul/강동구">{ gangdonggu}</a></text>
     </g></svg>
     <SeoulBar></SeoulBar>
     
