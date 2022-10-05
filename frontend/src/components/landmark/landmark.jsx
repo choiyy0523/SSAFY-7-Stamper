@@ -58,7 +58,7 @@ export default function landmark() {
 
 
             let tempURL = baseURL;
-            if (data.userBook) {
+            if (!data.userBook) {
                 // 수집하지 않은 도감의 경우 기본이미지로 url 저장
                 tempURL += data.book.bookImageURL;
                 setImageURL(tempURL);
@@ -269,7 +269,7 @@ export default function landmark() {
             <div>
             <div>{landmarkName}</div>
         <div>
-            <img src={imageURL} alt={landmarkName}></img>
+            <img width = '50%' src={imageURL} alt={landmarkName}></img>
         </div>
         <div>
                 <p>대충 설명</p>
@@ -333,9 +333,6 @@ export default function landmark() {
                 {landmarkInfo.bookName === resultName ? <img className='stamp' style={{height:'100px', width:'100px', margin:'30px'}} src={approved}></img> : <img className='processing' style={{ margin:'40px', height:'100px', width:'100px'}} src={processing}></img>}
                 {locationApproved === true ? <img className='stamp' style={{height:'100px', width:'100px', margin:'30px'}} src={approved}></img> : <img className='processing' style={{ margin:'40px', height:'100px', width:'100px'}} src={processing}></img>}
                 <br />
-                <text>
-                    {landmarkInfo.bookDescription}
-                </text>
                 <br/>
                 <span className='grayfont'>
                 ※건물 디자인 변경, 현수막, 디스플레이, 리모델링, 재건축 등으로 인해 인식이 불안정할 수 있습니다※
