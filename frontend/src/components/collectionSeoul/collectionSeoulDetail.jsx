@@ -1,9 +1,8 @@
-
 import { useEffect } from "react";
 import {useParams} from "react-router-dom";
 import { getListByGugun } from '../../api/book';
 import { Map, MapMarker, Polyline } from "react-kakao-maps-sdk";
-import { Fragment, useState, useRef} from 'react';
+import { useState, useRef} from 'react';
 
 const collectionSeoulDetail = () =>{
 
