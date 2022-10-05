@@ -74,7 +74,7 @@ function App() {
             <Route path="/collection/seoul/index" element={<CollectionSeoul/>}></Route>
             <Route path="/collection/theme/index" element={<CollectionTheme/>}></Route>
             <Route path="/collection/seoul/:districtNo" element={<CollectionSeoulDetail/>}></Route>
-            <Route path="/collection/seoul/:themeNo" element={<CollectionThemeDetail/>}></Route>
+            <Route path="/collection/theme/:themeNo" element={<CollectionThemeDetail/>}></Route>
           </Routes>
         
         </Router>
