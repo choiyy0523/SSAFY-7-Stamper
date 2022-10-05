@@ -43,3 +43,7 @@
   font-family: BMJua;
   src: url("./assets/fonts/BM-Jua.ttf");
 }
+
+.background {
+  background-color: #1a1a1a;
+}

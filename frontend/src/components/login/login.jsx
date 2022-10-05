@@ -318,7 +318,7 @@ const LoginPage = () => {
                 id = "outlined-password-input"
                 type="password"
                 color="secondary"
-                sx={{ input: { color: 'red' } }}
+                sx={{ input: { fontFamily : 'Arial' } }}
                 required
                 onChange={(e) => {
                   setUserPass(e.target.value);
@@ -512,6 +512,7 @@ const LoginPage = () => {
                 id = "outlined-password-input"
                 type="password"
                 color="secondary"
+                sx={{ input: { fontFamily : 'Arial' } }}
                 required
                 value={userPass}
                 onChange={(e) => setUserPass(e.target.value)}
