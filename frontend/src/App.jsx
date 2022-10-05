@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient, QueryClient, QueryClientProvider,} from '@tanstack/react-query'
 import { Navigate } from "react-router-dom";
+
+import { useState } from "react";
 
 import Header from './components/header/header';
 import Loginpage from './components/login/login'
@@ -18,6 +19,9 @@ import CollectionSeoulDetail from './components/collectionSeoul/collectionSeoulD
 import ImageTest from './components/imageTest/imageTest';
 import {createTheme, ThemeProvider} from "@mui/material";
 
+import { useSelector, useDispatch } from "react-redux";
+import { SET_LOGOUT } from "./redux/UserInfo";
+
 const theme = createTheme({
   typography: {
     fontFamily: "BMJua"
@@ -27,8 +31,6 @@ const theme = createTheme({
   }
 })
 
-import { useSelector, useDispatch } from "react-redux";
-import { SET_LOGOUT } from "./redux/UserInfo";
 import './App.css';
 
 function App() {

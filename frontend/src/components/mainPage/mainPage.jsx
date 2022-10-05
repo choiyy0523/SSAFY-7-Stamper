@@ -1,7 +1,17 @@
 import "./mainPage.css"
 import * as React from 'react';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Fragment, useState, useRef, useEffect } from 'react';
 
 const mainpage = () => {
+
+    const userInfo = useSelector((state) => state.UserInfo);
+    const userName = userInfo.userInfo.userName;
+    const userNick = userInfo.userInfo.userNickname;
+    const userSeq = userInfo.userInfo.userSeq;
+    const token = userInfo.accessToken;
+
     return (
         <div>
             <br />
