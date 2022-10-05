@@ -26,8 +26,9 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+
 import { Box } from "@mui/system";
-import { typography } from "@mui/system";
+
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -51,6 +52,12 @@ const LoginPage = () => {
   const [userNameMessage, setUserNameMessage] = useState("");
   const [userNickMessage, setUserNickMessage] = useState("");
 
+  // const useStyles = makeStyles((theme) => ({
+  //   input: {
+  //     color: "black",
+  //   },
+  // }));
+
   const LoginOrSignUp = (e) => {
     e.preventDefault(); // form 제출 막고
     setUserId(""); // id, password 입력하던거 초기화
@@ -62,6 +69,8 @@ const LoginPage = () => {
     const newValue = !IsSignUp;
     setIsSignUp(newValue); // true -> false 변경
   };
+
+
 
 
   // 회원가입
@@ -252,11 +261,12 @@ const LoginPage = () => {
                 variant = "outlined"
                 id = "outlined-basic"
                 type="text"
+                color="secondary"
+                sx={{ input: { color: 'blue' } }}
                 required
                 value={userId}
                 onChange={(e) => {
                   setUserId(e.target.value);
-                  console.log(e.target.value.length)
                   if (e.target.value.length < 5 || e.target.value.length > 10) {
                     setIsUserId(false);
                     setUserIdMessage("5~10자 사이의 ID를 입력하세요");
@@ -305,11 +315,11 @@ const LoginPage = () => {
               <TextField
                 label = "비밀번호"
                 variant = "outlined"
-                id = "outlined-basic"
+                id = "outlined-password-input"
                 type="password"
-                className="passwordcolor"
+                color="secondary"
+                sx={{ input: { color: 'red' } }}
                 required
-                sx={{ input: { color: 'black' }}}
                 onChange={(e) => {
                   setUserPass(e.target.value);
                   if (!passwordRegex.test(e.target.value)) {
@@ -342,6 +352,7 @@ const LoginPage = () => {
                 variant = "outlined"
                 id = "outlined-basic"
                 type="text"
+                color="secondary"
                 required
                 value={userName}
                 onChange={(e) => {
@@ -372,6 +383,7 @@ const LoginPage = () => {
                 variant = "outlined"
                 id = "outlined-basic"
                 type="text"
+                color="secondary"
                 value={userNick}
                 required
                 onChange={(e) => {
@@ -398,6 +410,7 @@ const LoginPage = () => {
                 varient = "outlined"
                 id = "outlined-basic"
                 type = "text"
+                color="secondary"
                 value = {userEmail}
                 onChange={(e) => {
                   setUserEmail(e.target.value);
@@ -412,6 +425,7 @@ const LoginPage = () => {
                 label = "전화번호"
                 varient = "outlined"
                 id = "outlined-basic"
+                color="secondary"
                 type = "text"
                 value = {userPhone}
                 onChange={(e) => {
@@ -485,6 +499,7 @@ const LoginPage = () => {
                 variant = "outlined"
                 id = "outlined-basic"
                 type="text"
+                color="secondary"
                 required
                 value={userId}
                 onChange={(e) => setUserId(e.target.value)}
@@ -494,7 +509,9 @@ const LoginPage = () => {
               <TextField
                 label = "비밀번호"
                 variant = "outlined"
-                id = "outlined-basic"
+                id = "outlined-password-input"
+                type="password"
+                color="secondary"
                 required
                 value={userPass}
                 onChange={(e) => setUserPass(e.target.value)}
@@ -712,6 +729,6 @@ const LoginPage = () => {
       </Modal>
     </div>
   );
-};
+ };
 
 export default LoginPage;
