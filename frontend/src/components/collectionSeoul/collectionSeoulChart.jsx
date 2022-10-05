@@ -9,9 +9,13 @@ import {
     Legend,
   } from 'chart.js';
 import { borderColor, Container } from "@mui/system";
+import { getCountOfGugun } from '../../api/book';
+import { Fragment, useState, useRef, useEffect } from 'react';
+
+
 
 export default function seoulChart() {
-
+    
     ChartJS.register(
         CategoryScale,
         LinearScale,
@@ -20,6 +24,18 @@ export default function seoulChart() {
         Tooltip,
         Legend
       );    
+
+      const[fordata, setFordata] = useState([]);
+      
+      // getCountOfGugun(2, '654787', (response)=>{
+      //   console.log(response.data.gc)
+      //   for (var i=0; i<25; i++){
+      //     fordata[24-i] = response.data.gc[i].count;
+      //   }
+      //   //setLandmarkInfo(response.data.book)
+      // }, (error)=>{
+      //   console.log(error)
+      // })
 
     const data = {
         labels: [
@@ -30,7 +46,7 @@ export default function seoulChart() {
             '용산구', '은평구', '종로구', '중구', '중랑구'],
         datasets: [
             {
-            data:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25],
+            data:fordata,
             backgroundColor: (context) => {
                 const ctx = context.chart.ctx;
                 const gradient = ctx.createLinearGradient(0, 0, 0, 200);
@@ -94,6 +110,20 @@ export default function seoulChart() {
           },
       };
 
+      useEffect(() => {
+        getCountOfGugun(2, '654787', (response)=>{
+          console.log(response.data.gc)
+          let temp = [];
+          for (var i=0; i<25; i++){
+            temp[24-i] = response.data.gc[i].count;
+          }
+
+          setFordata(temp);
+          //setLandmarkInfo(response.data.book)
+        }, (error)=>{
+          console.log(error)
+        })
+      }, [])
     return (
         <Bar data={data} options={options} height={'200%'}></Bar>
     )

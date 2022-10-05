@@ -44,14 +44,15 @@ function updateBookDetail(updateBookInfo, token, success, error) {
   response.data: {statusCode, message, GC:{List<GugunClass>}}
 */
 function getCountOfGugun(userSeq, token, success, error) {
-  instance.patch(`/book/countofgu/${userSeq}`, userSeq, { headers: createHeaders(token) }).then(success).catch(error);
+  //instance.patch(`/book/countofgu/${userSeq}`, userSeq, { headers: createHeaders(token) }).then(success).catch(error);
+  instance.get(`/book/countofgu/${userSeq}`, userSeq, { headers: createHeaders(token) }).then(success).catch(error);
 }
 
 /*
   response.data: {statusCode, message, CC:{List<CatClass>}}
 */
 function getCountOfCategory(userSeq, token, success, error) {
-  instance.patch(`/book/countofcat/${userSeq}`, userSeq, { headers: createHeaders(token) }).then(success).catch(error);
+  instance.get(`/book/countofcat/${userSeq}`, userSeq, { headers: createHeaders(token) }).then(success).catch(error);
 }
 /*
   response.data: {statusCode, message, collectedBookList: {List<userbookCollection>}, totalBookList: {List<Book>}}

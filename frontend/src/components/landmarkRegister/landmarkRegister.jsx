@@ -28,16 +28,16 @@ export default function landmarkRegister() {
     const fileRef = useRef();
 
     getBookDetail(2, 30, (response)=>{
-        // console.log(response.data.book)
-        setLandmarkInfo(response.data.book)
+        console.log(response.data.book)
+        //setLandmarkInfo(response.data.book)
     }, (error)=>{
         console.log(error)
     })
 
     useEffect(() => {
         getBookDetail(2, 30, (response)=>{
-            // console.log(response.data.book)
-            setLandmarkInfo(response.data.book)
+            console.log(response.data.book)
+            //setLandmarkInfo(response.data.book)
         }, (error)=>{
             console.log(error)
         })
