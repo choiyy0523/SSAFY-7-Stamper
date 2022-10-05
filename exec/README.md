@@ -1,0 +1,247 @@
+![20220916164021](https://user-images.githubusercontent.com/97646070/194148131-c477cea5-8f98-4bee-a53b-8608924fe918.png)
+
+(22.10.06 현규 작성, back/front 모두 전체적으로 보고 검토) 작성 완료 후 ~~이 한 줄 전부 삭제~~
+
+## 목차
+
+- [기술 스택](#기술-스택)
+- [구현 기능](#구현-기능)
+  - [역할 분담](#역할-분담)
+- [시연 시나리오](#시연-시나리오)
+- [프로젝트 회고](#프로젝트-회고)
+
+## 프로젝트 소개
+### 프로젝트 동기
+  1. 여행을 단순히 사진 찍는 것 이외의 방식으로 기념하고 싶다.
+  2. 늘어나는 여행 수요에 맞춰서 사용자들이 재밌게 이용할 수 있는 서비스가 필요하다.
+
+
+
+### 프로젝트 개요
+1. 사용자는 AI 분석 사진 인증 방식이나 위치 기반 인증 방식을 통해 사진을 등록할 수 있다.
+2. 서울 지역 안에 있는 랜드마크들을 등록할 수 있다.
+3. 서울 지역 안에 있는 랜드마크들을 12가지의 테마별, 25개의 구별로 나누어 볼 수 있다.
+4. 랜드마크들을 수집하여 일정 조건을 충족하면 해당 업적의 보상이 제공된다.
+5. 개별 랜드마크 페이지에서 댓글 작성을 할 수 있고, 다른 사용자들이 쓴 댓글을 확인할 수 있다.
+
+
+
+## 기술 스택
+
+### ![기술스택](https://user-images.githubusercontent.com/97646070/194155652-ddad4bf5-f965-4e73-a721-34faf445fa81.png)
+
+### 협업툴
+
+- GitLab
+- Figma
+- Notion
+- Jira
+
+- Mattermost
+- Webex
+
+
+
+### FrontEnd
+
+
+| React  | Redux | @material-ui/core | @mui/material | axios  |
+| :----: | :---: | :---------------: | :-----------: | :----: |
+| 18.2.0 | 4.2.0 |      4.12.4       |    5.10.6     | 0.27.2 |
+
+| @teachablemachine/image | React-kakao-maps-sdk | chart.js | vite  | Visual Studio Code |
+| :---------------------: | :------------------: | :------: | :---: | :----------------: |
+|          0.8.5          |        1.1.4         |  3.9.1   | 3.1.0 |       1.71.2       |
+
+
+
+### BackEnd (22.10.06 수정 필요)
+
+
+|  Java  | SpringBoot | MySQL  | MyBatis | Node.js |
+| :----: | :--------: | :----: | :-----: | :-----: |
+| Java 8 |   5.3.19   | 8.0.30 |  3.5.9  | 18.7.0  |
+
+| Ubuntu(EC2) |  Docker  | Jenkins | Raspbian |        IntelliJ IDEA        |
+| :---------: | :------: | :-----: | :------: | :-------------------------: |
+|   20.04.4   | 20.10.17 | 2.346.3 |  Latest  | 2022.1.2 (Ultimate Edition) |
+
+
+
+#### Build
+
+- SpringBoot
+
+1. Dockerfile
+``` bash
+FROM openjdk:8\-jdk\-alpine
+ARG JAR\_FILE\=\*.jar
+COPY ${JAR\_FILE} app.jar
+ENTRYPOINT \["java","-jar","/app.jar"\]
+```
+
+- java 8 사용
+- 현 경로에서의 jar 파일을 파라미터로 하여 app.jar로 전달
+- java -jar app.jar 명령어를 수행하는 이미지 생성
+- docker build -t [컨테이너명] [Dockerfile 경로]
+
+<br>
+
+2. 수동 Build
+``` bash
+mvn clean build
+```
+
+<br>
+
+
+
+- React
+1. npm 설치
+
+``` bash
+npm i npm
+npm i -g @vue/cli-service
+npm i -g @vue/cli-plugin-babel
+npm i -g @vue/cli-plugin-eslint
+```
+
+2. React Build
+``` bash
+npm i --legacy-peer-deps
+````
+~~dependancy에 등록된 패키지 전부 설치~~
+
+``` bash
+npm run build
+```
+dist 폴더 생성
+
+3. React 실행
+
+```bash
+npm run dev
+```
+
+<br>
+
+- MySQL
+
+1. 컨테이너 생성
+``` bash
+docker run --name [컨테이너명] -e MYSQL_ROOT_PASSWORD='[패스워드]' -d -p [외부포트]:[내부포트] [이미지명]
+````
+
+2. MySQL 접속
+``` bash
+docker exec -it [컨테이너명] bash
+mysql -u root -p
+```
+
+<br>
+
+## 구현 기능
+
+- 회원 관리
+- 랜드마크 등록 인증
+- 랜드마크 수집 상태 시각화
+
+  
+
+### 역할 분담
+
+- Front-end
+  - 오현규(팀장) : Figma 레이아웃/디자인 작성, Jira 컨벤션/스프린트 관리, 로고 제작, 중간 발표 PPT/대본 작성 및 발표, 광고 UCC/시연 영상 제작, 웹페이지 HTML/CSS 작성
+  - 임재현 : 
+  - 최윤영 : 
+
+- Back-end
+  - 이경준 : 
+  - 정찬희 :
+  - 홍인호 :
+
+  
+  
+
+## 시연 시나리오
+
+
+### I. MainView
+
+#### 	I - I. 디자인
+
+
+
+#### 	I - II. 구별과 테마별
+
+
+
+#### 	I - III. 로그인, 회원가입, 로그아웃(미완성)
+
+
+
+#### 	I - IV. 비밀번호 재설정 (미완성)
+
+
+
+
+
+### II. 구별 페이지
+
+#### 	II - I. 구별 페이지 각 
+
+
+
+#### 	II - II. 
+
+
+
+
+
+### III. 테마별 페이지
+
+#### 	III - I. 
+
+
+
+### IV. 핵심 기능
+
+#### 	IV - I. Teachable Machine
+
+
+
+#### 	IV - II. 위도 경도 인증 시스템
+
+
+
+#### 	IV - III. 
+
+
+
+
+<br>
+
+
+
+## 프로젝트 회고
+
+1. keep(만족한 것)
+- 프로젝트 및 Git Commit 네이밍컨벤션 정의
+- API 명세서를 정의한 것
+- 프로젝트 진행의 흐름을 경험할 수 있었던 것
+- 보완할 점/부족한 점을 알 수 있게된 것
+
+
+
+2. problem(불편했던 것)
+- 자신이 맡지 않은 포지션(Back/Front)에서 어떤 작업을 하고 있는지 이해와 소통이 부족했던 것
+- 일정 관리가 원활하지 않아 제품의 완성도를 챙기지 못한 것
+
+
+
+3. try(개선 방법)
+- EC2뿐만 아니라 AWS 여러 자원, 특히 S3 사용하기
+- Spring Security를 같이 사용하여 보안 설정하기
+- Jenkins에서 Shell script와 pipeline을 이용하여 Build 구성하기
+- 주 단위나 격주 단위로 프로젝트 현재 상황 브리핑 시간을 가지고 대처하기
+- 각 기능을 구현하는 데 걸리는 시간을 최대한 보수적으로 계산하고 기획하여 최종 산출물 완성도 높이기
