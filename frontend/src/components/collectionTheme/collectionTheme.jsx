@@ -79,18 +79,18 @@ const collectionTheme = () => {
         <div>    
         <h2>{userNick}의 테마별 수집 현황</h2>
                 <div id = "wrap" className="grid-image">
-                    <section><a href="/collection/theme/공원"><img className="theme_frame theme_icon" src="/src/assets/theme/gongwon.png" alt=""/><br />{ gongwon } ( {forcount[0]} / {fortotal[0]} )</a></section>
-                    <section><a href="/collection/theme/여흥"><img className="theme_frame theme_icon" src="/src/assets/theme/uheung.png" alt="" /><br />{ uheung } ( {forcount[1]} / {fortotal[1]} )</a></section>
-                    <section><a href="/collection/theme/명소"><img className="theme_frame theme_icon" src="/src/assets/theme/myeongso.png" alt="" /><br />{ myeongso } ( {forcount[2]} / {fortotal[2]} )</a></section>
-                    <section><a href="/collection/theme/문화시설"><img className="theme_frame theme_icon" src="/src/assets/theme/munhwasiseol.png" alt="" /><br />{ munwhasiseol } ( {forcount[3]} / {fortotal[3]} )</a></section>
-                    <section><a href="/collection/theme/쇼핑"><img className="theme_frame theme_icon" src="/src/assets/theme/shopping.png" alt="" /><br />{ shopping } ( {forcount[4]} / {fortotal[4]} )</a></section>
-                    <section><a href="/collection/theme/종교"><img className="theme_frame theme_icon" src="/src/assets/theme/jonggyo.png" alt="" /><br />{ jonggyo } ( {forcount[5]} / {fortotal[5]} )</a></section>
-                    <section><a href="/collection/theme/다리"><img className="theme_frame theme_icon" src="/src/assets/theme/bridge.png" alt="" /><br />{ bridge } ( {forcount[6]} / {fortotal[6]} )</a></section>
-                    <section><a href="/collection/theme/전시관"><img className="theme_frame theme_icon" src="/src/assets/theme/jeonsigwan.png" alt="" /><br />{ jeonsigwan } ( {forcount[7]} / {fortotal[7]} )</a></section>
-                    <section><a href="/collection/theme/문화재"><img className="theme_frame theme_icon" src="/src/assets/theme/munhwajae.png" alt="" /><br />{ munhwajae } ( {forcount[8]} / {fortotal[8]} )</a></section>
-                    <section><a href="/collection/theme/지역상징성"><img className="theme_frame theme_icon" src="/src/assets/theme/jiyeoksangjing.png" alt="" /><br />{ jiyeoksangjing } ( {forcount[9]} / {fortotal[9]} )</a></section>
-                    <section><a href="/collection/theme/구청"><img className="theme_frame theme_icon" src="/src/assets/theme/gucheong.png" alt="" /><br />{ gucheong } ( {forcount[10]} / {fortotal[10]} )</a></section>
-                    <section><a href="/collection/theme/기타"><img className="theme_frame theme_icon" src="/src/assets/theme/guitar.png" alt="" /><br />{ guitar } ( {forcount[11]} / {fortotal[11]} )</a></section>
+                    <section><a href="/collection/theme/공원"><img className="theme_frame theme_icon" src="/assets/theme/gongwon.png" alt=""/><br />{ gongwon } ( {forcount[0]} / {fortotal[0]} )</a></section>
+                    <section><a href="/collection/theme/여흥"><img className="theme_frame theme_icon" src="/assets/theme/uheung.png" alt="" /><br />{ uheung } ( {forcount[1]} / {fortotal[1]} )</a></section>
+                    <section><a href="/collection/theme/명소"><img className="theme_frame theme_icon" src="/assets/theme/myeongso.png" alt="" /><br />{ myeongso } ( {forcount[2]} / {fortotal[2]} )</a></section>
+                    <section><a href="/collection/theme/문화시설"><img className="theme_frame theme_icon" src="/assets/theme/munhwasiseol.png" alt="" /><br />{ munwhasiseol } ( {forcount[3]} / {fortotal[3]} )</a></section>
+                    <section><a href="/collection/theme/쇼핑"><img className="theme_frame theme_icon" src="/assets/theme/shopping.png" alt="" /><br />{ shopping } ( {forcount[4]} / {fortotal[4]} )</a></section>
+                    <section><a href="/collection/theme/종교"><img className="theme_frame theme_icon" src="/assets/theme/jonggyo.png" alt="" /><br />{ jonggyo } ( {forcount[5]} / {fortotal[5]} )</a></section>
+                    <section><a href="/collection/theme/다리"><img className="theme_frame theme_icon" src="/assets/theme/bridge.png" alt="" /><br />{ bridge } ( {forcount[6]} / {fortotal[6]} )</a></section>
+                    <section><a href="/collection/theme/전시관"><img className="theme_frame theme_icon" src="/assets/theme/jeonsigwan.png" alt="" /><br />{ jeonsigwan } ( {forcount[7]} / {fortotal[7]} )</a></section>
+                    <section><a href="/collection/theme/문화재"><img className="theme_frame theme_icon" src="/assets/theme/munhwajae.png" alt="" /><br />{ munhwajae } ( {forcount[8]} / {fortotal[8]} )</a></section>
+                    <section><a href="/collection/theme/지역상징성"><img className="theme_frame theme_icon" src="/assets/theme/jiyeoksangjing.png" alt="" /><br />{ jiyeoksangjing } ( {forcount[9]} / {fortotal[9]} )</a></section>
+                    <section><a href="/collection/theme/구청"><img className="theme_frame theme_icon" src="/assets/theme/gucheong.png" alt="" /><br />{ gucheong } ( {forcount[10]} / {fortotal[10]} )</a></section>
+                    <section><a href="/collection/theme/기타"><img className="theme_frame theme_icon" src="/assets/theme/guitar.png" alt="" /><br />{ guitar } ( {forcount[11]} / {fortotal[11]} )</a></section>
                 </div>
         </div>
     );

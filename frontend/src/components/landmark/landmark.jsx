@@ -282,7 +282,7 @@ export default function landmark() {
         </div>
         <div>
             <aside>
-                <img src='../../src/assets/LOGO2.png' alt="LOGO2" width="30" height="30"></img>
+                <img src='/assets/LOGO2.png' alt="LOGO2" width="30" height="30"></img>
                 </aside>
                 <table>
                     <thead>
