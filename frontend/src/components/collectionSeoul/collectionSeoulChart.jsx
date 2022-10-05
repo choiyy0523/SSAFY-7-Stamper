@@ -115,7 +115,7 @@ export default function seoulChart() {
           console.log(response.data.gc)
           let temp = [];
           for (var i=0; i<25; i++){
-            temp[24-i] = response.data.gc[i].count;
+            temp[i] = response.data.gc[i].count;
           }
 
           setFordata(temp);
