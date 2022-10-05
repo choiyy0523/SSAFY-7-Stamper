@@ -7,7 +7,7 @@ const userprofileModify = () => {
         <div>
             {/* 프로필 사진과 이름 */}
             <div className="item">
-                <img className="temp_dummy_profile_photo" src="/src/assets/components/temp_user.png" alt="" />
+                <img className="temp_dummy_profile_photo" src="/assets/components/temp_user.png" alt="" />
                 <p className="muruk">Stamper</p>
                 <p>(닉네임)</p>
             </div>
@@ -51,7 +51,7 @@ const userprofileModify = () => {
         
             <div className="nav_position"><div> 
                 <a className="item" href="/profile/:userNo">
-                    <img className="nav_undo" src="/src/assets/components/undo.png" alt="" />
+                    <img className="nav_undo" src="/assets/components/undo.png" alt="" />
                 </a></div>
             </div>
         </div> 

@@ -8,7 +8,7 @@ const userprofile = () => {
             <div className="container profile_background">
                 {/* 프로필 사진과 이름 */}
                 <div className="item">
-                    <img className="temp_dummy_profile_photo" src="/src/assets/components/user.png" alt="" />
+                    <img className="temp_dummy_profile_photo" src="/assets/components/user.png" alt="" />
                     <p> 김싸피 </p>
                 </div>
                 
@@ -19,11 +19,11 @@ const userprofile = () => {
                 </div>
 
                 <a className="item" href="#">
-                    <img className="profile_control_comp" src="/src/assets/components/myintro.png" alt="" />
+                    <img className="profile_control_comp" src="/assets/components/myintro.png" alt="" />
                 </a>
 
                 <a className="item" href="/profile/:userNo/modify">
-                    <img className="profile_control_comp" src="/src/assets/components/account.png" alt="" />
+                    <img className="profile_control_comp" src="/assets/components/account.png" alt="" />
                 </a>
 
             </div>
@@ -38,7 +38,7 @@ const userprofile = () => {
                 
                 {/* 로고 나열 */}
                 <div>
-                  <img className="profile_comp" src="/src/assets/components/stamp.png" alt="" />
+                  <img className="profile_comp" src="/assets/components/stamp.png" alt="" />
                 </div>
             </div> 
         </div>

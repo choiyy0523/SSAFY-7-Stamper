@@ -234,19 +234,19 @@ const LoginPage = () => {
         <div class="center">
           <span className='logo2 muruk'>회원가입</span>
           <div>             
-           <img className="sticker1" src="/src/assets/login/apartment.png" alt="" />
-           <img className="sticker2" src="/src/assets/login/bridge.png" alt="" />
-           <img className="sticker3" src="/src/assets/login/church.png" alt="" />
-           <img className="sticker4" src="/src/assets/login/circus.png" alt="" />
-           <img className="sticker5" src="/src/assets/login/tram.png" alt="" />
-           <img className="sticker6" src="/src/assets/login/ferris.png" alt="" />
-           <img className="sticker7" src="/src/assets/login/ferris2.png" alt="" />
-           <img className="sticker8" src="/src/assets/login/forest.png" alt="" />
-           <img className="sticker9" src="/src/assets/login/government.png" alt="" />
-           <img className="sticker10" src="/src/assets/login/lighthouse.png" alt="" />
-           <img className="sticker11" src="/src/assets/login/park.png" alt="" />
-           <img className="sticker12" src="/src/assets/login/eye1.png" alt="" />
-           <img className="sticker13" src="/src/assets/login/eye2.png" alt="" />
+           <img className="sticker1" src="/assets/login/apartment.png" alt="" />
+           <img className="sticker2" src="/assets/login/bridge.png" alt="" />
+           <img className="sticker3" src="/assets/login/church.png" alt="" />
+           <img className="sticker4" src="/assets/login/circus.png" alt="" />
+           <img className="sticker5" src="/assets/login/tram.png" alt="" />
+           <img className="sticker6" src="/assets/login/ferris.png" alt="" />
+           <img className="sticker7" src="/assets/login/ferris2.png" alt="" />
+           <img className="sticker8" src="/assets/login/forest.png" alt="" />
+           <img className="sticker9" src="/assets/login/government.png" alt="" />
+           <img className="sticker10" src="/assets/login/lighthouse.png" alt="" />
+           <img className="sticker11" src="/assets/login/park.png" alt="" />
+           <img className="sticker12" src="/assets/login/eye1.png" alt="" />
+           <img className="sticker13" src="/assets/login/eye2.png" alt="" />
          </div>
          <br />
 
@@ -465,21 +465,21 @@ const LoginPage = () => {
         <div>
         {/* 스탬퍼 로고와 이름 */}
           <div>             
-          <img className="logo" src="/src/assets/LOGO.png" alt="" />
+          <img className="logo" src="/assets/LOGO.png" alt="" />
           <h2 className="muruk english_title">Stamper</h2>
-            <img className="sticker1" src="/src/assets/login/apartment.png" alt="" />
-            <img className="sticker2" src="/src/assets/login/bridge.png" alt="" />
-            <img className="sticker3" src="/src/assets/login/church.png" alt="" />
-            <img className="sticker4" src="/src/assets/login/circus.png" alt="" />
-            <img className="sticker5" src="/src/assets/login/tram.png" alt="" />
-            <img className="sticker6" src="/src/assets/login/ferris.png" alt="" />
-            <img className="sticker7" src="/src/assets/login/ferris2.png" alt="" />
-            <img className="sticker8" src="/src/assets/login/forest.png" alt="" />
-            <img className="sticker9" src="/src/assets/login/government.png" alt="" />
-            <img className="sticker10" src="/src/assets/login/lighthouse.png" alt="" />
-            <img className="sticker11" src="/src/assets/login/park.png" alt="" />
-            {/* <img className="sticker12" src="/src/assets/login/eye1.png" alt="" />
-            <img className="sticker13" src="/src/assets/login/eye2.png" alt="" /> */}
+            <img className="sticker1" src="/assets/login/apartment.png" alt="" />
+            <img className="sticker2" src="/assets/login/bridge.png" alt="" />
+            <img className="sticker3" src="/assets/login/church.png" alt="" />
+            <img className="sticker4" src="/assets/login/circus.png" alt="" />
+            <img className="sticker5" src="/assets/login/tram.png" alt="" />
+            <img className="sticker6" src="/assets/login/ferris.png" alt="" />
+            <img className="sticker7" src="/assets/login/ferris2.png" alt="" />
+            <img className="sticker8" src="/assets/login/forest.png" alt="" />
+            <img className="sticker9" src="/assets/login/government.png" alt="" />
+            <img className="sticker10" src="/assets/login/lighthouse.png" alt="" />
+            <img className="sticker11" src="/assets/login/park.png" alt="" />
+            {/* <img className="sticker12" src="/assets/login/eye1.png" alt="" />
+            <img className="sticker13" src="/assets/login/eye2.png" alt="" /> */}
           <h1 className="muruk gradtext korean_title">스탬퍼</h1>
           </div>
 
