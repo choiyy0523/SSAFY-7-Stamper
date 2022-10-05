@@ -41,18 +41,18 @@ const collectionTheme = () => {
           forthem[11] = response.data.cc[2].count;
 
           let forthem2 = [];
-          forthem2[0] = response.data.cc[0].count;
-          forthem2[1] = response.data.cc[8].count;
-          forthem2[2] = response.data.cc[4].count;
-          forthem2[3] = response.data.cc[5].count;
-          forthem2[4] = response.data.cc[7].count;
-          forthem2[5] = response.data.cc[10].count;
-          forthem2[6] = response.data.cc[3].count;
-          forthem2[7] = response.data.cc[9].count;
-          forthem2[8] = response.data.cc[6].count;
-          forthem2[9] = response.data.cc[11].count;
-          forthem2[10] = response.data.cc[1].count;
-          forthem2[11] = response.data.cc[2].count;
+          forthem2[0] = response.data.cc[0].total;
+          forthem2[1] = response.data.cc[8].total;
+          forthem2[2] = response.data.cc[4].total;
+          forthem2[3] = response.data.cc[5].total;
+          forthem2[4] = response.data.cc[7].total;
+          forthem2[5] = response.data.cc[10].total;
+          forthem2[6] = response.data.cc[3].total;
+          forthem2[7] = response.data.cc[9].total;
+          forthem2[8] = response.data.cc[6].total;
+          forthem2[9] = response.data.cc[11].total;
+          forthem2[10] = response.data.cc[1].total;
+          forthem2[11] = response.data.cc[2].total;
 
           setForcount(forthem);
           setFortotal(forthem2);
