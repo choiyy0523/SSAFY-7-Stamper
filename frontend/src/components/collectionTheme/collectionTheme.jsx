@@ -69,7 +69,7 @@ const collectionTheme = () => {
             <h2>(nickname)의 테마별 수집 현황</h2>
         <div id="wrap" className="grid-image">
           <section>
-            <a href="/collection/theme/1">
+            <a href="/collection/theme/공원">
             <img className="theme_frame theme_icon" src="/src/assets/theme/gongwon.png" alt="" /><br />{gongwon} ( {forcount[0]} / {fortotal[0]} )
             </a>
             </section>
