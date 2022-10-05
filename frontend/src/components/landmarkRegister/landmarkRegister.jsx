@@ -11,40 +11,44 @@ import { getBookDetail } from '../../api/book';
 import processing from '../../assets/processing.gif'
 import { useQuery } from '@tanstack/react-query';
 import landmark from '../landmark/landmark';
-import EXIF from 'exif-js'
+import exifr from 'exifr'
 
 export default function landmarkRegister() {
     const landmarkNo = useParams();
     const [landmarkInfo, setLandmarkInfo] = useState({});
     const [district, setDistrict] = useState('default');
-    const [longitude, setLongitude] = useState(0);
-    const [latitude, setLatitude] = useState(0);
+    const [inputLatitude, setInputLatitude] = useState(0);
+    const [inputLongitude, setInputLongitude] = useState(0);
     const [image, setImage] = useState(null);
     const [url, setURL] = useState('');
     const [loading,setLoading]=useState(false);
     const [showResult,setShowResult]=useState(false);
     const [predictionArr,setPredictionArr]=useState([]);
     const [result,setResult]=useState(null);
+    const [locationApproved, setLocationApproved] = useState(null);
     const fileRef = useRef();
-
-    getBookDetail(2, 30, (response)=>{
-        console.log(response.data.book)
-        //setLandmarkInfo(response.data.book)
-    }, (error)=>{
-        console.log(error)
-    })
 
     useEffect(() => {
         getBookDetail(2, 30, (response)=>{
-            console.log(response.data.book)
-            //setLandmarkInfo(response.data.book)
+            setLandmarkInfo(response.data.book)
+            console.log(landmarkInfo)
         }, (error)=>{
             console.log(error)
         })
-    }, [landmarkInfo])
+    }, [])
 
-
+    console.log(landmarkInfo)
     let model
+
+    const longLatExtraction = async () => {
+        let {latitude, longitude} = await exifr.gps(url)
+        setInputLatitude(latitude)
+        setInputLongitude(longitude)
+        console.log({latitude, longitude})
+    };
+    useEffect(() => {
+        longLatExtraction()
+    }, [url])
 
     const changeImage = (event) => {
         event.preventDefault();
@@ -57,23 +61,13 @@ export default function landmarkRegister() {
           setURL(reader.result);
         };
         if (file) reader.readAsDataURL(file);
-      };
+        longLatExtraction();
+        };
 
     function changeDistrict(event) {
         setDistrict(event.target.value)
         console.log(district)
     }
-
-    useEffect(() => {
-        EXIF.getData(url, function() {
-            setLongitude(EXIF.getTag(url, 'GPSLongitude'))
-            setLatitude(EXIF.getTag(url, "GPSLatitude"))
-            console.log(longitude)
-            console.log(latitude)        
-        })
-    }, [url, image])
-
-
 
     const districtList = {'default':'Xv6R4lzoj',
                         '강남구':'Xv6R4lzoj', 
@@ -105,7 +99,7 @@ export default function landmarkRegister() {
     // const districtURL = `https://teachablemachine.withgoogle.com/models/${districtList.district}/`;
     // let districtURL = `https://teachablemachine.withgoogle.com/models/${districtList.district}/`;
 
-    let districtURL = `https://teachablemachine.withgoogle.com/models/${districtList[district]}/`;
+    let districtURL = `https://teachablemachine.withgoogle.com/models/${districtList[landmarkInfo.bookGugun]}/`;
 
     async function predict() {
         console.log(districtURL)
@@ -130,7 +124,11 @@ export default function landmarkRegister() {
         console.log('답: ', prediction[2].className + prediction[2].probability.toFixed(2));
     }
 
-    function getDistance(latitude1,longitude1,latitude2,longitude2,units) {
+    function getDistance(latitude1,longitude1,latitude2,longitude2) {
+        console.log(latitude1)
+        console.log(latitude2)
+        console.log(longitude1)
+        console.log(longitude2)
         let p = 0.017453292519943295;    //This is  Math.PI / 180
         let c = Math.cos;
         let a = 0.5 - c((latitude2 - latitude1) * p)/2 + 
@@ -138,18 +136,28 @@ export default function landmarkRegister() {
                 (1 - c((longitude2 - longitude1) * p))/2;
         let R = 6371; //  Earth distance in km so it will return the distance in km
         let dist = 2 * R * Math.asin(Math.sqrt(a)); 
-        if (dist <= 500) {
+        console.log(R)
+        console.log(dist)
+        if (dist <= 5) {
             return "Approved!"
         }
         else {
             return "Too Far!"
         }; 
       }
+    
+    useEffect(()=> {
+        const locationApprove = getDistance(landmarkInfo.bookLatitude, landmarkInfo.bookLongitude, inputLatitude, inputLongitude)
+        if (locationApprove === "Approved!") {
+            setLocationApproved(true)
+        }
+        else{setLocationApproved(false)}
+    },[inputLongitude])
 
     return (
         <div>
             <h1>랜드마크 등록</h1>
-            <div style={{margin:'10px'}}>
+            {/* <div style={{margin:'10px'}}>
                 <select name='district' id='districtSelection' onChange={changeDistrict}>
                     <option value=''>지역을 선택해주세요.</option>
                     <option value='강남구'>강남구</option>
@@ -178,7 +186,7 @@ export default function landmarkRegister() {
                     <option value='중구'>중구</option>
                     <option value='중랑구'>중랑구</option>
                 </select>
-            </div>
+            </div> */}
             <div>
                 {image? <img id='targetImage' src={url} style={{padding:'10px'}}width='300px' height='300px'></img> : <div></div>}
             </div>
@@ -193,9 +201,8 @@ export default function landmarkRegister() {
             </div>
             <Button color="secondary" onClick={predict}>검증</Button>
             <div>
-                {landmarkInfo.bookName === result ? <img className='stamp' style={{height:'100px', width:'100px', margin:'20px'}} src={approved}></img> : <img className='processing' style={{ margin:'20px', height:'100px', width:'100px'}} src={processing}></img>}
-                <img className='stamp' style={{height:'100px', width:'100px', margin:'20px'}} src={approved}></img>
-                <img className='processing' style={{ margin:'20px', height:'100px', width:'100px'}} src={processing}></img>
+                {landmarkInfo.bookName === result ? <img className='stamp' style={{height:'100px', width:'100px', margin:'30px'}} src={approved}></img> : <img className='processing' style={{ margin:'40px', height:'100px', width:'100px'}} src={processing}></img>}
+                {locationApproved === true ? <img className='stamp' style={{height:'100px', width:'100px', margin:'30px'}} src={approved}></img> : <img className='processing' style={{ margin:'40px', height:'100px', width:'100px'}} src={processing}></img>}
                 <br />
                 <span className='grayfont'>
                 ※건물 디자인 변경, 현수막, 디스플레이, 리모델링, 재건축 등으로 인해 인식이 불안정할 수 있습니다※
