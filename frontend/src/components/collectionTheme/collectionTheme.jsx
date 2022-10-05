@@ -54,6 +54,9 @@ const collectionTheme = () => {
           forthem2[10] = response.data.cc[2].total;
           forthem2[11] = response.data.cc[1].total;
 
+          setForcount(forthem);
+          setFortotal(forthem2);
+
 
           //setLandmarkInfo(response.data.book)
         }, (error)=>{
