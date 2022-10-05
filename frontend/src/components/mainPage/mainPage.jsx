@@ -16,9 +16,9 @@ const mainpage = () => {
 
             <br />
 
-            <div className=" widthcenter colorblock2">
+            {/* <div className=" widthcenter colorblock2">
             <a href="/landmark/register" className="bigfont inner-div">랜드마크등록</a>
-            </div>
+            </div> */}
 
 
         </div> 
