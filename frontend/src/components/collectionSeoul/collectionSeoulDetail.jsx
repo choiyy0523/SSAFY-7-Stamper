@@ -5,8 +5,15 @@ import { getListByGugun } from '../../api/book';
 import { Map, MapMarker, Polyline } from "react-kakao-maps-sdk";
 import { Fragment, useState, useRef} from 'react';
 import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
-const collectionSeoulDetail = () =>{
+const collectionSeoulDetail = () => {
+    
+    const userInfo = useSelector((state) => state.UserInfo);
+    const userName = userInfo.userInfo.userName;
+    const userNick = userInfo.userInfo.userNickname;
+    const userSeq = userInfo.userInfo.userSeq;
+    const token = userInfo.accessToken;
 
     // const navigate = useNavigate();
     // const bookDetailLink = (bookseq) => {
@@ -27,7 +34,7 @@ const collectionSeoulDetail = () =>{
 
     let gugun = useParams().districtNo;
     useEffect(() => {
-        getListByGugun(2, gugun, '654787', (response)=>{
+        getListByGugun(userSeq, gugun, token, (response)=>{
           console.log(response.data);
           //setFordata(response.data.totalBookList);
           //console.log(fordata);

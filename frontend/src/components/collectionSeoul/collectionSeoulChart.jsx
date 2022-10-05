@@ -11,6 +11,7 @@ import {
 import { borderColor, Container } from "@mui/system";
 import { getCountOfGugun } from '../../api/book';
 import { Fragment, useState, useRef, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 
 
@@ -25,7 +26,13 @@ export default function seoulChart() {
         Legend
       );    
 
-      const[fordata, setFordata] = useState([]);
+  const [fordata, setFordata] = useState([]);
+  
+  const userInfo = useSelector((state) => state.UserInfo);
+  const userName = userInfo.userInfo.userName;
+  const userNick = userInfo.userInfo.userNickname;
+  const userSeq = userInfo.userInfo.userSeq;
+  const token = userInfo.accessToken;
       
       // getCountOfGugun(2, '654787', (response)=>{
       //   console.log(response.data.gc)
@@ -111,7 +118,7 @@ export default function seoulChart() {
       };
 
       useEffect(() => {
-        getCountOfGugun(2, '654787', (response)=>{
+        getCountOfGugun(userSeq, token, (response)=>{
           console.log(response.data.gc)
           let temp = [];
           for (var i=0; i<25; i++){

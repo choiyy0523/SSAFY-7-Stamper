@@ -6,7 +6,7 @@ export const tokenSlice = createSlice({
     accessToken: null,
     userInfo: {
       userName: null,
-      userNick: null,
+      userNickname: null,
       userSeq: null,
     },
     loggedIn: false,

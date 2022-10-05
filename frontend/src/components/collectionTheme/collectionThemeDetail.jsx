@@ -5,8 +5,15 @@ import { getListByCategory } from '../../api/book';
 import { Map, MapMarker, Polyline } from "react-kakao-maps-sdk";
 import { Fragment, useState, useRef} from 'react';
 import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
-const collectionThemeDetail = () =>{
+const collectionThemeDetail = () => {
+    
+    const userInfo = useSelector((state) => state.UserInfo);
+    const userName = userInfo.userInfo.userName;
+    const userNick = userInfo.userInfo.userNickname;
+    const userSeq = userInfo.userInfo.userSeq;
+    const token = userInfo.accessToken;
 
     // const navigate = useNavigate();
     // const bookDetailLink = (bookseq) => {
@@ -27,7 +34,7 @@ const collectionThemeDetail = () =>{
 
     let theme = useParams().themeNo;
     useEffect(() => {
-        getListByCategory(2, theme, '654787', (response)=>{
+        getListByCategory(userSeq, theme, token, (response)=>{
           console.log(response.data);
           //setFordata(response.data.totalBookList);
           //console.log(fordata);
@@ -71,7 +78,7 @@ const collectionThemeDetail = () =>{
       }, [])
       const bookArr = bookCol;
 
-    return (<div>{useParams().districtNo} 수집 현황
+    return (<div>{theme} 수집 현황
         <div>
             <Map
             center={{ lat: position.lat, lng: position.lng}}

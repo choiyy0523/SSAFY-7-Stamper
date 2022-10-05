@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { getCountOfCategory } from '../../api/book';
 import { Fragment, useRef, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 const collectionTheme = () => {
     const [gongwon, setGongwon] = useState('공원')
@@ -19,11 +20,21 @@ const collectionTheme = () => {
     const [gucheong, setGucheong] = useState('구청')
     const [guitar, setGuitar] = useState('기타')
     const[forcount, setForcount] = useState([]);
-    const[fortotal, setFortotal] = useState([]);
+  const [fortotal, setFortotal] = useState([]);
+  // const [userNick, setUserNick] = useState("");
+  
+  const userInfo = useSelector((state) => state.UserInfo);
+  const userSeq = userInfo.userInfo.userSeq;
+  const userNick = userInfo.userInfo.userNickname;
+  const token = userInfo.accessToken;
+
+  console.log(userInfo);
+
+  
 
 
-    useEffect(() => {
-        getCountOfCategory(2, '654787', (response)=>{
+  useEffect(() => {
+        getCountOfCategory(userSeq, token, (response)=>{
           console.log(response.data.cc)
 
           let forthem = [];
@@ -66,7 +77,7 @@ const collectionTheme = () => {
 
     return (
         <div>    
-            <h2>(nickname)의 테마별 수집 현황</h2>
+        <h2>{userNick}의 테마별 수집 현황</h2>
                 <div id = "wrap" className="grid-image">
                     <section><a href="/collection/theme/공원"><img className="theme_frame theme_icon" src="/src/assets/theme/gongwon.png" alt=""/><br />{ gongwon } ( {forcount[0]} / {fortotal[0]} )</a></section>
                     <section><a href="/collection/theme/여흥"><img className="theme_frame theme_icon" src="/src/assets/theme/uheung.png" alt="" /><br />{ uheung } ( {forcount[1]} / {fortotal[1]} )</a></section>
