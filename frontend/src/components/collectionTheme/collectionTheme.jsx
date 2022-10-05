@@ -67,8 +67,13 @@ const collectionTheme = () => {
     return (
         <div>    
             <h2>(nickname)의 테마별 수집 현황</h2>
-                <div id = "wrap" className="grid-image">
-                    <section><img className="theme_frame theme_icon" src="/src/assets/theme/gongwon.png" alt="" /><br />{ gongwon } ( {forcount[0]} / {fortotal[0]} )</section>
+        <div id="wrap" className="grid-image">
+          <section>
+            <a href="/collection/theme/1">
+            <img className="theme_frame theme_icon" src="/src/assets/theme/gongwon.png" alt="" /><br />{gongwon} ( {forcount[0]} / {fortotal[0]} )
+            </a>
+            </section>
+                    {/* <section><img className="theme_frame theme_icon" src="/src/assets/theme/gongwon.png" alt="" /><br />{ gongwon } ( {forcount[0]} / {fortotal[0]} )</section> */}
                     <section><img className="theme_frame theme_icon" src="/src/assets/theme/uheung.png" alt="" /><br />{ uheung } ( {forcount[1]} / {fortotal[1]} )</section>
                     <section><img className="theme_frame theme_icon" src="/src/assets/theme/myeongso.png" alt="" /><br />{ myeongso } ( {forcount[2]} / {fortotal[2]} )</section>
                     <section><img className="theme_frame theme_icon" src="/src/assets/theme/munhwasiseol.png" alt="" /><br />{ munwhasiseol } ( {forcount[3]} / {fortotal[3]} )</section>
