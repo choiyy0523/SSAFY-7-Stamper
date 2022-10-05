@@ -12,6 +12,8 @@ import processing from '../../assets/processing.gif'
 import { useQuery } from '@tanstack/react-query';
 import landmark from '../landmark/landmark';
 import exifr from 'exifr'
+import ai from '../../assets/ai.png'
+import location from '../../assets/placeholder.png'
 
 export default function landmarkRegister() {
     const landmarkNo = useParams();
@@ -26,6 +28,8 @@ export default function landmarkRegister() {
     const [predictionArr,setPredictionArr]=useState([]);
     const [result,setResult]=useState(null);
     const [locationApproved, setLocationApproved] = useState(null);
+    const [aiIcon, setAiIcon] = useState(ai);
+    const [locationIcon, setLocationIcon] = useState(location);
     const fileRef = useRef();
 
     useEffect(() => {
@@ -102,6 +106,7 @@ export default function landmarkRegister() {
     let districtURL = `https://teachablemachine.withgoogle.com/models/${districtList[landmarkInfo.bookGugun]}/`;
 
     async function predict() {
+        setLoading(true)
         console.log(districtURL)
         let modelURL = districtURL + 'model.json';
         let metadataURL = districtURL + 'metadata.json';
@@ -154,6 +159,13 @@ export default function landmarkRegister() {
         else{setLocationApproved(false)}
     },[inputLongitude])
 
+    useEffect(()=> {
+        if(loading === true) {setAiIcon(processing)}
+        if(landmarkInfo.bookName === result) {setAiIcon(approved)}
+    },[loading, result])
+
+
+
     return (
         <div>
             <h1>랜드마크 등록</h1>
@@ -201,8 +213,8 @@ export default function landmarkRegister() {
             </div>
             <Button color="secondary" onClick={predict}>검증</Button>
             <div>
-                {landmarkInfo.bookName === result ? <img className='stamp' style={{height:'100px', width:'100px', margin:'30px'}} src={approved}></img> : <img className='processing' style={{ margin:'40px', height:'100px', width:'100px'}} src={processing}></img>}
-                {locationApproved === true ? <img className='stamp' style={{height:'100px', width:'100px', margin:'30px'}} src={approved}></img> : <img className='processing' style={{ margin:'40px', height:'100px', width:'100px'}} src={processing}></img>}
+                <img style={{height:'100px', width:'100px', margin:'30px'}} src={aiIcon}></img>
+                {locationApproved === true ? <img style={{height:'100px', width:'100px', margin:'30px'}} src={approved}></img> : <img className='basic' style={{ margin:'30px', height:'100px', width:'100px'}} src={location}></img>}
                 <br />
                 <span className='grayfont'>
                 ※건물 디자인 변경, 현수막, 디스플레이, 리모델링, 재건축 등으로 인해 인식이 불안정할 수 있습니다※
