@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 import TextField from "@mui/material/TextField";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getAllBookDetail, getBookDetail, getCountOfCategory, getCountOfGugun } from "../../api/book";
@@ -277,7 +277,6 @@ export default function landmark() {
         }
      });
     }
-
     if (val) {
       let ubcImage = "";
 
@@ -446,7 +445,6 @@ export default function landmark() {
         }
       }
 
-
       // window.location.reload();
     }
   }
@@ -498,58 +496,84 @@ export default function landmark() {
     }
   }, [loading, resultName]);
 
+    function commentPost(event) {
+        event.preventDefault();
+        let input = {userSeq: userSeq, bookSeq: landmarkNo, commentContent:commentContent};
+        registerComment(input, token);
+        window.location.reload();
+    }
+
+    async function eraseComment(commentSeq) {
+        //event.preventDefault();
+        //let input = {commentSeq:commentSeq};
+        var commentdel = false;
+
+        await Swal.fire({
+          title: "삭제하시겠습니까?",
+          icon: 'warning',
+          
+          showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
+          confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+          cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+          confirmButtonText: '삭제', // confirm 버튼 텍스트 지정
+          cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+          
+          reverseButtons: true, // 버튼 순서 거꾸로
+          
+       }).then(result => {
+          // 만약 Promise리턴을 받으면,
+          if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+            commentdel = true;
+          }
+       });
+        if (commentdel){
+          deleteComment(commentSeq, token);
+
+
+          await Swal.fire(
+            '삭제되었습니다.',
+            '',
+            'success'
+          )
+          window.location.reload();
+        }
+    }
+
   return (
     <div>
       <div>
         <div style={{ fontSize: "40px", margin: "8px" }}>{landmarkName}</div>
         <div>
-          <img
-            style={{
-              height: "200px",
-              width: "200px",
-              marginTop: "8px",
-              marginBottom: "20px",
-            }}
-            src={imageURL}
-            alt={landmarkName}
-          ></img>
+            <img style={{height:'200px', width:'200px', marginTop:'8px', marginBottom:'20px'}} src={imageURL} alt={landmarkName}></img>
         </div>
-        <div style={{ width: "80vw", textAlign: "center", margin: "auto" }}>
-          {landmarkDesc}
+        <div style={{lineHeight:1.5, width:'80vw', textAlign:'center', margin:'auto'}}>{landmarkDesc}</div>
+        <div style={{display:'flex', marginLeft:'12px', marginTop:'25px', marginRight:'8px', marginBottom:'20px'}}>
+            <TextField style={{width:'80vw'}} onChange={(event) => setCommentContent(event.target.value)}></TextField>
+            <button style={{backgroundColor:'rgba(191, 96, 255, 0.8)', marginLeft:'10px', fontSize:'2.5vw'}} onClick={commentPost}>등록</button>
         </div>
-        <div
-          style={{
-            display: "flex",
-            marginLeft: "8px",
-            marginTop: "25px",
-            marginRight: "8px",
-            marginBottom: "20px",
-          }}
-        >
-          <TextField style={{ width: "80vw" }}></TextField>
-          <button>등록</button>
-        </div>
-        <div>
-          <table>
-            <thead>
-              <tr style={{ display: "flex", flexDirection: "column" }}>
-                <th>작성자</th>
-                <th>내용</th>
-                <th>작성일자</th>
-              </tr>
-            </thead>
-            <tbody>
-              {landmarkComment.map((item) => {
-                return (
-                  <tr>
-                    <td>{item.user.userNickname}</td>
-                    <td>{item.commentContent}</td>
-                    <td>{item.commentDate}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+        <div style={{ margin:'auto', borderRadius:7 ,width:'97vw'}}>
+                <table>
+                    {/* <thead>
+                        <tr style={{display:'flex', flexDirection:'column'}}>
+                            <th>작성자:</th>
+                            <th>내용:</th>
+                            <th>작성일자:</th>
+                        </tr>
+                    </thead> */}
+                        {landmarkComment.map((item) => {
+                            return (
+                                <div style={{display:'flex', flexDirection:'row'}}>
+                                    <div style={{padding:'2px', marginBottom:'15px', backgroundColor:'rgba(191, 96, 255, 0.8)', borderRadius:5}}>{item.user.userNickname}:</div>
+                                    <div style={{marginTop:'2px', marginLeft:'15px', marginBottom:'15px'}}>{item.commentContent}</div>
+                                    {item.user.userNickname === userName ? <button style={{marginTop:'2px', fontSize:'5px', marginLeft:'15px', marginBottom:'15px', border:'0px', padding:'0px'}} onClick={()=>{eraseComment(item.commentSeq)}}>삭제</button> : <div></div>}
+                                </div>
+                                // <tr style={{marginBottom:'15px'}}>
+                                //     <td style={{marginBottom:'15px'}}>{item.user.userNickname}</td>
+                                //     <td style={{marginBottom:'15px'}}>{item.commentContent}</td>
+                                // </tr>
+                            );
+                        })}
+                </table>
         </div>
       </div>
       <div>
@@ -619,10 +643,9 @@ export default function landmark() {
             ></img>
           )}
           <br />
-          <br />
           <span className="grayfont">
-            ※건물 디자인 변경, 현수막, 디스플레이, 리모델링, 재건축 등으로 인해
-            인식이 불안정할 수 있습니다※
+            디자인 변경, 현수막, 디스플레이, 리모델링, 재건축 등으로 인해
+            인식이 불안정할 수 있습니다.
           </span>
         </div>
       </div>
