@@ -20,11 +20,8 @@ import location from "../../assets/placeholder.png";
 import axios from "axios";
 
 import Swal from 'sweetalert2'
-<<<<<<< HEAD
 import { updateAchieve } from "../../api/achieve";
-=======
 import collectedStamp from '../../assets/quality.png'
->>>>>>> jaehyun
 
 export default function landmark() {
   const dispatch = useDispatch();
