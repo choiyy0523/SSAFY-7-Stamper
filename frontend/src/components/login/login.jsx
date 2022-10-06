@@ -275,8 +275,8 @@ const LoginPage = () => {
            <img className="sticker9" src={government} alt="" />
            <img className="sticker10" src={lighthouse} alt="" />
            <img className="sticker11" src={park} alt="" />
-           <img className="sticker12" src={eye1} alt="" />
-           <img className="sticker13" src={eye2} alt="" />
+           {/* <img className="sticker12" src={eye1} alt="" />
+           <img className="sticker13" src={eye2} alt="" /> */}
          </div>
          <br />
 

@@ -687,7 +687,7 @@ export default function landmark() {
         </Button>
         )}
         <div>
-          <img
+          <img className="robot_dance"
             style={{ height: "100px", width: "100px", margin: "30px" }}
             src={aiIcon}
           ></img>

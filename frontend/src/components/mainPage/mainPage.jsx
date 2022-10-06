@@ -126,7 +126,7 @@ export default function ImageTest() {
             </div>
 
             <div className="darm_kkol">&lt;랜드마크 닮은꼴 찾기></div>
-            <img className="main_comp blur_darm" src={assistant} alt="" style={{display: `${image ? "none" : null}`}}/>
+            {/* <img className="main_comp blur_darm robot_dance" src={assistant} alt="" style={{display: `${image ? "none" : null}`}}/> */}
 
 
         </div> 
@@ -167,7 +167,11 @@ export default function ImageTest() {
                 {result? <div>{result}</div> : <div></div>}
             </div>
             <div>
-                <input type='file' accept="image/*" ref={fileRef} name="profile_img" id="file" onChange={changeImage}></input>
+                <label>
+                    <img className='main_comp blur_darm robot_dance' style={{display:`${image? 'none' : null}`}} src={assistant} alt='imageUploadButton'></img>
+                    <input style={{display:'none'}} type='file' accept="image/*" ref={fileRef} name="profile_img" id="file" onChange={changeImage}></input>
+                </label>
+                {/* <input type='file' accept="image/*" ref={fileRef} name="profile_img" id="file" onChange={changeImage}></input> */}
             </div>
             {image ? <button onClick={predict}>예측</button> : <button disabled>예측</button>}
             
