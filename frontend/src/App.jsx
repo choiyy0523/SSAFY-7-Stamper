@@ -61,9 +61,7 @@ function App() {
           <Route
             exact path="/"
             element={ loggedIn ? (
-              <MainPage
-                setLogOut={() => {
-                dispatch(SET_LOGOUT());}} /> ) :
+              <MainPage /> ) :
                   ( <Loginpage></Loginpage> )} />
             <Route path="/test" element={<ImageTest/>}></Route>
             <Route path="/loginpage" element={<Loginpage/>}></Route>

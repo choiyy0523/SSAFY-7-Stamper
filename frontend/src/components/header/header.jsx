@@ -2,19 +2,28 @@ import './header.css'
 import { Grid } from '@mui/material'
 import Logo from '../../assets/LOGO.png'
 import axios from 'axios'
-import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from "react-redux";
+import { SET_LOGOUT } from '../../redux/UserInfo'
 
 
-export default function header(props) {
+export default function header() {
+    const dispatch = useDispatch();
+    // const navigate = useNavigate()
     const onClickHandler = () => {
-        axios.get(`/api/users/logout`).then((response) => {
-            if (response.data.success) {
-                Navigate("/login");
-            } else {
-                alert("로그아웃에 실패했습니다");
-            }
-        })
-    }
+        dispatch(SET_LOGOUT());
+        const updateUserInfo = {
+          userName: null,
+          userNick: null,
+          userPhone: null,
+        };
+        dispatch(SET_USERINFO(updateUserInfo));
+        dispatch(SET_TOKEN(null));
+      };
+    
+
+
+    const loggedIn = useSelector((state) => state.UserInfo.loggedIn);
 
     return (
     <nav role="navigation">
@@ -23,14 +32,22 @@ export default function header(props) {
             <span id='burgerOne'></span>
             <span id='burgerTwo'></span>
             <span id='burgerThree'></span>
-            <ul id="menu">
-                <li><a className='menuItem' href="/">Home</a></li>
-                <li><a className='menuItem' href="/loginpage">Login</a></li>
-                <li><a className='menuItem' href="/profile/0">마이페이지</a></li>
-                <li><a className='menuItem' href="/collection/theme/index">테마별수집현황</a></li>
-                <li><a className='menuItem' href="/collection/seoul/index">구별수집현황</a></li>
+            <ul id="menu">                
+                <li><a className='menuItem' href="/">Home</a></li> 
+                { loggedIn ? 
+                <li><a className='menuItem' onClick={onClickHandler}>로그아웃</a></li> :
+                <li><a className='menuItem' href="/loginpage">로그인</a></li>}
+               
+                { loggedIn ?
+                <li><a className='menuItem' href="/profile/0">마이페이지</a></li>: <></>}
+
+                { loggedIn ?
+                <li><a className='menuItem' href="/collection/theme/index">테마별수집현황</a></li> : <></> }
+
+                { loggedIn ?
+                <li><a className='menuItem' href="/collection/seoul/index">구별수집현황</a></li> : <></> }    
                 <hr></hr>
-                <li><a className='logout' onClick={onClickHandler}>로그아웃</a></li>
+                
             </ul>
         </div>
         <a href='/'>

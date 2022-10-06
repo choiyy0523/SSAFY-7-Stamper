@@ -120,10 +120,9 @@ const LoginPage = () => {
   };
 
   const onSubmitLoginForm = (event) => {
-    alert("로그인 되었습니다.")
     event.preventDefault();
 
-    console.log(userPass + "" + userId + "asdfasdsfadasd")
+    console.log(userPass + "" + userId)
     doLogin(
       { userId: userId, userPassword: userPass },
       (response) => {
@@ -135,6 +134,7 @@ const LoginPage = () => {
           (response) => {
             dispatch(SET_USERINFO(response.data.userRes));
             console.log("profile get", response.data.userRes);
+            alert("로그인 되었습니다.")
           },
           (error) => {
             console.log(error);
@@ -278,7 +278,6 @@ const LoginPage = () => {
                 className="inputwidth"
                 type="text"
                 color="secondary"
-                sx={{ input: { color: 'blue' } }}
                 required
                 value={userId}
                 onChange={(e) => {
@@ -701,9 +700,11 @@ const LoginPage = () => {
             <label for="newPassword">새 비밀번호</label>
             <div>
               <Input
+                type="password"
                 value={newPassword}
                 id="newPassword"
                 className="dialog-input"
+                sx={{ input: { fontFamily : 'Arial' } }}
                 onChange={onNewPassword}
               ></Input>
             </div>
