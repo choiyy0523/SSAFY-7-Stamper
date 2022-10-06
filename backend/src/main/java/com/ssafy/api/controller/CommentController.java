@@ -88,7 +88,7 @@ public class CommentController {
 //        return ResponseEntity.status(409).body(BaseResponseBody.of(409, "실패"));
     }
 
-    @DeleteMapping("/delete/{commendSeq}")
+    @DeleteMapping("/delete/{commentSeq}")
     @ApiOperation(value = "댓글 삭제", notes = "댓글을 삭제한다")
     @ApiResponses({
             @ApiResponse(code = 201, message = "성공"),
