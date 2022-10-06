@@ -1,8 +1,8 @@
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient, QueryClient, QueryClientProvider,} from '@tanstack/react-query'
 import { Navigate } from "react-router-dom";
 
-import { useState } from "react";
 
 import Header from './components/header/header';
 import Loginpage from './components/login/login'
@@ -22,16 +22,15 @@ import {createTheme, ThemeProvider} from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { SET_LOGOUT } from "./redux/UserInfo";
 
+
+import './App.css';
+
 const theme = createTheme({
   typography: {
     fontFamily: "BMJua"
   },
-  multilineColor:{
-    color:'#1C1C1C'
-  }
 })
 
-import './App.css';
 
 function App() {
 
@@ -54,8 +53,8 @@ function App() {
   // }, [window.sessionStorage.getItem("UserData")]);
 
   return (
+    <ThemeProvider theme={theme}>
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
       <div className="App nav_body">
         <Router>
                 <Routes>
@@ -85,8 +84,8 @@ function App() {
         </div>
 
       </div>
-      </ThemeProvider>
     </QueryClientProvider>
+    </ThemeProvider>
   )
 }
 

@@ -3,14 +3,10 @@ import * as React from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Fragment, useState, useRef, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-const mainpage = () => {
-
-    const userInfo = useSelector((state) => state.UserInfo);
-    const userName = userInfo.userInfo.userName;
-    const userNick = userInfo.userInfo.userNickname;
-    const userSeq = userInfo.userInfo.userSeq;
-    const token = userInfo.accessToken;
+function mainpage () {
+    const token = useSelector((state) => state.UserInfo.accessToken);
 
     return (
         <div>

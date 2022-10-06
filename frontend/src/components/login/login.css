@@ -11,6 +11,12 @@ div {
   margin-top: 0vh;
 }
 
+.logo3 {
+  height: 18vh;
+  margin-top: 0vh;
+  font-size: xx-large
+}
+
 .english_title {
   font-size: 6vh;
   margin-top: -1vh;
@@ -175,4 +181,8 @@ div {
   margin-left: 40vh;
   margin-top: -20vh;
   position: absolute;
+}
+
+.inputwidth {
+  width: 15rem;
 }

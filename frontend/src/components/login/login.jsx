@@ -120,7 +120,7 @@ const LoginPage = () => {
   };
 
   const onSubmitLoginForm = (event) => {
-    alert("asdfsadfas")
+    alert("로그인 되었습니다.")
     event.preventDefault();
 
     console.log(userPass + "" + userId + "asdfasdsfadasd")
@@ -247,7 +247,7 @@ const LoginPage = () => {
     <div className="LoginSignUp">
       {IsSignUp ? (
         <div class="center">
-          <span className='logo2 muruk'>회원가입</span>
+          <span className='logo3 muruk'>회원가입</span>
           <div>             
            <img className="sticker1" src={apartment} alt="" />
            <img className="sticker2" src={bridge} alt="" />
@@ -275,6 +275,7 @@ const LoginPage = () => {
                 label = "아이디"
                 variant = "outlined"
                 id = "outlined-basic"
+                className="inputwidth"
                 type="text"
                 color="secondary"
                 sx={{ input: { color: 'blue' } }}
@@ -331,6 +332,7 @@ const LoginPage = () => {
                 label = "비밀번호"
                 variant = "outlined"
                 id = "outlined-password-input"
+                className="inputwidth"
                 type="password"
                 color="secondary"
                 sx={{ input: { fontFamily : 'Arial' } }}
@@ -366,6 +368,7 @@ const LoginPage = () => {
                 label = "이름"
                 variant = "outlined"
                 id = "outlined-basic"
+                className="inputwidth"
                 type="text"
                 color="secondary"
                 required
@@ -397,6 +400,7 @@ const LoginPage = () => {
                 label = "닉네임"
                 variant = "outlined"
                 id = "outlined-basic"
+                className="inputwidth"
                 type="text"
                 color="secondary"
                 value={userNick}
@@ -424,6 +428,7 @@ const LoginPage = () => {
                 label = "이메일"
                 varient = "outlined"
                 id = "outlined-basic"
+                className="inputwidth"
                 type = "text"
                 color="secondary"
                 value = {userEmail}
@@ -440,6 +445,7 @@ const LoginPage = () => {
                 label = "전화번호"
                 varient = "outlined"
                 id = "outlined-basic"
+                className="inputwidth"
                 color="secondary"
                 type = "text"
                 value = {userPhone}
@@ -513,6 +519,7 @@ const LoginPage = () => {
                 label = "아이디"
                 variant = "outlined"
                 id = "outlined-basic"
+                className="inputwidth"
                 type="text"
                 color="secondary"
                 required
@@ -525,6 +532,7 @@ const LoginPage = () => {
                 label = "비밀번호"
                 variant = "outlined"
                 id = "outlined-password-input"
+                className="inputwidth"
                 type="password"
                 color="secondary"
                 sx={{ input: { fontFamily : 'Arial' } }}
