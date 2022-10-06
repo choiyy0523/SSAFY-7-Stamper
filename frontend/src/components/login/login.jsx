@@ -120,10 +120,9 @@ const LoginPage = () => {
   };
 
   const onSubmitLoginForm = (event) => {
-    alert("asdfsadfas")
     event.preventDefault();
 
-    console.log(userPass + "" + userId + "asdfasdsfadasd")
+    console.log(userPass + "" + userId)
     doLogin(
       { userId: userId, userPassword: userPass },
       (response) => {
@@ -135,6 +134,7 @@ const LoginPage = () => {
           (response) => {
             dispatch(SET_USERINFO(response.data.userRes));
             console.log("profile get", response.data.userRes);
+            alert("로그인 되었습니다.")
           },
           (error) => {
             console.log(error);
@@ -247,7 +247,7 @@ const LoginPage = () => {
     <div className="LoginSignUp">
       {IsSignUp ? (
         <div class="center">
-          <span className='logo2 muruk'>회원가입</span>
+          <span className='logo3 muruk'>회원가입</span>
           <div>             
            <img className="sticker1" src={apartment} alt="" />
            <img className="sticker2" src={bridge} alt="" />
@@ -275,9 +275,9 @@ const LoginPage = () => {
                 label = "아이디"
                 variant = "outlined"
                 id = "outlined-basic"
+                className="inputwidth"
                 type="text"
                 color="secondary"
-                sx={{ input: { color: 'blue' } }}
                 required
                 value={userId}
                 onChange={(e) => {
@@ -331,9 +331,10 @@ const LoginPage = () => {
                 label = "비밀번호"
                 variant = "outlined"
                 id = "outlined-password-input"
+                className="inputwidth"
                 type="password"
                 color="secondary"
-                sx={{ input: { color: 'red' } }}
+                sx={{ input: { fontFamily : 'Arial' } }}
                 required
                 onChange={(e) => {
                   setUserPass(e.target.value);
@@ -366,6 +367,7 @@ const LoginPage = () => {
                 label = "이름"
                 variant = "outlined"
                 id = "outlined-basic"
+                className="inputwidth"
                 type="text"
                 color="secondary"
                 required
@@ -397,6 +399,7 @@ const LoginPage = () => {
                 label = "닉네임"
                 variant = "outlined"
                 id = "outlined-basic"
+                className="inputwidth"
                 type="text"
                 color="secondary"
                 value={userNick}
@@ -424,6 +427,7 @@ const LoginPage = () => {
                 label = "이메일"
                 varient = "outlined"
                 id = "outlined-basic"
+                className="inputwidth"
                 type = "text"
                 color="secondary"
                 value = {userEmail}
@@ -440,6 +444,7 @@ const LoginPage = () => {
                 label = "전화번호"
                 varient = "outlined"
                 id = "outlined-basic"
+                className="inputwidth"
                 color="secondary"
                 type = "text"
                 value = {userPhone}
@@ -513,6 +518,7 @@ const LoginPage = () => {
                 label = "아이디"
                 variant = "outlined"
                 id = "outlined-basic"
+                className="inputwidth"
                 type="text"
                 color="secondary"
                 required
@@ -525,8 +531,10 @@ const LoginPage = () => {
                 label = "비밀번호"
                 variant = "outlined"
                 id = "outlined-password-input"
+                className="inputwidth"
                 type="password"
                 color="secondary"
+                sx={{ input: { fontFamily : 'Arial' } }}
                 required
                 value={userPass}
                 onChange={(e) => setUserPass(e.target.value)}
@@ -692,9 +700,11 @@ const LoginPage = () => {
             <label for="newPassword">새 비밀번호</label>
             <div>
               <Input
+                type="password"
                 value={newPassword}
                 id="newPassword"
                 className="dialog-input"
+                sx={{ input: { fontFamily : 'Arial' } }}
                 onChange={onNewPassword}
               ></Input>
             </div>
