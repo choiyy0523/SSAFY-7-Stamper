@@ -135,7 +135,6 @@ const LoginPage = () => {
           (response) => {
             dispatch(SET_USERINFO(response.data.userRes));
             console.log("profile get", response.data.userRes);
-            alert("로그인 되었습니다.")
             dispatch(SET_LOGIN());
             console.log()
           },
@@ -146,7 +145,6 @@ const LoginPage = () => {
       },
       (error) => {
         console.log(error);
-        alert("로그인에 실패했습니다.");
       }
     );
   };
