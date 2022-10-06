@@ -69,7 +69,8 @@ export default function landmark() {
   const userInfo = useSelector((state) => state.UserInfo);
   const userSeq = userInfo.userInfo.userSeq;
   const token = userInfo.accessToken;
-  const userName = userInfo.userInfo.userName
+  const userName = userInfo.userInfo.userName;
+  const userNickname = userInfo.userInfo.userNickname;
 
 
   useEffect(() => {
@@ -619,7 +620,7 @@ export default function landmark() {
                                 <div style={{display:'flex', flexDirection:'row'}}>
                                     <div style={{padding:'2px', marginBottom:'15px', backgroundColor:'rgba(191, 96, 255, 0.8)', borderRadius:5}}>{item.user.userNickname}:</div>
                                     <div style={{marginTop:'2px', marginLeft:'15px', marginBottom:'15px'}}>{item.commentContent}</div>
-                                    {item.user.userNickname === userName ? <button style={{marginTop:'2px', fontSize:'5px', marginLeft:'15px', marginBottom:'15px', border:'0px', padding:'0px'}} onClick={()=>{eraseComment(item.commentSeq)}}>삭제</button> : <div></div>}
+                                    {item.user.userNickname === userNickname ? <button style={{marginTop:'2px', fontSize:'5px', marginLeft:'15px', marginBottom:'15px', border:'0px', padding:'0px'}} onClick={()=>{eraseComment(item.commentSeq)}}>삭제</button> : <div></div>}
                                 </div>
                                 // <tr style={{marginBottom:'15px'}}>
                                 //     <td style={{marginBottom:'15px'}}>{item.user.userNickname}</td>
