@@ -7,8 +7,13 @@ import seoul from "../../../public/assets/components/seoul.png";
 import themepark from "../../../public/assets/components/theme-park.png";
 import typing from "../../../public/assets/components/typing.png";
 import house from "../../../public/assets/components/house.png";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllBookDetail, getCountOfCategory, getCountOfGugun } from "../../api/book";
+import { getAchieveList } from "../../api/achieve";
 
 export default function ImageTest() {
+    
+    const dispatch = useDispatch();
     const [district, setDistrict] = useState('default');
     const [image, setImage] = useState(null);
     const [url, setURL] = useState('');
@@ -17,6 +22,10 @@ export default function ImageTest() {
     const [predictionArr,setPredictionArr]=useState([]);
     const [result,setResult]=useState(null);
     const fileRef = useRef();
+
+    const userInfo = useSelector((state) => state.UserInfo);
+    const userSeq = userInfo.userInfo.userSeq;
+    const token = userInfo.accessToken;
 
     let model
 
@@ -86,16 +95,15 @@ export default function ImageTest() {
         console.log('답: ', prediction[1].className + prediction[1].probability.toFixed(2));
         console.log('답: ', prediction[2].className + prediction[2].probability.toFixed(2));
     }
-// =======
-// import { useParams } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
-// import { Fragment, useState, useRef, useEffect } from 'react';
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// function mainpage () {
-//     const token = useSelector((state) => state.UserInfo.accessToken);
-// >>>>>>> 127e11a699189a33ba10290bb321f113b1cebf18
+    useEffect(() => {
+        // getAchieveList(userSeq, token, (response)=>{
+        //     console.log(response.data);
+        // }, (error)=>{
+        //     console.log(error);
+        // })
 
+    },[])
     return (
 
         <Fragment>
@@ -112,7 +120,7 @@ export default function ImageTest() {
                 </div>
             <div className="mypage_top">
                 <div className="colorblock3 container flex-column">
-                    <a href="/profile/0" className="bigfont inner-div">
+                    <a href="/profile" className="bigfont inner-div">
                         <img className="main_comp2 container flex-column" src={house} alt="" />마이페이지</a>
                 </div>
             </div>

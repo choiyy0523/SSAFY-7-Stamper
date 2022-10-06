@@ -14,8 +14,9 @@ export default function header() {
         dispatch(SET_LOGOUT());
         const updateUserInfo = {
           userName: null,
-          userNick: null,
+          userNickname: null,
           userPhone: null,
+          userEmail: null,
         };
         dispatch(SET_USERINFO(updateUserInfo));
         dispatch(SET_TOKEN(null));

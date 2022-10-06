@@ -8,6 +8,7 @@ export const tokenSlice = createSlice({
       userName: null,
       userNickname: null,
       userSeq: null,
+      userPhonenumber: null,
     },
     loggedIn: false,
   },

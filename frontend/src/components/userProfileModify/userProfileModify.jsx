@@ -254,7 +254,7 @@ function userprofileModify ( { open, setOpen }) {
             </div>
         
             <div className="nav_position"><div> 
-                <a className="item" href="/profile/:userNo">
+                <a className="item" href="/profile">
                     <img className="nav_undo" src="/assets/components/undo.png" alt="" />
                 </a></div>
             </div>
