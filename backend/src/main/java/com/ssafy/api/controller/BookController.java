@@ -49,7 +49,7 @@ public class BookController {
 
         Long userSeq = bookInfo.userSeq;
         Long bookSeq = bookInfo.bookSeq;
-        String imageURL = bookInfo.
+        String imageURL = bookInfo.userbookCollectionImage;
 
         UserbookCollection temp = bookService.getBookStatus(userSeq, bookSeq);
 
