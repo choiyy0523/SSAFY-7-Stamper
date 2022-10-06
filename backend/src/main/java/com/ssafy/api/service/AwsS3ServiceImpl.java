@@ -45,7 +45,7 @@ public class AwsS3ServiceImpl implements AwsS3Service {
             try{
                 amazonS3.deleteObject(new DeleteObjectRequest(bucket, existFile));
             } catch(Exception e) {
-                return (e);
+                return ("delete fail");
             }
         } else if(existFile == ""){
             System.out.println("imgFilePath is null!! --> UPLOAD...");
