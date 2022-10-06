@@ -22,7 +22,6 @@ import axios from "axios";
 import Swal from 'sweetalert2'
 
 import { updateAchieve } from "../../api/achieve";
-
 import collectedStamp from '../../assets/quality.png'
 
 
@@ -68,6 +67,7 @@ export default function landmark() {
   const userInfo = useSelector((state) => state.UserInfo);
   const userSeq = userInfo.userInfo.userSeq;
   const token = userInfo.accessToken;
+  const userName = userInfo.userInfo.userName
 
 
   useEffect(() => {
@@ -596,7 +596,7 @@ export default function landmark() {
         <div style={{ fontSize: "40px", margin: "8px" }}>{landmarkName}</div>
         <div style={{position:'relative'}}>
             <img style={{height:'200px', width:'200px', marginTop:'8px', marginBottom:'20px', boxShadow:'10px 5px 5px'}} src={imageURL} alt={landmarkName}></img>
-            <img style={{position:'absolute', height:'50px', width:'50px', top:10, right:75, zIndex:10}} src={collectedStamp} alt="collected" />
+            {isCollected? <img style={{position:'absolute', height:'50px', width:'50px', top:10, right:75, zIndex:8}} src={collectedStamp} alt="collected" /> : <div></div>}
         </div>
         <div style={{lineHeight:1.5, width:'80vw', textAlign:'center', margin:'auto'}}>{landmarkDesc}</div>
         <div style={{display:'flex', marginLeft:'12px', marginTop:'25px', marginRight:'8px', marginBottom:'20px'}}>
