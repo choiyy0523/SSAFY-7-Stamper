@@ -41,13 +41,13 @@ const userprofile = () => {
             <div className="container profile_background">
                 {/* 프로필 사진과 이름 */}
                 <div>
-                    <img style={{ width:'30vw', marginTop:'35px'}} src="/assets/components/user.png" alt="" />
+                    <img style={{ width:'30vw', marginTop:'10px'}} src="/assets/components/user.png" alt="" />
                     <p style={{fontSize:'20px', marginBottom:'0px', marginTop:'10px'}}> {userNickname} </p>
                 </div>
                 
                 {/* 자기소개 */}
                 <div style={{position:'absolute', marginTop:'5px', textAlign:'start', left:'150px'}}>
-                    <p style={{marginTop:'45px', marginBottom:'4px'}}>이름 : {userName} </p>
+                    <p style={{marginTop:'25px', marginBottom:'4px'}}>이름 : {userName} </p>
                     <p style={{marginTop:0, marginBottom:'4px'}}>닉네임 : {userNickname} </p>
                     <p style={{marginTop:0, marginBottom:'4px'}}>폰번호 : {userPhone} </p>
                     <p style={{marginTop:0, marginBottom:'4px'}}>이메일 : {userEmail} </p>
