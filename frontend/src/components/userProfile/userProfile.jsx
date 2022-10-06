@@ -1,7 +1,20 @@
 import "./userProfile.css"
 import * as React from 'react';
+import { useState, useEffect } from "react";
+import { useSelector } from 'react-redux';
+
 
 const userprofile = () => {
+
+    const [fordata, setFordata] = useState([]);
+  
+    const userInfo = useSelector((state) => state.UserInfo);
+    const userSeq = userInfo.userInfo.userSeq;
+    const userNick = userInfo.userInfo.userNickname;
+    const token = userInfo.accessToken;
+
+    console.log(userInfo);
+  
     return (
         <div className="aligncenter">
             {/* 프로필 카드 */}
@@ -9,7 +22,7 @@ const userprofile = () => {
                 {/* 프로필 사진과 이름 */}
                 <div className="item">
                     <img className="temp_dummy_profile_photo" src="/assets/components/user.png" alt="" />
-                    <p> 김싸피 </p>
+                    <p> {userNick} </p>
                 </div>
                 
                 {/* 자기소개 */}

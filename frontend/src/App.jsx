@@ -64,7 +64,7 @@ function App() {
               <MainPage /> ) :
                   ( <Loginpage></Loginpage> )} />
             <Route path="/test" element={<ImageTest/>}></Route>
-            <Route path="/loginpage" element={<Loginpage/>}></Route>
+            {/* <Route path="/loginpage" element={<Loginpage/>}></Route> */}
             <Route path="/profile/:userNo" element={<UserProfile/>}></Route>
             <Route path="/profile/:userNo/modify" element={<UserProfileModify/>}></Route>
             <Route path="/" element={<MainPage/>}></Route>
