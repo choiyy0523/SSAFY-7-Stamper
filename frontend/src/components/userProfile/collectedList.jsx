@@ -1,3 +1,5 @@
+import { Box, Grid } from "@material-ui/core";
+import { border } from "@mui/system";
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux";
 import { getAllBookDetail } from "../../api/book"
@@ -16,12 +18,13 @@ export default function collectedList() {
     }, [])
 
     return (
-        <div>
-            {imageList.map((item)=>{
+        <div style={{display:'flex', flexWrap:'wrap', marginTop:'15px'}}>
+            {imageList.map((data)=>{
                 return(
-                    <img key={item.userbookCollectionSeq} style={{height:'100px', width:'100px'}} src={item.userbookCollectionImage}></img>
-                )
-            })}
+                    <img key={data.userbookCollectionSeq} style={{height:'133px', width:'133px', border:'2px solid white'}} src={data.userbookCollectionImage}></img>
+                );
+            })};
         </div>
     )
 };
+
