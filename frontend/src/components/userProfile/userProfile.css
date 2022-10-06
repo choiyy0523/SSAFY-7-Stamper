@@ -12,13 +12,13 @@
 }
 
 .profile_background {
+    display: relative;
     margin-left: auto;
     margin-right: auto;
-    /* width: 60vh; */
-    height: 30vh;
+    width: 95vw;
+    height: 25vh;
     background-color: rgba(191, 96, 255, 0.09);
     border-radius: 5%;
-    display: inline-block;
 }
 
 /* .profile_box {
@@ -29,12 +29,6 @@
     width: 8vh;
 }
 
-.temp_dummy_profile_photo {
-    width: 14vh;
-    margin-top: 1vh;
-
-}
-
 .profile_control_comp {
     width: 5vh;
     margin: 0.2vh;
@@ -42,4 +36,8 @@
 
 .alignleft {
     align-content:flex-start;
+}
+
+.profile_info {
+    margin: 0px 0px 0px 0px !important;
 }
