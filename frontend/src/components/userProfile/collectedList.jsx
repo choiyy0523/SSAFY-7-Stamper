@@ -20,8 +20,8 @@ export default function collectedList() {
             {imageList.map((item)=>{
                 return(
                     <img key={item.userbookCollectionSeq} style={{height:'100px', width:'100px'}} src={item.userbookCollectionImage}></img>
-                );
-            })};
+                )
+            })}
         </div>
     )
 };
