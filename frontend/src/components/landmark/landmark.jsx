@@ -91,7 +91,7 @@ export default function landmark() {
       landmarkNo,
       (response) => {
         setLandmarkInfo(response.data.book);
-        console.log(landmarkInfo);
+        //console.log(landmarkInfo);
       },
       (error) => {
         console.log(error);
@@ -99,14 +99,14 @@ export default function landmark() {
     );
   }, []);
 
-  console.log(landmarkInfo);
+  //console.log(landmarkInfo);
   let model;
 
   const longLatExtraction = async () => {
     let { latitude, longitude } = await exifr.gps(url);
     setInputLatitude(latitude);
     setInputLongitude(longitude);
-    console.log({ latitude, longitude });
+    //console.log({ latitude, longitude });
   };
   useEffect(() => {
     longLatExtraction();
@@ -393,10 +393,12 @@ export default function landmark() {
     function eraseComment(commentSeq) {
         //event.preventDefault();
         //let input = {commentSeq:commentSeq};
-        confirm('삭제하시겠습니까?');
-        deleteComment(commentSeq, token);
-        alert('삭제되었습니다.');
-        window.location.reload();
+        var commentdel = confirm('삭제하시겠습니까?');
+        if (commentdel){
+          deleteComment(commentSeq, token);
+          alert('삭제되었습니다.');
+          window.location.reload();
+        }
     }
 
   return (
