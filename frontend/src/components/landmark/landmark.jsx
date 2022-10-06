@@ -406,10 +406,10 @@ export default function landmark() {
         <div>
             <img style={{height:'200px', width:'200px', marginTop:'8px', marginBottom:'20px'}} src={imageURL} alt={landmarkName}></img>
         </div>
-        <div style={{ width:'80vw', textAlign:'center', margin:'auto'}}>{landmarkDesc}</div>
+        <div style={{lineHeight:1.5, width:'80vw', textAlign:'center', margin:'auto'}}>{landmarkDesc}</div>
         <div style={{display:'flex', marginLeft:'12px', marginTop:'25px', marginRight:'8px', marginBottom:'20px'}}>
             <TextField style={{width:'80vw'}} onChange={(event) => setCommentContent(event.target.value)}></TextField>
-            <button style={{backgroundColor:'rgba(191, 96, 255, 0.8)', marginLeft:'10px', fontSize:'12px'}} onClick={commentPost}>등록</button>
+            <button style={{backgroundColor:'rgba(191, 96, 255, 0.8)', marginLeft:'10px', fontSize:'2.5vw'}} onClick={commentPost}>등록</button>
         </div>
         <div style={{ margin:'auto', borderRadius:7 ,width:'97vw'}}>
                 <table>
@@ -503,10 +503,9 @@ export default function landmark() {
             ></img>
           )}
           <br />
-          <br />
           <span className="grayfont">
-            ※건물 디자인 변경, 현수막, 디스플레이, 리모델링, 재건축 등으로 인해
-            인식이 불안정할 수 있습니다※
+            디자인 변경, 현수막, 디스플레이, 리모델링, 재건축 등으로 인해
+            인식이 불안정할 수 있습니다.
           </span>
         </div>
       </div>
