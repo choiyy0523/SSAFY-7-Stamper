@@ -17,14 +17,28 @@ export default function collectedList() {
         })
     }, [])
 
-    return (
-        <div style={{display:'flex', flexWrap:'wrap', marginTop:'15px'}}>
-            {imageList.map((data)=>{
-                return(
-                    <img key={data.userbookCollectionSeq} style={{height:'133px', width:'133px', border:'2px solid white'}} src={data.userbookCollectionImage}></img>
-                );
-            })};
-        </div>
-    )
-};
+//     return (
+//         <div style={{display:'flex', flexWrap:'wrap', marginTop:'15px'}}>
+//             {imageList.map((data)=>{
+//                 return(
+//                     <img key={data.userbookCollectionSeq} style={{height:'133px', width:'133px', border:'2px solid white'}} src={data.userbookCollectionImage}></img>
+//                 );
+//             })};
+//         </div>
+//     )
+// };
 
+    return (
+        <Box>
+            <Grid container>
+                {imageList.map((data)=>{
+                    return(
+                        <Grid item xs={4}>
+                            <img key={data.userbookCollectionSeq} style={{height:'8em', width:'8em'}} src={data.userbookCollectionImage}></img>
+                        </Grid>
+                    );
+                })};
+            </Grid>
+        </Box>
+    );
+};
