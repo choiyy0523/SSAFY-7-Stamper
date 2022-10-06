@@ -1,9 +1,10 @@
 import { useParams } from 'react-router-dom';
+
 import TextField from "@mui/material/TextField";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getAllBookDetail, getBookDetail, getCountOfCategory, getCountOfGugun } from "../../api/book";
 import { useDispatch, useSelector } from "react-redux";
-import { getCommentList } from "../../api/comment";
+import { getCommentList, registerComment, deleteComment } from "../../api/comment";
 import { Fragment, useState, useRef, useEffect } from "react";
 import * as tf from "@tensorflow/tfjs";
 import * as tmImage from "@teachablemachine/image";
@@ -31,6 +32,7 @@ export default function landmark() {
   const [landmarkGugun, setLandmarkGugun] = useState("");
   const [landmarkCat, setLandmarkCat] = useState("");
   const [landmarkComment, setLandmarkComment] = useState([]);
+  const [commentContent, setCommentContent] = useState('');
 
   const [landmarkInfo, setLandmarkInfo] = useState([]);
   const [district, setDistrict] = useState("default");

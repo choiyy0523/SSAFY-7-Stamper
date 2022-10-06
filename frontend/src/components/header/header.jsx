@@ -40,7 +40,7 @@ export default function header() {
                 <li><a className='menuItem' href="/">로그인</a></li>}
                
                 { loggedIn ?
-                <li><a className='menuItem' href="/profile">마이페이지</a></li>: <></>}
+                <li><a className='menuItem' href="/profile/">마이페이지</a></li>: <></>}
 
                 { loggedIn ?
                 <li><a className='menuItem' href="/collection/theme/index">테마별수집현황</a></li> : <></> }
