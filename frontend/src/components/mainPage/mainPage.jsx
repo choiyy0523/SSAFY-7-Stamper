@@ -171,7 +171,7 @@ export default function ImageTest() {
             </div>
             {image ? <button onClick={predict}>예측</button> : <button disabled>예측</button>}
             
-            <div className="footfoot">* 해당 기능을 통해 사용되는 이미지는 '스탬퍼' 서비스 저장소에 별도로 저장되지 않습니다. *</div>
+            <div className="footfoot">* '랜드마크 닮은꼴 찾기'에 사용된 이미지 파일은 '스탬퍼' 서비스 저장소에 별도로 저장되지 않습니다. *</div>
 
         </Fragment>
 

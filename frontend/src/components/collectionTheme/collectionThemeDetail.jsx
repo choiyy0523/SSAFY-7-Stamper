@@ -6,6 +6,10 @@ import { Map, MapMarker, Polyline } from "react-kakao-maps-sdk";
 import { Fragment, useState, useRef} from 'react';
 import { useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
+import "./collectionThemeDetail.css"
+import coin from "../../../public/assets/components/coin.png";
+import ai from '../../assets/ai.png'
+import { borderRadius } from "@mui/system";
 
 const collectionThemeDetail = () => {
     
@@ -54,7 +58,7 @@ const collectionThemeDetail = () => {
                 if (response.data.totalBookList[i].bookSeq == response.data.collectedBookList[j].book.bookSeq){
                     bookObj.collected = "수집완료";
                 }
-            }
+}
 
             bookCol.push(bookObj);
           }
@@ -77,12 +81,19 @@ const collectionThemeDetail = () => {
         })
       }, [])
       const bookArr = bookCol;
-
-    return (<div>{theme} 수집 현황
-        <div>
+      
+      return (<div><div className="seoul_title">{theme}
+      <span className="span_effect">&nbsp;</span>
+      <span className="span_effect">수</span>
+      <span className="span_effect">집</span>
+      <span className="span_effect">&nbsp;</span>
+      <span className="span_effect">현</span>
+      <span className="span_effect">황</span>
+       </div>
+          <div className="container map_center">
             <Map
             center={{ lat: position.lat, lng: position.lng}}
-            style={{ width: "100%", height: "360px" }}
+            style={{ width: "23rem", height: "20rem", borderStyle: "groove", borderRadius:"1em"}}
             level={9}
             >
                     {fordata.map((item)=>{
@@ -135,22 +146,22 @@ else {
         </div>
 
 
-        <div>
-            <table>
+        <div className="map_center">
+            <table className="list_left list_border" style={{borderCollapse:'collapse'}}>
                 <thead>
-                    <tr>
-                        <th>이름</th>
-                        <th>주소</th>
-                        <th>수집여부</th>
+                    <tr className="under_border" style={{borderBottom:'3px solid white'}}>
+                        <th className="">이름</th>
+                        {/* <th>주소</th> */}
+                        <th className="list_right">수집여부</th>
                     </tr>
                 </thead>
                 <tbody>
                     {fordata.map((item)=>{
                         return (
                             <tr>
-                            <td><a href = {`/landmark/${item.bookSeq}`}>{item.bookName}</a></td>
-                            <td>{item.bookAddress}</td>
-                            <td>{item.collected}</td>
+                            <td className=" list_border"><a href = {`/landmark/${item.bookSeq}`}>{item.bookName}</a></td>
+                            {/* <td>{item.bookAddress}</td> */}
+                            <td className="list_right">{item.collected === "수집완료" ? <img style={{height:'20px', width:'20px'}} src={coin}></img> : <img style={{height:'20px', width:'20px'}}></img>}</td>
                             </tr>
                         );
                     })}
