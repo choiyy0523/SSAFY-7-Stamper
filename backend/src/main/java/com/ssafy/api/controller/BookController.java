@@ -47,8 +47,26 @@ public class BookController {
 //            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Unauthenticated"));
         }
 
-        bookService.registerUserbookCollection(bookInfo);
+        Long userSeq = bookInfo.userSeq;
+        Long bookSeq = bookInfo.bookSeq;
+        String imageURL = bookInfo.
+
+        UserbookCollection temp = bookService.getBookStatus(userSeq, bookSeq);
+
+        if(temp != null){
+                BookUpdateStatusReq tempReq = new BookUpdateStatusReq();
+                tempReq.userSeq = userSeq;
+                tempReq.bookSeq = bookSeq;
+                tempReq.imageURL = userbookCollectionImage;
+                bookService.updateBookStatus(tempReq);
+        } else {
+                bookService.registerUserbookCollection(bookInfo);
+        }
+
         return ResponseEntity.status(201).body(BaseResponseBody.of(201, "Success"));
+
+        // bookService.registerUserbookCollection(bookInfo);
+        // return ResponseEntity.status(201).body(BaseResponseBody.of(201, "Success"));
     }
 
 
