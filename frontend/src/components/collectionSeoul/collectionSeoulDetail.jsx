@@ -2,10 +2,11 @@
 import { useEffect } from "react";
 import {useParams} from "react-router-dom";
 import { getListByGugun } from '../../api/book';
-import { Map, MapMarker, Polyline } from "react-kakao-maps-sdk";
+import { Map, MapMarker, Polyline, CustomOverlayMap } from "react-kakao-maps-sdk";
 import { Fragment, useState, useRef} from 'react';
 import { useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
+import "./collectionSeoulDetail.css"
 
 const collectionSeoulDetail = () => {
     
@@ -86,11 +87,50 @@ const collectionSeoulDetail = () => {
             level={7}
             >
                     {fordata.map((item)=>{
-                        return (
-                            <MapMarker position={{ lat: item.bookLatitude, lng: item.bookLongitude }}>
-                                <div style={{color:"#000"}}>{item.bookName}</div>
-                            </MapMarker>
-                        );
+
+                        if (item.collected == "수집완료"){
+                            return (
+                                <MapMarker key = {item.bookName} position={{ lat: item.bookLatitude, lng: item.bookLongitude }}
+                                image={{
+                                    src: "/assets/Compl.png", // 마커이미지의 주소입니다
+                                    size: {
+                                    width: 32,
+                                    height: 35,
+                                    }, // 마커이미지의 크기입니다
+                                    options: {
+                                    offset: {
+                                        x: 16,
+                                        y: 35,
+                                    }, // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+                                    },
+                                }}
+                                >
+                                    <div style={{padding: "5px", color:"#000", width:"155px"}}>{item.bookName}</div>
+                                </MapMarker>
+                            );
+                        }
+
+                        else {
+                            return (
+                                <MapMarker key = {item.bookName} position={{ lat: item.bookLatitude, lng: item.bookLongitude }}
+                                image={{
+                                    src: "/assets/no.png", // 마커이미지의 주소입니다
+                                    size: {
+                                    width: 32,
+                                    height: 35,
+                                    }, // 마커이미지의 크기입니다
+                                    options: {
+                                    offset: {
+                                        x: 16,
+                                        y: 35,
+                                    }, // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+                                    },
+                                }}
+                                >
+                                    <div style={{padding: "5px", color:"#000", width:"155px"}}>{item.bookName}</div>
+                                </MapMarker>
+                            );
+                        }
                     })}
             </Map>
         </div>
