@@ -14,7 +14,7 @@
 .profile_background {
     margin-left: auto;
     margin-right: auto;
-    width: 60vh;
+    /* width: 60vh; */
     height: 30vh;
     background-color: rgba(191, 96, 255, 0.09);
     border-radius: 5%;
