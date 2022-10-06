@@ -1,6 +1,5 @@
 import "./mainPage.css"
 import * as React from 'react';
-<<<<<<< HEAD
 import { Fragment, useState, useRef, useEffect } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import * as tmImage from '@teachablemachine/image';
@@ -87,15 +86,15 @@ export default function ImageTest() {
         console.log('답: ', prediction[1].className + prediction[1].probability.toFixed(2));
         console.log('답: ', prediction[2].className + prediction[2].probability.toFixed(2));
     }
-=======
-import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { Fragment, useState, useRef, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// =======
+// import { useParams } from 'react-router-dom';
+// import { useSelector } from 'react-redux';
+// import { Fragment, useState, useRef, useEffect } from 'react';
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-function mainpage () {
-    const token = useSelector((state) => state.UserInfo.accessToken);
->>>>>>> 127e11a699189a33ba10290bb321f113b1cebf18
+// function mainpage () {
+//     const token = useSelector((state) => state.UserInfo.accessToken);
+// >>>>>>> 127e11a699189a33ba10290bb321f113b1cebf18
 
     return (
 
