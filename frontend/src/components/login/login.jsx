@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import {
   registerUser,
   getUserProfile,
@@ -40,8 +41,9 @@ import forest from "../../../public/assets/login/forest.png";
 import government from "../../../public/assets/login/government.png";
 import lighthouse from "../../../public/assets/login/lighthouse.png";
 import park from "../../../public/assets/login/park.png";
-import eye1 from "../../../public/assets/login/eye1.png";
-import eye2 from "../../../public/assets/login/eye2.png";
+import { Navigate } from "react-router-dom";
+// import eye1 from "../../../public/assets/login/eye1.png";
+// import eye2 from "../../../public/assets/login/eye2.png";
 
 
 
@@ -141,6 +143,8 @@ const LoginPage = () => {
           }
         );
         dispatch(SET_LOGIN());
+        console.log('login')
+        
       },
       (error) => {
         console.log(error);
@@ -260,8 +264,8 @@ const LoginPage = () => {
            <img className="sticker9" src={government} alt="" />
            <img className="sticker10" src={lighthouse} alt="" />
            <img className="sticker11" src={park} alt="" />
-           <img className="sticker12" src={eye1} alt="" />
-           <img className="sticker13" src={eye2} alt="" />
+           {/* <img className="sticker12" src={eye1} alt="" />
+           <img className="sticker13" src={eye2} alt="" /> */}
          </div>
          <br />
 
