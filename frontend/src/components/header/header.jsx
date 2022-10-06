@@ -36,7 +36,7 @@ export default function header() {
                 <li><a className='menuItem' href="/">Home</a></li> 
                 { loggedIn ? 
                 <li><a className='menuItem' onClick={onClickHandler}>로그아웃</a></li> :
-                <li><a className='menuItem' href="/loginpage">로그인</a></li>}
+                <li><a className='menuItem' href="/">로그인</a></li>}
                
                 { loggedIn ?
                 <li><a className='menuItem' href="/profile/0">마이페이지</a></li>: <></>}
