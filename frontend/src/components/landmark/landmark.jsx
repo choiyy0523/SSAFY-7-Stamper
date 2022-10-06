@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { getBookDetail } from '../../api/book';
 import { useSelector } from 'react-redux';
-import { getCommentList } from '../../api/comment';
+import { getCommentList, registerComment, deleteComment } from '../../api/comment';
 import { Fragment, useState, useRef, useEffect } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import * as tmImage from '@teachablemachine/image';
@@ -39,6 +39,7 @@ export default function landmark() {
     const [locationApproved, setLocationApproved] = useState(null);
     const [aiIcon, setAiIcon] = useState(ai);
     const [locationIcon, setLocationIcon] = useState(location);
+    const [commentContent, setCommentContent] = useState('');
     const fileRef = useRef();
 
     const [modal, setModal] = useState(false);
@@ -77,8 +78,6 @@ export default function landmark() {
             setLandmarkComment(data.list);
         })
     }, [])
-
-    
 
     useEffect(() => {
         getBookDetail(userSeq, landmarkNo, (response)=>{
@@ -273,6 +272,22 @@ export default function landmark() {
         if(landmarkName === resultName) {setAiIcon(approved)}
     },[loading, resultName])
 
+    function commentPost(event) {
+        event.preventDefault();
+        let input = {userSeq: userSeq, bookSeq: landmarkNo, commentContent:commentContent};
+        registerComment(input, token);
+        window.location.reload();
+    }
+
+    function eraseComment(commentSeq) {
+        //event.preventDefault();
+        //let input = {commentSeq:commentSeq};
+        confirm('삭제하시겠습니까?');
+        deleteComment(commentSeq, token);
+        alert('삭제되었습니다.');
+        window.location.reload();
+    }
+
     return (
 
     <div>
@@ -283,30 +298,31 @@ export default function landmark() {
         </div>
         <div style={{ width:'80vw', textAlign:'center', margin:'auto'}}>{landmarkDesc}</div>
         <div style={{display:'flex', marginLeft:'8px', marginTop:'25px', marginRight:'8px', marginBottom:'20px'}}>
-            <TextField style={{width:'80vw'}}></TextField>
-            <button>등록</button>
+            <TextField style={{width:'80vw'}} onChange={(event) => setCommentContent(event.target.value)}></TextField>
+            <button style={{backgroundColor:'rgba(191, 96, 255, 0.8)', marginLeft:'10px', fontSize:'12px'}} onClick={commentPost}>등록</button>
         </div>
-        <div>
+        <div style={{ margin:'auto', borderRadius:7 ,width:'97vw'}}>
                 <table>
-                    <thead>
+                    {/* <thead>
                         <tr style={{display:'flex', flexDirection:'column'}}>
-                            <th>작성자</th>
-                            <th>내용</th>
-                            <th>작성일자</th>
+                            <th>작성자:</th>
+                            <th>내용:</th>
+                            <th>작성일자:</th>
                         </tr>
-                    </thead>
-                    <tbody>
+                    </thead> */}
                         {landmarkComment.map((item) => {
                             return (
-                                <tr>
-                                    <td>{item.user.userNickname}</td>
-                                    <td>{item.commentContent}</td>
-                                    <td>{item.commentDate}</td>
-                                </tr>
+                                <div style={{display:'flex', flexDirection:'row'}}>
+                                    <div style={{padding:'2px', marginBottom:'15px', backgroundColor:'rgba(191, 96, 255, 0.8)', borderRadius:5}}>{item.user.userNickname}:</div>
+                                    <div style={{marginTop:'2px', marginLeft:'15px', marginBottom:'15px'}}>{item.commentContent}</div>
+                                    {item.user.userNickname === userName ? <button style={{marginTop:'2px', fontSize:'5px', marginLeft:'15px', marginBottom:'15px', border:'0px', padding:'0px'}} onClick={()=>{eraseComment(item.commentSeq)}}>삭제</button> : <div></div>}
+                                </div>
+                                // <tr style={{marginBottom:'15px'}}>
+                                //     <td style={{marginBottom:'15px'}}>{item.user.userNickname}</td>
+                                //     <td style={{marginBottom:'15px'}}>{item.commentContent}</td>
+                                // </tr>
                             );
                         })}
-
-                    </tbody>
                 </table>
         </div>
             </div>
