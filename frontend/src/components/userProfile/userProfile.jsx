@@ -2,6 +2,7 @@ import "./userProfile.css"
 import * as React from 'react';
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
+import AchievedList from "./achievedList";
 import { getAllBookDetail } from "../../api/book";
 import { getAchieveList } from "../../api/achieve";
 import CollectedList from "./collectedList";
@@ -55,37 +56,42 @@ const userprofile = () => {
                     <p style={{marginTop:0, marginBottom:'4px'}}>달성한 업적: {achieveList.length}</p>
                 </div>
 
+
                 <a href="/profile/modify">
                     <img style={{position:'absolute', width:'8vw', height:'8vw',top:'6px', right:'18px'}} src="/assets/components/myintro.png" alt="" />
                 </a>
 
             </div>
+            <br />
+                <br />
+                
+                <hr className="customhr" />
                     
                 {/* 프로필의 기념도장과 랜드마크 아이콘 */}
             <div className="item">
                 <br />
                 
                 <div>
-                    <h1> 나의 업적 </h1>
+                    <h1 > 나의 업적 </h1>
+                    <AchievedList></AchievedList>
+                    {/* <img className="profile_comp" src="/assets/components/stamp.png" alt="" /> */}
                 </div>
+                <br />
+                <br />
+                <br />
                 
-                {/* 로고 나열 */}
-                <div>
-                  <img className="profile_comp" src="/assets/components/stamp.png" alt="" />
-                    {achieveList.map((data) =>{
-                        return(
-                        <div>
-                            <div>
-                                업적이름 : {data.achieve.achieveName}
-                            </div>
-                            <div>{data.userAchievementTime} </div>
-                        </div>
-                        )
+                <hr className="customhr" />
+                <br />
+                <br />
 
-                    })}
+
+
+                <div>
+                    <h1 > 나의 랜드마크 </h1>
+                    <br />
+                    <CollectedList></CollectedList>
                 </div>
             </div> 
-            <CollectedList></CollectedList>
         </div>
     );
   };

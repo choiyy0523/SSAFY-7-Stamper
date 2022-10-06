@@ -213,15 +213,18 @@ export default function landmarkRegister() {
             </div>
             <Button color="secondary" onClick={predict}>검증</Button>
             <div>
-                <img style={{height:'100px', width:'100px', margin:'30px'}} src={aiIcon}></img>
+                <img style={{height:'100px', width:'100px', margin:'30px' }} src={aiIcon}></img>
                 {locationApproved === true ? <img style={{height:'100px', width:'100px', margin:'30px'}} src={approved}></img> : <img className='basic' style={{ margin:'30px', height:'100px', width:'100px'}} src={location}></img>}
                 <br />
                 <span className='grayfont'>
                 * 건물 디자인 변경, 현수막, 디스플레이, 리모델링, 재건축 등으로 인해 인식이 불안정할 수 있습니다. *
                 </span>
                 <br />
-                <span>
-                * 랜드마크 등록에 사용되는 이미지 파일은 '스탬퍼' 서비스 저장소에 별도로 저장되므로 개인정보, 사생활, 제출 서류 등이 민감한 정보가 포함된 사진은 게시를 금합니다. *
+                <br />
+                <span className='grayfont'>
+                * 랜드마크 등록에 사용되는 이미지 파일은 '스탬퍼' 서비스 저장소에 별도로 저장되므로
+                <br />
+                개인정보, 사생활, 제출 서류 등이 민감한 정보가 포함된 사진은 게시를 금합니다. *
                 </span>
             </div>
         </div>
