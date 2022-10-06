@@ -68,7 +68,7 @@ export default function landmark() {
         tempURL += data.book.bookImageURL;
         setImageURL(tempURL);
       } else {
-        tempURL += data.userBook.userbookCollectionImage;
+        tempURL = data.userBook.userbookCollectionImage;
         setImageURL(tempURL);
       }
     });
