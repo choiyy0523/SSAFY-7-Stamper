@@ -41,9 +41,8 @@ import forest from "../../../public/assets/login/forest.png";
 import government from "../../../public/assets/login/government.png";
 import lighthouse from "../../../public/assets/login/lighthouse.png";
 import park from "../../../public/assets/login/park.png";
-import { Navigate } from "react-router-dom";
-// import eye1 from "../../../public/assets/login/eye1.png";
-// import eye2 from "../../../public/assets/login/eye2.png";
+import eye1 from "../../../public/assets/login/eye1.png";
+import eye2 from "../../../public/assets/login/eye2.png";
 
 
 
@@ -97,11 +96,11 @@ const LoginPage = () => {
       userId: userId,
       userPassword: userPass,
       userName: userName,
-      userNickname: userNick,
       userEmail: userEmail,
-      userPhone: userPhone
+      userPhone: userPhone,
+      userNickname: userNick,
     };
-    console.log(userId)
+    console.log(data)
     registerUser(
       data,
       (response) => {
@@ -137,14 +136,13 @@ const LoginPage = () => {
             dispatch(SET_USERINFO(response.data.userRes));
             console.log("profile get", response.data.userRes);
             alert("로그인 되었습니다.")
+            dispatch(SET_LOGIN());
+            console.log()
           },
           (error) => {
             console.log(error);
           }
         );
-        dispatch(SET_LOGIN());
-        console.log('login')
-        
       },
       (error) => {
         console.log(error);
@@ -156,9 +154,14 @@ const LoginPage = () => {
 
   // 아이디 찾기
   const [findUserName, setFindUserName] = useState("");
+  const [findUserPhone, setFindUserPhone] = useState("");
+
   const [foundUserId, setFoundUserId] = useState("");
   const onFindUserName = (event) => {
     setFindUserName(event.target.value);
+  };
+  const onFindUserPhone = (event) => {
+    setFindUserPhone(event.target.value);
   };
 
   const [openFindUserId, setOpenFindUserId] = useState(false);
@@ -170,6 +173,7 @@ const LoginPage = () => {
   const handleCloseFindUserId = () => {
     setOpenFindUserId(false);
     setFindUserName("");
+    setFindUserPhone("");
   };
   const handleOpenResponseUserId = () => {
     setOpenResponseUserId(true);
@@ -181,6 +185,7 @@ const LoginPage = () => {
   const onFindUserId = () => {
     const findUserIdInfo = {
       userName: findUserName,
+      userPhone: findUserPhone,
     };
     const success = (res) => {
       handleOpenResponseUserId();
@@ -196,6 +201,7 @@ const LoginPage = () => {
   // 비밀번호 찾기
   const [passUserId, setPassUserId] = useState("");
   const [passUserName, setPassUserName] = useState("");
+  const [passUserPhone, setPassUserPhone] = useState("");
   const [newPassword, setNewPassword] = useState("");
 
   const onPassUserId = (event) => {
@@ -203,6 +209,9 @@ const LoginPage = () => {
   };
   const onPassUserName = (event) => {
     setPassUserName(event.target.value);
+  };
+  const onPassUserPhone = (event) => {
+    setPassUserPhone(event.target.value);
   };
   const onNewPassword = (event) => {
     setNewPassword(event.target.value);
@@ -219,6 +228,7 @@ const LoginPage = () => {
     setOpenFindPassword(false);
     setPassUserId("");
     setPassUserName("");
+    setPassUserPhone("");
     setNewPassword("");
   };
   const handleOpenResponseFindPassword = () => {
@@ -233,6 +243,7 @@ const LoginPage = () => {
     const findUserPasswordInfo = {
       userId: passUserId,
       userName: passUserName,
+      userPhone: passUserPhone,
       newPassword: newPassword,
     };
     const success = (res) => {
@@ -264,8 +275,8 @@ const LoginPage = () => {
            <img className="sticker9" src={government} alt="" />
            <img className="sticker10" src={lighthouse} alt="" />
            <img className="sticker11" src={park} alt="" />
-           {/* <img className="sticker12" src={eye1} alt="" />
-           <img className="sticker13" src={eye2} alt="" /> */}
+           <img className="sticker12" src={eye1} alt="" />
+           <img className="sticker13" src={eye2} alt="" />
          </div>
          <br />
 
@@ -437,7 +448,8 @@ const LoginPage = () => {
                 value = {userEmail}
                 onChange={(e) => {
                   setUserEmail(e.target.value);
-                  setIsUserEmail(true);
+                  if (e.target.value.length==0) setIsUserEmail(false);
+                  else setIsUserEmail(true);
                 }}>
               </TextField>
               <br />
@@ -454,7 +466,8 @@ const LoginPage = () => {
                 value = {userPhone}
                 onChange={(e) => {
                   setUserPhone(e.target.value);
-                  setIsUserPhone(true);
+                  if (e.target.value.length==0) setIsUserPhone(false);
+                  else setIsUserPhone(true);
                 }}>
               </TextField>
               <br />
@@ -472,7 +485,9 @@ const LoginPage = () => {
                   isUserId &&
                   isUserName &&
                   isUserNick &&
-                  isUserPass 
+                  isUserPass &&
+                  isUserEmail &&
+                  isUserPhone
                 )
               }
             >회원가입</Button>
@@ -613,6 +628,18 @@ const LoginPage = () => {
               ></Input>
             </div>
             <br />
+
+            <label for="userPhone">전화번호</label>
+            <div>
+              <Input
+                value={findUserPhone}
+                id="userPhone"
+                className="dialog-input"
+                onChange={onFindUserPhone}
+              ></Input>
+            </div>
+            <br />
+
           </DialogContentText>
         </DialogContent>
 
@@ -697,6 +724,17 @@ const LoginPage = () => {
                 id="userName"
                 className="dialog-input"
                 onChange={onPassUserName}
+              ></Input>
+            </div>
+            <br />
+
+            <label for="userPhone">전화번호</label>
+            <div>
+              <Input
+                value={passUserPhone}
+                id="userPhone"
+                className="dialog-input"
+                onChange={onPassUserPhone}
               ></Input>
             </div>
             <br />

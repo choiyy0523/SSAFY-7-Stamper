@@ -14,8 +14,9 @@ export default function header() {
         dispatch(SET_LOGOUT());
         const updateUserInfo = {
           userName: null,
-          userNick: null,
+          userNickname: null,
           userPhone: null,
+          userEmail: null,
         };
         dispatch(SET_USERINFO(updateUserInfo));
         dispatch(SET_TOKEN(null));
@@ -39,7 +40,7 @@ export default function header() {
                 <li><a className='menuItem' href="/">로그인</a></li>}
                
                 { loggedIn ?
-                <li><a className='menuItem' href="/profile/0">마이페이지</a></li>: <></>}
+                <li><a className='menuItem' href="/profile/">마이페이지</a></li>: <></>}
 
                 { loggedIn ?
                 <li><a className='menuItem' href="/collection/theme/index">테마별수집현황</a></li> : <></> }

@@ -1,0 +1,4 @@
+.collectedStamp {
+    filter: invert(75%) sepia(89%) saturate(589%) hue-rotate(358deg) brightness(99%) contrast(108%);
+    opacity: 90%;
+}

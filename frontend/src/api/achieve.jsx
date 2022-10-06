@@ -4,7 +4,7 @@ import { instance, createHeaders } from "./index";
   response.data: {statusCode, message, achieveList:{List<UserAchievement>}}
  */
 function getAchieveList(userSeq, token, success, error) {
-  instance.post(`/achieve/${userSeq}`, userSeq, { headers: createHeaders(token)} ).then(success).catch(error);
+  instance.get(`/achieve/${userSeq}`, userSeq, { headers: createHeaders(token)} ).then(success).catch(error);
 }
 
 /*
@@ -18,7 +18,7 @@ function getAchieveList(userSeq, token, success, error) {
   response.data: {statusCode, message}
  */
 function updateAchieve(achieveInfo, token, success, error) {
-  instance.update(`/achieve/update`, achieveInfo, { headers: createHeaders(token)} ).then(success).catch(error);
+  instance.post(`/achieve/update`, achieveInfo, { headers: createHeaders(token)} ).then(success).catch(error);
 }
 
 
