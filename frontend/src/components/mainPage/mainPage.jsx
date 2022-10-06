@@ -126,7 +126,7 @@ export default function ImageTest() {
             </div>
 
             <div className="darm_kkol">&lt;랜드마크 닮은꼴 찾기></div>
-            <img className="main_comp blur_darm" src={assistant} alt="" style={{display: `${image ? "none" : null}`}}/>
+            <img className="main_comp blur_darm robot_dance" src={assistant} alt="" style={{display: `${image ? "none" : null}`}}/>
 
 
         </div> 
