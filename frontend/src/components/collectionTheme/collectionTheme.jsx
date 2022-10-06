@@ -23,6 +23,8 @@ const collectionTheme = () => {
   
   const userInfo = useSelector((state) => state.UserInfo);
   const userNick = userInfo.userInfo.userNickname;
+  const userSeq = userInfo.userInfo.userSeq;
+  const token = userInfo.accessToken;
 
   useEffect(() => {
     getCountOfCategory(userSeq, token, (response)=>{
