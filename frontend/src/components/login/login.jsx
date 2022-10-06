@@ -154,9 +154,14 @@ const LoginPage = () => {
 
   // 아이디 찾기
   const [findUserName, setFindUserName] = useState("");
+  const [findUserPhone, setFindUserPhone] = useState("");
+
   const [foundUserId, setFoundUserId] = useState("");
   const onFindUserName = (event) => {
     setFindUserName(event.target.value);
+  };
+  const onFindUserPhone = (event) => {
+    setFindUserPhone(event.target.value);
   };
 
   const [openFindUserId, setOpenFindUserId] = useState(false);
@@ -168,6 +173,7 @@ const LoginPage = () => {
   const handleCloseFindUserId = () => {
     setOpenFindUserId(false);
     setFindUserName("");
+    setFindUserPhone("");
   };
   const handleOpenResponseUserId = () => {
     setOpenResponseUserId(true);
@@ -179,6 +185,7 @@ const LoginPage = () => {
   const onFindUserId = () => {
     const findUserIdInfo = {
       userName: findUserName,
+      userPhone: findUserPhone,
     };
     const success = (res) => {
       handleOpenResponseUserId();
@@ -194,6 +201,7 @@ const LoginPage = () => {
   // 비밀번호 찾기
   const [passUserId, setPassUserId] = useState("");
   const [passUserName, setPassUserName] = useState("");
+  const [passUserPhone, setPassUserPhone] = useState("");
   const [newPassword, setNewPassword] = useState("");
 
   const onPassUserId = (event) => {
@@ -201,6 +209,9 @@ const LoginPage = () => {
   };
   const onPassUserName = (event) => {
     setPassUserName(event.target.value);
+  };
+  const onPassUserPhone = (event) => {
+    setPassUserPhone(event.target.value);
   };
   const onNewPassword = (event) => {
     setNewPassword(event.target.value);
@@ -217,6 +228,7 @@ const LoginPage = () => {
     setOpenFindPassword(false);
     setPassUserId("");
     setPassUserName("");
+    setPassUserPhone("");
     setNewPassword("");
   };
   const handleOpenResponseFindPassword = () => {
@@ -231,6 +243,7 @@ const LoginPage = () => {
     const findUserPasswordInfo = {
       userId: passUserId,
       userName: passUserName,
+      userPhone: passUserPhone,
       newPassword: newPassword,
     };
     const success = (res) => {
@@ -615,6 +628,18 @@ const LoginPage = () => {
               ></Input>
             </div>
             <br />
+
+            <label for="userPhone">전화번호</label>
+            <div>
+              <Input
+                value={findUserPhone}
+                id="userPhone"
+                className="dialog-input"
+                onChange={onFindUserPhone}
+              ></Input>
+            </div>
+            <br />
+
           </DialogContentText>
         </DialogContent>
 
@@ -699,6 +724,17 @@ const LoginPage = () => {
                 id="userName"
                 className="dialog-input"
                 onChange={onPassUserName}
+              ></Input>
+            </div>
+            <br />
+
+            <label for="userPhone">전화번호</label>
+            <div>
+              <Input
+                value={passUserPhone}
+                id="userPhone"
+                className="dialog-input"
+                onChange={onPassUserPhone}
               ></Input>
             </div>
             <br />
