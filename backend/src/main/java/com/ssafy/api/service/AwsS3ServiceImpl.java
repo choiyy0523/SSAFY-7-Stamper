@@ -40,7 +40,7 @@ public class AwsS3ServiceImpl implements AwsS3Service {
         // 업로드 하기 전에 이미 존재하는지 확인 --> 존재하는 경우 삭제
         UserbookCollection userbook = bookService.getBookStatus(userSeq, bookSeq);
         String existFile = userbook.getUserbookCollectionImage();
-        if(existFile != null){
+        if(existFile != null && existFile != ""){
             System.out.println("imgFile is already EXIST!! --> DELETE...");
             amazonS3.deleteObject(new DeleteObjectRequest(bucket, existFile));
         }
