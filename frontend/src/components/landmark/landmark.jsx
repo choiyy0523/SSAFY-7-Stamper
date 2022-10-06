@@ -1,16 +1,16 @@
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 import TextField from "@mui/material/TextField";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { getBookDetail } from "../../api/book";
-import { useSelector } from "react-redux";
-import { getCommentList } from "../../api/comment";
-import { Fragment, useState, useRef, useEffect } from "react";
-import * as tf from "@tensorflow/tfjs";
-import * as tmImage from "@teachablemachine/image";
-import imageUpload from "../../assets/imageupload.png";
-import { display } from "@mui/system";
-import approved from "../../assets/approved.png";
-import "./landmark.css";
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { getBookDetail } from '../../api/book';
+import { useSelector } from 'react-redux';
+import { getCommentList, registerComment, deleteComment } from '../../api/comment';
+import { Fragment, useState, useRef, useEffect } from 'react';
+import * as tf from '@tensorflow/tfjs';
+import * as tmImage from '@teachablemachine/image';
+import imageUpload from '../../assets/imageupload.png'
+import { display } from '@mui/system';
+import approved from '../../assets/approved.png'
+import './landmark.css'
 import { Button } from "@mui/material";
 import { registerUserbookCollection } from "../../api/book";
 import processing from "../../assets/processing.gif";
@@ -27,22 +27,23 @@ export default function landmark() {
   const [landmarkDesc, setLandmarkDesc] = useState("");
   const [landmarkComment, setLandmarkComment] = useState([]);
 
-  const [landmarkInfo, setLandmarkInfo] = useState([]);
-  const [district, setDistrict] = useState("default");
-  const [inputLatitude, setInputLatitude] = useState(0);
-  const [inputLongitude, setInputLongitude] = useState(0);
-  const [image, setImage] = useState(null);
-  const [url, setURL] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [showResult, setShowResult] = useState(false);
-  const [predictionArr, setPredictionArr] = useState([]);
-  const [result, setResult] = useState(null);
-  const [resultName, setResultName] = useState(null);
-  const [resultPercent, setReSultPercent] = useState();
-  const [locationApproved, setLocationApproved] = useState(null);
-  const [aiIcon, setAiIcon] = useState(ai);
-  const [locationIcon, setLocationIcon] = useState(location);
-  const fileRef = useRef();
+    const [landmarkInfo, setLandmarkInfo] = useState([]);
+    const [district, setDistrict] = useState('default');
+    const [inputLatitude, setInputLatitude] = useState(0);
+    const [inputLongitude, setInputLongitude] = useState(0);
+    const [image, setImage] = useState(null);
+    const [url, setURL] = useState('');
+    const [loading,setLoading]=useState(false);
+    const [showResult,setShowResult]=useState(false);
+    const [predictionArr,setPredictionArr]=useState([]);
+    const [result,setResult]=useState(null);
+    const [resultName,setResultName]=useState(null);
+    const [resultPercent, setReSultPercent] = useState();
+    const [locationApproved, setLocationApproved] = useState(null);
+    const [aiIcon, setAiIcon] = useState(ai);
+    const [locationIcon, setLocationIcon] = useState(location);
+    const [commentContent, setCommentContent] = useState('');
+    const fileRef = useRef();
 
   const [modal, setModal] = useState(false);
 
@@ -63,6 +64,16 @@ export default function landmark() {
   useEffect(() => {
     getBookDetail(userSeq, landmarkNo, (response) => {
       const data = response.data;
+// =======
+//     useEffect(() => {
+//         getBookDetail(userSeq, landmarkNo, (response)=>{
+//             setLandmarkInfo(response.data.book)
+//             console.log(landmarkInfo)
+//         }, (error)=>{
+//             console.log(error)
+//         })
+//     }, [])
+// >>>>>>> jaehyun
 
       setLandmarkName(data.book.bookName);
       setLandmarkDesc(data.book.bookDescription);
@@ -263,7 +274,6 @@ export default function landmark() {
         }
      });
     }
-
     if (val) {
       let ubcImage = "";
 
@@ -383,58 +393,57 @@ export default function landmark() {
     }
   }, [loading, resultName]);
 
+    function commentPost(event) {
+        event.preventDefault();
+        let input = {userSeq: userSeq, bookSeq: landmarkNo, commentContent:commentContent};
+        registerComment(input, token);
+        window.location.reload();
+    }
+
+    function eraseComment(commentSeq) {
+        //event.preventDefault();
+        //let input = {commentSeq:commentSeq};
+        confirm('삭제하시겠습니까?');
+        deleteComment(commentSeq, token);
+        alert('삭제되었습니다.');
+        window.location.reload();
+    }
+
   return (
     <div>
       <div>
         <div style={{ fontSize: "40px", margin: "8px" }}>{landmarkName}</div>
         <div>
-          <img
-            style={{
-              height: "200px",
-              width: "200px",
-              marginTop: "8px",
-              marginBottom: "20px",
-            }}
-            src={imageURL}
-            alt={landmarkName}
-          ></img>
+            <img style={{height:'200px', width:'200px', marginTop:'8px', marginBottom:'20px'}} src={imageURL} alt={landmarkName}></img>
         </div>
-        <div style={{ width: "80vw", textAlign: "center", margin: "auto" }}>
-          {landmarkDesc}
+        <div style={{ width:'80vw', textAlign:'center', margin:'auto'}}>{landmarkDesc}</div>
+        <div style={{display:'flex', marginLeft:'8px', marginTop:'25px', marginRight:'8px', marginBottom:'20px'}}>
+            <TextField style={{width:'80vw'}} onChange={(event) => setCommentContent(event.target.value)}></TextField>
+            <button style={{backgroundColor:'rgba(191, 96, 255, 0.8)', marginLeft:'10px', fontSize:'12px'}} onClick={commentPost}>등록</button>
         </div>
-        <div
-          style={{
-            display: "flex",
-            marginLeft: "8px",
-            marginTop: "25px",
-            marginRight: "8px",
-            marginBottom: "20px",
-          }}
-        >
-          <TextField style={{ width: "80vw" }}></TextField>
-          <button>등록</button>
-        </div>
-        <div>
-          <table>
-            <thead>
-              <tr style={{ display: "flex", flexDirection: "column" }}>
-                <th>작성자</th>
-                <th>내용</th>
-                <th>작성일자</th>
-              </tr>
-            </thead>
-            <tbody>
-              {landmarkComment.map((item) => {
-                return (
-                  <tr>
-                    <td>{item.user.userNickname}</td>
-                    <td>{item.commentContent}</td>
-                    <td>{item.commentDate}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+        <div style={{ margin:'auto', borderRadius:7 ,width:'97vw'}}>
+                <table>
+                    {/* <thead>
+                        <tr style={{display:'flex', flexDirection:'column'}}>
+                            <th>작성자:</th>
+                            <th>내용:</th>
+                            <th>작성일자:</th>
+                        </tr>
+                    </thead> */}
+                        {landmarkComment.map((item) => {
+                            return (
+                                <div style={{display:'flex', flexDirection:'row'}}>
+                                    <div style={{padding:'2px', marginBottom:'15px', backgroundColor:'rgba(191, 96, 255, 0.8)', borderRadius:5}}>{item.user.userNickname}:</div>
+                                    <div style={{marginTop:'2px', marginLeft:'15px', marginBottom:'15px'}}>{item.commentContent}</div>
+                                    {item.user.userNickname === userName ? <button style={{marginTop:'2px', fontSize:'5px', marginLeft:'15px', marginBottom:'15px', border:'0px', padding:'0px'}} onClick={()=>{eraseComment(item.commentSeq)}}>삭제</button> : <div></div>}
+                                </div>
+                                // <tr style={{marginBottom:'15px'}}>
+                                //     <td style={{marginBottom:'15px'}}>{item.user.userNickname}</td>
+                                //     <td style={{marginBottom:'15px'}}>{item.commentContent}</td>
+                                // </tr>
+                            );
+                        })}
+                </table>
         </div>
       </div>
       <div>

@@ -28,7 +28,7 @@ function updateComment(commentInfo, token, success, error) {
   response.data: {statusCode, message}
  */
 function deleteComment(commentSeq, token, success, error) {
-  instance.delete(`/comment/${commentSeq}`, bookSeq, { headers: createHeaders(token)} ).then(success).catch(error);
+  instance.delete(`/comment/delete/${commentSeq}`, commentSeq, { headers: createHeaders(token)} ).then(success).catch(error);
 }
 
 export {
