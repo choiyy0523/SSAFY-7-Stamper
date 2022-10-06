@@ -18,6 +18,7 @@ import {
 import storage from "redux-persist/lib/storage";
 
 import userInfoReducer from "../UserInfo";
+import countInfoReducer from "../CountInfo";
 
 const persistConfig = {
   key: "root",
@@ -27,6 +28,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   UserInfo: userInfoReducer,
+  CountInfo: countInfoReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

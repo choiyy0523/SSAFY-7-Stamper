@@ -1,15 +1,25 @@
 import "./userProfileModify.css"
 import * as React from 'react';
 import TextField from '@material-ui/core/TextField';
+import { useSelector } from "react-redux";
 
 const userprofileModify = () => {
+    const userInfo = useSelector((state) => state.UserInfo);
+    const userNickname = userInfo.userInfo.userNickname;
+    const userName = userInfo.userInfo.userName;
+    const userPhone = userInfo.userInfo.userPhone;
+    const userEmail = userInfo.userInfo.userEmail;
+
+    const updateProfile = () =>{
+
+    }
     return (
         <div>
             {/* 프로필 사진과 이름 */}
             <div className="item">
                 <img className="temp_dummy_profile_photo" src="/assets/components/temp_user.png" alt="" />
-                <p className="muruk">Stamper</p>
-                <p>(닉네임)</p>
+                <p className="muruk">{userName}</p>
+                <p>{userNickname}</p>
             </div>
 
             <div className="profile_background2">
@@ -19,6 +29,7 @@ const userprofileModify = () => {
                     disabled
                     id="fixName"
                     label="이름"
+                    value=""
                     /> <br /><br /><br />
 
                     <TextField className="input_comp"
@@ -46,11 +57,11 @@ const userprofileModify = () => {
                     label="닉네임"
                     />
                 </div><br /><br />
-                <button>저장!</button>
+                <button onclick={updateProfile}>저장!</button>
             </div>
         
             <div className="nav_position"><div> 
-                <a className="item" href="/profile/:userNo">
+                <a className="item" href="/profile">
                     <img className="nav_undo" src="/assets/components/undo.png" alt="" />
                 </a></div>
             </div>
