@@ -64,16 +64,6 @@ export default function landmark() {
   useEffect(() => {
     getBookDetail(userSeq, landmarkNo, (response) => {
       const data = response.data;
-// =======
-//     useEffect(() => {
-//         getBookDetail(userSeq, landmarkNo, (response)=>{
-//             setLandmarkInfo(response.data.book)
-//             console.log(landmarkInfo)
-//         }, (error)=>{
-//             console.log(error)
-//         })
-//     }, [])
-// >>>>>>> jaehyun
 
       setLandmarkName(data.book.bookName);
       setLandmarkDesc(data.book.bookDescription);
