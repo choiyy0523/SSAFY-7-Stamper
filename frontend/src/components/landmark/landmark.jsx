@@ -15,6 +15,8 @@ import { Button } from "@mui/material";
 import { registerUserbookCollection } from '../../api/book';
 import processing from '../../assets/processing.gif'
 import exifr from 'exifr'
+import ai from '../../assets/ai.png'
+import location from '../../assets/placeholder.png'
 
 export default function landmark() {
     const [imageURL, setImageURL] = useState("");
@@ -35,6 +37,8 @@ export default function landmark() {
     const [resultName,setResultName]=useState(null);
     const [resultPercent, setReSultPercent] = useState();
     const [locationApproved, setLocationApproved] = useState(null);
+    const [aiIcon, setAiIcon] = useState(ai);
+    const [locationIcon, setLocationIcon] = useState(location);
     const fileRef = useRef();
 
     const [modal, setModal] = useState(false);
@@ -150,6 +154,7 @@ export default function landmark() {
     let districtURL = `https://teachablemachine.withgoogle.com/models/${districtList[landmarkInfo.bookGugun]}/`;
 
     async function predict() {
+        setLoading(true)
         console.log(districtURL)
         let modelURL = districtURL + 'model.json';
         let metadataURL = districtURL + 'metadata.json';
@@ -263,30 +268,28 @@ export default function landmark() {
         else{setLocationApproved(false)}
     },[inputLongitude])
 
+    useEffect(()=> {
+        if(loading === true) {setAiIcon(processing)}
+        if(landmarkName === resultName) {setAiIcon(approved)}
+    },[loading, resultName])
+
     return (
 
     <div>
             <div>
-            <div>{landmarkName}</div>
+            <div style={{fontSize:'40px', margin:'8px'}}>{landmarkName}</div>
         <div>
-            <img width = '50%' src={imageURL} alt={landmarkName}></img>
+            <img style={{height:'200px', width:'200px', marginTop:'8px', marginBottom:'20px'}} src={imageURL} alt={landmarkName}></img>
         </div>
-        <div>
-                <p>대충 설명</p>
-                <p>{landmarkDesc}</p>
-        </div>
-        <button>수집</button>
-        <div>
-            <TextField></TextField>
+        <div style={{ width:'80vw', textAlign:'center', margin:'auto'}}>{landmarkDesc}</div>
+        <div style={{display:'flex', marginLeft:'8px', marginTop:'25px', marginRight:'8px', marginBottom:'20px'}}>
+            <TextField style={{width:'80vw'}}></TextField>
             <button>등록</button>
         </div>
         <div>
-            <aside>
-                <img src='/assets/LOGO2.png' alt="LOGO2" width="30" height="30"></img>
-                </aside>
                 <table>
                     <thead>
-                        <tr>
+                        <tr style={{display:'flex', flexDirection:'column'}}>
                             <th>작성자</th>
                             <th>내용</th>
                             <th>작성일자</th>
@@ -306,11 +309,7 @@ export default function landmark() {
                     </tbody>
                 </table>
         </div>
-        <button>더보기</button>
             </div>
-            <br />
-            <hr /><hr /><hr /><hr />
-            <br />
         <div>
             <h1>랜드마크 등록</h1>
             <div>
@@ -320,7 +319,6 @@ export default function landmark() {
                 {result? <div>{result}</div> : <div></div>}
             </div>
             <div>
-            {result? <Button color="secondary" onClick={register}>등록</Button> : <div></div>}
             </div>
             <div>
                 <label>
@@ -328,10 +326,10 @@ export default function landmark() {
                     <input style={{display:'none'}} type='file' accept="image/*" ref={fileRef} name="profile_img" id="file" onChange={changeImage}></input>
                 </label>
             </div>
-            <Button color="secondary" onClick={predict}>검증</Button>
+            {result ? <Button color="secondary" onClick={register}>등록</Button> : <Button color="secondary" onClick={predict}>검증</Button>}
             <div>
-                {landmarkInfo.bookName === resultName ? <img className='stamp' style={{height:'100px', width:'100px', margin:'30px'}} src={approved}></img> : <img className='processing' style={{ margin:'40px', height:'100px', width:'100px'}} src={processing}></img>}
-                {locationApproved === true ? <img className='stamp' style={{height:'100px', width:'100px', margin:'30px'}} src={approved}></img> : <img className='processing' style={{ margin:'40px', height:'100px', width:'100px'}} src={processing}></img>}
+                <img style={{height:'100px', width:'100px', margin:'30px'}} src={aiIcon}></img>
+                {locationApproved === true ? <img style={{height:'100px', width:'100px', margin:'30px'}} src={approved}></img> : <img className='processing' style={{ margin:'30px', height:'100px', width:'100px'}} src={location}></img>}
                 <br />
                 <br/>
                 <span className='grayfont'>

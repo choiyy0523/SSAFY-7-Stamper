@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient, QueryClient, QueryClientProvider,} from '@tanstack/react-query'
 import { Navigate } from "react-router-dom";
+
 
 import Header from './components/header/header';
 import Loginpage from './components/login/login'
@@ -18,18 +19,18 @@ import CollectionSeoulDetail from './components/collectionSeoul/collectionSeoulD
 import ImageTest from './components/imageTest/imageTest';
 import {createTheme, ThemeProvider} from "@mui/material";
 
+import { useSelector, useDispatch } from "react-redux";
+import { SET_LOGOUT } from "./redux/UserInfo";
+
+
+import './App.css';
+
 const theme = createTheme({
   typography: {
     fontFamily: "BMJua"
   },
-  multilineColor:{
-    color:'#1C1C1C'
-  }
 })
 
-import { useSelector, useDispatch } from "react-redux";
-import { SET_LOGOUT } from "./redux/UserInfo";
-import './App.css';
 
 function App() {
 
@@ -52,20 +53,18 @@ function App() {
   // }, [window.sessionStorage.getItem("UserData")]);
 
   return (
+    <ThemeProvider theme={theme}>
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
       <div className="App nav_body">
         <Router>
                 <Routes>
           <Route
             exact path="/"
             element={ loggedIn ? (
-              <MainPage
-                setLogOut={() => {
-                dispatch(SET_LOGOUT());}} /> ) :
+              <MainPage /> ) :
                   ( <Loginpage></Loginpage> )} />
             <Route path="/test" element={<ImageTest/>}></Route>
-            <Route path="/loginpage" element={<Loginpage/>}></Route>
+            {/* <Route path="/loginpage" element={<Loginpage/>}></Route> */}
             <Route path="/profile/:userNo" element={<UserProfile/>}></Route>
             <Route path="/profile/:userNo/modify" element={<UserProfileModify/>}></Route>
             <Route path="/" element={<MainPage/>}></Route>
@@ -83,8 +82,8 @@ function App() {
         </div>
 
       </div>
-      </ThemeProvider>
     </QueryClientProvider>
+    </ThemeProvider>
   )
 }
 

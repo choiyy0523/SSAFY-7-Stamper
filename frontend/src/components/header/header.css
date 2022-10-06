@@ -13,6 +13,20 @@
     font-weight: 400;
     transition: 200ms;
   }
+
+  .logout {
+    text-decoration: none;
+    color: #1E1E23;
+    opacity:1;
+    font-family: 'KCCMurukMuruk';
+    font-size: 1.5em;
+    font-weight: 400;
+    transition: 200ms;
+    position: fixed;
+    bottom: 5rem;
+    left: 2rem;
+  }
+
   a:hover {
     opacity:0.5;
   }
