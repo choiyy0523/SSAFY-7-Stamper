@@ -11,12 +11,12 @@
 
 .list_border {
     border-radius: 1em;
-    padding-left: 2vh;
+    padding-left: 4vh;
 }
 
 .list_left {
     margin-left: 0vh;
-    margin-top: 3vh;
+    margin-top: 1.4vh;
     background-color: rgba(137, 43, 226, 0.045);
     padding-right: 1vh;
 
@@ -26,8 +26,8 @@
     display: block;
     margin-left: 8vh;
     padding: 1vh;
-    padding-left: 8vh;
-    padding-right: 2vh;
+    padding-left: 15vh;
+    padding-right: 4vh;
     border-radius: 1em;
     margin: auto;
 }
