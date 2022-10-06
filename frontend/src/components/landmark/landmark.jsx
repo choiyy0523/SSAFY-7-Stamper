@@ -417,7 +417,7 @@ export default function landmark() {
             <img style={{height:'200px', width:'200px', marginTop:'8px', marginBottom:'20px'}} src={imageURL} alt={landmarkName}></img>
         </div>
         <div style={{ width:'80vw', textAlign:'center', margin:'auto'}}>{landmarkDesc}</div>
-        <div style={{display:'flex', marginLeft:'8px', marginTop:'25px', marginRight:'8px', marginBottom:'20px'}}>
+        <div style={{display:'flex', marginLeft:'12px', marginTop:'25px', marginRight:'8px', marginBottom:'20px'}}>
             <TextField style={{width:'80vw'}} onChange={(event) => setCommentContent(event.target.value)}></TextField>
             <button style={{backgroundColor:'rgba(191, 96, 255, 0.8)', marginLeft:'10px', fontSize:'12px'}} onClick={commentPost}>등록</button>
         </div>
