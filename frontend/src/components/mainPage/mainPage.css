@@ -41,7 +41,7 @@
 
 .robot_dance:hover {
   animation: cute 0.8s ;
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 
 .main_comp {
