@@ -88,7 +88,7 @@ const collectionThemeDetail = () => {
                     {fordata.map((item)=>{
                         return (
                             <MapMarker position={{ lat: item.bookLatitude, lng: item.bookLongitude }}>
-                                <div style={{color:"#000"}}>{item.bookName}</div>
+                                <div style={{padding: "5px", color:"#000", width:"155px"}}>{item.bookName}</div>
                             </MapMarker>
                         );
                     })}
