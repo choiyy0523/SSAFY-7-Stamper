@@ -48,7 +48,7 @@ public class AwsS3ServiceImpl implements AwsS3Service {
                 return (e);
             }
         } else if(existFile == ""){
-            System.out.println("imgFilePath is null!! --> UPLOAD...")
+            System.out.println("imgFilePath is null!! --> UPLOAD...");
         }
 
         String fileName = createFileName(multipartFile.getOriginalFilename());
