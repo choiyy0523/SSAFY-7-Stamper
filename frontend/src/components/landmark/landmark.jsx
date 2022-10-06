@@ -15,6 +15,8 @@ import { Button } from "@mui/material";
 import { registerUserbookCollection } from '../../api/book';
 import processing from '../../assets/processing.gif'
 import exifr from 'exifr'
+import ai from '../../assets/ai.png'
+import location from '../../assets/placeholder.png'
 
 export default function landmark() {
     const [imageURL, setImageURL] = useState("");
@@ -35,6 +37,8 @@ export default function landmark() {
     const [resultName,setResultName]=useState(null);
     const [resultPercent, setReSultPercent] = useState();
     const [locationApproved, setLocationApproved] = useState(null);
+    const [aiIcon, setAiIcon] = useState(ai);
+    const [locationIcon, setLocationIcon] = useState(location);
     const fileRef = useRef();
 
     const [modal, setModal] = useState(false);
@@ -150,6 +154,7 @@ export default function landmark() {
     let districtURL = `https://teachablemachine.withgoogle.com/models/${districtList[landmarkInfo.bookGugun]}/`;
 
     async function predict() {
+        setLoading(true)
         console.log(districtURL)
         let modelURL = districtURL + 'model.json';
         let metadataURL = districtURL + 'metadata.json';
@@ -263,6 +268,11 @@ export default function landmark() {
         else{setLocationApproved(false)}
     },[inputLongitude])
 
+    useEffect(()=> {
+        if(loading === true) {setAiIcon(processing)}
+        if(landmarkName === resultName) {setAiIcon(approved)}
+    },[loading, resultName])
+
     return (
 
     <div>
@@ -320,7 +330,6 @@ export default function landmark() {
                 {result? <div>{result}</div> : <div></div>}
             </div>
             <div>
-            {result? <Button color="secondary" onClick={register}>등록</Button> : <div></div>}
             </div>
             <div>
                 <label>
@@ -328,10 +337,10 @@ export default function landmark() {
                     <input style={{display:'none'}} type='file' accept="image/*" ref={fileRef} name="profile_img" id="file" onChange={changeImage}></input>
                 </label>
             </div>
-            <Button color="secondary" onClick={predict}>검증</Button>
+            {result && locationApproved ? <Button color="secondary" onClick={register}>등록</Button> : <Button color="secondary" onClick={predict}>검증</Button>}
             <div>
-                {landmarkInfo.bookName === resultName ? <img className='stamp' style={{height:'100px', width:'100px', margin:'30px'}} src={approved}></img> : <img className='processing' style={{ margin:'40px', height:'100px', width:'100px'}} src={processing}></img>}
-                {locationApproved === true ? <img className='stamp' style={{height:'100px', width:'100px', margin:'30px'}} src={approved}></img> : <img className='processing' style={{ margin:'40px', height:'100px', width:'100px'}} src={processing}></img>}
+                <img style={{height:'100px', width:'100px', margin:'30px'}} src={aiIcon}></img>
+                {locationApproved === true ? <img style={{height:'100px', width:'100px', margin:'30px'}} src={approved}></img> : <img className='processing' style={{ margin:'30px', height:'100px', width:'100px'}} src={location}></img>}
                 <br />
                 <br/>
                 <span className='grayfont'>
