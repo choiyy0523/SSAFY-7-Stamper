@@ -674,10 +674,16 @@ export default function landmark() {
           <Button color="secondary" onClick={register}>
             등록
           </Button>
-        ) : (
+        ) : <div></div>
+        }
+        {image ? (
           <Button color="secondary" onClick={predict}>
-            검증
-          </Button>
+          검증
+        </Button>
+        ): (
+          <Button disabled>
+          검증
+        </Button>
         )}
         <div>
           <img
