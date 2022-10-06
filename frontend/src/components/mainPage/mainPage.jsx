@@ -169,7 +169,7 @@ export default function ImageTest() {
             <div>
                 <input type='file' accept="image/*" ref={fileRef} name="profile_img" id="file" onChange={changeImage}></input>
             </div>
-            <button onClick={predict}>예측</button>
+            {image ? <button onClick={predict}>예측</button> : <button disabled>예측</button>}
             
             <div className="footfoot">* 해당 기능을 통해 사용되는 이미지는 '스탬퍼' 서비스 저장소에 별도로 저장되지 않습니다. *</div>
 
