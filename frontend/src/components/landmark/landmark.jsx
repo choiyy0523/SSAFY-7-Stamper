@@ -21,8 +21,10 @@ import location from "../../assets/placeholder.png";
 import axios from "axios";
 
 import Swal from 'sweetalert2'
+
 import { updateAchieve } from "../../api/achieve";
 import collectedStamp from '../../assets/quality.png'
+
 
 export default function landmark() {
   const dispatch = useDispatch();
@@ -344,6 +346,7 @@ export default function landmark() {
       } else {
         await Swal.fire(
           '등록되었습니다.',
+          '',
           'success'
         )
       }
@@ -354,31 +357,46 @@ export default function landmark() {
           updateAchieve({userSeq:userSeq, achieveName:"첫 수집"}, token, 
           (response)=>{
             console.log(response);
-            alert("첫 수집 리워드 등록!");
+            //alert("첫 수집 리워드 등록!");
           },
           (error)=>{
             console.log(error);
           })
+          await Swal.fire(
+            "업적 달성!",
+            '첫 수집 리워드 등록!',
+            'success'
+          )
         }
         if (count+1 == total/2){ // 스탬퍼(50% 달성)
           updateAchieve({userSeq:userSeq, achieveName:"스탬퍼"}, token, 
           (response)=>{
             console.log(response);
-            alert("스탬퍼 리워드 등록!");
+            //alert("스탬퍼 리워드 등록!");
           },
           (error)=>{
             console.log(error);
           })
+          await Swal.fire(
+            "업적 달성!",
+            '스탬퍼 리워드 등록!',
+            'success'
+          )
         }
         if (count+1 == total){ // 마스터 스탬퍼(100% 달성)
           updateAchieve({userSeq:userSeq, achieveName:"마스터 스탬퍼"}, token, 
           (response)=>{
             console.log(response);
-            alert("마스터 스탬퍼 리워드 등록!");
+            //alert("마스터 스탬퍼 리워드 등록!");
           },
           (error)=>{
             console.log(error);
           })
+          await Swal.fire(
+            "업적 달성",
+            '마스터 스탬퍼 리워드 등록!',
+            'success'
+          )
         }
         let gugunIdx =0;
         for (gugunIdx=0; gugunIdx<25; gugunIdx++){
@@ -389,29 +407,45 @@ export default function landmark() {
           updateAchieve({userSeq:userSeq, achieveName:landmarkGugun+" 초심자"}, token, 
           (response)=>{
             console.log(response);
-            alert(landmarkGugun + " 초심자 리워드 등록!");
+            //alert(landmarkGugun + " 초심자 리워드 등록!");
+
           },
           (error)=>{
             console.log(error);
           })
+          await Swal.fire(
+            "업적 달성",
+            landmarkGugun + '초심자 리워드 등록!',
+            'success'
+          )
         }if (gugunList[gugunIdx].count+1==gugunList[gugunIdx].total/2){ // XX구 여행자(50% 수집)
           updateAchieve({userSeq:userSeq, achieveName:landmarkGugun+" 여행자"}, token, 
           (response)=>{
             console.log(response);
-            alert(landmarkGugun + " 여행자 리워드 등록!");
+            //alert(landmarkGugun + " 여행자 리워드 등록!");
           },
           (error)=>{
             console.log(error);
           })
+          await Swal.fire(
+            "업적 달성",
+            landmarkGugun + '여행자 리워드 등록!',
+            'success'
+          )
         }if (gugunList[gugunIdx].count+1==gugunList[gugunIdx].total){ // XX구 마스터(100% 수집)
           updateAchieve({userSeq:userSeq, achieveName:landmarkGugun+" 마스터"}, token, 
           (response)=>{
             console.log(response);
-            alert(landmarkGugun + " 마스터 리워드 등록!");
+            //alert(landmarkGugun + " 마스터 리워드 등록!");
           },
           (error)=>{
             console.log(error);
           })
+          await Swal.fire(
+            "업적 달성",
+            landmarkGugun + '마스터 리워드 등록!',
+            'success'
+          )
         }
 
         let catIdx =0;
@@ -423,33 +457,48 @@ export default function landmark() {
           updateAchieve({userSeq:userSeq, achieveName:landmarkCat+" 초심자"}, token, 
           (response)=>{
             console.log(response);
-            alert(landmarkCat + " 초심자 리워드 등록!");
+            //alert(landmarkCat + " 초심자 리워드 등록!");
           },
           (error)=>{
             console.log(error);
           })
+          await Swal.fire(
+            "업적 달성",
+            landmarkCat + '초심자 리워드 등록!',
+            'success'
+          )
         }if (catList[catIdx].count+1==catList[catIdx].total/2){ // XX카테고리 여행자(50% 수집)
           updateAchieve({userSeq:userSeq, achieveName:landmarkCat+" 여행자"}, token, 
           (response)=>{
             console.log(response);
-            alert(landmarkCat + " 여행자 리워드 등록!");
+            //alert(landmarkCat + " 여행자 리워드 등록!");
           },
           (error)=>{
             console.log(error);
           })
+          await Swal.fire(
+            "업적 달성",
+            landmarkCat + '여행자 리워드 등록!',
+            'success'
+          )
         }if (catList[catIdx].count+1==catList[catIdx].total){ // XX카테고리 마스터(100% 수집)
           updateAchieve({userSeq:userSeq, achieveName:landmarkCat+" 마스터"}, token, 
           (response)=>{
             console.log(response);
-            alert(landmarkCat + " 마스터 리워드 등록!");
+            //alert(landmarkCat + " 마스터 리워드 등록!");
           },
           (error)=>{
             console.log(error);
           })
+          await Swal.fire(
+            "업적 달성",
+            landmarkCat + '마스터 리워드 등록!',
+            'success'
+          )
         }
       }
 
-      // window.location.reload();
+      window.location.reload();
     }
   }
   function getDistance(latitude1, longitude1, latitude2, longitude2) {
