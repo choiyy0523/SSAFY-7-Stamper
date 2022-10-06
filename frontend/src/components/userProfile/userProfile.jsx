@@ -2,13 +2,11 @@ import "./userProfile.css"
 import * as React from 'react';
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { getAchieveList } from "../../api/achieve";
+import AchievedList from "./achievedList";
 import CollectedList from "./collectedList";
 
 const userprofile = () => {
     const dispatch = useDispatch();
-
-    const [achieveList, setAchieveList] = useState([]);
 
     const userInfo = useSelector((state) => state.UserInfo);
     const userNickname = userInfo.userInfo.userNickname;
@@ -18,15 +16,7 @@ const userprofile = () => {
     const userSeq = userInfo.userInfo.userSeq;
     const token = userInfo.accessToken;
   
-    useEffect(() => {
-        getAchieveList(userSeq, token, (response)=>{
-            console.log(response.data.achieveList);
-            setAchieveList(response.data.achieveList);
-        }, (error)=>{
-            console.log(error);
-        })
 
-    },[])
     return (
         <div className="aligncenter">
             {/* 프로필 카드 */}
@@ -47,41 +37,41 @@ const userprofile = () => {
                     <p>성북구 랜드마크 뿌셔!</p> */}
                 </div>
 
-                <a className="item" href="#">
-                    <img className="profile_control_comp" src="/assets/components/myintro.png" alt="" />
-                </a>
-
                 <a className="item" href="/profile/modify">
                     <img className="profile_control_comp" src="/assets/components/account.png" alt="" />
                 </a>
 
             </div>
+            <br />
+                <br />
+                
+                <hr className="customhr" />
                     
                 {/* 프로필의 기념도장과 랜드마크 아이콘 */}
             <div className="item">
                 <br />
                 
                 <div>
-                    <h1> 나의 업적 </h1>
+                    <h1 > 나의 업적 </h1>
+                    <AchievedList></AchievedList>
+                    {/* <img className="profile_comp" src="/assets/components/stamp.png" alt="" /> */}
                 </div>
+                <br />
+                <br />
+                <br />
                 
-                {/* 로고 나열 */}
-                <div>
-                  <img className="profile_comp" src="/assets/components/stamp.png" alt="" />
-                    {achieveList.map((data) =>{
-                        return(
-                        <div>
-                            <div>
-                                업적이름 : {data.achieve.achieveName}
-                            </div>
-                            <div>{data.userAchievementTime} </div>
-                        </div>
-                        )
+                <hr className="customhr" />
+                <br />
+                <br />
 
-                    })}
+
+
+                <div>
+                    <h1 > 나의 랜드마크 </h1>
+                    <br />
+                    <CollectedList></CollectedList>
                 </div>
             </div> 
-            <CollectedList></CollectedList>
         </div>
     );
   };

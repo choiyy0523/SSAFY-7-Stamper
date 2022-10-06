@@ -93,7 +93,7 @@ const collectionThemeDetail = () => {
           <div className="container map_center">
             <Map
             center={{ lat: position.lat, lng: position.lng}}
-            style={{ width: "23rem", height: "20rem", borderStyle: "groove", borderRadius:"1em"}}
+            style={{ width: "23rem", height: "30rem", borderStyle: "groove", borderRadius:"1em"}}
             level={9}
             >
                     {fordata.map((item)=>{
@@ -159,7 +159,7 @@ else {
                     {fordata.map((item)=>{
                         return (
                             <tr>
-                            <td className=" list_border"><a href = {`/landmark/${item.bookSeq}`}>{item.bookName}</a></td>
+                            <td className="list_border"><a href = {`/landmark/${item.bookSeq}`}>{item.bookName}</a></td>
                             {/* <td>{item.bookAddress}</td> */}
                             <td className="list_right">{item.collected === "수집완료" ? <img style={{height:'20px', width:'20px'}} src={coin}></img> : <img style={{height:'20px', width:'20px'}}></img>}</td>
                             </tr>

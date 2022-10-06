@@ -92,7 +92,7 @@ const collectionSeoulDetail = () => {
         <div className="container map_center">
             <Map
             center={{ lat: position.lat, lng: position.lng}}
-            style={{ width: "23rem", height: "20rem", borderStyle: "groove", borderRadius:"1em"}}
+            style={{ width: "23rem", height: "30rem", borderStyle: "groove", borderRadius:"1em"}}
             level={7}
             >
                     {fordata.map((item)=>{
