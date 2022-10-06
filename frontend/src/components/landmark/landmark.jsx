@@ -277,26 +277,19 @@ export default function landmark() {
 
     <div>
             <div>
-            <div>{landmarkName}</div>
+            <div style={{fontSize:'40px', margin:'8px'}}>{landmarkName}</div>
         <div>
-            <img width = '50%' src={imageURL} alt={landmarkName}></img>
+            <img style={{height:'200px', width:'200px', marginTop:'8px', marginBottom:'20px'}} src={imageURL} alt={landmarkName}></img>
         </div>
-        <div>
-                <p>대충 설명</p>
-                <p>{landmarkDesc}</p>
-        </div>
-        <button>수집</button>
-        <div>
-            <TextField></TextField>
+        <div style={{ width:'80vw', textAlign:'center', margin:'auto'}}>{landmarkDesc}</div>
+        <div style={{display:'flex', marginLeft:'8px', marginTop:'25px', marginRight:'8px', marginBottom:'20px'}}>
+            <TextField style={{width:'80vw'}}></TextField>
             <button>등록</button>
         </div>
         <div>
-            <aside>
-                <img src='/assets/LOGO2.png' alt="LOGO2" width="30" height="30"></img>
-                </aside>
                 <table>
                     <thead>
-                        <tr>
+                        <tr style={{display:'flex', flexDirection:'column'}}>
                             <th>작성자</th>
                             <th>내용</th>
                             <th>작성일자</th>
@@ -316,11 +309,7 @@ export default function landmark() {
                     </tbody>
                 </table>
         </div>
-        <button>더보기</button>
             </div>
-            <br />
-            <hr /><hr /><hr /><hr />
-            <br />
         <div>
             <h1>랜드마크 등록</h1>
             <div>
@@ -337,7 +326,7 @@ export default function landmark() {
                     <input style={{display:'none'}} type='file' accept="image/*" ref={fileRef} name="profile_img" id="file" onChange={changeImage}></input>
                 </label>
             </div>
-            {result && locationApproved ? <Button color="secondary" onClick={register}>등록</Button> : <Button color="secondary" onClick={predict}>검증</Button>}
+            {result ? <Button color="secondary" onClick={register}>등록</Button> : <Button color="secondary" onClick={predict}>검증</Button>}
             <div>
                 <img style={{height:'100px', width:'100px', margin:'30px'}} src={aiIcon}></img>
                 {locationApproved === true ? <img style={{height:'100px', width:'100px', margin:'30px'}} src={approved}></img> : <img className='processing' style={{ margin:'30px', height:'100px', width:'100px'}} src={location}></img>}
