@@ -168,14 +168,20 @@ export default function ImageTest() {
             </div>
             <div>
                 <label>
+                    <br />
                     <img className='main_comp blur_darm robot_dance' style={{display:`${image? 'none' : null}`}} src={assistant} alt='imageUploadButton'></img>
                     <input style={{display:'none'}} type='file' accept="image/*" ref={fileRef} name="profile_img" id="file" onChange={changeImage}></input>
                 </label>
                 {/* <input type='file' accept="image/*" ref={fileRef} name="profile_img" id="file" onChange={changeImage}></input> */}
             </div>
+            <br />
             {image ? <button onClick={predict}>예측</button> : <button disabled>예측</button>}
+
+            <br />
+            <br />
+            <br />
             
-            <div className="footfoot">* '랜드마크 닮은꼴 찾기'에 사용된 이미지 파일은 '스탬퍼' 서비스 저장소에 별도로 저장되지 않습니다. *</div>
+            <div className="grayfont footfoot">* '랜드마크 닮은꼴 찾기'에 사용된 이미지 파일은 '스탬퍼' 서비스 저장소에 별도로 저장되지 않습니다. *</div>
 
         </Fragment>
 

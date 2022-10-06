@@ -24,7 +24,6 @@ export const tokenSlice = createSlice({
     },
     SET_LOGOUT: (state) => {
       state.loggedIn = false;
-      alert("로그아웃 되었습니다.")
     },
   },
 });

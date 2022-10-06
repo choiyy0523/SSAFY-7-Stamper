@@ -14,6 +14,8 @@ import { SET_LOGIN, SET_TOKEN, SET_USERINFO } from "../../redux/UserInfo";
 
 import "./login.css";
 
+
+
 import {
   TextField,
   Button,
@@ -619,6 +621,7 @@ const LoginPage = () => {
             <label for="userName">이름</label>
             <div>
               <Input
+              color="secondary"
                 value={findUserName}
                 id="userName"
                 className="dialog-input"
@@ -630,6 +633,7 @@ const LoginPage = () => {
             <label for="userPhone">전화번호</label>
             <div>
               <Input
+              color="secondary"
                 value={findUserPhone}
                 id="userPhone"
                 className="dialog-input"
@@ -655,33 +659,21 @@ const LoginPage = () => {
         </DialogActions>
       </Dialog>
 
-      <Modal
+      <Dialog
         open={openResponseUserId}
         onClose={handleCloseResponseUserId}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        aria-describedby="alert-dialog-slide-description"
       >
-        <Box
-          style={{ backgroundColor: "#202225", borderRadius: "10px" }}
-        >
-          <Typography
-            id="modal-modal-title"
-            variant="h6"
-            component="h2"
-            color="white"
-          >
-            찾으시는 아이디는 {foundUserId} 입니다.
-            <Stack
-              direction="row-reverse"
-              alignItems="center"
-              spacing={2}
-              style={{ marginTop: "2rem" }}
-            >
-              <Button onClick={handleCloseResponseUserId}>확인</Button>
-            </Stack>
-          </Typography>
-        </Box>
-      </Modal>
+        <DialogContent className="dialog-content">
+          찾으시는 아이디는 {foundUserId} 입니다.
+          <br />
+          <DialogContentText></DialogContentText>
+        </DialogContent>
+
+        <div className="option-cell">
+          <Button onClick={handleCloseResponseUserId}>확인</Button>
+        </div>
+      </Dialog>
 
       {/* 비밀번호 찾기 */}
       <Dialog
@@ -707,6 +699,7 @@ const LoginPage = () => {
             <label for="userId">아이디</label>
             <div>
               <Input
+              color="secondary"
                 value={passUserId}
                 id="userId"
                 className="dialog-input"
@@ -718,6 +711,7 @@ const LoginPage = () => {
             <label for="userName">이름</label>
             <div>
               <Input
+              color="secondary"
                 value={passUserName}
                 id="userName"
                 className="dialog-input"
@@ -729,6 +723,7 @@ const LoginPage = () => {
             <label for="userPhone">전화번호</label>
             <div>
               <Input
+              color="secondary"
                 value={passUserPhone}
                 id="userPhone"
                 className="dialog-input"
@@ -740,6 +735,7 @@ const LoginPage = () => {
             <label for="newPassword">새 비밀번호</label>
             <div>
               <Input
+              color="secondary"
                 type="password"
                 value={newPassword}
                 id="newPassword"
@@ -765,7 +761,7 @@ const LoginPage = () => {
         </DialogActions>
       </Dialog>
 
-      <Modal
+      <Dialog
         open={openResponseFindPassword}
         onClose={handleCloseResponseFindPassword}
         aria-labelledby="modal-modal-title"
@@ -791,7 +787,7 @@ const LoginPage = () => {
             </Stack>
           </Typography>
         </Box>
-      </Modal>
+      </Dialog>
     </div>
   );
  };

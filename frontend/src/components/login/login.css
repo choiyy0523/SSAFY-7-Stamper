@@ -186,3 +186,8 @@ div {
 .inputwidth {
   width: 15rem;
 }
+
+.centerbutton {
+  margin-left: auto;
+  margin-right: auto;
+}
