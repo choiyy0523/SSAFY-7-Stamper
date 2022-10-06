@@ -25,7 +25,7 @@ function userprofileModify ( { open, setOpen }) {
     const token = useSelector((state) => state.UserInfo.accessToken);
     const userInfo = useSelector((state) => state.UserInfo.userInfo);
     const userName = userInfo.userName;
-    const userNick = userInfo.userNick;
+    const userNick = userInfo.userNickname;
     const userPhone = userInfo.userPhone;
     const userEmail = userInfo.userEmail;
   
@@ -34,6 +34,9 @@ function userprofileModify ( { open, setOpen }) {
     const [newUserPhone, setNewUserPhone] = React.useState(userPhone);
     const [newUserEmail, setNewUserEmail] = React.useState(userEmail);
   
+    const [isUserNick, setIsUserNick] = useState(false);
+    const [userNickMessage, setUserNickMessage] = useState("");
+
     const [currentPassword, setCurrentPassword] = React.useState();
     const [newPassword, setNewPassword] = React.useState();
   
@@ -116,7 +119,7 @@ function userprofileModify ( { open, setOpen }) {
         handleClose();
         handleCloseChangePassword();
       };
-      <Link to="/"></Link>;
+
       const error = (res) => {
         console.log("비밀번호 변경 실패", res);
         console.log(res.response.data.message)
@@ -144,6 +147,11 @@ function userprofileModify ( { open, setOpen }) {
                     defaultValue={userName} 
                     /> <p className="seolmyeong"> 이름은 수정할 수 없습니다.</p>
 
+                    <div
+                        class={`txt_field ${
+                            isUserNick ? "txt_field" : "txt_field_false"
+                        } ${userNickMessage ? "txt_field_message" : ""}`}>
+
                     <TextField className="input_comp"
                     required
                     id="userNick"
@@ -151,12 +159,24 @@ function userprofileModify ( { open, setOpen }) {
                     label="닉네임"
                     defaultValue={userNick}
                     value={newUserNick}
-                    onChange={onNewUserNick}
-                    />
+                    onChange={(e) => {
+
+                        setNewUserNick(e.target.value);
+                        if (e.target.value.length > 12) {
+                          setIsUserNick(false);
+                          setUserNickMessage("12자 이하의 닉네임을 입력하세요");
+                          return;
+                        } else {
+                          setIsUserNick(true);
+                          setUserNickMessage("");
+                        }
+                    }}
+                    /><span>{userNickMessage}</span>
                      <br /><br />
 
+                    </div>
+
                     <TextField className="input_comp"
-                    required
                     id="userPhone"
                     color="secondary"
                     label="전화번호"
@@ -166,7 +186,6 @@ function userprofileModify ( { open, setOpen }) {
                     /> <br /><br /><br />
 
                     <TextField className="input_comp"
-                    required
                     id="userEmail"
                     color="secondary"
                     label="이메일"
@@ -176,38 +195,61 @@ function userprofileModify ( { open, setOpen }) {
                     /> <br /><br /><br />
 
                     <div>
-                        <Button color="secondary">비밀번호 변경</Button>
-                        <Button onClick={onSubmit} color="secondary">기본 정보 변경</Button>
+                        <Button onClick={handleOpenChangePassword} color="secondary">비밀번호 변경</Button>
+                        <Button
+                        onClick={onSubmit}
+                        color="secondary"
+                        disabled={
+                            !(newUserNick)
+                        }>기본 정보 변경</Button>
                     </div>
 
-                    {/* <Dialog
+                    <Dialog
                     open={openChangePassword}
                     keepMounted
                     onClose={handleCloseChangePassword}
                     >
+                    
+                    <DialogTitle>
+                        {"비밀번호 변경"}
+                    </DialogTitle>
+                    
+                    <DialogContent>
+                        <TextField className="input_comp"
+                        required
+                        color="secondary"
+                        label="현재 비밀번호"
+                        type="password"
+                        value={currentPassword}
+                        id="currentPassword"
+                        onChange={onCurrentPassword}
+                        /> <br /><br />
+                        
+                        <TextField className="input_comp"
+                        required
+                        id="newPassword"
+                        color="secondary"
+                        label="새 비밀번호"
+                        type="password"
+                        value={newPassword}
+                        onChange={onNewPassword}
+                        /> <br /><br />
+                    </DialogContent>
 
+                    <DialogActions className="option-cell">
+                        <div className="cancel-button">
+                            <Button onClick={handleCloseChangePassword}>
+                            <div className="cancel-button-text">취소</div>
+                            </Button>
+                        </div>
+                        <div className="accept-button">
+                            <Button onClick={onSubmitPassword}>
+                            <div className="accept-button-text">수정</div>
+                            </Button>
+                        </div>
+                    </DialogActions>
 
                     </Dialog>
-
-                    <TextField className="input_comp"
-                    required
-                    color="secondary"
-                    label="현재 비밀번호"
-                    value={currentPassword}
-                    id="currentPassword"
-                    onChange={onCurrentPassword}
-                    /> <br /><br />
-                    
-                    <TextField className="input_comp"
-                    required
-                    id="newPassword"
-                    color="secondary"
-                    label="새 비밀번호"
-                    type="password"
-                    value={newPassword}
-                    onChange={onNewPassword}
-                    /> <br /><br /> */}
-
 
             </div>
         
