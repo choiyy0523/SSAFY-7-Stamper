@@ -58,13 +58,13 @@
 ### BackEnd (22.10.06 수정 필요)
 
 
-|  Java  | SpringBoot | MySQL  | MyBatis | Node.js |
-| :----: | :--------: | :----: | :-----: | :-----: |
-| Java 8 |   5.3.19   | 8.0.30 |  3.5.9  | 18.7.0  |
+|  Java  | SpringBoot | MySQL  |
+| :----: | :--------: | :----: |
+| Java 8 |   5.3.19   | 8.0.30 |
 
-| Ubuntu(EC2) |  Docker  | Jenkins | Raspbian |        IntelliJ IDEA        |
-| :---------: | :------: | :-----: | :------: | :-------------------------: |
-|   20.04.4   | 20.10.17 | 2.346.3 |  Latest  | 2022.1.2 (Ultimate Edition) |
+| Ubuntu(EC2) |  Docker  | Jenkins |        IntelliJ IDEA        |
+| :---------: | :------: | :-----: | :-------------------------: |
+|   20.04.4   | 20.10.18 | 2.361.1 | 2022.2.2 (Ultimate Edition) |
 
 
 
