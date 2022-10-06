@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getAchieveList } from "../../api/achieve";
-
+import CollectedList from "./collectedList";
 
 const userprofile = () => {
     const dispatch = useDispatch();
@@ -81,6 +81,7 @@ const userprofile = () => {
                     })}
                 </div>
             </div> 
+            <CollectedList></CollectedList>
         </div>
     );
   };
