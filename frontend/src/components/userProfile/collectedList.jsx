@@ -36,8 +36,8 @@ export default function collectedList() {
                         <Grid item xs={4}>
                             <img key={data.userbookCollectionSeq} style={{height:'8em', width:'8em'}} src={data.userbookCollectionImage}></img>
                         </Grid>
-                    );
-                })};
+                    )
+                })}
             </Grid>
         </Box>
     );
