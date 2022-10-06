@@ -42,7 +42,13 @@ public class AwsS3ServiceImpl implements AwsS3Service {
         String existFile = userbook.getUserbookCollectionImage();
         if(existFile != null && existFile != ""){
             System.out.println("imgFile is already EXIST!! --> DELETE...");
-            amazonS3.deleteObject(new DeleteObjectRequest(bucket, existFile));
+            try{
+                amazonS3.deleteObject(new DeleteObjectRequest(bucket, existFile));
+            } catch(Exception e) {
+                return (e);
+            }
+        } else if(existFile == ""){
+            System.out.println("imgFilePath is null!! --> UPLOAD...")
         }
 
         String fileName = createFileName(multipartFile.getOriginalFilename());
