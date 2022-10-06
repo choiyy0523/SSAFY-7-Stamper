@@ -3,6 +3,7 @@ import * as React from 'react';
 import { useState } from "react";
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { getCountOfCategory } from "../../api/book";
 
 const collectionTheme = () => {
     const [gongwon, setGongwon] = useState('공원')
@@ -23,41 +24,43 @@ const collectionTheme = () => {
   const userInfo = useSelector((state) => state.UserInfo);
   const userNick = userInfo.userInfo.userNickname;
 
-  const catList = useSelector((state)=>state.CountInfo.catList);
-
-  console.log(userInfo, catList);
-
   useEffect(() => {
-    let forthem = [];
-    forthem[0] = catList[0].count;
-    forthem[1] = catList[8].count;
-    forthem[2] = catList[4].count;
-    forthem[3] = catList[5].count;
-    forthem[4] = catList[7].count;
-    forthem[5] = catList[10].count;
-    forthem[6] = catList[3].count;
-    forthem[7] = catList[9].count;
-    forthem[8] = catList[6].count;
-    forthem[9] = catList[11].count;
-    forthem[10] = catList[1].count;
-    forthem[11] = catList[2].count;
+    getCountOfCategory(userSeq, token, (response)=>{
+      console.log(response.data.cc);
+      let forthem = [];
+      forthem[0] = response.data.cc[0].count;
+      forthem[1] = response.data.cc[8].count;
+      forthem[2] = response.data.cc[4].count;
+      forthem[3] = response.data.cc[5].count;
+      forthem[4] = response.data.cc[7].count;
+      forthem[5] = response.data.cc[10].count;
+      forthem[6] = response.data.cc[3].count;
+      forthem[7] = response.data.cc[9].count;
+      forthem[8] = response.data.cc[6].count;
+      forthem[9] = response.data.cc[11].count;
+      forthem[10] = response.data.cc[1].count;
+      forthem[11] = response.data.cc[2].count;
 
-    let forthem2 = [];
-    forthem2[0] = catList[0].total;
-    forthem2[1] = catList[8].total;
-    forthem2[2] = catList[4].total;
-    forthem2[3] = catList[5].total;
-    forthem2[4] = catList[7].total;
-    forthem2[5] = catList[10].total;
-    forthem2[6] = catList[3].total;
-    forthem2[7] = catList[9].total;
-    forthem2[8] = catList[6].total;
-    forthem2[9] = catList[11].total;
-    forthem2[10] = catList[1].total;
-    forthem2[11] = catList[2].total;
+      let forthem2 = [];
+      forthem2[0] = response.data.cc[0].total;
+      forthem2[1] = response.data.cc[8].total;
+      forthem2[2] = response.data.cc[4].total;
+      forthem2[3] = response.data.cc[5].total;
+      forthem2[4] = response.data.cc[7].total;
+      forthem2[5] = response.data.cc[10].total;
+      forthem2[6] = response.data.cc[3].total;
+      forthem2[7] = response.data.cc[9].total;
+      forthem2[8] = response.data.cc[6].total;
+      forthem2[9] = response.data.cc[11].total;
+      forthem2[10] = response.data.cc[1].total;
+      forthem2[11] = response.data.cc[2].total;
 
-    setForcount(forthem);
-    setFortotal(forthem2);
+      setForcount(forthem);
+      setFortotal(forthem2);
+      console.log(userInfo, catList, forthem, forthem2);
+    }, (error)=>{
+      console.log(error)
+    })
   }, [])
 
   return (

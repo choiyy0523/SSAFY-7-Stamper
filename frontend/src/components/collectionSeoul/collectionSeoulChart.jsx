@@ -9,6 +9,7 @@ import {
   Legend,
 } from "chart.js";
 import { useState, useEffect } from "react";
+import { getCountOfGugun } from "../../api/book";
 import { useSelector } from "react-redux";
 
 export default function seoulChart() {
@@ -23,9 +24,9 @@ export default function seoulChart() {
 
   const [fordata, setFordata] = useState([]);
 
-  const gugunList = useSelector((state) => state.CountInfo.gugunList);
-
-  console.log("gugunList: ", gugunList);
+  const userInfo = useSelector((state) => state.UserInfo);
+  const userSeq = userInfo.userInfo.userSeq;
+  const token = userInfo.accessToken;
 
   const data = {
     labels: [
@@ -121,12 +122,17 @@ export default function seoulChart() {
   };
 
   useEffect(() => {
-    let tmp = [];
-    for (var i = 0; i < 25; i++) {
-      tmp[i] = gugunList[i].count;
-    }
-    setFordata(tmp);
-    console.log("count data: ", tmp);
+    getCountOfGugun(userSeq, token, (response)=>{
+      console.log(response.data.gc)
+      let tmp = [];
+      for (var i = 0; i < 25; i++) {
+        tmp[i] = response.data.gc[i].count;
+      }
+      setFordata(tmp);
+      console.log("count data: ", tmp);
+    }, (error)=>{
+      console.log(error)
+  })
   }, []);
   return <Bar data={data} options={options} height={"200%"}></Bar>;
 }

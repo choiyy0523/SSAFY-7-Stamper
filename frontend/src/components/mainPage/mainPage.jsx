@@ -8,8 +8,8 @@ import themepark from "../../../public/assets/components/theme-park.png";
 import typing from "../../../public/assets/components/typing.png";
 import house from "../../../public/assets/components/house.png";
 import { useDispatch, useSelector } from "react-redux";
-import { SET_CATLIST, SET_COUNT, SET_GUGUNLIST, SET_TOTAL } from "../../redux/CountInfo";
 import { getAllBookDetail, getCountOfCategory, getCountOfGugun } from "../../api/book";
+import { getAchieveList } from "../../api/achieve";
 
 export default function ImageTest() {
     
@@ -97,24 +97,11 @@ export default function ImageTest() {
     }
 
     useEffect(() => {
-        getCountOfGugun(userSeq, token, (response)=>{
-            console.log(response.data.gc)
-            dispatch(SET_GUGUNLIST(response.data.gc));
-        }, (error)=>{
-          console.log(error)
-        })
-
-        getCountOfCategory(userSeq, token, (response)=>{
-            console.log(response.data.cc)
-            dispatch(SET_CATLIST(response.data.cc));
-          }, (error)=>{
-            console.log(error)
-          })
-        getAllBookDetail(userSeq, token, (response) =>{
-            console.log(response.data);
-            dispatch(SET_COUNT(response.data.collectedBookList.length));
-            dispatch(SET_TOTAL(response.data.totalBookList.length));
-        })
+        // getAchieveList(userSeq, token, (response)=>{
+        //     console.log(response.data);
+        // }, (error)=>{
+        //     console.log(error);
+        // })
 
     },[])
     return (

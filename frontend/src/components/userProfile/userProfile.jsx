@@ -2,7 +2,6 @@ import "./userProfile.css"
 import * as React from 'react';
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { SET_COUNT } from "../../redux/CountInfo";
 
 
 const userprofile = () => {

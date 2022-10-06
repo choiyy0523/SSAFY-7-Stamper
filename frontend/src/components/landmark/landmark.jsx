@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { getBookDetail } from "../../api/book";
-import { useSelector } from "react-redux";
+import { getAllBookDetail, getBookDetail, getCountOfCategory, getCountOfGugun } from "../../api/book";
+import { useDispatch, useSelector } from "react-redux";
 import { getCommentList } from "../../api/comment";
 import { Fragment, useState, useRef, useEffect } from "react";
 import * as tf from "@tensorflow/tfjs";
@@ -20,11 +20,15 @@ import location from "../../assets/placeholder.png";
 import axios from "axios";
 
 import Swal from 'sweetalert2'
+import { updateAchieve } from "../../api/achieve";
 
 export default function landmark() {
+  const dispatch = useDispatch();
   const [imageURL, setImageURL] = useState("");
   const [landmarkName, setLandmarkName] = useState("");
   const [landmarkDesc, setLandmarkDesc] = useState("");
+  const [landmarkGugun, setLandmarkGugun] = useState("");
+  const [landmarkCat, setLandmarkCat] = useState("");
   const [landmarkComment, setLandmarkComment] = useState([]);
 
   const [landmarkInfo, setLandmarkInfo] = useState([]);
@@ -42,11 +46,14 @@ export default function landmark() {
   const [locationApproved, setLocationApproved] = useState(null);
   const [aiIcon, setAiIcon] = useState(ai);
   const [locationIcon, setLocationIcon] = useState(location);
+  const [isCollected, setIsCollected] = useState(false);
+  const [gugunList, setGugunList] = useState([]);
+  const [catList, setCatList] = useState([]);
+  const [count, setCount] = useState(0);
+  const [total, setTotal] = useState(0);
   const fileRef = useRef();
 
   const [modal, setModal] = useState(false);
-
-  
 
 
   const baseURL =
@@ -55,24 +62,28 @@ export default function landmark() {
   const landmarkNo = useParams().landmarkNo;
 
   const userInfo = useSelector((state) => state.UserInfo);
-  const userName = userInfo.userInfo.userName;
-  const userNick = userInfo.userInfo.userNickname;
   const userSeq = userInfo.userInfo.userSeq;
   const token = userInfo.accessToken;
+
 
   useEffect(() => {
     getBookDetail(userSeq, landmarkNo, (response) => {
       const data = response.data;
-
+      console.log("data : ", data);
+      setLandmarkInfo(response.data.book);
       setLandmarkName(data.book.bookName);
       setLandmarkDesc(data.book.bookDescription);
+      setLandmarkGugun(data.book.bookGugun);
+      setLandmarkCat(data.book.bookMaincategory); 
 
       let tempURL = baseURL;
       if (!data.userBook) {
+        setIsCollected(false);
         // 수집하지 않은 도감의 경우 기본이미지로 url 저장
         tempURL += data.book.bookImageURL;
         setImageURL(tempURL);
       } else {
+        setIsCollected(true);
         tempURL = data.userBook.userbookCollectionImage;
         setImageURL(tempURL);
       }
@@ -82,30 +93,33 @@ export default function landmark() {
 
       setLandmarkComment(data.list);
     });
-  }, []);
+    getCountOfGugun(userSeq, token, (response)=>{
+      console.log("gugunList: ",response.data.gc)
+      setGugunList(response.data.gc);
+    }, (error)=>{
+      console.log(error)
+    })
 
-  useEffect(() => {
-    getBookDetail(
-      userSeq,
-      landmarkNo,
-      (response) => {
-        setLandmarkInfo(response.data.book);
-        console.log(landmarkInfo);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }, []);
+    getCountOfCategory(userSeq, token, (response)=>{
+        console.log("catList: ", response.data.cc)
+        setCatList(response.data.cc);
+      }, (error)=>{
+        console.log(error)
+      })
+    getAllBookDetail(userSeq, token, (response) =>{
+        console.log("count, total: ", response.data.collectedBookList.length, response.data.totalBookList.length);
+        setCount(response.data.collectedBookList.length);
+        setTotal(response.data.totalBookList.length);
+    })
+    }, []);
 
-  console.log(landmarkInfo);
   let model;
 
   const longLatExtraction = async () => {
     let { latitude, longitude } = await exifr.gps(url);
     setInputLatitude(latitude);
     setInputLongitude(longitude);
-    console.log({ latitude, longitude });
+    console.log("위도 경도: ", { latitude, longitude });
   };
   useEffect(() => {
     longLatExtraction();
@@ -168,7 +182,7 @@ export default function landmark() {
 
   async function predict() {
     setLoading(true);
-    console.log(districtURL);
+    console.log("url: ",districtURL);
     let modelURL = districtURL + "model.json";
     let metadataURL = districtURL + "metadata.json";
     model = await tmImage.load(modelURL, metadataURL);
@@ -183,7 +197,7 @@ export default function landmark() {
 
     let least = 0;
     for (var i = 0; i < prediction.length; i++) {
-      console.log(landmarkInfo.bookName);
+      console.log("이름: ", landmarkInfo.bookName);
       if (prediction[i].className == landmarkInfo.bookName) {
         least = prediction[i].probability.toFixed(2);
         if (least < 0.2) {
@@ -312,7 +326,7 @@ export default function landmark() {
       registerUserbookCollection(
         userbookCollectionInfo,
         token,
-        (response) => {},
+        (response) => {console.log(response)},
         (error) => {
           console.log(error);
         }
@@ -330,9 +344,110 @@ export default function landmark() {
           'success'
         )
       }
+      // 등록이 되었고, 새로 수집된 랜드마크라면 count 증가시키고 리워드 갱신 확인
+      if (!isCollected){
+        console.log("증가 전 count: ", count, total);
+        if (count+1==1) { // 첫 수집
+          updateAchieve({userSeq:userSeq, achieveName:"첫 수집"}, token, 
+          (response)=>{
+            console.log(response);
+            alert("첫 수집 리워드 등록!");
+          },
+          (error)=>{
+            console.log(error);
+          })
+        }
+        if (count+1 == total/2){ // 스탬퍼(50% 달성)
+          updateAchieve({userSeq:userSeq, achieveName:"스탬퍼"}, token, 
+          (response)=>{
+            console.log(response);
+            alert("스탬퍼 리워드 등록!");
+          },
+          (error)=>{
+            console.log(error);
+          })
+        }
+        if (count+1 == total){ // 마스터 스탬퍼(100% 달성)
+          updateAchieve({userSeq:userSeq, achieveName:"마스터 스탬퍼"}, token, 
+          (response)=>{
+            console.log(response);
+            alert("마스터 스탬퍼 리워드 등록!");
+          },
+          (error)=>{
+            console.log(error);
+          })
+        }
+        let gugunIdx =0;
+        for (gugunIdx=0; gugunIdx<25; gugunIdx++){
+          if (gugunList[gugunIdx].gugun == landmarkGugun) break;
+        }
+        console.log("증가 전 gugun: ", gugunList[gugunIdx]);
+        if (gugunList[gugunIdx].count+1==1){ // XX구 초심자(첫 수집)
+          updateAchieve({userSeq:userSeq, achieveName:landmarkGugun+" 초심자"}, token, 
+          (response)=>{
+            console.log(response);
+            alert(landmarkGugun + " 초심자 리워드 등록!");
+          },
+          (error)=>{
+            console.log(error);
+          })
+        }if (gugunList[gugunIdx].count+1==gugunList[gugunIdx].total/2){ // XX구 여행자(50% 수집)
+          updateAchieve({userSeq:userSeq, achieveName:landmarkGugun+" 여행자"}, token, 
+          (response)=>{
+            console.log(response);
+            alert(landmarkGugun + " 여행자 리워드 등록!");
+          },
+          (error)=>{
+            console.log(error);
+          })
+        }if (gugunList[gugunIdx].count+1==gugunList[gugunIdx].total){ // XX구 마스터(100% 수집)
+          updateAchieve({userSeq:userSeq, achieveName:landmarkGugun+" 마스터"}, token, 
+          (response)=>{
+            console.log(response);
+            alert(landmarkGugun + " 마스터 리워드 등록!");
+          },
+          (error)=>{
+            console.log(error);
+          })
+        }
+
+        let catIdx =0;
+        for (catIdx=0; catIdx<25; catIdx++){
+          if (catList[catIdx].category == landmarkCat) break;
+        }
+        console.log("증가 전 category: ", catList[catIdx]);
+        if (catList[catIdx].count+1==1){ // XX카테고리 초심자(첫 수집)
+          updateAchieve({userSeq:userSeq, achieveName:landmarkCat+" 초심자"}, token, 
+          (response)=>{
+            console.log(response);
+            alert(landmarkCat + " 초심자 리워드 등록!");
+          },
+          (error)=>{
+            console.log(error);
+          })
+        }if (catList[catIdx].count+1==catList[catIdx].total/2){ // XX카테고리 여행자(50% 수집)
+          updateAchieve({userSeq:userSeq, achieveName:landmarkCat+" 여행자"}, token, 
+          (response)=>{
+            console.log(response);
+            alert(landmarkCat + " 여행자 리워드 등록!");
+          },
+          (error)=>{
+            console.log(error);
+          })
+        }if (catList[catIdx].count+1==catList[catIdx].total){ // XX카테고리 마스터(100% 수집)
+          updateAchieve({userSeq:userSeq, achieveName:landmarkCat+" 마스터"}, token, 
+          (response)=>{
+            console.log(response);
+            alert(landmarkCat + " 마스터 리워드 등록!");
+          },
+          (error)=>{
+            console.log(error);
+          })
+        }
+      }
 
 
-      window.location.reload();
+      // window.location.reload();
     }
   }
   function getDistance(latitude1, longitude1, latitude2, longitude2) {
