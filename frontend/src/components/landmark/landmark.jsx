@@ -453,8 +453,8 @@ export default function landmark() {
           <br />
           <br />
           <span className="grayfont">
-            ※건물 디자인 변경, 현수막, 디스플레이, 리모델링, 재건축 등으로 인해
-            인식이 불안정할 수 있습니다※
+            *건물 디자인 변경, 현수막, 디스플레이, 리모델링, 재건축 등으로 인해
+            인식이 불안정할 수 있습니다*
           </span>
         </div>
       </div>

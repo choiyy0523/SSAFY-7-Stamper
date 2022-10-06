@@ -5,7 +5,7 @@ import * as tf from '@tensorflow/tfjs';
 import * as tmImage from '@teachablemachine/image';
 import seoul from "../../../public/assets/components/seoul.png";
 import themepark from "../../../public/assets/components/theme-park.png";
-import typing from "../../../public/assets/components/typing.png";
+import assistant from "../../../public/assets/components/assistant.png";
 import house from "../../../public/assets/components/house.png";
 
 export default function ImageTest() {
@@ -118,7 +118,7 @@ export default function ImageTest() {
             </div>
 
             <div className="darm_kkol">&lt;랜드마크 닮은꼴 찾기></div>
-            <img className="main_comp blur_darm" src={typing} alt="" />
+            <img className="main_comp blur_darm" src={assistant} alt="" />
 
 
         </div> 
