@@ -2,19 +2,31 @@ import "./userProfile.css"
 import * as React from 'react';
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
+import { getAchieveList } from "../../api/achieve";
 
 
 const userprofile = () => {
     const dispatch = useDispatch();
+
+    const [achieveList, setAchieveList] = useState([]);
 
     const userInfo = useSelector((state) => state.UserInfo);
     const userNickname = userInfo.userInfo.userNickname;
     const userName = userInfo.userInfo.userName;
     const userPhone = userInfo.userInfo.userPhone;
     const userEmail = userInfo.userInfo.userEmail;
-
-    console.log(userInfo);
+    const userSeq = userInfo.userInfo.userSeq;
+    const token = userInfo.accessToken;
   
+    useEffect(() => {
+        getAchieveList(userSeq, token, (response)=>{
+            console.log(response.data.achieveList);
+            setAchieveList(response.data.achieveList);
+        }, (error)=>{
+            console.log(error);
+        })
+
+    },[])
     return (
         <div className="aligncenter">
             {/* 프로필 카드 */}
@@ -31,8 +43,8 @@ const userprofile = () => {
                     <p>닉네임 : {userNickname} </p>
                     <p>폰번호 : {userPhone} </p>
                     <p>이메일 : {userEmail} </p>
-                    <p>나이: 29  성별: 남  취미: 클라이밍</p>
-                    <p>성북구 랜드마크 뿌셔!</p>
+                    {/* <p>나이: 29  성별: 남  취미: 클라이밍</p>
+                    <p>성북구 랜드마크 뿌셔!</p> */}
                 </div>
 
                 <a className="item" href="#">
@@ -56,6 +68,17 @@ const userprofile = () => {
                 {/* 로고 나열 */}
                 <div>
                   <img className="profile_comp" src="/assets/components/stamp.png" alt="" />
+                    {achieveList.map((data) =>{
+                        return(
+                        <div>
+                            <div>
+                                업적이름 : {data.achieve.achieveName}
+                            </div>
+                            <div>{data.userAchievementTime} </div>
+                        </div>
+                        )
+
+                    })}
                 </div>
             </div> 
         </div>

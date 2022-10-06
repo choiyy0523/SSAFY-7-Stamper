@@ -97,11 +97,11 @@ export default function ImageTest() {
     }
 
     useEffect(() => {
-        // getAchieveList(userSeq, token, (response)=>{
-        //     console.log(response.data);
-        // }, (error)=>{
-        //     console.log(error);
-        // })
+        getAchieveList(userSeq, token, (response)=>{
+            console.log(response.data.achieveList);
+        }, (error)=>{
+            console.log(error);
+        })
 
     },[])
     return (
