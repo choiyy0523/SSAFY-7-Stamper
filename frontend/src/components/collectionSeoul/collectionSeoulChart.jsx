@@ -101,7 +101,7 @@ export default function seoulChart() {
         grid: {
           display: false,
         },
-        max: 30,
+        max: 16,
         ticks: {
           font: {
             family: "BMJua",
