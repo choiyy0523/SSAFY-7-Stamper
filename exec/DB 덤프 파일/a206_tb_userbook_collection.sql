@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.21, for Win64 (x86_64)
 --
 -- Host: j7a206.p.ssafy.io    Database: a206
 -- ------------------------------------------------------
@@ -44,7 +44,6 @@ CREATE TABLE `tb_userbook_collection` (
 
 LOCK TABLES `tb_userbook_collection` WRITE;
 /*!40000 ALTER TABLE `tb_userbook_collection` DISABLE KEYS */;
-INSERT INTO `tb_userbook_collection` VALUES (96,'기타','2022-10-06 PM 07:11:25 UTC','강북구','https://stamperimage.s3.ap-northeast-2.amazonaws.com/userimg/ec37a690-04d6-4c42-b499-bb142add73eaScreenshot_20221005-200341_Chrome',202,8),(97,'명소','2022-10-06 PM 07:22:44 UTC','송파구','https://stamperimage.s3.ap-northeast-2.amazonaws.com/userimg/232585b3-3e46-41b1-9fdc-3616a0c1e6fd롯타',64,31);
 /*!40000 ALTER TABLE `tb_userbook_collection` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-07 10:31:01
+-- Dump completed on 2022-10-07  4:28:50

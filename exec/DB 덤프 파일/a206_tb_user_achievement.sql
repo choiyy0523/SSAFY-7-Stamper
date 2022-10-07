@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.21, for Win64 (x86_64)
 --
 -- Host: j7a206.p.ssafy.io    Database: a206
 -- ------------------------------------------------------
@@ -41,7 +41,6 @@ CREATE TABLE `tb_user_achievement` (
 
 LOCK TABLES `tb_user_achievement` WRITE;
 /*!40000 ALTER TABLE `tb_user_achievement` DISABLE KEYS */;
-INSERT INTO `tb_user_achievement` VALUES (57,'2022-10-06 PM 07:11:26 UTC',109,8),(58,'2022-10-06 PM 07:22:46 UTC',109,31),(59,'2022-10-06 PM 07:22:47 UTC',52,31),(60,'2022-10-06 PM 07:22:48 UTC',76,31);
 /*!40000 ALTER TABLE `tb_user_achievement` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-07 10:31:01
+-- Dump completed on 2022-10-07  4:28:50
