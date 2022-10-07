@@ -1,0 +1,32 @@
+#wrap {
+    width: 95%;
+    border: 1px solid rgba(255,255,255,.5);
+    margin: 0 auto;
+    padding-top: 10px;
+    overflow: hidden;
+}
+
+.theme_frame {
+    float: left;
+    margin-left: 0.7vh;
+    margin-bottom: 2vh;
+    border: 1px solid black;
+    /* border-style: outset; */
+    border-radius: 15%;
+}
+
+.theme_frame:hover {
+    opacity: 50%;
+}
+
+.grid-image {
+    display:flex;
+    flex-wrap:wrap;
+    align-items:flex-start;
+    margin:30px 0;
+}
+
+.theme_icon {
+    width: 12vh;
+    padding: 0.4vh;
+}

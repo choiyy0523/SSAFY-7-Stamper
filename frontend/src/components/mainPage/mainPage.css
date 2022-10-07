@@ -1,0 +1,85 @@
+.widthcenter {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.colorblock {
+  width: 140px;
+  border-radius: 15%;
+  background-color: rgba(191, 96, 255, 0.09);
+  margin: auto;
+}
+
+.colorblock2 {
+  width: 300px;
+  height: 130px;
+  border-radius: 15%;
+  background-color: rgba(191, 96, 255, 0.09);
+  margin-top: 1rem;
+}
+
+.colorblock3 {
+  width: 300px;
+  height: 200px;
+  border-radius: 15%;
+  background-color: rgba(191, 96, 255, 0.09);
+}
+
+.bigfont {
+  font-size: 2rem;
+}
+
+.outer-div {
+  position: relative
+}
+
+.inner-div {
+  position: relative;
+  margin: auto !important;
+}
+
+.robot_dance:hover {
+  animation: cute 0.8s ;
+  /* pointer-events: none; */
+}
+
+.main_comp {
+  width: 12vh;
+}
+
+.main_comp2 {
+  width: 15vh;
+}
+
+.logo_name {
+  justify-content: center;
+}
+
+.mypage_top {
+  margin-top: 1vh;
+}
+
+.flex-column {
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+
+.flex-item {
+  text-align: center;
+}
+
+.darm_kkol {
+  margin-top: 5vh;
+  margin-bottom: 2vh;
+  font-size: 3vh;
+}
+
+.blur_darm {
+  opacity: 0.4;
+}
+
+.footfoot {
+  font-size: 1.9vh;
+}

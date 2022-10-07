@@ -1,0 +1,193 @@
+div {
+  font-family: "BMJua";
+}
+
+.muruk {
+  font-family: "KCCMurukmuruk";
+}
+
+.logo {
+  height: 18vh;
+  margin-top: 0vh;
+}
+
+.logo3 {
+  height: 18vh;
+  margin-top: 0vh;
+  font-size: xx-large
+}
+
+.english_title {
+  font-size: 6vh;
+  margin-top: -1vh;
+}
+
+.korean_title {
+  font-size: 9vh;
+  margin-top: -7vh;
+}
+
+.gradtext {
+  background: #060B47;
+  background: linear-gradient(to top, #060B47 0%, #BF60FF 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.korean_title:hover {
+  animation: cute 0.7s ;
+}
+
+.english_title:hover {
+  animation: cute 0.8s ;
+}
+
+
+.kkultip {
+  width: 100%;
+  height: 100%;
+  font-family: "BMJua";
+}
+
+.chulcheo {
+  color: black;
+  width: 100%;
+  height: 100%;
+  font-family: "BMJua";
+}
+
+.login_button {
+  color: #BF60FF;
+  width: 320px;
+}
+
+.between {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2vh;
+  position: relative;
+}
+
+.footer_blank {
+  margin-top: 18vh;
+  margin-bottom: -2vh;
+}
+
+.footer_blank2 {
+  margin-top: 5vh;
+}
+
+.sticker1 {
+  height: 10vh;
+  left: -2.5vh;
+  /* margin-left: -25vh; */
+  margin-top: -21vh;
+  position: absolute;
+}
+
+.sticker2 {
+  height: 10vh;
+  left: -0.2vh;
+  margin-top: -35vh;
+  position: absolute;
+}
+
+.sticker3 {
+  height: 10vh;
+  left: -3.3vh;
+  /* margin-left: -26vh; */
+  margin-top: -8vh;
+  position: absolute;
+}
+
+.sticker4 {
+  height: 10vh;
+  margin-top: -18vh;
+  position: absolute;
+  z-index: 3;
+  object-position: 4vh;
+  right: 0;
+}
+
+.sticker5 {
+  height: 10vh;
+  margin-left: 12.4vh;
+  margin-top: 2vh;
+  position: absolute;
+  object-position: 4vh; 
+  right: 0;
+}
+
+.sticker6 {
+  height: 10vh;
+  margin-left: 7vh;
+  margin-top: -26vh;
+  position: absolute;
+  z-index: 2;
+  right: 0;
+}
+
+.sticker7 {
+  height: 10vh;
+  margin-left: 12.4vh;
+  margin-top: -21vh;
+  position: absolute;
+  z-index: 1;
+  object-position: 2vh; 
+  right: 0;
+}
+
+.sticker8 {
+  height: 10vh;
+  margin-left: 12.5vh;
+  margin-top: 41vh;
+  position: absolute;
+  object-position: 3vh; 
+  right: 0;
+}
+
+.sticker9 {
+  height: 10vh;
+  left: -5.4vh;
+  margin-top: -1vh;
+  position: absolute;
+}
+
+.sticker10 {
+  height: 10vh;
+  margin-left: 12.5vh;
+  margin-top: -33vh;
+  position: absolute;
+  object-position: 4vh; 
+  right: 0;
+}
+
+.sticker11 {
+  height: 10vh;
+  left: -0.6vh;
+  margin-top: 42vh;
+  position: absolute;
+}
+
+.sticker12 {
+  height: 30vh;
+  margin-left: -70vh;
+  margin-top: -20vh;
+  position: absolute;
+}
+
+.sticker13 {
+  height: 30vh;
+  margin-left: 40vh;
+  margin-top: -20vh;
+  position: absolute;
+}
+
+.inputwidth {
+  width: 15rem;
+}
+
+.centerbutton {
+  margin-left: auto;
+  margin-right: auto;
+}

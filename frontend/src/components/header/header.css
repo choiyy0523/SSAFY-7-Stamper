@@ -1,0 +1,198 @@
+/* body {
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+  } */
+
+  .menuItem {
+    text-decoration: none;
+    color: #1E1E23;
+    opacity:1;
+    font-family: 'KCCMurukMuruk';
+    font-size: 2em;
+    font-weight: 400;
+    transition: 200ms;
+  }
+
+  .logout {
+    text-decoration: none;
+    color: #1E1E23;
+    opacity:1;
+    font-family: 'KCCMurukMuruk';
+    font-size: 1.5em;
+    font-weight: 400;
+    transition: 200ms;
+    position: fixed;
+    bottom: 5rem;
+    left: 2rem;
+  }
+
+  a:hover {
+    opacity:0.5;
+  }
+  ul {
+    padding: 0;
+    list-style-type: none;
+  }
+  nav {
+    position:fixed;
+    top:0;
+    display:block;
+    width: 100vw;
+    background-color: rgb(255, 255, 255);
+    height: 65px;
+    z-index: 8;
+    margin-bottom: 20px;
+    /* margin: 0 0 13px;
+    padding: 8px 5px 5px 14px; */
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.15);
+    border-top: solid 1px rgba(191, 96, 255, 0.8);
+    border-bottom: solid 1px rgba(191, 96, 255, 0.8);
+  }
+  
+  
+  #menuToggle {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    max-height: 3rem;
+    top: 25px;
+    left: 25px;
+    z-index: 10;
+    -webkit-user-select: none;
+    user-select: none;
+    width: 10vw;
+  }
+
+  #menuToggle input
+  {
+    display: flex;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 2;
+  }
+  
+  #menuToggle span
+  {
+    display: flex;
+    width: 29px;
+    height: 2px;
+    margin-bottom: 5px;
+    position: absolute;
+    background: #5EA7FF;
+    border-radius: 3px;
+    z-index: 1;
+    transform-origin: 5px 0px;
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                opacity 0.55s ease;
+  }
+
+  #burgerTwo
+  {
+    display: flex;
+    width: 29px;
+    height: 2px;
+    margin-bottom: 5px;
+    position: absolute;
+    top: 7px;
+    background: #5EA7FF;
+    border-radius: 3px;
+    z-index: 1;
+    transform-origin: 5px 0px;
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                opacity 0.55s ease;
+  }
+
+  #burgerThree
+  {
+    display: flex;
+    width: 29px;
+    height: 2px;
+    margin-bottom: 5px;
+    position: absolute;
+    top: 14px;
+    background: #5EA7FF;
+    border-radius: 3px;
+    z-index: 1;
+    transform-origin: 5px 0px;
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                opacity 0.55s ease;
+  }
+  
+  #menuToggle span:first-child
+  {
+    transform-origin: 0% 0%;
+  }
+  
+  #menuToggle span:nth-last-child(2)
+  {
+    transform-origin: 0% 100%;
+  }
+  
+  #menuToggle input:checked ~ span
+  {
+    opacity: 1;
+    transform: rotate(45deg) translate(-3px, -1px);
+    background: #36383F;
+  }
+  #menuToggle input:checked ~ span:nth-last-child(3)
+  {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+  }
+  
+  #menuToggle input:checked ~ span:nth-last-child(2)
+  {
+    transform: rotate(-45deg) translate(0, -1px);
+  }
+  
+  #menu
+  {
+    position: sticky;
+    top: 0;
+    width: 55vw;
+    height: 100vh;
+    box-shadow: 0 0 10px #85888C;
+    margin: -50px 0 0 -50px;
+    padding: 50px;
+    padding-left: 70px;
+    padding-bottom: 100vh;
+    padding-top: 80px;
+    background-color: #F5F6FA;
+    -webkit-font-smoothing: antialiased;
+    transform-origin: 0% 0%;
+    transform: translate(-100%, 0);
+    transition: transform 0.4s cubic-bezier(0.77,0.2,0.05,1.0);
+  }
+  
+  #menu li
+  {
+    padding: 10px 0;
+    transition-delay: 2s;
+  }
+  
+  #menuToggle input:checked ~ ul
+  {
+    transform: none;
+  }
+  .navTitle{
+    font-family: 'KCCMurukMuruk';
+    position: absolute;
+    left: 45%;
+    top: 18%;
+    font-size: 30px;
+    color: #3c3b63;
+  }
+  .navLogo{
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    left: 35%;
+    top: 15%;
+  }
