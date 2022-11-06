@@ -9,7 +9,6 @@ import { SET_LOGOUT } from '../../redux/UserInfo'
 
 export default function header() {
     const dispatch = useDispatch();
-    // const navigate = useNavigate()
     const onClickHandler = () => {
         dispatch(SET_LOGOUT());
         const updateUserInfo = {

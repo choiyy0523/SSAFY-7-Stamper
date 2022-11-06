@@ -160,8 +160,6 @@ public class BookController {
 
     }
 
-
-    // groupby 어떻게 작성하지,,,
     @GetMapping("/countofgu/{userSeq}")
     @ApiOperation(value = "구별 Count 조회", notes = "특정 구의 수집 개수를 조회한다.")
     @ApiResponses({

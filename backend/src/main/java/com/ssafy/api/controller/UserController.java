@@ -207,10 +207,9 @@ public class UserController {
         SsafyUserDetails userDetails = (SsafyUserDetails) authentication.getDetails();
         String userId = userDetails.getUserId();
 
-        // pw 를 auth 말고 db 에서 뽑는 방식으로 수정함.
+        // pw 를 auth가 아닌 db 에서 찾는 방식으로 수정함.
         User user = userService.getUserByUserId(userId);
         String userPassword = user.getUserPassword();  // DB 에서 나온 현재 PW
-
 
         // 이번에 입력한 현재 비밀번호와 현재 비밀번호가 다르다면
         if (!passwordEncoder.matches(passwordInfo.getCurrentPassword(), userPassword)) {
@@ -222,8 +221,7 @@ public class UserController {
             return ResponseEntity.status(403).body(BaseResponseBody.of(403, "현재 비밀번호와 새 비밀번호가 같습니다"));
         }
 
-        // 새 비밀번호 확인(추가사항 - 보류)
-
+        // 새 비밀번호 확인(현재 보류)
         userService.updateUserPassword(userId, passwordInfo);
 
         return ResponseEntity.status(200).body(BaseResponseBody.of(200, "Success"));

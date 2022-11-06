@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  // baseURL: "http://localhost:8080/api",
-  baseURL: "https://j7a206.p.ssafy.io:8080/api",
+  baseURL: "삭제",
   headers: {
     "Content-Type": "application/json",
   },

@@ -39,19 +39,6 @@ function App() {
 
   const queryClient = new QueryClient()
 
-  // const loggedIn = () => {
-  //   return 1
-  //   // window.sessionStorage.getItem("loginCheck") === "true";
-  // };
-  
-  // const [UserData, setUserData] = useState(
-  //   window.sessionStorage.getItem("userData")
-  // );
-
-  // useEffect(() => {
-  //   setUserData(window.sessionStorage.getItem("UserData"));
-  // }, [window.sessionStorage.getItem("UserData")]);
-
   return (
     <ThemeProvider theme={theme}>
     <QueryClientProvider client={queryClient}>
@@ -64,7 +51,6 @@ function App() {
               <MainPage /> ) :
                   ( <Loginpage></Loginpage> )} />
             <Route path="/test" element={<ImageTest/>}></Route>
-            {/* <Route path="/loginpage" element={<Loginpage/>}></Route> */}
             <Route path="/profile" element={<UserProfile/>}></Route>
             <Route path="/profile/modify" element={<UserProfileModify/>}></Route>
             <Route path="/" element={<MainPage/>}></Route>

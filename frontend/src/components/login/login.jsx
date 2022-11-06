@@ -43,9 +43,6 @@ import forest from "../../../public/assets/login/forest.png";
 import government from "../../../public/assets/login/government.png";
 import lighthouse from "../../../public/assets/login/lighthouse.png";
 import park from "../../../public/assets/login/park.png";
-import eye1 from "../../../public/assets/login/eye1.png";
-import eye2 from "../../../public/assets/login/eye2.png";
-
 
 
 const LoginPage = () => {
@@ -70,12 +67,6 @@ const LoginPage = () => {
   const [userNameMessage, setUserNameMessage] = useState("");
   const [userNickMessage, setUserNickMessage] = useState("");
 
-  // const useStyles = makeStyles((theme) => ({
-  //   input: {
-  //     color: "black",
-  //   },
-  // }));
-
   const LoginOrSignUp = (e) => {
     e.preventDefault(); // form 제출 막고
     setUserId(""); // id, password 입력하던거 초기화
@@ -87,8 +78,6 @@ const LoginPage = () => {
     const newValue = !IsSignUp;
     setIsSignUp(newValue); // true -> false 변경
   };
-
-
 
 
   // 회원가입
@@ -275,8 +264,6 @@ const LoginPage = () => {
            <img className="sticker9" src={government} alt="" />
            <img className="sticker10" src={lighthouse} alt="" />
            <img className="sticker11" src={park} alt="" />
-           {/* <img className="sticker12" src={eye1} alt="" />
-           <img className="sticker13" src={eye2} alt="" /> */}
          </div>
          <br />
 

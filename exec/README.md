@@ -239,3 +239,19 @@
 - Jenkins에서 Shell script와 pipeline을 이용하여 Build 구성하기
 - 주 단위나 격주 단위로 프로젝트 현재 상황 브리핑 시간을 가지고 대처하기
 - 각 기능을 구현하는 데 걸리는 시간을 최대한 보수적으로 계산하고 기획하여 최종 산출물 완성도 높이기
+
+
+
+## :star2: 데이터 출처
+- AI Hub : 랜드마크 이미지 (https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=realm&dataSetSn=56)
+  - 서울특별시 Validation 및 Training 데이터 사용
+
+- Flaticon : 각종 아이콘 asset
+  https://www.flaticon.com/authors/freepik
+
+- 폰트
+  - 배민주아체
+    http://font.woowahan.com/jua/
+  - KCC 무럭무럭체
+    https://gongu.copyright.or.kr/gongu/wrt/wrt/view.do?wrtSn=13262151&menuNo=200023
+

@@ -2,17 +2,18 @@
 
 ## :scroll: 목차
 
-- [프로젝트 동기]
-- [프로젝트 개요]
-- [구현 기능]
-- [와이어 프레임]
-- [ERD]
-- [REST API]
-- [Jira Epic]
-- [팀원 소개]
-- [시연 시나리오]
-- [기술 스택]
-- [프로젝트 회고]
+- [프로젝트 동기](#프로젝트-동기)
+- [프로젝트 개요](#프로젝트-개요)
+- [구현 기능](#구현-기능)
+- [와이어 프레임](#와이어-프레임)
+- [ERD](#ERD)
+- [REST API](#REST-API)
+- [Jira Epic](#Jira-Epic)
+- [팀원 소개](#팀원-소개)
+- [시연 시나리오](#시연-시나리오)
+- [기술 스택](#기술-스택)
+- [Build](#Build)
+- [프로젝트 회고](#프로젝트-회고)
 
 ## 프로젝트 소개
 ### :one: 프로젝트 동기
@@ -149,6 +150,73 @@
 >>| :---------: | :------: | :-----: | :-------------------------: |
 >>|   20.04.4   | 20.10.18 | 2.361.1 | 2022.2.2 (Ultimate Edition) |
 
+## :star: Build
+
+>- SpringBoot
+>
+>1. Dockerfile
+>``` bash
+>FROM openjdk:8\-jdk\-alpine
+>ARG JAR\_FILE\=\*.jar
+>COPY ${JAR\_FILE} app.jar
+>ENTRYPOINT \["java","-jar","/app.jar"\]
+>```
+>
+>- java 8 사용
+>- 현 경로에서의 jar 파일을 파라미터로 하여 app.jar로 전달
+>- java -jar app.jar 명령어를 수행하는 이미지 생성
+>- docker build -t [컨테이너명] [Dockerfile 경로]
+>
+><br>
+>
+>2. 수동 Build
+>``` bash
+>mvn clean build
+>```
+><br>
+>
+>- React
+>1. npm 설치
+>
+>``` bash
+>npm i npm
+>npm i -g @vue/cli-service
+>npm i -g @vue/cli-plugin-babel
+>npm i -g @vue/cli-plugin-eslint
+>```
+>
+>2. React Build
+>``` bash
+>npm i --legacy-peer-deps
+>````
+>~~dependancy에 등록된 패키지 전부 설치~~
+>
+>``` bash
+>npm run build
+>```
+>dist 폴더 생성
+>
+>3. React 실행
+>
+>```bash
+>npm run dev
+>```
+><br>
+>- MySQL
+>
+>1. 컨테이너 생성
+>``` bash
+>docker run --name [컨테이너명] -e MYSQL_ROOT_PASSWORD='[패스워드]' -d -p [외부포트]:[내부포트] [이미지명]
+>````
+>
+>2. MySQL 접속
+>``` bash
+>docker exec -it [컨테이너명] bash
+>mysql -u root -p
+>```
+><br>
+><br>
+
 ## :star2: 프로젝트 회고
 
 1. keep(만족한 것)
@@ -171,3 +239,19 @@
 - Jenkins에서 Shell script와 pipeline을 이용하여 Build 구성하기
 - 주 단위나 격주 단위로 프로젝트 현재 상황 브리핑 시간을 가지고 대처하기
 - 각 기능을 구현하는 데 걸리는 시간을 최대한 보수적으로 계산하고 기획하여 최종 산출물 완성도 높이기
+
+
+
+## :star2: 데이터 출처
+- AI Hub : 랜드마크 이미지 (https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=realm&dataSetSn=56)
+  - 서울특별시 Validation 및 Training 데이터 사용
+
+- Flaticon : 각종 아이콘 asset
+  https://www.flaticon.com/authors/freepik
+
+- 폰트
+  - 배민주아체
+    http://font.woowahan.com/jua/
+  - KCC 무럭무럭체
+    https://gongu.copyright.or.kr/gongu/wrt/wrt/view.do?wrtSn=13262151&menuNo=200023
+

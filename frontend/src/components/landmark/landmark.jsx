@@ -180,9 +180,6 @@ export default function landmark() {
     중랑구: "3g1zdwWqe",
   };
 
-  // const districtURL = `https://teachablemachine.withgoogle.com/models/${districtList.district}/`;
-  // let districtURL = `https://teachablemachine.withgoogle.com/models/${districtList.district}/`;
-
   let districtURL = `https://teachablemachine.withgoogle.com/models/${
     districtList[landmarkInfo.bookGugun]
   }/`;
@@ -219,12 +216,7 @@ export default function landmark() {
         }
       }
     }
-    // if () {
 
-    // }
-    // else {
-    //     return false
-    // }
     console.log(
       "답: ",
       prediction[0].className + prediction[0].probability.toFixed(2)
@@ -242,7 +234,6 @@ export default function landmark() {
   async function register() {
     let val = false;
     if (resultPercent < 0.5) {
-      //val = confirm("확률이 낮습니다. 등록하시겠습니까?");
 
       await Swal.fire({
         title: "확률이 낮습니다. 등록하시겠습니까?",
@@ -293,7 +284,7 @@ export default function landmark() {
 
       axios
         .post(
-          `https://j7a206.p.ssafy.io:8080/api/file/${userSeq}/${landmarkNo}`,
+          `https://삭제/api/file/${userSeq}/${landmarkNo}`,
           formData,
           {
             headers: {
@@ -310,16 +301,6 @@ export default function landmark() {
           console.log("upload fail");
           console.log(error);
         });
-      // let today = new Date();
-      // let year = today.getFullYear();
-      // let month = today.getMonth()
-      // let datenow = today.getDate();
-      // let hours = today.getHours(); // 시
-      // let minutes = today.getMinutes();  // 분
-      // let seconds = today.getSeconds();  // 초
-      // let milliseconds = today.getMilliseconds(); // 밀리초
-
-      // let ubcImage = year+""+month+""+datenow+""+ hours +"" + minutes + "" + seconds + "" + milliseconds + "" + userSeq + "" + landmarkNo;
 
       let userbookCollectionInfo = {
         bookSeq: landmarkNo,
@@ -622,10 +603,6 @@ export default function landmark() {
                                     <div style={{marginTop:'2px', marginLeft:'15px', marginBottom:'15px'}}>{item.commentContent}</div>
                                     {item.user.userNickname === userNickname ? <button style={{marginTop:'2px', fontSize:'5px', marginLeft:'15px', marginBottom:'15px', border:'0px', padding:'0px'}} onClick={()=>{eraseComment(item.commentSeq)}}>삭제</button> : <div></div>}
                                 </div>
-                                // <tr style={{marginBottom:'15px'}}>
-                                //     <td style={{marginBottom:'15px'}}>{item.user.userNickname}</td>
-                                //     <td style={{marginBottom:'15px'}}>{item.commentContent}</td>
-                                // </tr>
                             );
                         })}
                 </table>
