@@ -1,7 +1,10 @@
 ![20220916164021](https://user-images.githubusercontent.com/97646070/194148131-c477cea5-8f98-4bee-a53b-8608924fe918.png)
 
+
+
 ## :scroll: 목차
 
+- [프로젝트 정보](#프로젝트-정보)
 - [프로젝트 동기](#프로젝트-동기)
 - [프로젝트 개요](#프로젝트-개요)
 - [구현 기능](#구현-기능)
@@ -16,8 +19,20 @@
 - [프로젝트 회고](#프로젝트-회고)
 - [자료 출처](#star2-자료-출처)
 
+
+
 ## 프로젝트 소개
+### :zero: 프로젝트 정보
+
+- 삼성청년SW아카데미(SSAFY) 7기 2학기 특화프로젝트 인공지능(영상) 분야 프로젝트
+- 서울 특화 2반 6팀 (A206)
+- 진행기간
+  - 2022.08.22 ~ 2022.10.07 (총 6주)
+
+
+
 ### :one: 프로젝트 동기
+
   1. 여행을 단순히 사진 찍는 것 이외의 방식으로 기념하고 싶다.
   2. 늘어나는 여행 수요에 맞춰서 사용자들이 재밌게 이용할 수 있는 서비스가 필요하다.
 
@@ -30,27 +45,37 @@
 4. **랜드마크들을 수집**하여 일정 조건을 충족하면 해당 업적의 보상이 제공된다.
 5. 개별 랜드마크 페이지에서 댓글 작성을 할 수 있고, 다른 사용자들이 쓴 댓글을 확인할 수 있다.
 
+
+
 ### :three: 구현 기능
 
 - 회원 관리
 - 랜드마크 등록 인증
 - 랜드마크 수집 상태 시각화
 
+
+
 ### :four: 와이어 프레임
 
->![img](../image/Stamper_Figma.jpg)
->![img](../image/Stamper_Figma2.jpg)
+>![img](./image/Stamper_Figma.jpg)
+>![img](./image/Stamper_Figma2.jpg)
 >https://www.figma.com/file/EjtOXFoLP0MPAYqCi1mlTT/A206-First-Draft?node-id=0%3A1
+
+
 
 ### :five: ERD
 
->![img](../image/Stamper_ERD.jpg)
+>![img](./image/Stamper_ERD.jpg)
 >https://www.erdcloud.com/d/a7Ye2y8XRDfRJGB3K
+
+
 
 ### :six: REST API
 
->![img](../image/Stamper_RESTAPI.jpg)
+>![img](./image/Stamper_RESTAPI.jpg)
 >https://www.notion.so/a206/REST-API-1a3ff188ff374da79e22fec4c60c037b
+
+
 
 
 ### :seven: Jira Epic
@@ -66,7 +91,10 @@
 >| UCC           | UCC 스토리보드  제작, UCC 제작 회의 및 촬영           |
 
 
+
 ### :eight: 팀원 소개
+
+#### 7기 서울 특화 2반 A206
 
 > | 소개  | 이름   | 역할                            |
 > | ----- | ------ | -------------------------------|
@@ -76,12 +104,13 @@
 > | 🐱팀원 | 이경준 | Backend, API, CRUD, DB, ERD   |
 > | 🐰팀원 | 정찬희 | Backend, API, 서버, 배포          |
 > | 👩팀원 | 홍인호 | Backend, API, AI 모델링, KaKao Map     |
-  
-
-## :nine: 시연 시나리오
 
 
->### I. 로그인 페이지
+
+### :nine: 시연 시나리오
+
+
+>#### I. 로그인 페이지
 
 ![로그인 페이지](https://user-images.githubusercontent.com/97646070/194447329-66b232c4-f4f2-4a53-a10f-a7aa62115222.gif)
 
@@ -118,9 +147,12 @@
 ![이스터에그](https://user-images.githubusercontent.com/97646070/194447404-655f49e1-b0f0-4e67-a3de-2b05a6a95606.gif)
 
 
-### :ten: 기술 스택
+
+### :keycap_ten: 기술 스택
 
 >### ![기술스택](https://user-images.githubusercontent.com/97646070/194155652-ddad4bf5-f965-4e73-a721-34faf445fa81.png)
+
+
 
 ## :star: 협업툴
 
@@ -150,6 +182,8 @@
 >>| Ubuntu(EC2) |  Docker  | Jenkins |        IntelliJ IDEA        |
 >>| :---------: | :------: | :-----: | :-------------------------: |
 >>|   20.04.4   | 20.10.18 | 2.361.1 | 2022.2.2 (Ultimate Edition) |
+
+
 
 ## :star: Build
 
@@ -217,6 +251,8 @@
 >```
 ><br>
 ><br>
+
+
 
 ## :star2: 프로젝트 회고
 
