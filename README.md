@@ -242,7 +242,7 @@
 
 
 
-## :star2: 데이터 출처
+## :star2: 데이터 및 자료 출처
 - AI Hub : 랜드마크 이미지 (https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=realm&dataSetSn=56)
   - 서울특별시 Validation 및 Training 데이터 사용
 
