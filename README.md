@@ -14,6 +14,7 @@
 - [기술 스택](#기술-스택)
 - [Build](#Build)
 - [프로젝트 회고](#프로젝트-회고)
+- [자료 출처](#star2-자료-출처)
 
 ## 프로젝트 소개
 ### :one: 프로젝트 동기
@@ -140,7 +141,7 @@
 >>| :---------------------: | :------------------: | :------: | :---: | :----------------: |
 >>|          0.8.5          |        1.1.4         |  3.9.1   | 3.1.0 |       1.71.2       |
 >
->#### BackEnd (22.10.06 수정 필요)
+>#### BackEnd
 >
 >>|  Java  | SpringBoot | MySQL  |
 >>| :----: | :--------: | :----: |
@@ -242,16 +243,16 @@
 
 
 
-## :star2: 데이터 및 자료 출처
+## :star2: 자료 출처
 - AI Hub : 랜드마크 이미지 (https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=realm&dataSetSn=56)
   - 서울특별시 Validation 및 Training 데이터 사용
 
 - Flaticon : 각종 아이콘 asset
-  https://www.flaticon.com/authors/freepik
+  - https://www.flaticon.com/authors/freepik
 
 - 폰트
   - 배민주아체
-    http://font.woowahan.com/jua/
+    - http://font.woowahan.com/jua/
   - KCC 무럭무럭체
-    https://gongu.copyright.or.kr/gongu/wrt/wrt/view.do?wrtSn=13262151&menuNo=200023
+    - https://gongu.copyright.or.kr/gongu/wrt/wrt/view.do?wrtSn=13262151&menuNo=200023
 
