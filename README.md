@@ -4,19 +4,19 @@
 
 ## :scroll: 목차
 
-- [프로젝트 정보](#프로젝트-정보)
-- [프로젝트 동기](#프로젝트-동기)
-- [프로젝트 개요](#프로젝트-개요)
-- [구현 기능](#구현-기능)
-- [와이어 프레임](#와이어-프레임)
-- [ERD](#ERD)
-- [REST API](#REST-API)
-- [Jira Epic](#Jira-Epic)
-- [팀원 소개](#팀원-소개)
-- [시연 시나리오](#시연-시나리오)
-- [기술 스택](#기술-스택)
-- [Build](#Build)
-- [프로젝트 회고](#프로젝트-회고)
+- [프로젝트 정보](#zero-프로젝트-정보)
+- [프로젝트 동기](#one-프로젝트-동기)
+- [프로젝트 개요](#two-프로젝트-개요)
+- [구현 기능](#three-구현-기능)
+- [와이어 프레임](#four-와이어-프레임)
+- [ERD](#five-erd)
+- [REST API](#six-rest-api)
+- [Jira Epic](#seven-jira-epic)
+- [팀원 소개](#eight-팀원-소개)
+- [시연 시나리오](#nine-시연-시나리오)
+- [기술 스택](#keycapten-기술-스택)
+- [Build](#star-build)
+- [프로젝트 회고](#star2-프로젝트-회고)
 - [자료 출처](#star2-자료-출처)
 
 
@@ -291,4 +291,3 @@
     - http://font.woowahan.com/jua/
   - KCC 무럭무럭체
     - https://gongu.copyright.or.kr/gongu/wrt/wrt/view.do?wrtSn=13262151&menuNo=200023
-
