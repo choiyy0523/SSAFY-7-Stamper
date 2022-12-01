@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.21, for Win64 (x86_64)
 --
--- Host: j7a206.p.ssafy.io    Database: a206
+-- Host: 삭제    Database: a206
 -- ------------------------------------------------------
 -- Server version	8.0.30-0ubuntu0.20.04.2
 

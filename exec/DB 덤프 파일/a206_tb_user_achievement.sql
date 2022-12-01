@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.21, for Win64 (x86_64)
 --
--- Host: j7a206.p.ssafy.io    Database: a206
+-- Host: 삭제    Database: a206
 -- ------------------------------------------------------
 -- Server version	8.0.30-0ubuntu0.20.04.2
 
@@ -28,10 +28,10 @@ CREATE TABLE `tb_user_achievement` (
   `achieve_seq` bigint DEFAULT NULL,
   `user_seq` bigint DEFAULT NULL,
   PRIMARY KEY (`user_achievement_seq`),
-  KEY `FKgqs5cl7ncjo3fiob88le7bgq` (`achieve_seq`),
-  KEY `FK1gwrt0aap7bflxb5evq8j51vt` (`user_seq`),
-  CONSTRAINT `FK1gwrt0aap7bflxb5evq8j51vt` FOREIGN KEY (`user_seq`) REFERENCES `tb_user` (`user_seq`),
-  CONSTRAINT `FKgqs5cl7ncjo3fiob88le7bgq` FOREIGN KEY (`achieve_seq`) REFERENCES `tb_achievement` (`achieve_seq`)
+  KEY `삭제` (`achieve_seq`),
+  KEY `삭제` (`user_seq`),
+  CONSTRAINT `삭제` FOREIGN KEY (`user_seq`) REFERENCES `tb_user` (`user_seq`),
+  CONSTRAINT `삭제` FOREIGN KEY (`achieve_seq`) REFERENCES `tb_achievement` (`achieve_seq`)
 ) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

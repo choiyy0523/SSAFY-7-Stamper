@@ -18,13 +18,7 @@ const collectionThemeDetail = () => {
     const userNick = userInfo.userInfo.userNickname;
     const userSeq = userInfo.userInfo.userSeq;
     const token = userInfo.accessToken;
-
-    // const navigate = useNavigate();
-    // const bookDetailLink = (bookseq) => {
-    //     //navigate(`/landmark/${bookseq}`);
-    //     console.log(bookseq);
-    // };
-
+    
     const[fordata, setFordata] = useState([]);
     const[position, setPosition] = useState({
         lat: 0, lng : 0

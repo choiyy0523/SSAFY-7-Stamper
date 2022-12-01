@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.21, for Win64 (x86_64)
 --
--- Host: j7a206.p.ssafy.io    Database: a206
+-- Host: 삭제    Database: a206
 -- ------------------------------------------------------
 -- Server version	8.0.30-0ubuntu0.20.04.2
 
@@ -31,10 +31,10 @@ CREATE TABLE `tb_userbook_collection` (
   `book_seq` bigint DEFAULT NULL,
   `user_seq` bigint DEFAULT NULL,
   PRIMARY KEY (`userbook_collection_seq`),
-  KEY `FK8i8p31ephj05wxhak7s2j2rtq` (`book_seq`),
-  KEY `FKh0ovybrv7c35jwg8it4uf46au` (`user_seq`),
-  CONSTRAINT `FK8i8p31ephj05wxhak7s2j2rtq` FOREIGN KEY (`book_seq`) REFERENCES `tb_book` (`book_seq`),
-  CONSTRAINT `FKh0ovybrv7c35jwg8it4uf46au` FOREIGN KEY (`user_seq`) REFERENCES `tb_user` (`user_seq`)
+  KEY `삭제` (`book_seq`),
+  KEY `삭제` (`user_seq`),
+  CONSTRAINT `삭제` FOREIGN KEY (`book_seq`) REFERENCES `tb_book` (`book_seq`),
+  CONSTRAINT `삭제` FOREIGN KEY (`user_seq`) REFERENCES `tb_user` (`user_seq`)
 ) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

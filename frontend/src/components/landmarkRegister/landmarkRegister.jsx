@@ -100,8 +100,6 @@ export default function landmarkRegister() {
                         '중구':'9JVSZ0SaY',
                         '중랑구':'3g1zdwWqe'}
 
-    // const districtURL = `https://teachablemachine.withgoogle.com/models/${districtList.district}/`;
-    // let districtURL = `https://teachablemachine.withgoogle.com/models/${districtList.district}/`;
 
     let districtURL = `https://teachablemachine.withgoogle.com/models/${districtList[landmarkInfo.bookGugun]}/`;
 
@@ -118,12 +116,7 @@ export default function landmarkRegister() {
         setShowResult(true)
         setLoading(false)
         setResult(prediction[0].className)
-        // if () {
 
-        // }
-        // else {
-        //     return false
-        // }
         console.log('답: ', prediction[0].className + prediction[0].probability.toFixed(2));
         console.log('답: ', prediction[1].className + prediction[1].probability.toFixed(2));
         console.log('답: ', prediction[2].className + prediction[2].probability.toFixed(2));
@@ -169,36 +162,6 @@ export default function landmarkRegister() {
     return (
         <div>
             <h1>랜드마크 등록</h1>
-            {/* <div style={{margin:'10px'}}>
-                <select name='district' id='districtSelection' onChange={changeDistrict}>
-                    <option value=''>지역을 선택해주세요.</option>
-                    <option value='강남구'>강남구</option>
-                    <option value='강동구'>강동구</option>
-                    <option value='강북구'>강북구</option>
-                    <option value='강서구'>강서구</option>
-                    <option value='관악구'>관악구</option>
-                    <option value='광진구'>광진구</option>
-                    <option value='구로구'>구로구</option>
-                    <option value='금천구'>금천구</option>
-                    <option value='노원구'>노원구</option>
-                    <option value='도봉구'>도봉구</option>
-                    <option value='동대문구'>동대문구</option>
-                    <option value='동작구'>동작구</option>
-                    <option value='마포구'>마포구</option>
-                    <option value='서대문구'>서대문구</option>
-                    <option value='서초구'>서초구</option>
-                    <option value='성동구'>성동구</option>
-                    <option value='성북구'>성북구</option>
-                    <option value='송파구'>송파구</option>
-                    <option value='양천구'>양천구</option>
-                    <option value='영등포구'>영등포구</option>
-                    <option value='용산구'>용산구</option>
-                    <option value='은평구'>은평구</option>
-                    <option value='종로구'>종로구</option>
-                    <option value='중구'>중구</option>
-                    <option value='중랑구'>중랑구</option>
-                </select>
-            </div> */}
             <div>
                 {image? <img id='targetImage' src={url} style={{padding:'10px'}}width='300px' height='300px'></img> : <div></div>}
             </div>

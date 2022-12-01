@@ -23,7 +23,7 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class AwsS3ServiceImpl implements AwsS3Service {
-    private final String BASE_URL = "https://stamperimage.s3.ap-northeast-2.amazonaws.com";
+    private final String BASE_URL = "URL 삭제";
     private final String USER_IMAGE_URL = "/userimg";
 
     @Autowired

@@ -74,9 +74,6 @@ export default function ImageTest() {
                         '중구':'9JVSZ0SaY',
                         '중랑구':'3g1zdwWqe'}
 
-    // const districtURL = `https://teachablemachine.withgoogle.com/models/${districtList.district}/`;
-    // let districtURL = `https://teachablemachine.withgoogle.com/models/${districtList.district}/`;
-
     let districtURL = `https://teachablemachine.withgoogle.com/models/${districtList[district]}/`;
 
     async function predict() {
@@ -126,8 +123,6 @@ export default function ImageTest() {
             </div>
 
             <div className="darm_kkol">&lt;랜드마크 닮은꼴 찾기></div>
-            {/* <img className="main_comp blur_darm robot_dance" src={assistant} alt="" style={{display: `${image ? "none" : null}`}}/> */}
-
 
         </div> 
             <div>
